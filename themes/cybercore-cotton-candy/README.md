@@ -34,6 +34,11 @@ This is a VS Code settings preset, not a standalone Marketplace extension.
 
 Some colors may vary depending on your installed extensions and operating system.
 
+## ✧ About CyberStudios
+CyberStudios is an independent creative technology studio exploring game development, adaptive AI gameplay systems, digital art, modding, and experimental interactive experiences.
+
+Cybercore Cotton Candy is part of the studio's creative customization collection.
+
 ## Credits
 
 Created by **CyberStudios**.
