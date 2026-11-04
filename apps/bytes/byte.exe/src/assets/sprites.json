@@ -1,0 +1,18 @@
+{
+  "placeholder": false,
+  "approved": true,
+  "provenance": "Generated from the user's supplied reference and visually approved by the user on 2026-11-04.",
+  "image": "byte-reference-v2.png",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 4,
+  "facing": "right",
+  "animations": {
+    "idle": { "frames": [0, 0, 0, 1, 2, 3], "frameMs": 320 },
+    "walk": { "frames": [4, 5, 6, 7], "frameMs": 170 },
+    "sleep": { "frames": [8, 9, 10, 11], "frameMs": 700 },
+    "pet": { "frames": [12, 13, 14, 15], "frameMs": 240 },
+    "feed": { "frames": [16, 17, 18, 19], "frameMs": 300 },
+    "play": { "frames": [20, 21, 22, 23], "frameMs": 240 }
+  }
+}
