@@ -1,0 +1,418 @@
+
+{
+  "workbench.colorTheme": "GitHub Light Default",
+  "window.autoDetectColorScheme": false,
+  "window.titleBarStyle": "custom",
+  "window.title": "✧ CYBERCORE.exe ♡ ${activeEditorShort}",
+  "workbench.startupEditor": "none",
+
+  "editor.fontFamily": "Cascadia Code, Consolas, monospace",
+  "editor.fontSize": 15,
+  "editor.lineHeight": 26,
+  "editor.fontLigatures": true,
+  "editor.cursorStyle": "line",
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.smoothScrolling": true,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "selection",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.semanticHighlighting.enabled": true,
+
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.lineHeight": 1.3,
+
+  "workbench.colorCustomizations": {
+    "editor.background": "#FFF9FF",
+    "editor.foreground": "#624475",
+    "editorCursor.foreground": "#D66FA8",
+    "editor.selectionBackground": "#EBD5FF",
+    "editor.inactiveSelectionBackground": "#F2E5FF",
+    "editor.lineHighlightBackground": "#F7EBFF",
+    "editorLineNumber.foreground": "#B49DC9",
+    "editorLineNumber.activeForeground": "#8856B5",
+    "editorIndentGuide.background1": "#EDDDF5",
+    "editorIndentGuide.activeBackground1": "#C9A5E6",
+    "editorBracketMatch.background": "#D6F5FF",
+    "editorBracketMatch.border": "#A8DDEB",
+    "editorOverviewRuler.border": "#F2E5FF",
+
+    "sideBar.background": "#FFE2F2",
+    "sideBar.foreground": "#704A86",
+    "sideBarTitle.foreground": "#8454A3",
+    "sideBarSectionHeader.background": "#F7CDEC",
+    "sideBarSectionHeader.foreground": "#704A86",
+    "sideBar.border": "#E9C8E7",
+
+    "activityBar.background": "#F2E5FF",
+    "activityBar.foreground": "#8550B5",
+    "activityBar.inactiveForeground": "#A98EBC",
+    "activityBar.activeBorder": "#D66FA8",
+    "activityBarBadge.background": "#B4E9FF",
+    "activityBarBadge.foreground": "#553E70",
+
+    "titleBar.activeBackground": "#F2E5FF",
+    "titleBar.activeForeground": "#704A86",
+    "titleBar.inactiveBackground": "#F7EFFF",
+    "titleBar.inactiveForeground": "#A68DB7",
+
+    "editorGroupHeader.tabsBackground": "#F2E5FF",
+    "editorGroupHeader.tabsBorder": "#E6D3F5",
+    "editorGroup.border": "#EAD9FA",
+
+    "tab.activeBackground": "#FFF9FF",
+    "tab.activeForeground": "#8546AD",
+    "tab.inactiveBackground": "#EAD9FA",
+    "tab.inactiveForeground": "#876E9A",
+    "tab.activeBorderTop": "#DA92D6",
+    "tab.border": "#E6D3F5",
+
+    "statusBar.background": "#D3B9F2",
+    "statusBar.foreground": "#49305E",
+    "statusBar.noFolderBackground": "#D3B9F2",
+    "statusBar.debuggingBackground": "#F3B8D8",
+    "statusBar.debuggingForeground": "#49305E",
+
+    "panel.background": "#D6F5FF",
+    "panel.border": "#BED3F2",
+    "panelTitle.activeForeground": "#66508C",
+    "panelTitle.inactiveForeground": "#927FB0",
+    "panelTitle.activeBorder": "#C39DE5",
+
+    "terminal.background": "#D6F5FF",
+    "terminal.foreground": "#624475",
+    "terminalCursor.foreground": "#C9559C",
+    "terminal.selectionBackground": "#B8DEEF",
+
+    "terminal.ansiBlack": "#624475",
+    "terminal.ansiRed": "#BA4B7C",
+    "terminal.ansiGreen": "#357A70",
+    "terminal.ansiYellow": "#99620E",
+    "terminal.ansiBlue": "#367AA5",
+    "terminal.ansiMagenta": "#8B5ABD",
+    "terminal.ansiCyan": "#287E90",
+    "terminal.ansiWhite": "#FFF9FF",
+
+    "input.background": "#FFF9FF",
+    "input.foreground": "#624475",
+    "input.border": "#D9B9EB",
+    "input.placeholderForeground": "#A48DB5",
+
+    "dropdown.background": "#FFF9FF",
+    "dropdown.foreground": "#624475",
+    "dropdown.border": "#D9B9EB",
+
+    "button.background": "#B996E6",
+    "button.foreground": "#39234F",
+    "button.hoverBackground": "#AA80DA",
+    "button.secondaryBackground": "#F6D6ED",
+    "button.secondaryForeground": "#624475",
+    "button.secondaryHoverBackground": "#EDC2E2",
+
+    "list.activeSelectionBackground": "#E9C7F5",
+    "list.activeSelectionForeground": "#55396D",
+    "list.inactiveSelectionBackground": "#F5DDF1",
+    "list.hoverBackground": "#F7D8EF",
+    "list.focusBackground": "#EBD4FA",
+
+    "badge.background": "#FFC6E6",
+    "badge.foreground": "#624475",
+    "progressBar.background": "#A8E6F5",
+
+    "scrollbarSlider.background": "#CDB7F380",
+    "scrollbarSlider.hoverBackground": "#B996E6A8",
+    "scrollbarSlider.activeBackground": "#A57BE8B8",
+
+    "notificationCenterHeader.background": "#F2E5FF",
+    "notificationCenterHeader.foreground": "#624475",
+    "notifications.background": "#FFF1F9",
+    "notifications.foreground": "#624475",
+    "notifications.border": "#E8C7EB",
+
+    "editorWidget.background": "#FFF9FF",
+    "editorWidget.foreground": "#624475",
+    "editorWidget.border": "#DCC5F0",
+
+    "editorSuggestWidget.background": "#FFF9FF",
+    "editorSuggestWidget.foreground": "#624475",
+    "editorSuggestWidget.selectedBackground": "#E9D8F7",
+    "editorSuggestWidget.border": "#DEC8ED",
+
+    "peekViewEditor.background": "#FFF9FF",
+    "peekViewResult.background": "#F2E5FF",
+
+    "breadcrumb.foreground": "#987EAD",
+    "breadcrumb.activeSelectionForeground": "#8546AD",
+
+    "focusBorder": "#A97ADB",
+    "widget.border": "#E3C9EE",
+
+    "textLink.foreground": "#8550B5",
+    "textLink.activeForeground": "#C9559C",
+
+    "settings.headerForeground": "#8454A3",
+    "settings.modifiedItemIndicator": "#D66FA8"
+  },
+
+  "editor.tokenColorCustomizations": {
+    "comments": "#8B7898",
+    "strings": "#B04F8E",
+    "keywords": "#8554B8",
+    "numbers": "#397DAD",
+    "functions": "#337FA3",
+    "types": "#7563B2",
+    "variables": "#624475",
+
+    "textMateRules": [
+      {
+        "name": "Cotton Candy - Control Keywords",
+        "scope": [
+          "keyword.control",
+          "keyword.control.flow",
+          "keyword.control.conditional",
+          "keyword.control.loop",
+          "storage.type",
+          "storage.modifier"
+        ],
+        "settings": {
+          "foreground": "#8554B8",
+          "fontStyle": ""
+        }
+      },
+      {
+        "name": "Cotton Candy - Operators",
+        "scope": [
+          "keyword.operator",
+          "keyword.operator.assignment",
+          "keyword.operator.comparison",
+          "keyword.operator.logical"
+        ],
+        "settings": {
+          "foreground": "#9B77B7"
+        }
+      },
+      {
+        "name": "Cotton Candy - Strings",
+        "scope": [
+          "string.quoted",
+          "string.quoted.single",
+          "string.quoted.double",
+          "string.template",
+          "string.quoted.template"
+        ],
+        "settings": {
+          "foreground": "#B04F8E"
+        }
+      },
+      {
+        "name": "Cotton Candy - Numbers",
+        "scope": [
+          "constant.numeric",
+          "constant.numeric.integer",
+          "constant.numeric.float"
+        ],
+        "settings": {
+          "foreground": "#397DAD"
+        }
+      },
+      {
+        "name": "Cotton Candy - Constants",
+        "scope": [
+          "constant.language",
+          "constant.language.boolean",
+          "constant.language.null",
+          "variable.language"
+        ],
+        "settings": {
+          "foreground": "#4B8495"
+        }
+      },
+      {
+        "name": "Cotton Candy - Functions",
+        "scope": [
+          "entity.name.function",
+          "support.function",
+          "meta.function-call",
+          "variable.function"
+        ],
+        "settings": {
+          "foreground": "#337FA3"
+        }
+      },
+      {
+        "name": "Cotton Candy - Parameters",
+        "scope": [
+          "variable.parameter",
+          "variable.parameter.function",
+          "meta.function.parameters"
+        ],
+        "settings": {
+          "foreground": "#935986"
+        }
+      },
+      {
+        "name": "Cotton Candy - Variables",
+        "scope": [
+          "variable.other",
+          "variable.other.readwrite",
+          "entity.name.variable"
+        ],
+        "settings": {
+          "foreground": "#624475"
+        }
+      },
+      {
+        "name": "Cotton Candy - Properties",
+        "scope": [
+          "variable.other.property",
+          "variable.object.property",
+          "meta.object-literal.key",
+          "support.variable.property"
+        ],
+        "settings": {
+          "foreground": "#8A5A9F"
+        }
+      },
+      {
+        "name": "Cotton Candy - Types and Classes",
+        "scope": [
+          "entity.name.type",
+          "entity.name.class",
+          "support.type",
+          "support.class",
+          "entity.name.type.class"
+        ],
+        "settings": {
+          "foreground": "#7563B2"
+        }
+      },
+      {
+        "name": "Cotton Candy - HTML Tags",
+        "scope": [
+          "entity.name.tag",
+          "entity.name.tag.html",
+          "entity.name.tag.xml"
+        ],
+        "settings": {
+          "foreground": "#875ABB"
+        }
+      },
+      {
+        "name": "Cotton Candy - HTML Attributes",
+        "scope": [
+          "entity.other.attribute-name",
+          "entity.other.attribute-name.html",
+          "entity.other.attribute-name.xml"
+        ],
+        "settings": {
+          "foreground": "#A65D96"
+        }
+      },
+      {
+        "name": "Cotton Candy - Tag Punctuation",
+        "scope": [
+          "punctuation.definition.tag"
+        ],
+        "settings": {
+          "foreground": "#9B77B7"
+        }
+      },
+      {
+        "name": "Cotton Candy - CSS Selectors",
+        "scope": [
+          "entity.other.attribute-name.class.css",
+          "entity.other.attribute-name.id.css",
+          "entity.name.tag.css"
+        ],
+        "settings": {
+          "foreground": "#A154A2"
+        }
+      },
+      {
+        "name": "Cotton Candy - CSS Properties",
+        "scope": [
+          "support.type.property-name.css",
+          "meta.property-name.css"
+        ],
+        "settings": {
+          "foreground": "#7558AD"
+        }
+      },
+      {
+        "name": "Cotton Candy - CSS Values",
+        "scope": [
+          "support.constant.property-value.css",
+          "constant.other.color.rgb-value.css"
+        ],
+        "settings": {
+          "foreground": "#4B8495"
+        }
+      },
+      {
+        "name": "Cotton Candy - Comments",
+        "scope": [
+          "comment",
+          "punctuation.definition.comment"
+        ],
+        "settings": {
+          "foreground": "#8B7898",
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "name": "Cotton Candy - JSON Keys",
+        "scope": [
+          "support.type.property-name.json",
+          "string.quoted.double.json"
+        ],
+        "settings": {
+          "foreground": "#935986"
+        }
+      },
+      {
+        "name": "Cotton Candy - JSON Values",
+        "scope": [
+          "meta.structure.dictionary.value.json string.quoted.double.json",
+          "meta.structure.array.json string.quoted.double.json"
+        ],
+        "settings": {
+          "foreground": "#B04F8E"
+        }
+      }
+    ]
+  },
+
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true,
+    "rules": {
+      "namespace": "#7563B2",
+      "class": "#7563B2",
+      "enum": "#7563B2",
+      "interface": "#7563B2",
+      "struct": "#7563B2",
+      "type": "#7563B2",
+      "typeParameter": "#7563B2",
+
+      "function": "#337FA3",
+      "method": "#337FA3",
+
+      "variable": "#624475",
+      "variable.readonly": "#4B8495",
+      "parameter": "#935986",
+      "property": "#8A5A9F",
+      "property.readonly": "#4B8495",
+
+      "enumMember": "#4B8495",
+      "macro": "#8554B8",
+      "decorator": "#A65D96",
+      "event": "#8A5A9F",
+
+      "keyword": "#8554B8",
+      "operator": "#9B77B7",
+      "string": "#B04F8E",
+      "number": "#397DAD",
+      "regexp": "#B04F8E",
+      "comment": "#8B7898"
+    }
+  }
+}
