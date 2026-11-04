@@ -1,4 +1,4 @@
-# Cybercore Cotton Candy 🩷
+# Cybercore Cotton Candy V1 Pastel Syntax Edition🩷
 
 *A dreamy, pastel VS Code customization preset by CyberStudios.*
 
