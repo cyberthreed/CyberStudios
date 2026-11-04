@@ -8,7 +8,7 @@ Cybercore Cotton Candy: Vivid transforms Visual Studio Code into a nostalgic, ca
 
 Vivid is the more saturated alternative to **Cybercore Cotton Candy: Soft**, offering stronger syntax color separation while preserving the same dreamy pink-and-lavender interface.
 
-![Cybercore Cotton Candy Vivid Preview](vividpreview.png)
+![Cybercore Cotton Candy Vivid Preview](previewvivid.png)
 
 ## ✧ Features
 
