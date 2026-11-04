@@ -89,8 +89,6 @@ Your results may vary slightly depending on the programming language, installed 
 
 Cybercore Cotton Candy is part of the studio's creative customization collection.
 
-**Cy** is the face of CyberStudios, and **Byte** is its official mascot.
-
 ## ✧ Credits
 
 **Created and designed by CyberStudios.**
