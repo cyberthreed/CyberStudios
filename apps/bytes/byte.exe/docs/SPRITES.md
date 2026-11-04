@@ -1,7 +1,5 @@
 # Customize the Byte sprite atlas
 
-The user approved the active artwork on November 4, 2026. Version 1.0.0 leaves its pixels unchanged. See [art provenance and generation prompts](ART-NOTES.md).
-
 `src/assets/byte-reference-v2.png` is an RGBA PNG: **1024 × 1536 pixels**, arranged as **4 columns × 6 rows** of 256 × 256 cells. The same sheet animates the room cat and transparent desktop cat.
 
 | State | Frame indices |
