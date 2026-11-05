@@ -38,6 +38,7 @@ jobs:
           test -f _pages/index.html
           test -f _pages/about/index.html
           test -f _pages/projects/index.html
+          test -f _pages/docs/index.html
           test -f _pages/byte/index.html
           test -f _pages/byte/assets/icon.png
 
