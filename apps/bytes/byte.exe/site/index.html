@@ -1,13 +1,915 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
-  <title>Byte.exe ♡ CyberStudios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6dbf3">
+  <meta name="description" content="Meet Byte, a local-first pixel cat companion for your Windows desktop. Adopt your own Byte from CyberStudios.">
+  <title>BYTE.EXE | CyberStudios Pet Lab</title>
+
+  <link rel="icon" type="image/png" href="assets/icon.png">
+
+  <style>
+    :root {
+      --ink: #7e5c9d;
+      --muted: #a186b5;
+      --accent: #ad7dd2;
+      --pink: #f2b6dd;
+      --lilac: #d8b6f7;
+      --sky: #c9effd;
+      --mint: #d7f1e3;
+      --paper: #fcf7ff;
+      --border: #e7c9f5;
+      --bar: linear-gradient(100deg,#f6dbf3,#e5efff);
+      --shadow: #dfc6e759;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font: 13px "Segoe UI", sans-serif;
+      background:
+        radial-gradient(ellipse at 9% 12%,#ffdaedb0,transparent 57%),
+        radial-gradient(ellipse at 94% 21%,#c8effabf,transparent 61%),
+        linear-gradient(125deg,#fff1fb,#f5ecff 58%,#e9f9ff);
+      min-height: 100vh;
+    }
+
+    body.night {
+      --ink: #dfc3ee;
+      --muted: #b596c8;
+      --accent: #dfb8f3;
+      --border: #69507d;
+      --paper: #332b47;
+      --bar: linear-gradient(100deg,#47304f,#303c59);
+      --shadow: #23192e55;
+      background: linear-gradient(125deg,#4f294c,#302745 55%,#233c59);
+    }
+
+    a { color: inherit; }
+    button { font: inherit; cursor: pointer; }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .shell {
+      width: min(1128px,calc(100% - 36px));
+      margin: auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 28px 0 24px;
+    }
+
+    .brand-icon {
+      width: 57px;
+      height: 57px;
+      padding: 8px;
+      border: 2px solid var(--border);
+      border-radius: 19px;
+      background: linear-gradient(135deg,#f6ccec,#c5f3ff);
+      box-shadow: 0 6px 0 var(--shadow);
+      object-fit: contain;
+      image-rendering: pixelated;
+    }
+
+    .wordmark small {
+      display: block;
+      letter-spacing: 2.2px;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .wordmark h1 {
+      margin: 2px 0 0;
+      font-size: clamp(25px,4vw,34px);
+      letter-spacing: 3px;
+    }
+
+    .wordmark h1 span { color: #d885ca; }
+
+    .nav {
+      margin-left: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .nav a,
+    .version {
+      text-decoration: none;
+      background: #ffffffa8;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 9px 13px;
+      font-size: 11px;
+      color: #9976b4;
+    }
+
+    .nav a:hover { background: #ffe5f5; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0,1.9fr) minmax(280px,1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .sidebar {
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel {
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      background: #fffaffdf;
+      overflow: hidden;
+      box-shadow: 0 9px 0 var(--shadow),0 24px 40px #b78bc313;
+    }
+
+    .windowbar {
+      min-height: 44px;
+      padding: 10px 16px;
+      background: var(--bar);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 650;
+      color: #9370b0;
+    }
+
+    .windowbar span:last-child {
+      font-size: 11px;
+    }
+
+    .room-stage {
+      padding: 23px;
+      background: linear-gradient(#ffebfc,#f4edff 53%,#ddf3ff);
+      position: relative;
+      isolation: isolate;
+    }
+
+    .room-stage::before {
+      content: "✧";
+      position: absolute;
+      top: 9px;
+      left: 17px;
+      font-size: 30px;
+      color: #dfb2e9;
+    }
+
+    .room-stage::after {
+      content: "✦";
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      font-size: 25px;
+      color: #dfb2e9;
+    }
+
+    .preview-img {
+      display: block;
+      width: 100%;
+      border: 3px solid #ffffffc9;
+      border-radius: 14px;
+      box-shadow: 0 12px 32px #9a79b322;
+      background: white;
+    }
+
+    .floor-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 18px;
+      padding: 9px 12px;
+      font: 700 10px Consolas, monospace;
+      letter-spacing: 2px;
+      color: #9270be;
+      background: #cdb1ed42;
+      border-radius: 8px;
+    }
+
+    .room-actions,
+    .panel-content {
+      padding: 20px;
+    }
+
+    .tiny-heading {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      margin: 0 0 13px;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 9px;
+    }
+
+    .action {
+      display: grid;
+      place-items: center;
+      gap: 4px;
+      padding: 12px 5px;
+      border: 2px solid #e7ccef;
+      border-radius: 15px;
+      color: #7e5c9d;
+      text-align: center;
+      font-weight: 650;
+      font-size: 12px;
+    }
+
+    .action b {
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .action:nth-child(1) { background: #ffe1ef; }
+    .action:nth-child(2) { background: #ebdafa; }
+    .action:nth-child(3) { background: #d4f1fe; }
+    .action:nth-child(4) { background: #dff2e6; }
+
+    .little-games {
+      padding: 18px 20px;
+      border-top: 1px dashed var(--border);
+      background: #f8f1ff77;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      background: #ebdcfb;
+      border: 1px solid #e2c4f6;
+      border-radius: 10px;
+      padding: 9px 12px;
+      color: #9a66b7;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .identity {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 17px;
+    }
+
+    .identity img {
+      width: 51px;
+      height: 51px;
+      object-fit: contain;
+      image-rendering: pixelated;
+      padding: 5px;
+      background: linear-gradient(140deg,#f5d0ed,#ddd3ff);
+      border-radius: 16px;
+    }
+
+    .identity h3 {
+      margin: 0 0 4px;
+      font-size: 19px;
+    }
+
+    .identity p {
+      margin: 0;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .meter { margin-bottom: 14px; }
+
+    .meter-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 7px;
+      font-size: 12px;
+    }
+
+    .track {
+      height: 12px;
+      border-radius: 20px;
+      background: #eee0f7;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg,#f2b4da,#d997d0);
+    }
+
+    .fill.blue {
+      background: linear-gradient(90deg,#c3b7ff,#acd8fa);
+    }
+
+    .fill.mint {
+      background: linear-gradient(90deg,#a4e0dc,#92b5e2);
+    }
+
+    .fill.lilac {
+      background: linear-gradient(90deg,#e4c4ff,#c49af0);
+    }
+
+    .note {
+      background: #faf0ff80;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 11px;
+      line-height: 1.65;
+      color: #a487b7;
+    }
+
+    .intro {
+      margin: 0 0 17px;
+      line-height: 1.75;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .download-btn,
+    .outline-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 8px;
+      min-height: 47px;
+      padding: 12px 19px;
+      border: 2px solid #e6bfdf;
+      border-radius: 13px;
+      background: #ffe1ef;
+      color: #8e598a;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 5px 0 #dac2df80;
+      transition: transform .2s,box-shadow .2s;
+    }
+
+    .download-btn:hover,
+    .outline-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 0 #dac2df80;
+    }
+
+    .outline-btn {
+      background: #ebdcfb;
+      border-color: #d9c2ed;
+      color: #9470b1;
+    }
+
+    .downloads {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0 12px;
+    }
+
+    .section { padding: 65px 0 15px; }
+
+    .section-title {
+      margin: 0 0 23px;
+      font-size: 22px;
+      letter-spacing: 1px;
+      font-weight: 750;
+    }
+
+    .section-title span { color: #d885ca; }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 15px;
+    }
+
+    .feature { padding: 22px; }
+
+    .feature h3 {
+      margin: 0 0 9px;
+      font-size: 15px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .gallery { margin-top: 20px; }
+
+    .gallery-tools {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .gallery-tools button {
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: #fffaff;
+      padding: 7px 11px;
+      color: #9a66b7;
+      font-size: 11px;
+    }
+
+    .gallery-tools button[aria-pressed="true"] {
+      background: #ad7dd2;
+      color: white;
+    }
+
+    .gallery-image {
+      display: block;
+      width: 100%;
+      max-height: 600px;
+      object-fit: contain;
+      background: #f5ecff;
+      border-radius: 12px;
+    }
+
+    .gallery-caption {
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+      padding-top: 15px;
+    }
+
+    .install-steps {
+      line-height: 2;
+      color: var(--muted);
+      padding-left: 22px;
+      margin: 0;
+    }
+
+    .install-steps strong {
+      color: var(--ink);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 65px 0 35px;
+      line-height: 1.8;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .night .panel { background: #332b47ed; }
+
+    .night .nav a,
+    .night .version {
+      background: #44314f;
+      color: #d4b3e7;
+    }
+
+    .night .room-stage {
+      background: linear-gradient(#402f5b,#342c53 58%,#354563);
+    }
+
+    .night .room-actions,
+    .night .panel-content {
+      color: #dfc3ee;
+    }
+
+    .night .little-games {
+      background: #3f304a;
+    }
+
+    .night .note {
+      background: #42304e;
+      color: #c5a2d2;
+    }
+
+    .night .chip {
+      background: #4c385e;
+      color: #d4b2e7;
+    }
+
+    .night .track {
+      background: #554365;
+    }
+
+    @media (max-width: 850px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { grid-template-columns: 1fr 1fr; }
+      .features { grid-template-columns: repeat(2,1fr); }
+    }
+
+    @media (max-width: 580px) {
+      .header { flex-wrap: wrap; }
+      .nav { width: 100%; margin-left: 0; }
+      .sidebar, .features { grid-template-columns: 1fr; }
+      .room-stage { padding: 11px; }
+      .floor-label { font-size: 8px; }
+      .section { padding-top: 42px; }
+      .downloads { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Byte.exe ♡</h1>
-  <p>Your tiny desktop companion.</p>
+  <header class="shell header">
+    <img class="brand-icon"
+      src="assets/icon.png"
+      alt="Byte icon">
+
+    <div class="wordmark">
+      <small>CYBERSTUDIOS / PET LAB</small>
+      <h1>BYTE<span>.EXE</span></h1>
+    </div>
+
+    <nav class="nav" aria-label="Website navigation">
+      <span class="version">✧ v1.0.0</span>
+      <a href="#features">Features</a>
+      <a href="#screenshots">Previews</a>
+      <a href="#download">Download</a>
+      <a href="https://github.com/cyberthreed/CyberStudios/tree/main/apps/bytes/byte.exe">Source</a>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <div class="layout">
+
+      <section class="panel" aria-label="Meet Byte">
+        <div class="windowbar">
+          <span>● byte's room</span>
+          <span id="room-mode">☀ daydream mode</span>
+        </div>
+
+        <div class="room-stage">
+          <img class="preview-img"
+            id="room-preview"
+            src="assets/Byte-v1.0.0-preview-desktop.png"
+            alt="Actual screenshot of Byte.exe running on Windows">
+
+          <div class="floor-label">
+            <span>✦ cloud_09</span>
+            <span>BYTE IS HOME</span>
+          </div>
+        </div>
+
+        <div class="room-actions">
+          <p class="tiny-heading">SAY HELLO TO BYTE ♡</p>
+
+          <div class="actions" aria-label="Byte's in-app actions">
+            <div class="action"><b>♡</b>Pet</div>
+            <div class="action"><b>✿</b>Feed</div>
+            <div class="action"><b>✦</b>Play</div>
+            <div class="action"><b>☾</b>Rest</div>
+          </div>
+        </div>
+
+        <div class="little-games">
+          <p class="tiny-heading">A LITTLE MORE MAGIC</p>
+
+          <div class="chips">
+            <span class="chip">♡ Talk to Byte</span>
+            <span class="chip">✧ Toss a star</span>
+            <span class="chip">♫ Happy dance</span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+
+        <section class="panel">
+          <div class="windowbar">
+            <span>byte.status</span>
+            <span>♥</span>
+          </div>
+
+          <div class="panel-content">
+            <div class="identity">
+              <img src="assets/icon.png" alt="">
+
+              <div>
+                <h3>byte</h3>
+                <p>your little star · cyberstudios companion</p>
+              </div>
+            </div>
+
+            <p class="tiny-heading">EXAMPLE CARE METERS</p>
+
+            <div class="meter">
+              <div class="meter-label">
+                <span>♡ happiness</span>
+                <span>78%</span>
+              </div>
+              <div class="track">
+                <div class="fill" style="width:78%"></div>
+              </div>
+            </div>
+
+            <div class="meter">
+              <div class="meter-label">
+                <span>✿ fullness</span>
+                <span>75%</span>
+              </div>
+              <div class="track">
+                <div class="fill blue" style="width:75%"></div>
+              </div>
+            </div>
+
+            <div class="meter">
+              <div class="meter-label">
+                <span>☾ energy</span>
+                <span>87%</span>
+              </div>
+              <div class="track">
+                <div class="fill mint" style="width:87%"></div>
+              </div>
+            </div>
+
+            <div class="meter">
+              <div class="meter-label">
+                <span>✧ friendship</span>
+                <span>10%</span>
+              </div>
+              <div class="track">
+                <div class="fill lilac" style="width:10%"></div>
+              </div>
+            </div>
+
+            <div class="note">
+              No punishments or pet death. Byte is a cozy companion,
+              not a chore.
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="windowbar">
+            <span>activity.log</span>
+            <span>✦</span>
+          </div>
+
+          <div class="panel-content">
+            <p class="intro">
+              <strong>A new little chapter for Byte.</strong>
+            </p>
+            <p class="intro">
+              Your little companion is home. Keep him company while you
+              work, create, or explore your desktop.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="windowbar">
+            <span>room.settings</span>
+            <span>⌘</span>
+          </div>
+
+          <div class="panel-content">
+            <p class="intro">
+              Preview Byte's daytime and nighttime atmosphere.
+            </p>
+
+            <div class="gallery-tools">
+              <button id="day" type="button" aria-pressed="true">
+                ☀ Day room
+              </button>
+              <button id="night" type="button" aria-pressed="false">
+                ☾ Night room
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </aside>
+    </div>
+
+    <section id="features" class="section">
+      <h2 class="section-title">
+        ✧ life with <span>byte</span>
+      </h2>
+
+      <div class="features">
+
+        <article class="panel feature">
+          <h3>♡ A little friend</h3>
+          <p>
+            Pet, feed, play, and rest with Byte inside his dreamy
+            little room.
+          </p>
+        </article>
+
+        <article class="panel feature">
+          <h3>✦ Desktop mode</h3>
+          <p>
+            Bring Byte onto your Windows desktop as a movable
+            pixel companion.
+          </p>
+        </article>
+
+        <article class="panel feature">
+          <h3>☾ Day & night</h3>
+          <p>
+            Switch between daytime and nighttime, and customize
+            Byte's room palette.
+          </p>
+        </article>
+
+        <article class="panel feature">
+          <h3>♫ Little games</h3>
+          <p>
+            Talk to Byte, toss him stars to catch, or watch his
+            happy dance.
+          </p>
+        </article>
+
+        <article class="panel feature">
+          <h3>⌘ Your preferences</h3>
+          <p>
+            Adjust size, wandering, cursor following, movement,
+            and other desktop options.
+          </p>
+        </article>
+
+        <article class="panel feature">
+          <h3>♥ Saved locally</h3>
+          <p>
+            No account, tracking, or cloud connection. Byte remembers
+            his care state on your computer.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="screenshots" class="section">
+      <h2 class="section-title">
+        ✧ inside <span>byte's world</span>
+      </h2>
+
+      <div class="panel gallery">
+        <div class="windowbar">
+          <span>byte_preview.png</span>
+          <span id="image-label">☀ daytime</span>
+        </div>
+
+        <div class="panel-content">
+          <img
+            class="gallery-image"
+            id="gallery-image"
+            src="assets/Byte-v1.0.0-preview-desktop.png"
+            alt="Byte.exe daytime screenshot">
+
+          <p class="gallery-caption" id="gallery-caption">
+            ✧ daytime in Byte's room
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="section">
+      <h2 class="section-title">
+        ♡ adopt your <span>byte</span>
+      </h2>
+
+      <div class="panel">
+        <div class="windowbar">
+          <span>byte_download.exe</span>
+          <span>✧ v1.0.0 · Windows x64</span>
+        </div>
+
+        <div class="panel-content">
+          <p class="intro">
+            A tiny pixel companion, ready to make himself at home
+            on your Windows desktop.
+          </p>
+
+          <div class="downloads">
+            <a
+              class="download-btn"
+              href="https://github.com/cyberthreed/CyberStudios/releases/download/byte-v1.0.0/Byte-v1.0.0-Windows-x64.zip">
+              ↓ Download Byte.exe for Windows
+            </a>
+
+            <a
+              class="outline-btn"
+              href="https://github.com/cyberthreed/CyberStudios/tree/main/apps/bytes/byte.exe">
+              ⌘ View source code
+            </a>
+          </div>
+
+          <p class="intro">
+            Portable Windows x64 app · No account required ·
+            No installer needed
+          </p>
+
+          <div class="note">
+            <strong>Installation</strong>
+
+            <ol class="install-steps">
+              <li>Download the Windows ZIP.</li>
+              <li>Extract the ZIP into a folder.</li>
+              <li>
+                Open <strong>Byte.exe</strong> inside the extracted
+                application folder.
+              </li>
+              <li>Say hello to your new desktop resident. ♡</li>
+            </ol>
+
+            This application is unsigned. Windows may display
+            a security warning. Only run a download you trust.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="shell footer">
+    made with love by <strong>cyberstudios</strong> ♡
+    <div>
+      local-first pixel companion · no accounts · no tracking
+    </div>
+  </footer>
+
+  <script>
+    const images = {
+      day: {
+        src: "assets/Byte-v1.0.0-preview-desktop.png",
+        label: "☀ daytime",
+        caption: "✧ daytime in Byte's room",
+        alt: "Byte.exe daytime screenshot"
+      },
+
+      night: {
+        src: "assets/Byte-v1.0.0-preview-night.png",
+        label: "☾ nighttime",
+        caption: "☾ nighttime in Byte's room",
+        alt: "Byte.exe nighttime screenshot"
+      }
+    };
+
+    const day = document.getElementById("day");
+    const night = document.getElementById("night");
+    const gallery = document.getElementById("gallery-image");
+    const roomPreview = document.getElementById("room-preview");
+
+    function switchRoom(mode) {
+      const selected = images[mode];
+
+      document.body.classList.toggle(
+        "night",
+        mode === "night"
+      );
+
+      gallery.src = selected.src;
+      gallery.alt = selected.alt;
+
+      roomPreview.src = selected.src;
+      roomPreview.alt = selected.alt;
+
+      document.getElementById("room-mode").textContent =
+        mode === "day" ? "☀ daydream mode" : "☾ starlight mode";
+
+      document.getElementById("image-label").textContent =
+        selected.label;
+
+      document.getElementById("gallery-caption").textContent =
+        selected.caption;
+
+      day.setAttribute(
+        "aria-pressed",
+        String(mode === "day")
+      );
+
+      night.setAttribute(
+        "aria-pressed",
+        String(mode === "night")
+      );
+    }
+
+    day.addEventListener("click", () => switchRoom("day"));
+    night.addEventListener("click", () => switchRoom("night"));
+  </script>
 </body>
 </html>
