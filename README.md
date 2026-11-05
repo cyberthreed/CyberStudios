@@ -154,7 +154,9 @@ Not everything in development is publicly available yet. New releases will be ad
 
 **[♡ CyberSpace Discord](https://cyberspacelink.carrd.co)** — My little corner of the internet.
 
-**[♡ GitHub](https://github.com/cyberthreed/CyberStudios)** — Explore our projects, experiments, and releases.
+**[♡ CyberStudios Wiki](https://cyberthreed.github.io/CyberStudios/)** - Check out the studio, discover my creations, and find your way around the digital headquarters.*
+
+**[♡ GitHub](https://github.com/cyberthreed/CyberStudios)** — Explore my projects, experiments, and releases.
 
 **[♡ My Links](https://cyberslinks.carrd.co)** — Catch me in other realms!
 
