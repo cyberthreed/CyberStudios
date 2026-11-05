@@ -70,7 +70,7 @@ function showSettings() {
   if (panel && !panel.isDestroyed()) { if (panel.isMinimized()) panel.restore(); panel.show(); panel.focus(); publish(true); return; }
   const area = screen.getDisplayMatching(pet.getBounds()).workArea;
   panel = new BrowserWindow({
-    title: 'BYTE.EXE · CyberStudios Pet Lab', width: Math.min(1240, area.width - 16), height: Math.min(860, area.height - 40),
+    title: 'BYTE.EXE · CyberStudios Pet Lab', width: Math.min(1040, area.width - 16), height: Math.min(800, area.height - 40),
     minWidth: Math.min(390, area.width), minHeight: Math.min(600, area.height),
     frame: true, useContentSize: true, resizable: true, maximizable: true, fullscreenable: false,
     backgroundColor: '#f6f0ff', show: false, autoHideMenuBar: true,
@@ -213,7 +213,7 @@ async function start() {
   byteSession.webRequest.onBeforeRequest((details, callback) => {
     callback({ cancel: !details.url.startsWith('byte://app/') });
   });
-  const allowed = new Set(['index.html', 'settings.html', 'styles.css', 'pet.mjs', 'settings.mjs', 'sprite.mjs']);
+  const allowed = new Set(['index.html', 'settings.html', 'styles.css', 'room-layout.css', 'pet.mjs', 'settings.mjs', 'sprite.mjs']);
   const assetNames = fs.readdirSync(path.join(root, 'assets')).filter(name => /^[a-zA-Z0-9_-]+\.(png|webp|svg)$/.test(name));
   for (const name of assetNames) allowed.add(`assets/${name}`);
   byteSession.protocol.handle('byte', request => {
