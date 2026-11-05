@@ -102,7 +102,7 @@ You can:
 - Hide or show the desktop cat.
 - Turn on reduced motion for a quieter experience.
 
-His settings live in the **Desktop Preferences** panel, accessible from the room's sidebar or the header's Preferences button.
+Use the clearly labeled **Room / Care / Activity / Settings** tabs at the top. Byte's room stays centered, Care shows his meters, Activity holds recent memories, and Settings keeps desktop and room preferences together. Only one view is open at a time.
 
 To reopen his room, click Byte's taskbar button or use the little **⌂** control when hovering over or focusing the desktop cat.
 
@@ -234,6 +234,7 @@ Here's where the magic happens:
 | File | Purpose |
 |---|---|
 | `src/renderer/styles.css` | Room styling, colors, responsive layout, and nighttime palette |
+| `src/renderer/room-layout.css` | Centered tabbed room, compact settings, and narrow-window layout |
 | `src/lib/behavior.cjs` | Animation and movement behavior |
 | `src/lib/care.cjs` | Care stats and activity messages |
 | `src/lib/state.cjs` | Preferences, validation, and persistence |
@@ -313,3 +314,4 @@ Our projects range from advanced gameplay frameworks to tiny companions who want
 `byte.exe is running...` 🐈‍⬛
 
 ☁️　🩷　✧　🫧　💿　🐾
+
