@@ -20,6 +20,12 @@ From adaptive gameplay systems and experimental software to virtual companions a
 
 ---
 
+### 💿 [✧ ENTER THE CYBERSTUDIOS WIKI ♡](https://cyberthreed.github.io/CyberStudios/)
+
+*explore the studio, discover our creations, and find your way around the digital headquarters.*
+
+---
+
 ### ☁️ currently running...
 
 ```text
