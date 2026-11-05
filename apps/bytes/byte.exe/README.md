@@ -300,7 +300,7 @@ Our projects range from advanced gameplay frameworks to tiny companions who want
 
 ♡ [CyberStudios GitHub](https://github.com/cyberthreed/CyberStudios)
 
-✧ [CyberStudios Wiki](https://cyberstudioswiki.neocities.org/)
+✧ [CyberStudios Wiki](https://cyberthreed.github.io/CyberStudios/)
 
 ---
 
