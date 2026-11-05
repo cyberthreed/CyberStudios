@@ -1,0 +1,734 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6dbf3">
+  <meta name="description" content="Explore the CyberStudios project directory, including Byte.exe, creative tools, and gameplay systems.">
+  <title>Project Directory ♡ CyberStudios Wiki</title>
+  <style>
+    :root {
+      --ink:#7e5c9d;
+      --muted:#a186b5;
+      --border:#e7c9f5;
+      --paper:#fffaffed;
+      --bar:linear-gradient(100deg,#f6dbf3,#e5efff);
+      --shadow:#dfc6e759;
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      font:13px "Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%,#ffdaedb0,transparent 35%),
+        radial-gradient(circle at 90% 22%,#c8effabf,transparent 35%),
+        linear-gradient(125deg,#fff1fb,#f5ecff 58%,#e9f9ff);
+    }
+
+    body.night {
+      --ink:#dfc3ee;
+      --muted:#b99dc9;
+      --border:#69507d;
+      --paper:#332b47f2;
+      --bar:linear-gradient(100deg,#47304f,#303c59);
+      --shadow:#23192e55;
+      background:linear-gradient(125deg,#4f294c,#302745 55%,#233c59);
+    }
+
+    a { color:inherit; }
+    button,input { font:inherit; }
+    button { cursor:pointer; }
+
+    :focus-visible {
+      outline:3px solid #b68fdf;
+      outline-offset:3px;
+    }
+
+    .shell {
+      width:min(1150px,calc(100% - 34px));
+      margin:auto;
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:15px;
+      padding:25px 0;
+    }
+
+    .brand {
+      display:flex;
+      gap:13px;
+      align-items:center;
+      text-decoration:none;
+    }
+
+    .brand-icon {
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#ffd6ee,#c9effd);
+      border:2px solid var(--border);
+      border-radius:18px;
+      box-shadow:0 6px 0 var(--shadow);
+      font-size:29px;
+      color:#9e76c0;
+    }
+
+    .brand small {
+      display:block;
+      color:var(--muted);
+      font-size:10px;
+      letter-spacing:2px;
+      font-weight:700;
+    }
+
+    .brand strong {
+      display:block;
+      font-size:25px;
+      margin-top:3px;
+    }
+
+    .topnav {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .topnav a,.topnav button {
+      border:1px solid var(--border);
+      border-radius:22px;
+      background:var(--paper);
+      padding:10px 14px;
+      text-decoration:none;
+      color:var(--ink);
+      font-size:11px;
+      font-weight:650;
+    }
+
+    .layout {
+      display:grid;
+      grid-template-columns:220px minmax(0,1fr);
+      gap:18px;
+      align-items:start;
+    }
+
+    .panel {
+      border:2px solid var(--border);
+      border-radius:20px;
+      background:var(--paper);
+      overflow:hidden;
+      box-shadow:0 9px 0 var(--shadow),0 24px 40px #b78bc313;
+    }
+
+    .windowbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      min-height:44px;
+      padding:10px 16px;
+      background:var(--bar);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .sidebar {
+      position:sticky;
+      top:16px;
+    }
+
+    .sidebar-inner { padding:15px; }
+
+    .sidebar a {
+      display:block;
+      text-decoration:none;
+      padding:11px 12px;
+      margin-bottom:4px;
+      border-radius:10px;
+      font-size:12px;
+    }
+
+    .sidebar a:hover {
+      background:#f1e3fc;
+      color:#8c63b3;
+    }
+
+    .sidebar a.active {
+      background:#eedcfb;
+      color:#8658ae;
+      font-weight:700;
+    }
+
+    .sidebar-label {
+      margin:11px 8px;
+      font:700 10px Consolas,monospace;
+      letter-spacing:1px;
+      color:var(--muted);
+    }
+
+    .main-column {
+      display:grid;
+      gap:19px;
+      min-width:0;
+    }
+
+    .hero {
+      padding:37px;
+      background:
+        radial-gradient(circle at 85% 18%,#ffffff9c,transparent 40%),
+        linear-gradient(135deg,#ffe5f3,#e7e2ff 65%,#dff5ff);
+      color:#7e5c9d;
+    }
+
+    .hero .eyebrow {
+      font:700 11px Consolas,monospace;
+      letter-spacing:1.5px;
+      color:#a47dc1;
+    }
+
+    .hero h1 {
+      margin:17px 0;
+      font-size:clamp(34px,5vw,55px);
+      line-height:1.1;
+    }
+
+    .hero h1 span { color:#d782bd; }
+
+    .hero p {
+      max-width:630px;
+      color:#866c9c;
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .content { padding:26px; }
+
+    .heading {
+      margin:0 0 12px;
+      font-size:23px;
+    }
+
+    .heading span { color:#d782bd; }
+
+    .subtext {
+      color:var(--muted);
+      line-height:1.8;
+      font-size:13px;
+    }
+
+    .search {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:0 15px;
+      margin:20px 0;
+      border:1px solid var(--border);
+      border-radius:13px;
+      background:var(--paper);
+    }
+
+    .search input {
+      width:100%;
+      min-width:0;
+      padding:14px 0;
+      border:0;
+      outline:0;
+      background:transparent;
+      color:var(--ink);
+    }
+
+    .search input::placeholder { color:var(--muted); }
+
+    .projects {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+
+    .project {
+      padding:20px;
+      background:var(--paper);
+      border:1px solid var(--border);
+      border-radius:17px;
+    }
+
+    .project[hidden] { display:none; }
+
+    .project-heading {
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .project-icon {
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      flex-shrink:0;
+      border-radius:16px;
+      background:linear-gradient(135deg,#ffe1f2,#dcd7ff);
+      font-size:26px;
+      color:#9d76c0;
+    }
+
+    .project-icon img {
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      image-rendering:pixelated;
+    }
+
+    .project h3 {
+      margin:0 0 4px;
+      font-size:16px;
+    }
+
+    .category {
+      font-size:10px;
+      color:var(--muted);
+    }
+
+    .project p {
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.75;
+    }
+
+    .status {
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:20px;
+      background:#eedcfb;
+      color:#936bb2;
+      font:10px Consolas,monospace;
+    }
+
+    .project a {
+      display:inline-block;
+      margin-top:15px;
+      font-size:12px;
+      font-weight:700;
+      text-underline-offset:4px;
+    }
+
+    .article {
+      padding:10px 0;
+      border-bottom:1px solid var(--border);
+    }
+
+    .article:last-child { border-bottom:0; }
+
+    .article h3 {
+      font-size:16px;
+      margin:15px 0 8px;
+    }
+
+    .article p {
+      line-height:1.8;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .article strong { color:var(--ink); }
+
+    .info {
+      margin-top:18px;
+      padding:15px;
+      border:1px dashed var(--border);
+      border-radius:12px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .empty {
+      display:none;
+      color:var(--muted);
+      margin:15px 0;
+    }
+
+    .empty.visible { display:block; }
+
+    .footer {
+      text-align:center;
+      padding:45px 0;
+      color:var(--muted);
+      font:11px/1.9 Consolas,monospace;
+    }
+
+    .night .hero {
+      background:linear-gradient(135deg,#4d335a,#34324f 70%,#2b4860);
+      color:#dfc3ee;
+    }
+
+    .night .hero h1 span { color:#f0a5d8; }
+    .night .hero p { color:#c5acd9; }
+    .night .project { background:#3c304f; }
+    .night .status { background:#58416b; color:#e3c8fa; }
+    .night .sidebar a.active { background:#57416b; color:#eed5ff; }
+    .night .sidebar a:hover { background:#57416b; color:#eed5ff; }
+
+    @media(max-width:860px) {
+      .layout { grid-template-columns:1fr; }
+      .sidebar { position:static; }
+      .sidebar-inner {
+        display:flex;
+        flex-wrap:wrap;
+        gap:6px;
+      }
+      .sidebar-label { display:none; }
+      .sidebar a { margin:0; }
+    }
+
+    @media(max-width:560px) {
+      .projects { grid-template-columns:1fr; }
+      .hero { padding:25px 20px; }
+      .content { padding:20px; }
+      .topnav { width:100%; }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="../">
+      <span class="brand-icon">✦</span>
+      <span>
+        <small>THE CYBERSTUDIOS ARCHIVE</small>
+        <strong>CyberStudios ♡</strong>
+      </span>
+    </a>
+
+    <nav class="topnav">
+      <a href="../">⌂ Wiki Home</a>
+      <a href="../about/">♡ About</a>
+      <a href="../byte/">🐾 Byte.exe</a>
+      <button id="theme-toggle" type="button" aria-pressed="false">
+        ☾ Night mode
+      </button>
+    </nav>
+  </header>
+
+  <main class="shell layout">
+
+    <aside class="panel sidebar">
+      <div class="windowbar">
+        <span>▦ project.explorer</span>
+        <span>⌂</span>
+      </div>
+      <nav class="sidebar-inner">
+        <p class="sidebar-label">DIRECTORY</p>
+        <a href="../">⌂ Wiki homepage</a>
+        <a class="active" href="#directory">▦ All projects</a>
+        <a href="#companions">♡ Digital companions</a>
+        <a href="#tools">✧ Creative tools</a>
+        <a href="#gameplay">⌘ Gameplay systems</a>
+        <a href="../about/">♡ About CyberStudios</a>
+      </nav>
+    </aside>
+
+    <div class="main-column">
+
+      <section class="panel">
+        <div class="windowbar">
+          <span>✧ project_archive.exe</span>
+          <span>CYBERSTUDIOS</span>
+        </div>
+
+        <div class="hero">
+          <span class="eyebrow">✧ EXPLORE THE ARCHIVE ✧</span>
+          <h1>Every little world <span>starts somewhere.</span></h1>
+          <p>
+            Welcome to the CyberStudios project directory.
+            Browse downloadable software, developer tools,
+            and works in progress. Each creation has its
+            own place in the archive.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel" id="directory">
+        <div class="windowbar">
+          <span>▦ all_projects.db</span>
+          <span>PROJECT INDEX</span>
+        </div>
+
+        <div class="content">
+          <h2 class="heading">The <span>directory</span> ♡</h2>
+          <p class="subtext">
+            Search by project name, category, or feature.
+          </p>
+
+          <label class="search">
+            <span>⌕</span>
+            <input id="search" type="search"
+              placeholder="Search CyberStudios projects..."
+              aria-label="Search projects">
+          </label>
+
+          <div class="projects">
+
+            <article class="project"
+              data-search="byte bytes desktop pet cat windows companion">
+              <div class="project-heading">
+                <div class="project-icon">
+                  <img src="../byte/assets/icon.png" alt=""
+                    onerror="this.style.display='none';this.parentElement.textContent='♡'">
+                </div>
+                <div>
+                  <h3>Byte.exe</h3>
+                  <span class="category">Desktop Companions</span>
+                </div>
+              </div>
+              <p>
+                A tiny pixel cat for Windows. Feed, pet,
+                play, talk, dance, and keep Byte beside
+                you while you work.
+              </p>
+              <span class="status">v1.0.0 · WINDOWS x64</span>
+              <div>
+                <a href="../byte/">Visit Byte.exe →</a>
+              </div>
+            </article>
+
+            <article class="project"
+              data-search="cybercore cotton candy vscode theme editor pastel">
+              <div class="project-heading">
+                <div class="project-icon">✿</div>
+                <div>
+                  <h3>Cybercore Cotton Candy</h3>
+                  <span class="category">Creative Tools</span>
+                </div>
+              </div>
+              <p>
+                Pastel VS Code themes designed for
+                a dreamy developer workspace.
+                Includes Soft and Vivid variants.
+              </p>
+              <span class="status">SOURCE AVAILABLE</span>
+              <div>
+                <a href="https://github.com/cyberthreed/CyberStudios/tree/main/themes/cybercore-cotton-candy">
+                  Explore theme files →
+                </a>
+              </div>
+            </article>
+
+            <article class="project"
+              data-search="cybercore gameplay inzoi framework sdk memory">
+              <div class="project-heading">
+                <div class="project-icon">⌘</div>
+                <div>
+                  <h3>CyberCore Gameplay</h3>
+                  <span class="category">Gameplay Framework</span>
+                </div>
+              </div>
+              <p>
+                A developing framework for compatible
+                inZOI gameplay modules, shared context,
+                persistence, and module integrations.
+              </p>
+              <span class="status">IN DEVELOPMENT</span>
+              <div>
+                <a href="#gameplay">Read project overview →</a>
+              </div>
+            </article>
+
+            <article class="project"
+              data-search="familyties family relationships memory social graph inzoi">
+              <div class="project-heading">
+                <div class="project-icon">♡</div>
+                <div>
+                  <h3>FamilyTies</h3>
+                  <span class="category">CyberCore Gameplay Module</span>
+                </div>
+              </div>
+              <p>
+                A developing module focused on
+                relationships, social history,
+                family connections, and memory.
+              </p>
+              <span class="status">IN DEVELOPMENT</span>
+              <div>
+                <a href="#familyties">Read project overview →</a>
+              </div>
+            </article>
+
+          </div>
+
+          <p class="empty" id="empty" role="status">
+            No matching projects found. Try another search ♡
+          </p>
+        </div>
+      </section>
+
+      <section class="panel" id="companions">
+        <div class="windowbar">
+          <span>♡ companions.directory</span>
+          <span>THE BYTES</span>
+        </div>
+        <div class="content">
+          <h2 class="heading">Digital <span>companions</span></h2>
+          <p class="subtext">
+            The Bytes are a line of desktop companions
+            within CyberStudios. The first Byte is a
+            little pixel cat named Byte.
+          </p>
+          <div class="info">
+            <strong>Byte.exe v1.0.0</strong> is a Windows
+            x64 desktop application, not a browser pet.
+            Visit its <a href="../byte/">dedicated page</a>
+            for screenshots, features, and download instructions.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="tools">
+        <div class="windowbar">
+          <span>✧ creative_tools.txt</span>
+          <span>THE WORKSPACE</span>
+        </div>
+        <div class="content">
+          <h2 class="heading">Creative <span>tools</span></h2>
+          <p class="subtext">
+            CyberStudios also makes tools and customization
+            projects for creative workspaces.
+          </p>
+          <div class="article">
+            <h3>Cybercore Cotton Candy</h3>
+            <p>
+              A VS Code color theme collection with two variants.
+              <strong>Soft</strong> offers a gentler pastel appearance,
+              while <strong>Vivid</strong> uses stronger color separation.
+              Both belong to the Cybercore visual aesthetic.
+            </p>
+            <a href="https://github.com/cyberthreed/CyberStudios/tree/main/themes/cybercore-cotton-candy">
+              View the project on GitHub →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="gameplay">
+        <div class="windowbar">
+          <span>⌘ gameplay_systems.txt</span>
+          <span>IN DEVELOPMENT</span>
+        </div>
+        <div class="content">
+          <h2 class="heading">Gameplay <span>systems</span></h2>
+
+          <div class="article">
+            <h3>CyberCore Gameplay</h3>
+            <p>
+              CyberCore Gameplay is a framework being developed
+              for inZOI gameplay modules. Its planned responsibilities
+              include scoped context, shared memory, events,
+              persistence, and controlled module communication.
+            </p>
+            <p>
+              It is a separate technology project from the
+              pastel Cybercore aesthetic. It is also distinct
+              from the future CyberCore Agent SDK.
+            </p>
+          </div>
+
+          <div class="article" id="familyties">
+            <h3>FamilyTies</h3>
+            <p>
+              FamilyTies is the first planned CyberCore Gameplay
+              module. Its focus is a persistent social graph
+              containing family relationships, interactions,
+              and meaningful shared history.
+            </p>
+            <p>
+              The goal is for relationships to carry context
+              forward rather than existing only as isolated
+              moment-to-moment gameplay events.
+            </p>
+          </div>
+
+          <div class="info">
+            <strong>Development note:</strong> These are project
+            intentions and architecture goals, not claims
+            that every feature is currently implemented.
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="shell footer">
+    ✦ CYBERSTUDIOS WIKI ♡<br>
+    PROJECT DIRECTORY · EVERY LITTLE WORLD HAS A HOME<br>
+    © 2026 CyberStudios
+  </footer>
+
+  <script>
+    const search = document.getElementById("search");
+    const cards = Array.from(
+      document.querySelectorAll(".project[data-search]")
+    );
+    const empty = document.getElementById("empty");
+
+    function filterProjects() {
+      const term = search.value.trim().toLowerCase();
+      let count = 0;
+
+      for (const card of cards) {
+        const text = (
+          card.dataset.search + " " + card.textContent
+        ).toLowerCase();
+
+        const visible = text.includes(term);
+        card.hidden = !visible;
+        if (visible) count++;
+      }
+
+      empty.classList.toggle("visible", count === 0);
+    }
+
+    search.addEventListener("input", filterProjects);
+
+    const toggle = document.getElementById("theme-toggle");
+
+    function setNight(value) {
+      document.body.classList.toggle("night", value);
+      toggle.setAttribute("aria-pressed", String(value));
+      toggle.textContent = value ? "☀ Day mode" : "☾ Night mode";
+
+      try {
+        localStorage.setItem(
+          "cyberstudios-wiki-night",
+          value ? "1" : "0"
+        );
+      } catch (error) {}
+    }
+
+    try {
+      setNight(
+        localStorage.getItem("cyberstudios-wiki-night") === "1"
+      );
+    } catch (error) {
+      setNight(false);
+    }
+
+    toggle.addEventListener("click", () => {
+      setNight(!document.body.classList.contains("night"));
+    });
+  </script>
+</body>
+</html>
