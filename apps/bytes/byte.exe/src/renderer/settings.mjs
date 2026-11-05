@@ -1,62 +1,84 @@
 import { Sprite } from './sprite.mjs';
 const sprite = new Sprite(document.querySelector('#preview'));
-const fields = ['followCursor', 'wander', 'alwaysOnTop', 'reducedMotion', 'scale', 'theme', 'speed'];
+const fields = ['followCursor', 'wander', 'alwaysOnTop', 'reducedMotion', 'nightRoom', 'scale', 'theme', 'speed'];
+const views = ['room', 'care', 'activity', 'settings'];
 const error = document.querySelector('#error');
 const stage = document.querySelector('#stage'), roomPet = document.querySelector('#room-pet');
 const toyStar = document.querySelector('#toy-star'), toyButton = document.querySelector('#star-game');
-const toyHelp = document.querySelector('#toy-help');
-let current = null, artError = '', toyActive = false, flight = null, token = 0;
-let preferenceHighlightTimer;
+const toyHelp = document.querySelector('#toy-help'), motion = matchMedia('(prefers-reduced-motion: reduce)');
+let current = null, activeView = 'room', artError = '', toyActive = false, flight = null, token = 0;
 const moods = { idle:'☁ curious', walk:'✦ exploring', sleep:'☾ dreaming', pet:'♡ loved', feed:'✿ snack time', play:'✧ playful' };
 const speech = { idle:'hello again ✧', walk:'a tiny adventure ✧', sleep:'dreaming of starlight ☾', pet:'purrr… thank you ♡', feed:'a snack? for me? ✿', play:'catch a little magic ✧' };
 function showError(message) { error.textContent = message; error.hidden = !message; }
-function drawSprite(state) {
-  sprite.update(flight ? { ...state, mode: 'walk', facing: flight.facing } : state);
+function drawSprite(state = current) {
+  if (!state || activeView !== 'room' || !state.roomActive || document.hidden) { sprite.stop(); return; }
+  const view = { ...state, settings: { ...state.settings, reducedMotion: state.settings.reducedMotion || motion.matches } };
+  sprite.update(flight ? { ...view, mode: 'walk', facing: flight.facing } : view);
+}
+function selectView(name, focus = false) {
+  if (!views.includes(name)) return;
+  if (name !== 'room' && toyActive) stopGame();
+  activeView = name; document.body.dataset.view = name;
+  for (const view of views) {
+    document.getElementById(`${view}-view`).hidden = view !== name;
+    const tab = document.getElementById(`${view}-tab`);
+    tab.setAttribute('aria-selected', String(view === name)); tab.tabIndex = view === name ? 0 : -1;
+  }
+  window.scrollTo({top:0,behavior:'auto'});
+  if (focus) document.getElementById(`${name}-tab`).focus();
+  drawSprite();
 }
 function stopFlight() {
-  token++;
-  if (flight) clearTimeout(flight.timer);
-  flight = null; toyStar.hidden = true; roomPet.style.left = '';
-  roomPet.style.transitionDuration = '';
-  if (current) drawSprite(current);
+  token++; if (flight) clearTimeout(flight.timer);
+  flight = null; toyStar.hidden = true; roomPet.style.left = ''; roomPet.style.transitionDuration = '';
+  drawSprite();
 }
 function stopGame() {
-  toyActive = false; stopFlight();
-  stage.dataset.toy = 'none'; toyButton.setAttribute('aria-pressed', 'false');
+  toyActive = false; stopFlight(); stage.dataset.toy = 'none'; toyButton.setAttribute('aria-pressed', 'false');
   toyButton.innerHTML = '✧ Toss a star <kbd>6</kbd>';
   toyHelp.textContent = 'A little chat, a tiny game, a happy wiggle.';
 }
 function toggleGame() {
   if (toyActive) { stopGame(); return; }
-  toyActive = true; stage.dataset.toy = 'star';
+  if (!current?.roomActive) return;
+  selectView('room'); toyActive = true; stage.dataset.toy = 'star';
   toyButton.setAttribute('aria-pressed','true'); toyButton.textContent = '✧ Finish star game';
-  toyHelp.textContent = 'Click a spot in the room, or press Space, to toss a star.';
-  stage.focus();
+  toyHelp.textContent = 'Click a spot in the room, or press Space, to toss a star.'; stage.focus();
 }
 async function tossStar(x) {
-  if (!toyActive || !current || !current.roomActive) return;
+  if (!toyActive || !current?.roomActive || activeView !== 'room' || document.hidden) return;
   stopFlight();
-  const bounds = stage.getBoundingClientRect();
-  const half = roomPet.getBoundingClientRect().width / 2;
-  const target = Math.max(half, Math.min(x, bounds.width - half));
-  const start = bounds.width / 2;
-  const reduced = current.settings.reducedMotion || matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const duration = reduced ? 0 : Math.round(450 + Math.abs(target - start) * 3);
-  const myToken = ++token;
+  const bounds = stage.getBoundingClientRect(), half = roomPet.getBoundingClientRect().width / 2;
+  const target = Math.max(half, Math.min(x, bounds.width - half)), start = bounds.width / 2;
+  const reduced = current.settings.reducedMotion || motion.matches;
+  const duration = reduced ? 0 : Math.round(450 + Math.abs(target - start) * 3), myToken = ++token;
   toyStar.style.left = `${target}px`; toyStar.hidden = false;
   roomPet.style.transitionDuration = `${duration}ms`; roomPet.style.left = `${target}px`;
   flight = { facing: target >= start ? 1 : -1, timer: null };
-  drawSprite(current); toyHelp.textContent = 'A little star, a little chase…';
+  drawSprite(); toyHelp.textContent = 'A little star, a little chase…';
   flight.timer = setTimeout(async () => {
-    if (myToken !== token || !toyActive || document.hidden) return;
+    if (myToken !== token || !toyActive || activeView !== 'room' || !current?.roomActive || document.hidden) return;
     flight = null; toyStar.hidden = true;
-    try {
-      await window.byte.action('catch-star');
-      toyHelp.textContent = 'Caught it! Click another spot to play again.';
-    } catch { showError('That star slipped away. Try tossing another.'); }
-    roomPet.style.transitionDuration = ''; roomPet.style.left = '';
-    if (current) drawSprite(current);
+    try { await window.byte.action('catch-star'); toyHelp.textContent = 'Caught it! Click another spot to play again.'; }
+    catch { showError('That star slipped away. Try tossing another.'); }
+    roomPet.style.transitionDuration = ''; roomPet.style.left = ''; drawSprite();
   }, duration + 40);
+}
+function updateMemories(state) {
+  const list = document.querySelector('#activity-list'); list.replaceChildren();
+  for (const item of state.care.activity) {
+    const words = state.activityText[item.type] || state.activityText.hello;
+    const li = document.createElement('li'), symbol = document.createElement('span'), copy = document.createElement('div');
+    const title = document.createElement('strong'), detail = document.createElement('p');
+    symbol.className = 'memory-symbol'; symbol.textContent = '✧'; symbol.setAttribute('aria-hidden','true');
+    copy.className = 'memory-copy'; title.textContent = words[0]; detail.textContent = words[1]; copy.append(title,detail); li.append(symbol,copy);
+    const date = new Date(item.at);
+    if (item.at && Number.isFinite(date.getTime())) {
+      const time = document.createElement('time'); time.dateTime = date.toISOString();
+      time.textContent = new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}).format(date); li.append(time);
+    }
+    list.append(li);
+  }
 }
 function update(state) {
   current = state;
@@ -71,14 +93,10 @@ function update(state) {
     else if (document.activeElement !== field) field.value = state.settings[name];
   }
   for (const [name, value] of Object.entries(state.care.stats)) {
-    document.getElementById(name).value = value;
-    document.getElementById(name).textContent = `${value}%`;
+    document.getElementById(name).value = value; document.getElementById(name).textContent = `${value}%`;
     document.getElementById(`${name}-value`).value = `${value}%`;
   }
-  const latest = state.care.activity[0];
-  const text = state.activityText[latest?.type] || state.activityText.hello;
-  document.querySelector('#activity-title-text').textContent = text[0];
-  document.querySelector('#activity-detail').textContent = text[1];
+  updateMemories(state);
   document.querySelector('#star-count').textContent = `✦ ${state.care.starsCaught} ${state.care.starsCaught === 1 ? 'star' : 'stars'} caught`;
   document.querySelector('#speed-value').value = state.settings.speed;
   document.querySelector('#nap-label').textContent = state.sleeping ? 'Wake' : 'Rest';
@@ -95,7 +113,7 @@ function update(state) {
     ? 'Reduced motion pauses animation, wandering, and cursor following.'
     : state.settings.followCursor ? 'Following takes priority over wandering. Use Desktop mode to resume desktop strolls.'
     : 'Desktop strolls pause while this room is open. Desktop mode keeps Byte on your desktop.';
-  showError(state.saveError || artError); drawSprite(state);
+  showError(state.saveError || artError); drawSprite();
 }
 async function act(name) {
   if (name !== 'catch-star' && toyActive) stopGame();
@@ -103,21 +121,30 @@ async function act(name) {
 }
 async function save(patch) { try { update(await window.byte.settings(patch)); } catch { showError('Could not save preferences. Please try again.'); } }
 try {
-  const initial = await window.byte.snapshot();
-  window.byte.onChange(update);
+  const initial = await window.byte.snapshot(); window.byte.onChange(update);
   try { await sprite.load(initial.manifest); } catch { artError = 'The sprite pack could not load. Check assets/sprites.json.'; }
-  update(initial);
+  // The native room may become visible while the atlas decodes; refresh its state.
+  update(await window.byte.snapshot());
 } catch { showError('The room could not connect to Byte. Please restart the app.'); }
+for (const name of views) document.getElementById(`${name}-tab`).addEventListener('click', () => selectView(name));
+document.querySelector('.room-nav').addEventListener('keydown', event => {
+  if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+  event.preventDefault();
+  const index = event.key === 'Home' ? 0 : event.key === 'End' ? views.length - 1
+    : (views.indexOf(activeView) + (event.key === 'ArrowRight' ? 1 : -1) + views.length) % views.length;
+  selectView(views[index],true);
+});
+for (const button of document.querySelectorAll('[data-open-room]')) button.addEventListener('click', () => selectView('room',true));
 for (const name of fields) {
   const field = document.getElementById(name);
   field.addEventListener('change', () => {
-    const value = field.type === 'checkbox' ? field.checked : ['scale', 'speed'].includes(name) ? Number(field.value) : field.value;
-    void save({ [name]: value });
+    const value = field.type === 'checkbox' ? field.checked : ['scale','speed'].includes(name) ? Number(field.value) : field.value;
+    void save({[name]:value});
   });
 }
 document.querySelector('#speed').addEventListener('input', event => { document.querySelector('#speed-value').value = event.target.value; });
 for (const name of ['feed','play','nap','talk','dance']) document.getElementById(name).addEventListener('click', () => void act(name));
-for (const id of ['quit','quit-header','quit-session']) document.getElementById(id)?.addEventListener('click', () => void act('quit'));
+document.querySelector('#quit-header').addEventListener('click', () => void act('quit'));
 document.querySelector('#pet-action').addEventListener('click', () => void act('pet'));
 roomPet.addEventListener('click', () => { if (!toyActive) void act('pet'); });
 toyButton.addEventListener('click', toggleGame);
@@ -125,29 +152,22 @@ stage.addEventListener('click', event => { if (toyActive) void tossStar(event.cl
 stage.addEventListener('keydown', event => {
   if (toyActive && event.key === ' ' && event.target === stage) { event.preventDefault(); void tossStar(60 + Math.random() * (stage.clientWidth - 120)); }
 });
-for (const id of ['desktop-mode','desktop-mode-secondary','preferences-desktop-mode']) document.getElementById(id).addEventListener('click', () => void act('desktop-mode'));
-document.querySelector('#preferences-jump').addEventListener('click', () => {
-  const card = document.querySelector('#desktop-preferences');
-  const reduced = current?.settings.reducedMotion || matchMedia('(prefers-reduced-motion: reduce)').matches;
-  card.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
-  card.focus({ preventScroll: true });
-  card.dataset.highlight = 'true';
-  clearTimeout(preferenceHighlightTimer);
-  preferenceHighlightTimer = setTimeout(() => { delete card.dataset.highlight; }, 1800);
-});
+for (const id of ['desktop-mode','preferences-desktop-mode']) document.getElementById(id).addEventListener('click', () => void act('desktop-mode'));
 document.querySelector('#toggle-pet').addEventListener('click', () => void act('toggle-pet'));
 document.querySelector('#reset').addEventListener('click', () => void act('reset-position'));
-document.querySelector('#night').addEventListener('click', () => { if(current) void save({nightRoom:!current.settings.nightRoom}); });
+document.querySelector('#night').addEventListener('click', () => { if (current) void save({nightRoom:!current.settings.nightRoom}); });
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
-    if (toyActive) stopGame(); else void window.byte.closeSettings();
+    event.preventDefault();
+    if (toyActive) stopGame(); else if (activeView !== 'room') selectView('room',true); else void window.byte.closeSettings();
     return;
   }
   if (event.repeat || event.ctrlKey || event.altKey || event.metaKey || /^(INPUT|SELECT|TEXTAREA)$/.test(event.target.tagName)) return;
   if (event.key === '6') { event.preventDefault(); toggleGame(); return; }
   const action = {1:'pet',2:'feed',3:'play',4:'nap',5:'talk',7:'dance'}[event.key];
-  if (action) { event.preventDefault(); void act(action); }
+  if (action) { event.preventDefault(); selectView('room'); void act(action); }
 });
-document.addEventListener('visibilitychange', () => { if(document.hidden && toyActive) stopGame(); });
-window.addEventListener('resize', () => { if (flight) stopFlight(); });
-window.addEventListener('unload', () => { clearTimeout(preferenceHighlightTimer); stopFlight(); sprite.stop(); });
+motion.addEventListener('change', () => drawSprite());
+document.addEventListener('visibilitychange', () => { if (document.hidden && toyActive) stopGame(); drawSprite(); });
+window.addEventListener('resize', () => { if (flight) { stopFlight(); toyHelp.textContent = 'Click a spot in the room, or press Space, to toss a star.'; } });
+window.addEventListener('unload', () => { stopFlight(); sprite.stop(); });
