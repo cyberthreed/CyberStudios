@@ -49,6 +49,7 @@ From adaptive gameplay systems and experimental software to virtual companions a
 |---|---|---|
 | 🐈‍⬛ **Byte.exe** | A tiny interactive virtual pet starring CyberStudios pixel-cat mascot. | 🛠️ In development |
 | 🩷 **Cybercore Cotton Candy** | Dreamy pastel VS Code customization presets in Soft and Vivid. | 🌷 Theme collection |
+| 🍸 **[TipsyZois](https://cyberthreed.github.io/CyberStudios/projects/tipsyzois.html)** | A released inZOI intoxication mod with five stages, custom emotions, interactions, hangovers, and drinking consequences. | ✨ Released · [Nexus Mods](https://www.nexusmods.com/inzoi/mods/1691) |
 | 💿 **CyberCore** | An adaptive AI gameplay ecosystem and framework for immersive simulation experiences. | 🛠️ In development |
 | 🫧 **FamilyTies** | A CyberCore gameplay module exploring relationships, social memory, and family connections. | 🛠️ In development |
 | ☁️ **Cybercore Theme Studio** | An interactive tool for creating and exporting custom VS Code palettes. | ✧ Planned |
