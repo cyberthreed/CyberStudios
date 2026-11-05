@@ -30,5 +30,3 @@ Remove-Item Env:BYTE_SMOKE_EXECUTABLE
 Each desktop test uses a unique project-local test profile. Normal saved preferences are untouched. Source archives and packaged apps exclude test profiles and development dependencies.
 
 Physical mouse/tray interaction, click-through against another application, mixed-DPI monitor dragging, monitor hot unplug, Remote Desktop, and exclusive-fullscreen overlays still need a manual Windows check. The computer-use helper failed to initialize earlier in this chat; no physical tests are claimed here. The executable is unsigned.
-
-The current artwork is approved by the user and unchanged from the previous release. There is no gameplay SDK integration, account, tracking, punishment/decay system, installer, startup registration, or auto-updater. The only shortcut created is Open Byte inside the chosen Byte project folder.
