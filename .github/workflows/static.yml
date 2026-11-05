@@ -1,5 +1,5 @@
 
-name: Deploy Byte.exe Website
+name: Deploy CyberStudios Wiki and Byte.exe
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   deploy:
-    name: Deploy Byte Website
+    name: Deploy CyberStudios Website
     runs-on: ubuntu-latest
 
     environment:
@@ -29,10 +29,22 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload Byte website
+      - name: Assemble CyberStudios website
+        run: |
+          mkdir -p _pages/byte
+          cp -a site/. _pages/
+          cp -a apps/bytes/byte.exe/site/. _pages/byte/
+
+          test -f _pages/index.html
+          test -f _pages/about/index.html
+          test -f _pages/projects/index.html
+          test -f _pages/byte/index.html
+          test -f _pages/byte/assets/icon.png
+
+      - name: Upload complete website
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./apps/bytes/byte.exe/site
+          path: ./_pages
 
       - name: Deploy website
         id: deployment
