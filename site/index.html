@@ -1,0 +1,798 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6dbf3">
+  <meta name="description" content="The CyberStudios Wiki: digital companions, creative software, immersive worlds, and projects from CyberStudios.">
+  <title>CyberStudios Wiki ♡ Digital Headquarters</title>
+  <style>
+    :root {
+      --ink:#7e5c9d;
+      --muted:#a186b5;
+      --pink:#f2b6dd;
+      --lilac:#d8b6f7;
+      --sky:#c9effd;
+      --mint:#d7f1e3;
+      --border:#e7c9f5;
+      --paper:#fffaffed;
+      --bar:linear-gradient(100deg,#f6dbf3,#e5efff);
+      --shadow:#dfc6e759;
+      --wallpaper:linear-gradient(125deg,#fff1fb,#f5ecff 58%,#e9f9ff);
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0;
+      color:var(--ink);
+      font:13px "Segoe UI",sans-serif;
+      background:
+        radial-gradient(ellipse at 9% 12%,#ffdaedb0,transparent 57%),
+        radial-gradient(ellipse at 94% 21%,#c8effabf,transparent 61%),
+        var(--wallpaper);
+      min-height:100vh;
+    }
+    body.night {
+      --ink:#dec6ee;
+      --muted:#b99dc9;
+      --border:#69507d;
+      --paper:#332b47f2;
+      --bar:linear-gradient(100deg,#47304f,#303c59);
+      --shadow:#23192e55;
+      --wallpaper:linear-gradient(125deg,#4f294c,#302745 55%,#233c59);
+      background:var(--wallpaper);
+    }
+    a { color:inherit; }
+    button,input { font:inherit; }
+    button { cursor:pointer; }
+    :focus-visible { outline:3px solid #b68fdf; outline-offset:3px; }
+    .shell { width:min(1150px,calc(100% - 34px)); margin:auto; }
+    .mono { font-family:Consolas,monospace; }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:14px;
+      padding:24px 0;
+    }
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:13px;
+      text-decoration:none;
+    }
+    .brand-icon {
+      width:56px;
+      height:56px;
+      display:grid;
+      place-items:center;
+      border-radius:19px;
+      border:2px solid var(--border);
+      background:linear-gradient(145deg,#ffd6ee,#c9effd);
+      color:#a478cc;
+      font-size:31px;
+      box-shadow:0 6px 0 var(--shadow);
+    }
+    .brand small {
+      display:block;
+      color:var(--muted);
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:2px;
+    }
+    .brand strong {
+      display:block;
+      font-size:27px;
+      letter-spacing:1px;
+      margin-top:2px;
+    }
+    .topnav { display:flex; flex-wrap:wrap; gap:8px; }
+    .topnav a,.theme-button {
+      text-decoration:none;
+      padding:10px 14px;
+      border:1px solid var(--border);
+      border-radius:22px;
+      background:var(--paper);
+      color:var(--ink);
+      font-size:11px;
+      font-weight:650;
+    }
+    .topnav a:hover,.theme-button:hover { background:#f4ddfa; color:#8060a7; }
+
+    .desktop {
+      display:grid;
+      grid-template-columns:225px minmax(0,1fr);
+      gap:18px;
+      align-items:start;
+    }
+    .panel {
+      background:var(--paper);
+      border:2px solid var(--border);
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 9px 0 var(--shadow),0 24px 40px #b78bc313;
+    }
+    .windowbar {
+      background:var(--bar);
+      padding:13px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      color:var(--ink);
+      font-size:12px;
+      font-weight:700;
+    }
+    .windowbar .dots { letter-spacing:3px; color:#bc92d6; }
+    .sidebar { position:sticky; top:16px; }
+    .sidebar-inner { padding:15px; }
+    .sidebar-title {
+      margin:15px 6px 9px;
+      font:700 10px Consolas,monospace;
+      color:var(--muted);
+      letter-spacing:1.5px;
+    }
+    .sidebar a {
+      display:block;
+      text-decoration:none;
+      border-radius:10px;
+      padding:11px 12px;
+      margin-bottom:3px;
+      color:var(--ink);
+      font-size:12px;
+    }
+    .sidebar a:hover { background:#f1e3fc; color:#8c63b3; }
+    .sidebar .selected { background:#eedcfb; color:#8658ae; font-weight:700; }
+    .sidebar-note {
+      margin:14px 4px 3px;
+      padding:12px;
+      border:1px dashed var(--border);
+      border-radius:12px;
+      color:var(--muted);
+      font-size:11px;
+      line-height:1.6;
+    }
+    .main-column { min-width:0; display:grid; gap:20px; }
+    .hero {
+      padding:34px;
+      background:
+        radial-gradient(circle at 85% 20%,#ffffff98,transparent 35%),
+        linear-gradient(135deg,#ffe7f3,#e8e2ff 65%,#dff5ff);
+      color:#7e5c9d;
+      position:relative;
+    }
+    .eyebrow {
+      font:700 11px Consolas,monospace;
+      letter-spacing:1.5px;
+      color:#a47dc1;
+    }
+    .hero h1 {
+      font-size:clamp(32px,5vw,57px);
+      line-height:1.12;
+      letter-spacing:-1px;
+      margin:15px 0;
+    }
+    .hero h1 span { color:#d782bd; }
+    .hero p {
+      max-width:580px;
+      line-height:1.8;
+      font-size:14px;
+      color:#866c9c;
+    }
+    .button-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:23px; }
+    .button {
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      gap:7px;
+      padding:12px 18px;
+      background:#ffe0f0;
+      border:2px solid #fff9;
+      border-radius:13px;
+      color:#835d9b;
+      text-decoration:none;
+      font-weight:700;
+      box-shadow:0 5px 0 #c9a9dd80;
+      transition:transform .15s;
+    }
+    .button:hover { transform:translateY(-2px); }
+    .button.alt { background:#e5e2ff; }
+    .hero-bottom {
+      margin-top:28px;
+      border-top:1px dashed #cfb2df;
+      padding-top:15px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      font:10px Consolas,monospace;
+      color:#9b7bb7;
+    }
+    .content { padding:24px; }
+    .section-heading { margin:0 0 11px; font-size:22px; }
+    .subtext { color:var(--muted); line-height:1.7; margin:0 0 18px; }
+    .search-field {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      background:var(--paper);
+      border-radius:13px;
+      padding:0 14px;
+      margin-bottom:20px;
+    }
+    .search-field input {
+      flex:1;
+      min-width:0;
+      border:0;
+      outline:0;
+      background:transparent;
+      padding:14px 0;
+      color:var(--ink);
+    }
+    .search-field input::placeholder { color:var(--muted); }
+    .project-grid {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:13px;
+    }
+    .project {
+      border:1px solid var(--border);
+      border-radius:17px;
+      background:var(--paper);
+      padding:18px;
+      min-width:0;
+      transition:transform .15s;
+    }
+    .project:hover { transform:translateY(-3px); }
+    .project-top { display:flex; gap:12px; align-items:center; }
+    .project-icon {
+      width:51px;
+      height:51px;
+      flex-shrink:0;
+      display:grid;
+      place-items:center;
+      font-size:25px;
+      border-radius:15px;
+      background:linear-gradient(145deg,#ffe0f2,#dcd7ff);
+      color:#9d76c0;
+      overflow:hidden;
+    }
+    .project-icon img { width:100%; height:100%; object-fit:contain; image-rendering:pixelated; }
+    .project h3 { font-size:15px; margin:0 0 3px; }
+    .project .category { margin:0; font-size:10px; color:var(--muted); }
+    .project p { font-size:12px; line-height:1.7; color:var(--muted); }
+    .status {
+      display:inline-block;
+      font:10px Consolas,monospace;
+      color:#906db3;
+      background:#f1e5fc;
+      border-radius:20px;
+      padding:6px 10px;
+    }
+    .project-link {
+      display:inline-block;
+      margin-top:12px;
+      font-size:12px;
+      font-weight:700;
+      text-decoration:none;
+      border-bottom:1px dashed currentColor;
+    }
+    .empty { display:none; margin-top:15px; color:var(--muted); }
+    .empty.visible { display:block; }
+
+    .tree {
+      padding:17px;
+      background:linear-gradient(135deg,#f9f0ff,#f0faff);
+      color:#8765a8;
+      border-radius:13px;
+      font:12px/2 Consolas,monospace;
+      white-space:pre-wrap;
+      overflow-wrap:anywhere;
+    }
+    .info-grid {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+    .info-card {
+      border:1px solid var(--border);
+      border-radius:13px;
+      padding:17px;
+      background:var(--paper);
+    }
+    .info-card h3 { margin:0 0 7px; font-size:14px; }
+    .info-card p { margin:0; color:var(--muted); font-size:12px; line-height:1.75; }
+    .small-link { font-weight:700; text-underline-offset:3px; }
+    details {
+      border-bottom:1px solid var(--border);
+      padding:15px 4px;
+    }
+    details:last-child { border-bottom:0; }
+    summary { cursor:pointer; font-weight:650; font-size:13px; }
+    details p { color:var(--muted); line-height:1.75; font-size:12px; }
+    .footer {
+      text-align:center;
+      color:var(--muted);
+      padding:45px 0;
+      font:11px/1.8 Consolas,monospace;
+    }
+
+    .night .hero { background:linear-gradient(135deg,#4d335a,#34324f 70%,#2b4860); color:#dfc3ee; }
+    .night .hero p,.night .hero-bottom { color:#c5acd9; }
+    .night .hero h1 span { color:#f0a5d8; }
+    .night .hero-bottom { border-color:#705580; }
+    .night .tree { background:#423550; color:#d5b9e5; }
+    .night .sidebar .selected { background:#57416b; color:#eed5ff; }
+    .night .sidebar a:hover { background:#57416b; color:#eed5ff; }
+    .night .project,.night .info-card { background:#3c304f; }
+    .night .status { background:#58416b; color:#e3c8fa; }
+    .night .search-field input { color:#e3c8fa; }
+
+    @media(max-width:880px) {
+      .desktop { grid-template-columns:1fr; }
+      .sidebar { position:static; }
+      .sidebar-inner {
+        display:flex;
+        flex-wrap:wrap;
+        gap:6px;
+      }
+      .sidebar-title,.sidebar-note { display:none; }
+      .sidebar a { margin:0; }
+    }
+    @media(max-width:570px) {
+      .brand strong { font-size:22px; }
+      .brand-icon { width:47px; height:47px; }
+      .topnav { width:100%; }
+      .hero { padding:25px 19px; }
+      .content { padding:18px; }
+      .project-grid,.info-grid { grid-template-columns:1fr; }
+      .hero-bottom { gap:10px; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      * { transition:none!important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="#home">
+      <span class="brand-icon" aria-hidden="true">✦</span>
+      <span>
+        <small>WELCOME TO THE DIGITAL HEADQUARTERS</small>
+        <strong>CyberStudios ♡</strong>
+      </span>
+    </a>
+
+    <nav class="topnav" aria-label="Top navigation">
+      <a href="#projects">Projects</a>
+      <a href="#studio">Studio</a>
+      <a href="#resources">Resources</a>
+      <button id="theme-toggle" class="theme-button" type="button" aria-pressed="false">
+        ☾ Night mode
+      </button>
+    </nav>
+  </header>
+
+  <main class="shell desktop" id="home">
+
+    <aside class="panel sidebar" aria-label="Wiki navigation">
+      <div class="windowbar">
+        <span>✧ wiki.explorer</span>
+        <span>⌂</span>
+      </div>
+
+      <div class="sidebar-inner">
+        <p class="sidebar-title">NAVIGATION</p>
+        <a class="selected" href="#home">⌂ Welcome</a>
+        <a href="#projects">▦ Project directory</a>
+        <a href="#studio">♡ About the studio</a>
+        <a href="#bytes">✦ The Bytes</a>
+        <a href="#resources">⌘ Resources</a>
+        <a href="#faq">? Frequently asked</a>
+
+        <p class="sidebar-title">EXTERNAL</p>
+        <a href="byte/">🐾 Byte.exe website</a>
+        <a href="https://github.com/cyberthreed/CyberStudios">↗ Source repository</a>
+
+        <div class="sidebar-note">
+          ✧ welcome, visitor!<br>
+          Every project has a place in the archive.
+          Pick a window and explore.
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-column">
+
+      <section class="panel" aria-label="CyberStudios welcome">
+        <div class="windowbar">
+          <span>♡ cyberstudios / welcome</span>
+          <span class="dots">● ● ●</span>
+        </div>
+
+        <div class="hero">
+          <span class="eyebrow">✧ YOUR WINDOW INTO CYBERSTUDIOS ✧</span>
+          <h1>A home for <span>little worlds</span> and big ideas.</h1>
+
+          <p>
+            Welcome to CyberStudios, a creative technology studio
+            building digital companions, gameplay systems, experimental
+            interfaces, and interactive worlds.
+          </p>
+          <p>
+            This wiki is the studio's living archive. Explore the
+            projects, learn how things work, and meet the creations
+            that live here.
+          </p>
+
+          <div class="button-row">
+            <a class="button" href="#projects">✦ Explore projects</a>
+            <a class="button alt" href="byte/">♡ Meet Byte.exe</a>
+          </div>
+
+          <div class="hero-bottom">
+            <span>CYBERSTUDIOS / WIKI</span>
+            <span>✧ PROJECT ARCHIVE</span>
+            <span>♡ BUILT WITH CURIOSITY</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="projects">
+        <div class="windowbar">
+          <span>▦ projects.directory</span>
+          <span>ALL PROJECTS</span>
+        </div>
+
+        <div class="content">
+          <h2 class="section-heading">Project directory ✧</h2>
+          <p class="subtext">
+            A little bit of everything. Browse CyberStudios projects
+            and find what you're looking for.
+          </p>
+
+          <label class="search-field">
+            <span aria-hidden="true">⌕</span>
+            <input id="project-search" type="search"
+              placeholder="Search the project archive..."
+              aria-label="Search projects">
+            <span class="mono" style="font-size:10px;color:var(--muted)">/</span>
+          </label>
+
+          <div class="project-grid" id="project-grid">
+
+            <article class="project" data-search="byte.exe byte pet desktop cat windows bytes companion">
+              <div class="project-top">
+                <div class="project-icon">
+                  <img src="byte/assets/icon.png" alt="Byte, the pixel cat"
+                    onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+                  <span hidden aria-hidden="true">🐈‍⬛</span>
+                </div>
+                <div>
+                  <h3>Byte.exe</h3>
+                  <p class="category">Bytes / Desktop Companions</p>
+                </div>
+              </div>
+              <p>
+                Meet Byte, a tiny pixel cat who lives on your Windows
+                desktop. Play, interact, and bring a little life to
+                your workspace.
+              </p>
+              <span class="status">v1.0.0 · WINDOWS x64</span>
+              <div><a class="project-link" href="byte/">Visit Byte's page →</a></div>
+            </article>
+
+            <article class="project" data-search="cybercore cotton candy vscode theme soft vivid colors editor">
+              <div class="project-top">
+                <div class="project-icon" aria-hidden="true">🎨</div>
+                <div>
+                  <h3>Cybercore Cotton Candy</h3>
+                  <p class="category">Themes / Developer Tools</p>
+                </div>
+              </div>
+              <p>
+                Pastel VS Code color themes inspired by dreamy
+                Cybercore aesthetics, available in Soft and Vivid
+                variations.
+              </p>
+              <span class="status">SOURCE ON GITHUB</span>
+              <div>
+                <a class="project-link"
+                  href="https://github.com/cyberthreed/CyberStudios/tree/main/themes/cybercore-cotton-candy">
+                  View theme files →
+                </a>
+              </div>
+            </article>
+
+            <article class="project" data-search="cybercore gameplay inzoi ai ecosystem sdk framework mods">
+              <div class="project-top">
+                <div class="project-icon" aria-hidden="true">⌘</div>
+                <div>
+                  <h3>CyberCore Gameplay</h3>
+                  <p class="category">inZOI / Gameplay Framework</p>
+                </div>
+              </div>
+              <p>
+                A developing gameplay ecosystem designed around
+                shared context, memory, and integration between
+                compatible modules.
+              </p>
+              <span class="status">IN DEVELOPMENT</span>
+            </article>
+
+            <article class="project" data-search="familyties inzoi family relationships memories social graph">
+              <div class="project-top">
+                <div class="project-icon" aria-hidden="true">♡</div>
+                <div>
+                  <h3>FamilyTies</h3>
+                  <p class="category">CyberCore / Gameplay Module</p>
+                </div>
+              </div>
+              <p>
+                A developing relationship-memory module for inZOI,
+                focused on remembering social connections and
+                meaningful interactions.
+              </p>
+              <span class="status">IN DEVELOPMENT</span>
+            </article>
+
+          </div>
+
+          <p class="empty" id="empty-results" role="status">
+            No matching projects found. Try a different search. ♡
+          </p>
+        </div>
+      </section>
+
+      <section class="panel" id="studio">
+        <div class="windowbar">
+          <span>♡ about_cyberstudios.txt</span>
+          <span>STUDIO PROFILE</span>
+        </div>
+
+        <div class="content">
+          <h2 class="section-heading">What is CyberStudios?</h2>
+
+          <p class="subtext">
+            CyberStudios is the home for a collection of creative
+            software and digital experiences. Some projects are
+            playful desktop companions, some are tools for creators,
+            and others explore how game worlds can become more
+            reactive and connected.
+          </p>
+
+          <div class="tree">✦ CYBERSTUDIOS
+│
+├── ♡ Digital Companions
+│   └── Bytes → Byte.exe
+│
+├── ✧ Creative Tools
+│   └── Cybercore Cotton Candy
+│
+├── ⌘ Gameplay Systems
+│   ├── CyberCore Gameplay
+│   └── FamilyTies
+│
+└── ♡ Future Experiments</div>
+
+          <p class="subtext" style="margin-top:18px">
+            One studio, many different projects. They share a
+            creative identity, but each can have its own personality,
+            audience, and purpose.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel" id="bytes">
+        <div class="windowbar">
+          <span>✦ bytes.fieldguide</span>
+          <span>DESKTOP COMPANIONS</span>
+        </div>
+
+        <div class="content">
+          <h2 class="section-heading">Meet the Bytes ♡</h2>
+          <p class="subtext">
+            Bytes are CyberStudios desktop companions.
+            Byte.exe introduces the very first Byte: a curious
+            pixel cat who can live in his own room or spend time
+            directly on your Windows desktop.
+          </p>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h3>🐾 Meet Byte</h3>
+              <p>
+                Learn about Byte's personality, features,
+                screenshots, and installation instructions.
+                <a class="small-link" href="byte/">Visit Byte.exe</a>.
+              </p>
+            </div>
+            <div class="info-card">
+              <h3>♡ Cozy by design</h3>
+              <p>
+                Byte is a low-pressure pet experience. His care state
+                saves locally, and there are no pet deaths or
+                punishment-based mechanics.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="resources">
+        <div class="windowbar">
+          <span>⌘ resources.index</span>
+          <span>USEFUL LINKS</span>
+        </div>
+
+        <div class="content">
+          <h2 class="section-heading">Resources & documentation</h2>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h3>⌘ Source repository</h3>
+              <p>
+                Explore CyberStudios code, project folders,
+                and documentation on
+                <a class="small-link"
+                  href="https://github.com/cyberthreed/CyberStudios">
+                  GitHub</a>.
+              </p>
+            </div>
+            <div class="info-card">
+              <h3>✧ Byte documentation</h3>
+              <p>
+                Read Byte.exe's installation, development,
+                and application notes in the
+                <a class="small-link"
+                  href="https://github.com/cyberthreed/CyberStudios/tree/main/apps/bytes/byte.exe">
+                  Byte source directory</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="faq">
+        <div class="windowbar">
+          <span>? help_and_questions.txt</span>
+          <span>FAQ</span>
+        </div>
+
+        <div class="content">
+          <h2 class="section-heading">A few little questions</h2>
+
+          <details>
+            <summary>Is CyberStudios the same thing as Byte.exe?</summary>
+            <p>
+              No. CyberStudios is the parent studio. Byte.exe is one
+              of its creations and the first desktop companion in
+              the Bytes product line.
+            </p>
+          </details>
+
+          <details>
+            <summary>Is Cybercore the same as CyberCore Gameplay?</summary>
+            <p>
+              No. Cybercore refers to a dreamy digital aesthetic
+              used in projects such as the Cotton Candy VS Code
+              themes. CyberCore Gameplay is a separate inZOI
+              gameplay framework in development.
+            </p>
+          </details>
+
+          <details>
+            <summary>Does Byte.exe need an account?</summary>
+            <p>
+              No. Byte.exe is a local-first desktop companion.
+              Its care state is stored on your computer.
+            </p>
+          </details>
+
+          <details>
+            <summary>Is Byte.exe an AI chatbot?</summary>
+            <p>
+              No. Byte uses locally defined interactions and
+              responses. His Talk feature does not require an
+              online AI provider.
+            </p>
+          </details>
+
+          <details>
+            <summary>Where can I download Byte.exe?</summary>
+            <p>
+              Visit the
+              <a class="small-link" href="byte/">official Byte.exe page</a>
+              for the Windows download and instructions.
+            </p>
+          </details>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="shell footer">
+    ✦ CYBERSTUDIOS WIKI ♡<br>
+    A home for creative code, little worlds, and digital life.<br>
+    © 2026 CyberStudios
+  </footer>
+
+  <script>
+    const search = document.getElementById("project-search");
+    const projects = Array.from(
+      document.querySelectorAll(".project[data-search]")
+    );
+    const empty = document.getElementById("empty-results");
+
+    function filterProjects() {
+      const term = search.value.trim().toLowerCase();
+      let visible = 0;
+
+      projects.forEach(card => {
+        const match = (
+          card.dataset.search + " " + card.textContent
+        ).toLowerCase().includes(term);
+
+        card.hidden = !match;
+        if (match) visible++;
+      });
+
+      empty.classList.toggle("visible", visible === 0);
+    }
+
+    search.addEventListener("input", filterProjects);
+
+    document.addEventListener("keydown", event => {
+      if (
+        event.key === "/" &&
+        !event.ctrlKey &&
+        !event.metaKey &&
+        !event.altKey &&
+        !["INPUT","TEXTAREA"].includes(
+          document.activeElement.tagName
+        )
+      ) {
+        event.preventDefault();
+        search.focus();
+      }
+    });
+
+    const themeButton = document.getElementById("theme-toggle");
+
+    function setNight(enabled) {
+      document.body.classList.toggle("night", enabled);
+      themeButton.setAttribute("aria-pressed", String(enabled));
+      themeButton.textContent = enabled
+        ? "☀ Day mode"
+        : "☾ Night mode";
+
+      try {
+        localStorage.setItem(
+          "cyberstudios-wiki-night",
+          enabled ? "1" : "0"
+        );
+      } catch (error) {
+        // The switch still works without storage.
+      }
+    }
+
+    try {
+      setNight(
+        localStorage.getItem("cyberstudios-wiki-night") === "1"
+      );
+    } catch (error) {
+      setNight(false);
+    }
+
+    themeButton.addEventListener("click", () => {
+      setNight(!document.body.classList.contains("night"));
+    });
+  </script>
+</body>
+</html>
