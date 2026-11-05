@@ -1,0 +1,770 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6dbf3">
+  <meta name="description" content="Learn about CyberStudios, a creative technology studio building digital companions, software tools, gameplay systems, and interactive worlds.">
+  <title>About CyberStudios ♡ CyberStudios Wiki</title>
+  <style>
+    :root {
+      --ink: #7e5c9d;
+      --muted: #a186b5;
+      --pink: #f2b6dd;
+      --lilac: #d8b6f7;
+      --sky: #c9effd;
+      --mint: #d7f1e3;
+      --border: #e7c9f5;
+      --paper: #fffaffed;
+      --bar: linear-gradient(100deg,#f6dbf3,#e5efff);
+      --shadow: #dfc6e759;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font: 13px "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%,#ffdaedb0,transparent 35%),
+        radial-gradient(circle at 90% 22%,#c8effabf,transparent 35%),
+        linear-gradient(125deg,#fff1fb,#f5ecff 58%,#e9f9ff);
+    }
+
+    body.night {
+      --ink: #dfc3ee;
+      --muted: #b99dc9;
+      --border: #69507d;
+      --paper: #332b47f2;
+      --bar: linear-gradient(100deg,#47304f,#303c59);
+      --shadow: #23192e55;
+      background: linear-gradient(125deg,#4f294c,#302745 55%,#233c59);
+    }
+
+    a { color: inherit; }
+    button { font: inherit; cursor: pointer; }
+    :focus-visible { outline: 3px solid #b68fdf; outline-offset: 3px; }
+
+    .shell {
+      width: min(1128px,calc(100% - 34px));
+      margin: auto;
+    }
+
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 25px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg,#ffd6ee,#c9effd);
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 6px 0 var(--shadow);
+      font-size: 29px;
+      color: #9e76c0;
+    }
+
+    .brand small {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 25px;
+      margin-top: 3px;
+    }
+
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .topnav a, .topnav button {
+      padding: 10px 14px;
+      color: var(--ink);
+      text-decoration: none;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      font-size: 11px;
+      font-weight: 650;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 230px minmax(0,1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      overflow: hidden;
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      background: var(--paper);
+      box-shadow: 0 9px 0 var(--shadow),0 24px 40px #b78bc313;
+    }
+
+    .windowbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 44px;
+      padding: 11px 16px;
+      background: var(--bar);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 16px;
+    }
+
+    .sidebar-content { padding: 15px; }
+
+    .sidebar-label {
+      padding: 6px 8px;
+      color: var(--muted);
+      font: 700 10px Consolas,monospace;
+      letter-spacing: 1.5px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 11px 12px;
+      margin-bottom: 4px;
+      border-radius: 11px;
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    .sidebar a:hover { background: #f1e3fc; color: #8c63b3; }
+    .sidebar a.active { background: #eedcfb; color: #8658ae; font-weight: 700; }
+
+    .sidebar-note {
+      margin-top: 18px;
+      padding: 12px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      line-height: 1.7;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .main-column {
+      display: grid;
+      gap: 19px;
+      min-width: 0;
+    }
+
+    .hero {
+      padding: 38px;
+      color: #7e5c9d;
+      background:
+        radial-gradient(circle at 86% 14%,#ffffffa8,transparent 37%),
+        linear-gradient(135deg,#ffe5f3,#e7e2ff 65%,#dff5ff);
+    }
+
+    .eyebrow {
+      font: 700 11px Consolas,monospace;
+      color: #a47dc1;
+      letter-spacing: 1.5px;
+    }
+
+    .hero h1 {
+      max-width: 680px;
+      margin: 16px 0;
+      font-size: clamp(33px,5vw,54px);
+      letter-spacing: -1px;
+      line-height: 1.14;
+    }
+
+    .hero h1 span { color: #d782bd; }
+
+    .hero p {
+      max-width: 620px;
+      color: #866c9c;
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 25px;
+    }
+
+    .hero-tags span {
+      padding: 9px 13px;
+      border: 1px solid #fff9;
+      border-radius: 20px;
+      background: #ffffffad;
+      font: 10px Consolas,monospace;
+      color: #946bb6;
+    }
+
+    .content { padding: 27px; }
+
+    .heading {
+      margin: 0 0 16px;
+      font-size: 24px;
+      line-height: 1.3;
+    }
+
+    .heading span { color: #d782bd; }
+
+    .prose {
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 13px;
+    }
+
+    .prose p { margin: 0 0 14px; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 13px;
+      margin-top: 21px;
+    }
+
+    .focus {
+      padding: 19px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--paper);
+    }
+
+    .focus-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 41px;
+      height: 41px;
+      border-radius: 13px;
+      background: linear-gradient(135deg,#ffe0f2,#dcd7ff);
+      color: #9d76c0;
+      font-size: 22px;
+    }
+
+    .focus h3 {
+      margin: 13px 0 8px;
+      font-size: 15px;
+    }
+
+    .focus p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .tree {
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      color: #8765a8;
+      background: linear-gradient(135deg,#f9f0ff,#f0faff);
+      font: 12px/2 Consolas,monospace;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .info {
+      margin-top: 16px;
+      padding: 15px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .distinction-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+    }
+
+    .distinction {
+      padding: 19px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--paper);
+    }
+
+    .distinction small {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--muted);
+      font: 10px Consolas,monospace;
+    }
+
+    .distinction h3 { margin: 0 0 10px; font-size: 17px; }
+
+    .distinction p {
+      font-size: 12px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 18px;
+      border: 2px solid #fff9;
+      border-radius: 13px;
+      color: #835d9b;
+      background: #ffe0f0;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 5px 0 #c9a9dd80;
+    }
+
+    .button.alt { background: #e5e2ff; }
+
+    details {
+      border-bottom: 1px solid var(--border);
+      padding: 16px 3px;
+    }
+
+    details:last-child { border-bottom: 0; }
+
+    summary {
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    details p {
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 12px;
+    }
+
+    .footer {
+      padding: 45px 0;
+      color: var(--muted);
+      text-align: center;
+      font: 11px/1.9 Consolas,monospace;
+    }
+
+    .night .hero {
+      color: #dfc3ee;
+      background: linear-gradient(135deg,#4d335a,#34324f 70%,#2b4860);
+    }
+
+    .night .hero p { color: #c5acd9; }
+    .night .hero h1 span { color: #f0a5d8; }
+    .night .hero-tags span { background: #554166; color: #e3c8fa; }
+    .night .focus, .night .distinction { background: #3c304f; }
+    .night .tree { background: #423550; color: #d5b9e5; }
+    .night .sidebar a.active { background: #57416b; color: #eed5ff; }
+    .night .sidebar a:hover { background: #57416b; color: #eed5ff; }
+
+    @media (max-width: 840px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .sidebar-content { display: flex; flex-wrap: wrap; gap: 6px; }
+      .sidebar-label, .sidebar-note { display: none; }
+      .sidebar a { margin: 0; }
+    }
+
+    @media (max-width: 560px) {
+      .hero { padding: 26px 20px; }
+      .content { padding: 21px; }
+      .focus-grid, .distinction-grid { grid-template-columns: 1fr; }
+      .topnav { width: 100%; }
+      .brand strong { font-size: 22px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="../">
+      <span class="brand-icon" aria-hidden="true">✦</span>
+      <span>
+        <small>THE CYBERSTUDIOS ARCHIVE</small>
+        <strong>CyberStudios ♡</strong>
+      </span>
+    </a>
+
+    <nav class="topnav" aria-label="Page navigation">
+      <a href="../">⌂ Wiki Home</a>
+      <a href="../#projects">Projects</a>
+      <a href="../#resources">Resources</a>
+      <button type="button" id="theme-toggle" aria-pressed="false">
+        ☾ Night mode
+      </button>
+    </nav>
+  </header>
+
+  <main class="shell layout">
+    <aside class="panel sidebar">
+      <div class="windowbar">
+        <span>✧ wiki.explorer</span>
+        <span>⌂</span>
+      </div>
+
+      <nav class="sidebar-content" aria-label="Wiki explorer">
+        <p class="sidebar-label">STUDIO FILES</p>
+        <a href="../">⌂ Wiki homepage</a>
+        <a class="active" href="#introduction">♡ About CyberStudios</a>
+        <a href="#disciplines">✦ What we create</a>
+        <a href="#structure">▦ Studio structure</a>
+        <a href="#identity">⌘ Studio identity</a>
+        <a href="#questions">? Questions</a>
+
+        <p class="sidebar-label">PROJECTS</p>
+        <a href="../byte/">🐾 Byte.exe</a>
+        <a href="../#projects">▦ All projects</a>
+
+        <div class="sidebar-note">
+          ✧ studio notes<br>
+          One creative home, many little worlds.
+          Every project has its own story.
+        </div>
+      </nav>
+    </aside>
+
+    <div class="main-column">
+
+      <section class="panel" id="introduction">
+        <div class="windowbar">
+          <span>♡ studio_profile.txt</span>
+          <span>CYBERSTUDIOS / ABOUT</span>
+        </div>
+
+        <div class="hero">
+          <span class="eyebrow">✧ OPENING FILE: CYBERSTUDIOS ✧</span>
+
+          <h1>Made for the <span>curious</span>, the creative, and the digital.</h1>
+
+          <p>
+            CyberStudios is a creative technology studio exploring
+            the spaces where software, art, games, and interactive
+            experiences meet.
+          </p>
+
+          <p>
+            From a tiny cat living on your desktop to experimental
+            gameplay frameworks, the studio brings different ideas
+            together under one creative home.
+          </p>
+
+          <div class="hero-tags">
+            <span>♡ DIGITAL COMPANIONS</span>
+            <span>✦ CREATIVE SOFTWARE</span>
+            <span>⌘ GAME SYSTEMS</span>
+            <span>☁ INTERACTIVE WORLDS</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="windowbar">
+          <span>✧ creative_direction.txt</span>
+          <span>STUDIO NOTES</span>
+        </div>
+
+        <div class="content prose">
+          <h2 class="heading">A studio with <span>many windows.</span></h2>
+
+          <p>
+            CyberStudios isn't limited to one game, one application,
+            or one kind of experience. It's an umbrella for creative
+            software projects that can look, feel, and behave
+            differently while belonging to the same studio.
+          </p>
+
+          <p>
+            The studio's creative identity is shaped by Cy, whose
+            work spans game design, coding, digital art, customization,
+            and experimental web experiences.
+          </p>
+
+          <p>
+            Some creations are cozy. Others are technical, immersive,
+            or unusual. What connects them is an interest in making
+            digital experiences feel more expressive, personal,
+            and worth exploring.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel" id="disciplines">
+        <div class="windowbar">
+          <span>✦ studio_disciplines.dat</span>
+          <span>WHAT WE CREATE</span>
+        </div>
+
+        <div class="content">
+          <h2 class="heading">The creative <span>directory</span></h2>
+
+          <p class="prose">
+            CyberStudios explores several connected disciplines.
+            Each has room to develop its own personality.
+          </p>
+
+          <div class="focus-grid">
+            <article class="focus">
+              <div class="focus-icon">♡</div>
+              <h3>Digital companions</h3>
+              <p>
+                Desktop residents and small interactive characters.
+                Byte.exe introduces the Bytes line.
+              </p>
+            </article>
+
+            <article class="focus">
+              <div class="focus-icon">⌘</div>
+              <h3>Creative software</h3>
+              <p>
+                Themes, customization tools, interfaces, and
+                utilities for people who enjoy creating.
+              </p>
+            </article>
+
+            <article class="focus">
+              <div class="focus-icon">✦</div>
+              <h3>Gameplay systems</h3>
+              <p>
+                Experimental systems and modules designed to
+                create more connected game experiences.
+              </p>
+            </article>
+
+            <article class="focus">
+              <div class="focus-icon">☁</div>
+              <h3>Interactive worlds</h3>
+              <p>
+                Creative experiments combining game design,
+                atmosphere, storytelling, and digital spaces.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="structure">
+        <div class="windowbar">
+          <span>▦ studio_structure.tree</span>
+          <span>PROJECT ORGANIZATION</span>
+        </div>
+
+        <div class="content">
+          <h2 class="heading">Everything has <span>its place.</span></h2>
+
+          <div class="tree">✦ CYBERSTUDIOS
+│
+├── ♡ Digital Companions
+│   └── Bytes
+│       └── Byte.exe
+│
+├── ✧ Creative Tools
+│   └── Cybercore Cotton Candy
+│       ├── Soft
+│       └── Vivid
+│
+├── ⌘ Gameplay Systems
+│   └── CyberCore Gameplay
+│       └── FamilyTies
+│
+└── ☁ Creative Experiments
+    └── Future projects</div>
+
+          <div class="info">
+            This directory is an overview of the studio's creative
+            areas, not a claim that every planned project is already released.
+            Byte.exe is part of CyberStudios, not the other way around.
+          </div>
+
+          <div class="link-row">
+            <a class="button" href="../#projects">✦ Browse projects</a>
+            <a class="button alt" href="../byte/">♡ Meet Byte.exe</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="identity">
+        <div class="windowbar">
+          <span>⌘ identity_reference.txt</span>
+          <span>DESIGN LANGUAGE</span>
+        </div>
+
+        <div class="content">
+          <h2 class="heading">One universe. <span>Different identities.</span></h2>
+
+          <p class="prose">
+            The CyberStudios Wiki uses a dreamy digital-desktop
+            aesthetic with pastel windows, rounded panels, soft
+            gradients, and playful interface details.
+          </p>
+
+          <div class="distinction-grid">
+            <article class="distinction">
+              <small>VISUAL AESTHETIC</small>
+              <h3>Cybercore</h3>
+              <p>
+                A pastel, nostalgic digital aesthetic built around
+                pinks, lavender, soft blues, gentle gradients,
+                and retro-computing influences.
+              </p>
+            </article>
+
+            <article class="distinction">
+              <small>GAMEPLAY TECHNOLOGY</small>
+              <h3>CyberCore Gameplay</h3>
+              <p>
+                A separate, developing framework for inZOI gameplay
+                modules, shared context, memory, and compatible
+                integrations.
+              </p>
+            </article>
+          </div>
+
+          <div class="info">
+            These names have different meanings. The studio's
+            visual aesthetic is not the same product as the
+            CyberCore Gameplay framework.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="questions">
+        <div class="windowbar">
+          <span>? studio_faq.txt</span>
+          <span>QUESTIONS</span>
+        </div>
+
+        <div class="content">
+          <h2 class="heading">A few <span>little questions.</span></h2>
+
+          <details>
+            <summary>Is CyberStudios just a desktop pet project?</summary>
+            <p>
+              No. Byte.exe is one CyberStudios creation.
+              The studio also includes creative tools, gameplay
+              systems, and experimental software projects.
+            </p>
+          </details>
+
+          <details>
+            <summary>Are all CyberStudios projects connected?</summary>
+            <p>
+              Not necessarily. Projects share a studio identity
+              but can remain independent applications or systems.
+              Technical integrations depend on each project's design.
+            </p>
+          </details>
+
+          <details>
+            <summary>What is the relationship between Byte and the Bytes?</summary>
+            <p>
+              Bytes is the digital companion product line.
+              Byte.exe features the first Byte, a pixel cat
+              named Byte.
+            </p>
+          </details>
+
+          <details>
+            <summary>Where can I explore the source code?</summary>
+            <p>
+              Visit the
+              <a href="https://github.com/cyberthreed/CyberStudios">
+                CyberStudios GitHub repository</a>
+              to browse available project source code and documentation.
+            </p>
+          </details>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="shell footer">
+    ✦ CYBERSTUDIOS WIKI ♡<br>
+    ABOUT THE STUDIO · A CREATIVE DIGITAL ARCHIVE<br>
+    © 2026 CyberStudios
+  </footer>
+
+  <script>
+    const button = document.getElementById("theme-toggle");
+
+    function setNight(enabled) {
+      document.body.classList.toggle("night", enabled);
+
+      button.setAttribute(
+        "aria-pressed",
+        String(enabled)
+      );
+
+      button.textContent = enabled
+        ? "☀ Day mode"
+        : "☾ Night mode";
+
+      try {
+        localStorage.setItem(
+          "cyberstudios-wiki-night",
+          enabled ? "1" : "0"
+        );
+      } catch (error) {
+        // Theme switching still works without storage.
+      }
+    }
+
+    try {
+      setNight(
+        localStorage.getItem("cyberstudios-wiki-night") === "1"
+      );
+    } catch (error) {
+      setNight(false);
+    }
+
+    button.addEventListener("click", () => {
+      setNight(!document.body.classList.contains("night"));
+    });
+  </script>
+</body>
+</html>
