@@ -1,0 +1,618 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6dbf3">
+  <meta name="description" content="CyberStudios documentation, installation guides, resources, and developer references.">
+  <title>Documentation ♡ CyberStudios Wiki</title>
+  <style>
+    :root {
+      --ink:#7e5c9d;
+      --muted:#a186b5;
+      --border:#e7c9f5;
+      --paper:#fffaffed;
+      --bar:linear-gradient(100deg,#f6dbf3,#e5efff);
+      --shadow:#dfc6e759;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      font:13px "Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%,#ffdaedb0,transparent 36%),
+        radial-gradient(circle at 90% 22%,#c8effabf,transparent 36%),
+        linear-gradient(125deg,#fff1fb,#f5ecff 58%,#e9f9ff);
+    }
+    body.night {
+      --ink:#dfc3ee;
+      --muted:#b99dc9;
+      --border:#69507d;
+      --paper:#332b47f2;
+      --bar:linear-gradient(100deg,#47304f,#303c59);
+      --shadow:#23192e55;
+      background:linear-gradient(125deg,#4f294c,#302745 55%,#233c59);
+    }
+    a { color:inherit; }
+    button { font:inherit; cursor:pointer; }
+    :focus-visible { outline:3px solid #b68fdf; outline-offset:3px; }
+    .shell { width:min(1128px,calc(100% - 34px)); margin:auto; }
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:15px;
+      padding:25px 0;
+    }
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:13px;
+      text-decoration:none;
+    }
+    .brand-icon {
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      border:2px solid var(--border);
+      border-radius:18px;
+      background:linear-gradient(135deg,#ffd6ee,#c9effd);
+      box-shadow:0 6px 0 var(--shadow);
+      color:#9e76c0;
+      font-size:29px;
+    }
+    .brand small {
+      display:block;
+      color:var(--muted);
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:2px;
+    }
+    .brand strong {
+      display:block;
+      margin-top:3px;
+      font-size:25px;
+    }
+    .topnav { display:flex; flex-wrap:wrap; gap:8px; }
+    .topnav a,.topnav button {
+      padding:10px 14px;
+      border:1px solid var(--border);
+      border-radius:22px;
+      background:var(--paper);
+      color:var(--ink);
+      text-decoration:none;
+      font-size:11px;
+      font-weight:650;
+    }
+    .layout {
+      display:grid;
+      grid-template-columns:225px minmax(0,1fr);
+      gap:18px;
+      align-items:start;
+    }
+    .panel {
+      border:2px solid var(--border);
+      border-radius:20px;
+      background:var(--paper);
+      overflow:hidden;
+      box-shadow:0 9px 0 var(--shadow),0 24px 40px #b78bc313;
+    }
+    .windowbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      min-height:44px;
+      padding:10px 16px;
+      background:var(--bar);
+      font-size:12px;
+      font-weight:700;
+    }
+    .sidebar { position:sticky; top:16px; }
+    .sidebar-inner { padding:15px; }
+    .sidebar-label {
+      padding:8px 9px;
+      font:700 10px Consolas,monospace;
+      letter-spacing:1px;
+      color:var(--muted);
+    }
+    .sidebar a {
+      display:block;
+      padding:11px 12px;
+      margin-bottom:4px;
+      border-radius:10px;
+      text-decoration:none;
+      font-size:12px;
+    }
+    .sidebar a:hover { background:#f1e3fc; color:#8c63b3; }
+    .sidebar .active {
+      background:#eedcfb;
+      color:#8658ae;
+      font-weight:700;
+    }
+    .main-column { min-width:0; display:grid; gap:19px; }
+    .hero {
+      padding:37px;
+      background:linear-gradient(135deg,#ffe5f3,#e7e2ff 65%,#dff5ff);
+      color:#7e5c9d;
+    }
+    .hero h1 {
+      margin:14px 0;
+      font-size:clamp(32px,5vw,54px);
+      line-height:1.15;
+    }
+    .hero h1 span { color:#d782bd; }
+    .hero p {
+      max-width:630px;
+      font-size:14px;
+      line-height:1.85;
+      color:#866c9c;
+    }
+    .eyebrow {
+      font:700 11px Consolas,monospace;
+      letter-spacing:1.5px;
+      color:#a47dc1;
+    }
+    .content { padding:26px; }
+    h2 { margin:0 0 15px; font-size:23px; }
+    h2 span { color:#d782bd; }
+    h3 { font-size:15px; }
+    p,li { line-height:1.85; }
+    .muted { color:var(--muted); }
+    .cards {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:13px;
+    }
+    .card {
+      padding:20px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:var(--paper);
+    }
+    .card-icon {
+      width:43px;
+      height:43px;
+      display:grid;
+      place-items:center;
+      border-radius:13px;
+      background:linear-gradient(135deg,#ffe0f2,#dcd7ff);
+      color:#9d76c0;
+      font-size:24px;
+    }
+    .card p { font-size:12px; color:var(--muted); }
+    .card a { font-weight:700; text-underline-offset:4px; }
+    .steps { padding-left:23px; color:var(--muted); }
+    code {
+      font:12px Consolas,monospace;
+      overflow-wrap:anywhere;
+      background:#eadcf590;
+      border-radius:5px;
+      padding:3px 5px;
+    }
+    pre {
+      overflow-x:auto;
+      background:#f1e7fa;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:16px;
+      color:#765394;
+      font:12px/1.7 Consolas,monospace;
+    }
+    pre code { background:none; padding:0; }
+    .note {
+      padding:14px;
+      margin-top:16px;
+      border:1px dashed var(--border);
+      border-radius:12px;
+      background:#faf0ff80;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.8;
+    }
+    .shortcut-grid {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+    }
+    .shortcut {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px;
+      border:1px solid var(--border);
+      border-radius:11px;
+      font-size:12px;
+    }
+    details {
+      padding:16px 3px;
+      border-bottom:1px solid var(--border);
+    }
+    details:last-child { border-bottom:0; }
+    summary { cursor:pointer; font-weight:700; }
+    details p { color:var(--muted); font-size:12px; }
+    .links { display:flex; flex-wrap:wrap; gap:10px; }
+    .button {
+      display:inline-block;
+      padding:12px 17px;
+      border:2px solid #fff9;
+      border-radius:12px;
+      background:#ffe0f0;
+      color:#835d9b;
+      box-shadow:0 5px 0 #c9a9dd80;
+      text-decoration:none;
+      font-weight:700;
+    }
+    .button.alt { background:#e5e2ff; }
+    .footer {
+      padding:45px 0;
+      text-align:center;
+      color:var(--muted);
+      font:11px/1.9 Consolas,monospace;
+    }
+    .night .hero {
+      background:linear-gradient(135deg,#4d335a,#34324f 70%,#2b4860);
+      color:#dfc3ee;
+    }
+    .night .hero p { color:#c5acd9; }
+    .night .hero h1 span { color:#f0a5d8; }
+    .night .card { background:#3c304f; }
+    .night pre { background:#423550; color:#d5b9e5; }
+    .night .sidebar .active { background:#57416b; color:#eed5ff; }
+    .night .note { background:#42304e; }
+    @media(max-width:840px) {
+      .layout { grid-template-columns:1fr; }
+      .sidebar { position:static; }
+      .sidebar-inner { display:flex; flex-wrap:wrap; gap:5px; }
+      .sidebar-label { display:none; }
+      .sidebar a { margin:0; }
+    }
+    @media(max-width:560px) {
+      .cards,.shortcut-grid { grid-template-columns:1fr; }
+      .hero { padding:26px 20px; }
+      .content { padding:20px; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="../">
+      <span class="brand-icon">✦</span>
+      <span>
+        <small>CYBERSTUDIOS / KNOWLEDGE BASE</small>
+        <strong>Documentation ♡</strong>
+      </span>
+    </a>
+    <nav class="topnav" aria-label="Main navigation">
+      <a href="../">⌂ Wiki Home</a>
+      <a href="../projects/">Projects</a>
+      <a href="../about/">About</a>
+      <button id="theme-toggle" type="button" aria-pressed="false">
+        ☾ Night mode
+      </button>
+    </nav>
+  </header>
+
+  <main class="shell layout">
+    <aside class="panel sidebar">
+      <div class="windowbar">
+        <span>✧ docs.explorer</span>
+        <span>⌂</span>
+      </div>
+      <nav class="sidebar-inner" aria-label="Documentation navigation">
+        <p class="sidebar-label">DOCUMENTATION</p>
+        <a class="active" href="#home">⌂ Documentation home</a>
+        <a href="#byte">🐾 Byte.exe</a>
+        <a href="#install">↓ Installation</a>
+        <a href="#controls">⌘ Controls</a>
+        <a href="#developer">✧ Developer resources</a>
+        <a href="#troubleshooting">? Troubleshooting</a>
+        <a href="#privacy">♡ Privacy</a>
+        <p class="sidebar-label">EXPLORE</p>
+        <a href="../byte/">♡ Byte's website</a>
+        <a href="../projects/">▦ Project directory</a>
+        <a href="../">⌂ Wiki homepage</a>
+      </nav>
+    </aside>
+
+    <div class="main-column">
+
+      <section class="panel" id="home">
+        <div class="windowbar">
+          <span>♡ knowledge_base.txt</span>
+          <span>CYBERSTUDIOS</span>
+        </div>
+        <div class="hero">
+          <span class="eyebrow">✧ WELCOME TO THE ARCHIVE ✧</span>
+          <h1>A little help, <span>all in one place.</span></h1>
+          <p>
+            Welcome to the CyberStudios documentation center.
+            Find installation instructions, controls, technical
+            references, and information about our creations.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel" id="byte">
+        <div class="windowbar">
+          <span>🐾 byte_manual.txt</span>
+          <span>VERSION 1.0.0</span>
+        </div>
+        <div class="content">
+          <h2>Meet <span>Byte.exe</span></h2>
+          <p class="muted">
+            Byte is the first companion in the CyberStudios Bytes
+            line. He's a pixel cat who lives in a cozy room or
+            directly on your Windows desktop.
+          </p>
+          <div class="cards">
+            <div class="card">
+              <div class="card-icon">♡</div>
+              <h3>For new adopters</h3>
+              <p>Learn how to download, extract, and start Byte.</p>
+              <a href="#install">Installation guide →</a>
+            </div>
+            <div class="card">
+              <div class="card-icon">⌘</div>
+              <h3>For developers</h3>
+              <p>Explore Byte's JavaScript and Electron project files.</p>
+              <a href="#developer">Developer reference →</a>
+            </div>
+          </div>
+          <div class="links" style="margin-top:20px">
+            <a class="button" href="../byte/">♡ Visit Byte.exe</a>
+            <a class="button alt"
+              href="https://github.com/cyberthreed/CyberStudios/releases">
+              ↓ GitHub Releases
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="install">
+        <div class="windowbar">
+          <span>↓ install_byte.txt</span>
+          <span>WINDOWS x64</span>
+        </div>
+        <div class="content">
+          <h2>Installing <span>Byte</span></h2>
+          <ol class="steps">
+            <li>Download <code>Byte-v1.0.0-Windows-x64.zip</code> from the official release.</li>
+            <li>Extract the entire ZIP into a normal writable folder.</li>
+            <li>Open the extracted application folder.</li>
+            <li>Double-click <code>Byte.exe</code>.</li>
+            <li>Say hello to your newest desktop resident. ♡</li>
+          </ol>
+          <div class="note">
+            <strong>Important:</strong> Keep all extracted application
+            files together. Byte is portable and includes Electron,
+            so you don't need Node.js to run the Windows download.
+          </div>
+          <p class="muted">
+            Byte is currently unsigned. Windows may display a security
+            warning. Download only from the official release,
+            verify the checksum if desired, and run it only if you
+            trust the file.
+          </p>
+          <h3>Verifying the download</h3>
+          <p class="muted">
+            Windows PowerShell can calculate the ZIP's SHA256 hash.
+            Compare the result against the official
+            <code>Byte-v1.0.0-SHA256SUMS.txt</code> release attachment.
+          </p>
+          <pre><code>Get-FileHash ".\Byte-v1.0.0-Windows-x64.zip" -Algorithm SHA256</code></pre>
+          <p class="muted">
+            Run this command from the folder containing the ZIP,
+            or replace the quoted path with the ZIP's full location.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel" id="controls">
+        <div class="windowbar">
+          <span>⌘ byte_controls.ini</span>
+          <span>ROOM SHORTCUTS</span>
+        </div>
+        <div class="content">
+          <h2>Byte's <span>controls</span></h2>
+          <p class="muted">
+            These keyboard shortcuts work while Byte's room
+            is active.
+          </p>
+          <div class="shortcut-grid">
+            <div class="shortcut"><span>♡ Pet</span><code>1</code></div>
+            <div class="shortcut"><span>✿ Feed</span><code>2</code></div>
+            <div class="shortcut"><span>✦ Play</span><code>3</code></div>
+            <div class="shortcut"><span>☾ Rest / Wake</span><code>4</code></div>
+            <div class="shortcut"><span>♡ Talk</span><code>5</code></div>
+            <div class="shortcut"><span>✧ Star game</span><code>6</code></div>
+            <div class="shortcut"><span>♫ Happy dance</span><code>7</code></div>
+            <div class="shortcut"><span>✦ Toss star in game</span><code>Space</code></div>
+          </div>
+          <div class="note">
+            <strong>Desktop mode:</strong> Byte can follow your cursor,
+            wander, and be dragged around the screen. Change these
+            behaviors in Desktop Preferences. Reopen the room from
+            the taskbar or Byte's small ⌂ control.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="developer">
+        <div class="windowbar">
+          <span>✧ developer_resources.md</span>
+          <span>SOURCE CODE</span>
+        </div>
+        <div class="content">
+          <h2>Developer <span>resources</span></h2>
+          <p class="muted">
+            Byte.exe is an Electron application built with HTML,
+            CSS, and JavaScript. Its source is available in the
+            CyberStudios GitHub repository.
+          </p>
+          <h3>Run Byte from source</h3>
+          <p class="muted">
+            Use Node.js 24 LTS if possible, with at least
+            version 22.16 installed.
+          </p>
+          <pre><code>npm ci
+npm start</code></pre>
+          <h3>Run tests and package</h3>
+          <pre><code>npm test
+npm run test:desktop
+npm run package:win</code></pre>
+          <div class="cards">
+            <div class="card">
+              <h3>✧ Sprite documentation</h3>
+              <p>How Byte's sprite states and artwork are organized.</p>
+              <a href="https://github.com/cyberthreed/CyberStudios/blob/main/apps/bytes/byte.exe/docs/SPRITES.md">
+                Read sprite guide →
+              </a>
+            </div>
+            <div class="card">
+              <h3>⌘ Validation notes</h3>
+              <p>Testing scope, known limitations, and build verification.</p>
+              <a href="https://github.com/cyberthreed/CyberStudios/blob/main/apps/bytes/byte.exe/docs/VALIDATION.md">
+                Read validation notes →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="troubleshooting">
+        <div class="windowbar">
+          <span>? help_and_troubleshooting.txt</span>
+          <span>FAQ</span>
+        </div>
+        <div class="content">
+          <h2>Need a <span>little help?</span></h2>
+
+          <details>
+            <summary>Can I run Byte without installing Node.js?</summary>
+            <p>
+              Yes. The Windows ZIP includes a packaged Electron app.
+              Node.js is only needed for development from source.
+            </p>
+          </details>
+
+          <details>
+            <summary>Why is Windows showing a warning?</summary>
+            <p>
+              Byte.exe is unsigned. Download it from the official
+              CyberStudios release and verify the file's SHA256
+              checksum if desired. Only run files you trust.
+            </p>
+          </details>
+
+          <details>
+            <summary>What if Byte disappears offscreen?</summary>
+            <p>
+              Open his room and choose Bring Byte home.
+              This returns him to a safe position on your primary
+              monitor without resetting his other progress.
+            </p>
+          </details>
+
+          <details>
+            <summary>How do I close Byte completely?</summary>
+            <p>
+              Use Quit Byte, the window's close control,
+              or the desktop cat's × control.
+            </p>
+          </details>
+
+          <details>
+            <summary>Where is Byte's saved data?</summary>
+            <p>
+              Byte stores local state at
+              <code>%APPDATA%\CyberStudios\Byte\byte-state.json</code>.
+              Close Byte before manually editing or renaming it.
+            </p>
+          </details>
+
+          <details>
+            <summary>Does Byte use generative AI?</summary>
+            <p>
+              No. His Talk feature uses predefined local responses.
+              Byte doesn't need an online AI provider.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="panel" id="privacy">
+        <div class="windowbar">
+          <span>♡ privacy_and_care.txt</span>
+          <span>LOCAL-FIRST</span>
+        </div>
+        <div class="content">
+          <h2>A companion, <span>not a chore.</span></h2>
+          <p class="muted">
+            Byte is designed as a local-first desktop pet.
+            He doesn't require an account, online chatbot,
+            tracking service, or cloud connection.
+          </p>
+          <p class="muted">
+            His care stats and preferences save on your computer.
+            His needs don't decay while you're away, and he
+            doesn't have pet-death or punishment mechanics.
+          </p>
+          <div class="note">
+            CyberStudios creates many different projects.
+            Byte's privacy and gameplay characteristics apply
+            to Byte.exe, not automatically to every future
+            CyberStudios application.
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="shell footer">
+    ✦ CYBERSTUDIOS WIKI ♡<br>
+    KNOWLEDGE BASE · DOCUMENTATION & SUPPORT<br>
+    © 2026 CyberStudios
+  </footer>
+
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+
+    function setNight(enabled) {
+      document.body.classList.toggle("night", enabled);
+      toggle.setAttribute("aria-pressed", String(enabled));
+      toggle.textContent = enabled ? "☀ Day mode" : "☾ Night mode";
+      try {
+        localStorage.setItem(
+          "cyberstudios-wiki-night",
+          enabled ? "1" : "0"
+        );
+      } catch (error) {}
+    }
+
+    try {
+      setNight(
+        localStorage.getItem("cyberstudios-wiki-night") === "1"
+      );
+    } catch (error) {
+      setNight(false);
+    }
+
+    toggle.addEventListener("click", () => {
+      setNight(!document.body.classList.contains("night"));
+    });
+  </script>
+</body>
+</html>
