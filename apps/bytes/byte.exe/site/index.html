@@ -7,7 +7,6 @@
   <meta name="theme-color" content="#f6dbf3">
   <meta name="description" content="Meet Byte, a local-first pixel cat companion for your Windows desktop. Adopt your own Byte from CyberStudios.">
   <title>BYTE.EXE | CyberStudios Pet Lab</title>
-
   <link rel="icon" type="image/png" href="assets/icon.png">
 
   <style>
@@ -30,13 +29,13 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
       color: var(--ink);
       font: 13px "Segoe UI", sans-serif;
       background:
         radial-gradient(ellipse at 9% 12%,#ffdaedb0,transparent 57%),
         radial-gradient(ellipse at 94% 21%,#c8effabf,transparent 61%),
         linear-gradient(125deg,#fff1fb,#f5ecff 58%,#e9f9ff);
-      min-height: 100vh;
     }
 
     body.night {
@@ -47,7 +46,8 @@
       --paper: #332b47;
       --bar: linear-gradient(100deg,#47304f,#303c59);
       --shadow: #23192e55;
-      background: linear-gradient(125deg,#4f294c,#302745 55%,#233c59);
+      background:
+        linear-gradient(125deg,#4f294c,#302745 55%,#233c59);
     }
 
     a { color: inherit; }
@@ -97,7 +97,9 @@
       letter-spacing: 3px;
     }
 
-    .wordmark h1 span { color: #d885ca; }
+    .wordmark h1 span {
+      color: #d885ca;
+    }
 
     .nav {
       margin-left: auto;
@@ -118,11 +120,14 @@
       color: #9976b4;
     }
 
-    .nav a:hover { background: #ffe5f5; }
+    .nav a:hover {
+      background: #ffe5f5;
+    }
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(0,1.9fr) minmax(280px,1fr);
+      grid-template-columns:
+        minmax(0,1.9fr) minmax(280px,1fr);
       gap: 18px;
       align-items: start;
     }
@@ -137,7 +142,9 @@
       border-radius: 20px;
       background: #fffaffdf;
       overflow: hidden;
-      box-shadow: 0 9px 0 var(--shadow),0 24px 40px #b78bc313;
+      box-shadow:
+        0 9px 0 var(--shadow),
+        0 24px 40px #b78bc313;
     }
 
     .windowbar {
@@ -157,9 +164,12 @@
       font-size: 11px;
     }
 
+    /* Main screenshot */
+
     .room-stage {
       padding: 23px;
-      background: linear-gradient(#ffebfc,#f4edff 53%,#ddf3ff);
+      background:
+        linear-gradient(#ffebfc,#f4edff 53%,#ddf3ff);
       position: relative;
       isolation: isolate;
     }
@@ -182,7 +192,6 @@
       color: #dfb2e9;
     }
 
-    /* Main preview: crop the bottom, keep Byte visible */
     .preview-img {
       display: block;
       width: 100%;
@@ -208,7 +217,17 @@
       border-radius: 8px;
     }
 
-    .room-actions,
+    .preview-caption {
+      margin: 0;
+      padding: 13px 20px 17px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    /* Sidebar */
+
     .panel-content {
       padding: 20px;
     }
@@ -219,57 +238,6 @@
       font-weight: 700;
       letter-spacing: 1.8px;
       margin: 0 0 13px;
-    }
-
-    .actions {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 9px;
-    }
-
-    .action {
-      display: grid;
-      place-items: center;
-      gap: 4px;
-      padding: 12px 5px;
-      border: 2px solid #e7ccef;
-      border-radius: 15px;
-      color: #7e5c9d;
-      text-align: center;
-      font-weight: 650;
-      font-size: 12px;
-    }
-
-    .action b {
-      font-size: 22px;
-      font-weight: 400;
-    }
-
-    .action:nth-child(1) { background: #ffe1ef; }
-    .action:nth-child(2) { background: #ebdafa; }
-    .action:nth-child(3) { background: #d4f1fe; }
-    .action:nth-child(4) { background: #dff2e6; }
-
-    .little-games {
-      padding: 18px 20px;
-      border-top: 1px dashed var(--border);
-      background: #f8f1ff77;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .chip {
-      background: #ebdcfb;
-      border: 1px solid #e2c4f6;
-      border-radius: 10px;
-      padding: 9px 12px;
-      color: #9a66b7;
-      font-size: 11px;
-      font-weight: 600;
     }
 
     .identity {
@@ -285,7 +253,8 @@
       object-fit: contain;
       image-rendering: pixelated;
       padding: 5px;
-      background: linear-gradient(140deg,#f5d0ed,#ddd3ff);
+      background:
+        linear-gradient(140deg,#f5d0ed,#ddd3ff);
       border-radius: 16px;
     }
 
@@ -300,7 +269,9 @@
       color: var(--muted);
     }
 
-    .meter { margin-bottom: 14px; }
+    .meter {
+      margin-bottom: 14px;
+    }
 
     .meter-label {
       display: flex;
@@ -320,19 +291,23 @@
     .fill {
       height: 100%;
       border-radius: inherit;
-      background: linear-gradient(90deg,#f2b4da,#d997d0);
+      background:
+        linear-gradient(90deg,#f2b4da,#d997d0);
     }
 
     .fill.blue {
-      background: linear-gradient(90deg,#c3b7ff,#acd8fa);
+      background:
+        linear-gradient(90deg,#c3b7ff,#acd8fa);
     }
 
     .fill.mint {
-      background: linear-gradient(90deg,#a4e0dc,#92b5e2);
+      background:
+        linear-gradient(90deg,#a4e0dc,#92b5e2);
     }
 
     .fill.lilac {
-      background: linear-gradient(90deg,#e4c4ff,#c49af0);
+      background:
+        linear-gradient(90deg,#e4c4ff,#c49af0);
     }
 
     .note {
@@ -352,6 +327,30 @@
       font-size: 13px;
     }
 
+    /* Actual interactive preview controls */
+
+    .gallery-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .gallery-tools button {
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: #fffaff;
+      padding: 7px 11px;
+      color: #9a66b7;
+      font-size: 11px;
+    }
+
+    .gallery-tools button[aria-pressed="true"] {
+      background: #ad7dd2;
+      color: white;
+    }
+
+    /* Downloads */
+
     .download-btn,
     .outline-btn {
       display: inline-flex;
@@ -368,7 +367,9 @@
       text-decoration: none;
       font-weight: 700;
       box-shadow: 0 5px 0 #dac2df80;
-      transition: transform .2s,box-shadow .2s;
+      transition:
+        transform .2s,
+        box-shadow .2s;
     }
 
     .download-btn:hover,
@@ -390,7 +391,22 @@
       margin: 20px 0 12px;
     }
 
-    .section { padding: 65px 0 15px; }
+    .install-steps {
+      line-height: 2;
+      color: var(--muted);
+      padding-left: 22px;
+      margin: 0;
+    }
+
+    .install-steps strong {
+      color: var(--ink);
+    }
+
+    /* Features */
+
+    .section {
+      padding: 65px 0 15px;
+    }
 
     .section-title {
       margin: 0 0 23px;
@@ -399,7 +415,9 @@
       font-weight: 750;
     }
 
-    .section-title span { color: #d885ca; }
+    .section-title span {
+      color: #d885ca;
+    }
 
     .features {
       display: grid;
@@ -407,7 +425,9 @@
       gap: 15px;
     }
 
-    .feature { padding: 22px; }
+    .feature {
+      padding: 22px;
+    }
 
     .feature h3 {
       margin: 0 0 9px;
@@ -421,55 +441,6 @@
       line-height: 1.7;
     }
 
-    .gallery { margin-top: 20px; }
-
-    .gallery-tools {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .gallery-tools button {
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      background: #fffaff;
-      padding: 7px 11px;
-      color: #9a66b7;
-      font-size: 11px;
-    }
-
-    .gallery-tools button[aria-pressed="true"] {
-      background: #ad7dd2;
-      color: white;
-    }
-
-    .gallery-image {
-      display: block;
-      width: 100%;
-      max-height: 600px;
-      object-fit: contain;
-      background: #f5ecff;
-      border-radius: 12px;
-    }
-
-    .gallery-caption {
-      text-align: center;
-      color: var(--muted);
-      font-size: 11px;
-      padding-top: 15px;
-    }
-
-    .install-steps {
-      line-height: 2;
-      color: var(--muted);
-      padding-left: 22px;
-      margin: 0;
-    }
-
-    .install-steps strong {
-      color: var(--ink);
-    }
-
     .footer {
       text-align: center;
       padding: 65px 0 35px;
@@ -478,7 +449,11 @@
       font-size: 11px;
     }
 
-    .night .panel { background: #332b47ed; }
+    /* Night mode */
+
+    .night .panel {
+      background: #332b47ed;
+    }
 
     .night .nav a,
     .night .version {
@@ -487,16 +462,12 @@
     }
 
     .night .room-stage {
-      background: linear-gradient(#402f5b,#342c53 58%,#354563);
+      background:
+        linear-gradient(#402f5b,#342c53 58%,#354563);
     }
 
-    .night .room-actions,
     .night .panel-content {
       color: #dfc3ee;
-    }
-
-    .night .little-games {
-      background: #3f304a;
     }
 
     .night .note {
@@ -504,41 +475,79 @@
       color: #c5a2d2;
     }
 
-    .night .chip {
-      background: #4c385e;
-      color: #d4b2e7;
-    }
-
     .night .track {
       background: #554365;
     }
 
+    /* Responsive layout */
+
     @media (max-width: 850px) {
-      .layout { grid-template-columns: 1fr; }
-      .sidebar { grid-template-columns: 1fr 1fr; }
-      .features { grid-template-columns: repeat(2,1fr); }
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .features {
+        grid-template-columns: repeat(2,1fr);
+      }
     }
 
     @media (max-width: 580px) {
-      .header { flex-wrap: wrap; }
-      .nav { width: 100%; margin-left: 0; }
-      .sidebar, .features { grid-template-columns: 1fr; }
-      .room-stage { padding: 11px; }
-      .floor-label { font-size: 8px; }
-      .section { padding-top: 42px; }
-      .downloads { flex-direction: column; }
+      .header {
+        flex-wrap: wrap;
+      }
+
+      .nav {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .sidebar,
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .room-stage {
+        padding: 11px;
+      }
+
+      .preview-img {
+        height: 340px;
+      }
+
+      .floor-label {
+        font-size: 8px;
+      }
+
+      .section {
+        padding-top: 42px;
+      }
+
+      .downloads {
+        flex-direction: column;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      * { transition: none !important; }
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        transition: none !important;
+      }
     }
   </style>
 </head>
 
 <body>
+
   <header class="shell header">
-    <img class="brand-icon"
+    <img
+      class="brand-icon"
       src="assets/icon.png"
       alt="Byte icon">
 
@@ -550,80 +559,80 @@
     <nav class="nav" aria-label="Website navigation">
       <span class="version">✧ v1.0.0</span>
       <a href="#features">Features</a>
-      <a href="#screenshots">Previews</a>
       <a href="#download">Download</a>
       <a href="https://github.com/cyberthreed/CyberStudios/tree/main/apps/bytes/byte.exe">Source</a>
     </nav>
   </header>
 
   <main class="shell">
+
     <div class="layout">
 
-      <section class="panel" aria-label="Meet Byte">
+      <!-- MAIN APP SCREENSHOT -->
+
+      <section class="panel" aria-label="Byte.exe app preview">
+
         <div class="windowbar">
           <span>● byte's room</span>
           <span id="room-mode">☀ daydream mode</span>
         </div>
 
         <div class="room-stage">
-          <img class="preview-img"
+
+          <img
+            class="preview-img"
             id="room-preview"
             src="assets/Byte-v1.0.0-preview-desktop.png"
-            alt="Actual screenshot of Byte.exe running on Windows">
+            alt="Screenshot of the Byte.exe Windows application">
 
           <div class="floor-label">
             <span>✦ cloud_09</span>
             <span>BYTE IS HOME</span>
           </div>
+
         </div>
 
-        <div class="room-actions">
-          <p class="tiny-heading">SAY HELLO TO BYTE ♡</p>
+        <p class="preview-caption">
+          ✧ Preview of the Byte.exe Windows application.
+          Interactive pet features are available in the download.
+        </p>
 
-          <div class="actions" aria-label="Byte's in-app actions">
-            <div class="action"><b>♡</b>Pet</div>
-            <div class="action"><b>✿</b>Feed</div>
-            <div class="action"><b>✦</b>Play</div>
-            <div class="action"><b>☾</b>Rest</div>
-          </div>
-        </div>
-
-        <div class="little-games">
-          <p class="tiny-heading">A LITTLE MORE MAGIC</p>
-
-          <div class="chips">
-            <span class="chip">♡ Talk to Byte</span>
-            <span class="chip">✧ Toss a star</span>
-            <span class="chip">♫ Happy dance</span>
-          </div>
-        </div>
       </section>
+
+      <!-- SIDEBAR -->
 
       <aside class="sidebar">
 
         <section class="panel">
+
           <div class="windowbar">
             <span>byte.status</span>
             <span>♥</span>
           </div>
 
           <div class="panel-content">
+
             <div class="identity">
               <img src="assets/icon.png" alt="">
 
               <div>
                 <h3>byte</h3>
-                <p>your little star · cyberstudios companion</p>
+                <p>
+                  your little star · cyberstudios companion
+                </p>
               </div>
             </div>
 
-            <p class="tiny-heading">EXAMPLE CARE METERS</p>
+            <p class="tiny-heading">
+              EXAMPLE CARE METERS
+            </p>
 
             <div class="meter">
               <div class="meter-label">
                 <span>♡ happiness</span>
                 <span>78%</span>
               </div>
+
               <div class="track">
                 <div class="fill" style="width:78%"></div>
               </div>
@@ -634,6 +643,7 @@
                 <span>✿ fullness</span>
                 <span>75%</span>
               </div>
+
               <div class="track">
                 <div class="fill blue" style="width:75%"></div>
               </div>
@@ -644,6 +654,7 @@
                 <span>☾ energy</span>
                 <span>87%</span>
               </div>
+
               <div class="track">
                 <div class="fill mint" style="width:87%"></div>
               </div>
@@ -654,37 +665,51 @@
                 <span>✧ friendship</span>
                 <span>10%</span>
               </div>
+
               <div class="track">
                 <div class="fill lilac" style="width:10%"></div>
               </div>
             </div>
 
             <div class="note">
-              No punishments or pet death. Byte is a cozy companion,
-              not a chore.
+              No punishments or pet death. Byte is a cozy
+              companion, not a chore.
             </div>
+
           </div>
         </section>
 
-        <!-- ROOM SETTINGS NOW DIRECTLY BELOW BYTE.STATUS -->
+        <!-- WORKING DAY / NIGHT CONTROLS -->
+
         <section class="panel">
+
           <div class="windowbar">
             <span>room.settings</span>
             <span>⌘</span>
           </div>
 
           <div class="panel-content">
+
             <p class="intro">
               Preview Byte's daytime and nighttime atmosphere.
             </p>
 
             <div class="gallery-tools">
-              <button id="day" type="button" aria-pressed="true">
+
+              <button
+                id="day"
+                type="button"
+                aria-pressed="true">
                 ☀ Day room
               </button>
-              <button id="night" type="button" aria-pressed="false">
+
+              <button
+                id="night"
+                type="button"
+                aria-pressed="false">
                 ☾ Night room
               </button>
+
             </div>
           </div>
         </section>
@@ -692,7 +717,10 @@
       </aside>
     </div>
 
+    <!-- FEATURES -->
+
     <section id="features" class="section">
+
       <h2 class="section-title">
         ✧ life with <span>byte</span>
       </h2>
@@ -702,97 +730,78 @@
         <article class="panel feature">
           <h3>♡ A little friend</h3>
           <p>
-            Pet, feed, play, and rest with Byte inside his dreamy
-            little room.
+            Pet, feed, play, and rest with Byte
+            inside his dreamy little room.
           </p>
         </article>
 
         <article class="panel feature">
           <h3>✦ Desktop mode</h3>
           <p>
-            Bring Byte onto your Windows desktop as a movable
-            pixel companion.
+            Bring Byte onto your Windows desktop
+            as a movable pixel companion.
           </p>
         </article>
 
         <article class="panel feature">
           <h3>☾ Day & night</h3>
           <p>
-            Switch between daytime and nighttime, and customize
-            Byte's room palette.
+            Switch between daytime and nighttime,
+            and customize Byte's room palette.
           </p>
         </article>
 
         <article class="panel feature">
           <h3>♫ Little games</h3>
           <p>
-            Talk to Byte, toss him stars to catch, or watch his
-            happy dance.
+            Talk to Byte, toss him stars to catch,
+            or watch his happy dance.
           </p>
         </article>
 
         <article class="panel feature">
           <h3>⌘ Your preferences</h3>
           <p>
-            Adjust size, wandering, cursor following, movement,
-            and other desktop options.
+            Adjust size, wandering, cursor following,
+            movement, and other desktop options.
           </p>
         </article>
 
         <article class="panel feature">
           <h3>♥ Saved locally</h3>
           <p>
-            No account, tracking, or cloud connection. Byte remembers
-            his care state on your computer.
+            No account, tracking, or cloud connection.
+            Byte remembers his care state on your computer.
           </p>
         </article>
 
       </div>
     </section>
 
-    <section id="screenshots" class="section">
-      <h2 class="section-title">
-        ✧ inside <span>byte's world</span>
-      </h2>
-
-      <div class="panel gallery">
-        <div class="windowbar">
-          <span>byte_preview.png</span>
-          <span id="image-label">☀ daytime</span>
-        </div>
-
-        <div class="panel-content">
-          <img
-            class="gallery-image"
-            id="gallery-image"
-            src="assets/Byte-v1.0.0-preview-desktop.png"
-            alt="Byte.exe daytime screenshot">
-
-          <p class="gallery-caption" id="gallery-caption">
-            ✧ daytime in Byte's room
-          </p>
-        </div>
-      </div>
-    </section>
+    <!-- DOWNLOAD -->
 
     <section id="download" class="section">
+
       <h2 class="section-title">
         ♡ adopt your <span>byte</span>
       </h2>
 
       <div class="panel">
+
         <div class="windowbar">
           <span>byte_download.exe</span>
           <span>✧ v1.0.0 · Windows x64</span>
         </div>
 
         <div class="panel-content">
+
           <p class="intro">
-            A tiny pixel companion, ready to make himself at home
-            on your Windows desktop.
+            A tiny pixel companion, ready to make himself
+            at home on your Windows desktop.
           </p>
 
           <div class="downloads">
+
             <a
               class="download-btn"
               href="https://github.com/cyberthreed/CyberStudios/releases/download/byte-v1.0.0/Byte-v1.0.0-Windows-x64.zip">
@@ -804,6 +813,7 @@
               href="https://github.com/cyberthreed/CyberStudios/tree/main/apps/bytes/byte.exe">
               ⌘ View source code
             </a>
+
           </div>
 
           <p class="intro">
@@ -812,21 +822,36 @@
           </p>
 
           <div class="note">
+
             <strong>Installation</strong>
 
             <ol class="install-steps">
-              <li>Download the Windows ZIP.</li>
-              <li>Extract the ZIP into a folder.</li>
               <li>
-                Open <strong>Byte.exe</strong> inside the extracted
-                application folder.
+                Download the Windows ZIP.
               </li>
-              <li>Say hello to your new desktop resident. ♡</li>
+
+              <li>
+                Extract the entire ZIP into a folder.
+              </li>
+
+              <li>
+                Open the extracted application folder.
+              </li>
+
+              <li>
+                Open <strong>Byte.exe</strong>.
+              </li>
+
+              <li>
+                Say hello to your new desktop resident. ♡
+              </li>
             </ol>
 
             This application is unsigned. Windows may display
             a security warning. Only run a download you trust.
+
           </div>
+
         </div>
       </div>
     </section>
@@ -835,6 +860,7 @@
 
   <footer class="shell footer">
     made with love by <strong>cyberstudios</strong> ♡
+
     <div>
       local-first pixel companion · no accounts · no tracking
     </div>
@@ -844,23 +870,19 @@
     const images = {
       day: {
         src: "assets/Byte-v1.0.0-preview-desktop.png",
-        label: "☀ daytime",
-        caption: "✧ daytime in Byte's room",
         alt: "Byte.exe daytime screenshot"
       },
 
       night: {
         src: "assets/Byte-v1.0.0-preview-night.png",
-        label: "☾ nighttime",
-        caption: "☾ nighttime in Byte's room",
         alt: "Byte.exe nighttime screenshot"
       }
     };
 
     const day = document.getElementById("day");
     const night = document.getElementById("night");
-    const gallery = document.getElementById("gallery-image");
     const roomPreview = document.getElementById("room-preview");
+    const roomMode = document.getElementById("room-mode");
 
     function switchRoom(mode) {
       const selected = images[mode];
@@ -870,20 +892,13 @@
         mode === "night"
       );
 
-      gallery.src = selected.src;
-      gallery.alt = selected.alt;
-
       roomPreview.src = selected.src;
       roomPreview.alt = selected.alt;
 
-      document.getElementById("room-mode").textContent =
-        mode === "day" ? "☀ daydream mode" : "☾ starlight mode";
-
-      document.getElementById("image-label").textContent =
-        selected.label;
-
-      document.getElementById("gallery-caption").textContent =
-        selected.caption;
+      roomMode.textContent =
+        mode === "day"
+          ? "☀ daydream mode"
+          : "☾ starlight mode";
 
       day.setAttribute(
         "aria-pressed",
@@ -899,5 +914,6 @@
     day.addEventListener("click", () => switchRoom("day"));
     night.addEventListener("click", () => switchRoom("night"));
   </script>
+
 </body>
 </html>
