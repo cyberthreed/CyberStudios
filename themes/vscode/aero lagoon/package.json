@@ -1,0 +1,41 @@
+{
+  "name": "cyberstudios-aero-lagoon",
+  "displayName": "Aero Lagoon · CyberStudios",
+  "description": "Glacier blue, pearl surfaces, and deep teal accents. An airy light theme with darker syntax colors that stay readable against its pale background.",
+  "version": "1.0.0",
+  "publisher": "cyberthreed",
+  "author": {
+    "name": "CyberStudios"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "CyberStudios",
+    "light",
+    "aero-lagoon"
+  ],
+  "homepage": "https://github.com/cyberthreed",
+  "galleryBanner": {
+    "color": "#F2FAFD",
+    "theme": "light"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "id": "Aero Lagoon",
+        "label": "Aero Lagoon",
+        "uiTheme": "vs",
+        "path": "./themes/aero-lagoon-color-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "node scripts/package.mjs"
+  }
+}
