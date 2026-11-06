@@ -1,0 +1,41 @@
+CYBERSTUDIOS — VISUAL ASSET LICENSE OPT-IN NOTICE
+
+This notice describes how CyberStudios may explicitly designate original
+visual assets under Creative Commons Attribution 4.0 International (CC BY 4.0).
+
+CURRENT DESIGNATIONS
+
+No assets are newly designated under CC BY 4.0 by this notice.
+
+Existing artwork licenses and permissions remain unchanged. This file does
+not revoke permissions already granted, relicense third-party material, or
+automatically place the CyberStudios logo, Cy, Byte, screenshots, or other
+artwork under a new license. Its location in assets/ does not determine the
+license of files elsewhere in this repository.
+
+HOW AN ASSET IS OPTED IN
+
+A maintainer must make an explicit file-specific designation, either in a
+notice accompanying the asset or in a maintained list that identifies its
+exact repository path, creator/credit, source, and CC BY 4.0 license.
+
+For example, a future designation may say:
+"[exact asset path], created by [creator], is licensed under CC BY 4.0."
+That example is a template, not a designation of any existing file.
+
+FOR EXPLICITLY DESIGNATED ASSETS ONLY
+
+The designated original material is offered under Creative Commons
+Attribution 4.0 International. The controlling legal terms are available at:
+https://creativecommons.org/licenses/by/4.0/legalcode.en
+
+License overview:
+https://creativecommons.org/licenses/by/4.0/
+
+CC BY 4.0 permits sharing and adaptation, including commercial reuse, subject
+to its terms. Give appropriate credit, retain supplied notices, link to the
+license, and indicate changes. Do not imply that CyberStudios endorses your
+use. Other applicable rights and third-party licenses may still matter.
+
+When a file has no new designation here, consult its existing notices and
+applicable license. The repository's source-code license is in ../LICENSE.

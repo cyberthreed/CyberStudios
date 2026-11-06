@@ -155,6 +155,14 @@ This repository is home to our public creative projects, including:
 
 Not everything in development is publicly available yet. New releases will be added as they're ready.
 
+### ♡ build a little of the world with us
+
+Forks, thoughtful fixes, curious experiments, and independent little worlds are welcome. Start with the [contribution guide](CONTRIBUTING.md), bring some kindness from the [Code of Conduct](CODE_OF_CONDUCT.md), and use the [private reporting process](SECURITY.md) for security concerns.
+
+**Code:** [MIT License](LICENSE), unless a component has its own applicable license. **Artwork:** existing licenses stay in place; CC BY 4.0 applies only to assets explicitly designated through the [artwork opt-in notice](assets/LICENSE). Third-party material keeps its own terms.
+
+*Create freely. Build differently. Share what you discover.* ♡
+
 ### ✧ visit my world
 
 **[♡ CyberSpace Discord](https://cyberspacelink.carrd.co)** — My little corner of the internet.
