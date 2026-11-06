@@ -1,0 +1,41 @@
+{
+  "name": "cyberstudios-timberline",
+  "displayName": "Timberline · CyberStudios",
+  "description": "Deep forest, olive, and muted brass. A dark, earthy workspace with pale green strings, cool functions, and regular comments.",
+  "version": "1.0.0",
+  "publisher": "cyberthreed",
+  "author": {
+    "name": "CyberStudios"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "CyberStudios",
+    "dark",
+    "timberline"
+  ],
+  "homepage": "https://github.com/cyberthreed",
+  "galleryBanner": {
+    "color": "#141E19",
+    "theme": "dark"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "id": "Timberline",
+        "label": "Timberline",
+        "uiTheme": "vs-dark",
+        "path": "./themes/timberline-color-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "node scripts/package.mjs"
+  }
+}
