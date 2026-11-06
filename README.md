@@ -47,7 +47,7 @@ From adaptive gameplay systems and experimental software to virtual companions a
 
 | ♡ Project | ✧ Description | Status |
 |---|---|---|
-| 🐈‍⬛ **Byte.exe** | A tiny interactive virtual pet starring CyberStudios pixel-cat mascot. | 🛠️ In development |
+| 🐈‍⬛ **Byte.exe** | A tiny interactive virtual pet starring CyberStudios pixel-cat mascot. | **[Download byte!](https://cyberthreed.github.io/CyberStudios/byte/)** |
 | 🩷 **Cybercore Cotton Candy** | Dreamy pastel VS Code customization presets in Soft and Vivid. | 🌷 Theme collection |
 | 🍸 **[TipsyZois](https://cyberthreed.github.io/CyberStudios/projects/tipsyzois.html)** | From a first buzz to a messy morning after: five intoxication stages, drunk interactions, custom emotions, and serious stakes for your inZOI stories. | ✨ Released · [Nexus Mods](https://www.nexusmods.com/inzoi/mods/1691) |
 | 💿 **CyberCore** | An adaptive AI gameplay ecosystem and framework for immersive simulation experiences. | 🛠️ In development |
