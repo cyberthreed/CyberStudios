@@ -540,6 +540,18 @@
         transition: none !important;
       }
     }
+
+    /* Website visitor counter; separate from the Windows app. */
+    .cs-visitors { width:min(100%,340px); margin:0 auto 25px; text-align:center; color:#2e2c35; }
+    .cs-visitors .windowbar { color:#2e2c35; }
+    .cs-visitors .cs-visitor-body { padding:18px; }
+    .cs-visitors .cs-counter-frame { display:flex; align-items:center; justify-content:center; min-height:60px; padding:10px; border:1px solid var(--border); border-radius:13px; background:#fff; }
+    .cs-visitors .cs-counter-frame a { display:inline-flex; align-items:center; justify-content:center; min-height:44px; max-width:100%; }
+    .cs-visitors .cs-counter-frame img { display:block; }
+    .cs-visitors .cs-counter-caption { margin:10px 0 0; font:12px/1.6 'Segoe UI',sans-serif; color:#625e69; }
+    .cs-visitors .cs-counter-credit { display:inline-block; margin-top:7px; font:11px/1.6 'Segoe UI',sans-serif; text-underline-offset:3px; }
+    .night .cs-visitors,.night .cs-visitors .windowbar { color:#ece8f0; }
+    .night .cs-visitors .cs-counter-caption { color:#d0c9d5; }
   </style>
 </head>
 
@@ -770,7 +782,7 @@
         <article class="panel feature">
           <h3>♥ Saved locally</h3>
           <p>
-            No account, tracking, or cloud connection.
+            The Windows app needs no account or cloud connection.
             Byte remembers his care state on your computer.
           </p>
         </article>
@@ -859,10 +871,26 @@
   </main>
 
   <footer class="shell footer">
+    <section class="panel cs-visitors" aria-labelledby="cs-visitor-heading">
+      <div class="windowbar"><span id="cs-visitor-heading">visitor.count</span><span aria-hidden="true">♡</span></div>
+      <div class="cs-visitor-body">
+        <div class="cs-counter-frame" aria-label="Estimated unique visitors to Byte’s website">
+<!-- hitwebcounter Code START -->
+<a href="https://www.hitwebcounter.com/" target="_blank" rel="noopener" title="www Stats">
+<img src="https://www.hitwebcounter.com/counter/counter.php?page=21527384&amp;style=0032&amp;nbdigits=6&amp;type=ip" alt="www Stats" decoding="async" style="border:0;max-width:100%;height:auto;" />
+</a>
+<!-- hitwebcounter Code END -->
+        </div>
+        <p class="cs-counter-caption">Estimated visitors to Byte’s website<br>Thanks for stopping by. ♡</p>
+        <a class="cs-counter-credit" href="https://www.hitwebcounter.com/" target="_blank" rel="noopener">Counter by HitWebCounter ↗</a>
+        <span aria-hidden="true"> · </span><a class="cs-counter-credit" href="https://www.hitwebcounter.com/privacy_policy.php" target="_blank" rel="noopener">Counter privacy</a>
+      </div>
+    </section>
+
     made with love by <strong>cyberstudios</strong> ♡
 
     <div>
-      local-first pixel companion · no accounts · no tracking
+      Windows app: local-first companion · no account · no app telemetry
     </div>
   </footer>
 
@@ -917,3 +945,4 @@
 
 </body>
 </html>
+
