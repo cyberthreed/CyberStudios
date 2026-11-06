@@ -1,0 +1,9 @@
+# Configuration preview
+studio: CyberStudios
+tagline: "dream in pixels. create without limits."
+defaults: &defaults
+  enabled: true
+  energy: 88
+companion:
+  <<: *defaults
+  name: Byte
