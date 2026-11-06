@@ -1,0 +1,41 @@
+{
+  "name": "cyberstudios-cy-afterhours",
+  "displayName": "Cy Afterhours · CyberStudios",
+  "description": "Dark aubergine, electric lilac, soft pink keywords, and mint strings. Inspired by Cy and the creative side of CyberStudios.",
+  "version": "1.0.0",
+  "publisher": "cyberthreed",
+  "author": {
+    "name": "CyberStudios"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "CyberStudios",
+    "dark",
+    "cy-afterhours"
+  ],
+  "homepage": "https://github.com/cyberthreed",
+  "galleryBanner": {
+    "color": "#1B1425",
+    "theme": "dark"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "id": "Cy Afterhours",
+        "label": "Cy Afterhours",
+        "uiTheme": "vs-dark",
+        "path": "./themes/cy-afterhours-color-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "node scripts/package.mjs"
+  }
+}
