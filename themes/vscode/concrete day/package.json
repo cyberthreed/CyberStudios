@@ -1,0 +1,41 @@
+{
+  "name": "cyberstudios-concrete-day",
+  "displayName": "Concrete Day · CyberStudios",
+  "description": "Light stone, graphite, and slate blue. A restrained daylight theme with rust keywords, deep green strings, and regular comments.",
+  "version": "1.0.0",
+  "publisher": "cyberthreed",
+  "author": {
+    "name": "CyberStudios"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "CyberStudios",
+    "light",
+    "concrete-day"
+  ],
+  "homepage": "https://github.com/cyberthreed",
+  "galleryBanner": {
+    "color": "#F3F2ED",
+    "theme": "light"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "id": "Concrete Day",
+        "label": "Concrete Day",
+        "uiTheme": "vs",
+        "path": "./themes/concrete-day-color-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "node scripts/package.mjs"
+  }
+}

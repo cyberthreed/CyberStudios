@@ -1,0 +1,6 @@
+/* A small, readable palette. */
+:root { --studio-accent: #c994ff; --space: 1.25rem; }
+.studio { display: grid; gap: var(--space); max-width: 64ch; margin: auto; }
+.studio > h1 { color: var(--studio-accent); font-weight: 650; }
+button[data-companion="byte"]:focus-visible { outline: 2px solid currentColor; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
