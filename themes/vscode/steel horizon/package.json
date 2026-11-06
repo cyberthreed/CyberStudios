@@ -1,0 +1,41 @@
+{
+  "name": "cyberstudios-steel-horizon",
+  "displayName": "Steel Horizon · CyberStudios",
+  "description": "Midnight navy, slate panels, and brushed-blue controls. Cool, restrained syntax with amber numbers and regular comments.",
+  "version": "1.0.0",
+  "publisher": "cyberthreed",
+  "author": {
+    "name": "CyberStudios"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "CyberStudios",
+    "dark",
+    "steel-horizon"
+  ],
+  "homepage": "https://github.com/cyberthreed",
+  "galleryBanner": {
+    "color": "#151C25",
+    "theme": "dark"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "id": "Steel Horizon",
+        "label": "Steel Horizon",
+        "uiTheme": "vs-dark",
+        "path": "./themes/steel-horizon-color-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "node scripts/package.mjs"
+  }
+}
