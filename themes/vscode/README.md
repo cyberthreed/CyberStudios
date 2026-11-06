@@ -27,7 +27,9 @@ Five dark themes. Three light themes. A place for late-night experiments, quiet 
 
 ## 💾 bring one to your desktop
 
-Installer downloads are being prepared for a theme-library release on the [CyberStudios Releases page](https://github.com/cyberthreed/CyberStudios/releases). Until that release is published, build a theme locally using the packaging instructions below.
+[♡ Download the eight-theme installer ZIP](https://github.com/cyberthreed/CyberStudios/releases/download/vscode-themes-v1.0.0/CyberStudios-Themes-Installers-1.0.0.zip) · [Release notes](https://github.com/cyberthreed/CyberStudios/releases/tag/vscode-themes-v1.0.0)
+
+Download the ZIP, extract it, and choose the VSIX for the workspace you want to bring home.
 
 The installers ZIP contains the eight standalone themes. Cybercore Cotton Candy remains a separate Soft & Vivid settings-preset collection.
 
@@ -73,7 +75,7 @@ To refresh the generated READMEs and changelogs while preserving hand-edited the
 
 The collection lives in this repository under `themes/vscode/`. The theme READMEs are ready to use. Build output is intentionally ignored by Git; add a theme's VSIX as a GitHub Release attachment when you want to share an installable copy. The local ZIP bundles also contain ready-to-install copies.
 
-The manifests use `cyberthreed` as their local publisher namespace. A Marketplace listing would require a registered publisher with that ID or an updated manifest. The source folders are published in this repository. A theme-library release and Marketplace listing have not been published yet.
+The manifests use `cyberthreed` as their local publisher namespace. A Marketplace listing would require a registered publisher with that ID or an updated manifest. The source folders and [v1.0.0 installer release](https://github.com/cyberthreed/CyberStudios/releases/tag/vscode-themes-v1.0.0) are published. These themes are not listed on the Visual Studio Marketplace.
 
 ## ✧ checked, with a few little notes
 
