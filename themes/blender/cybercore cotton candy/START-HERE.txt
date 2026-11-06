@@ -1,0 +1,26 @@
+♡ CYBERCORE COTTON CANDY — BLENDER EDITION ✧
+made with love by CyberStudios
+
+dream in pixels. create without limits.
+
+☁  a little sugar for your workspace  ♡
+
+Open cybercore-cotton-candy.html in your browser.
+It works offline and contains both complete Blender theme downloads.
+
+To install a theme:
+1. In Blender, open Edit > Preferences > Themes.
+2. Click Install... and choose Cybercore_Cotton_Candy_Soft.xml
+   or Cybercore_Cotton_Candy_Vivid.xml.
+3. Save Preferences if Auto-Save Preferences is off.
+
+The HTML is the preview; Blender installs the XML file.
+Both presets were validated with Blender 5.2.3 LTS.
+Your saved Blender preferences have not been changed.
+
+Soft and Vivid share the original pastel interface. Vivid uses richer
+orchid and violet syntax and node-header colors.
+
+Open README.md for the full little tour, palette, and compatibility notes.
+
+Stay curious. Stay creative. Stay a little unreal.

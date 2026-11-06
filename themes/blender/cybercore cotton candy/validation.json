@@ -1,0 +1,23 @@
+{
+  "blender_version": "5.2.3 LTS",
+  "base_theme": "Blender Light (installed factory preset)",
+  "preferences_saved": false,
+  "results": [
+    {
+      "file": "Cybercore_Cotton_Candy_Soft.xml",
+      "attributes_checked": 781,
+      "colors_checked": 635,
+      "import": "passed",
+      "roundtrip": "passed",
+      "warnings": []
+    },
+    {
+      "file": "Cybercore_Cotton_Candy_Vivid.xml",
+      "attributes_checked": 781,
+      "colors_checked": 635,
+      "import": "passed",
+      "roundtrip": "passed",
+      "warnings": []
+    }
+  ]
+}
