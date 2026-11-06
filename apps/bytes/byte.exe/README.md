@@ -4,6 +4,8 @@
 
 **A cozy, interactive desktop companion by CyberStudios.**
 
+`dream in pixels. create without limits.`
+
 `version 1.0.0` · `windows x64` · `electron` · `made with ♡`
 
 ☁️　🎀　💿　🫧　✧　🐾
@@ -291,11 +293,15 @@ But Byte will always be the original.
 
 ## 💿 about cyberstudios
 
-**CyberStudios** is an independent creative technology studio exploring immersive games, adaptive AI gameplay systems, digital art, creative coding, and experimental software.
+**CyberStudios** is an independent creative technology studio exploring **game development, artificial intelligence, digital art, interactive experiences, and creative coding**.
 
-We believe technology can be expressive, nostalgic, personal, and playful.
+**`dream in pixels. create without limits.`**
 
-Our projects range from advanced gameplay frameworks to tiny companions who want nothing more than to nap on your desktop.
+*Somewhere between a daydream and a computer screen.*
+
+We believe software can be colorful. Strange. Nostalgic. Unexpected. A little surreal. Technology can feel expressive, personal, and playful, from the worlds we build to the spaces where we create.
+
+The studio is home to adaptive gameplay ideas, experimental software, digital art, custom themes, and nostalgic internet experiences. Cy represents its imagination and creative identity. Byte keeps her company, one tiny nap at a time. ♡
 
 **Explore the studio:**
 
