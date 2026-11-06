@@ -400,12 +400,13 @@
       html { scroll-behavior:auto; }
     }
   </style>
+  <link rel="stylesheet" href="../assets/wiki-branding.css">
 </head>
 
 <body>
   <header class="shell topbar">
     <a class="brand" href="../">
-      <span class="brand-icon" aria-hidden="true">✦</span>
+      <span class="brand-icon" aria-hidden="true"><img src="../assets/cyberstudios.png" alt="" width="1280" height="1280" decoding="async"></span>
       <span>
         <small>THE CYBERSTUDIOS ARCHIVE</small>
         <strong>CyberStudios ♡</strong>
@@ -419,6 +420,7 @@
       <button id="theme-toggle" type="button" aria-pressed="false">
         ☾ Night mode
       </button>
+      <button id="byte-toggle" class="theme-button" type="button" aria-pressed="true" hidden>♡ Hide Byte</button>
     </nav>
   </header>
 
@@ -664,5 +666,31 @@
       setNight(!document.body.classList.contains("night"));
     });
   </script>
+  <div class="byte-companion" id="byte-companion" hidden>
+    <button class="byte-character" id="byte-character" type="button" aria-label="Byte: open companion controls" aria-expanded="false" aria-controls="byte-menu" aria-describedby="byte-keyboard-help">
+      <img src="../byte/assets/icon.png" alt="" width="76" height="76">
+    </button>
+    <span class="byte-caption" aria-hidden="true">byte ♡</span>
+  </div>
+  <section class="panel byte-menu" id="byte-menu" aria-labelledby="byte-menu-heading" hidden>
+    <div class="windowbar"><span id="byte-menu-heading">♡ byte's little corner</span><span aria-hidden="true">✧</span></div>
+    <div class="byte-body">
+      <p class="byte-response" id="byte-response" role="status" aria-live="polite" aria-atomic="true">Hello, little star. ♡</p>
+      <div class="byte-controls">
+        <button type="button" id="byte-pet">♡ Pet</button>
+        <button type="button" id="byte-treat">✿ Treat</button>
+        <button type="button" id="byte-rest" aria-pressed="false">☾ Rest</button>
+        <button class="wide" type="button" id="byte-roam" aria-pressed="false">Start roaming</button>
+      </div>
+      <div class="byte-controls move-controls">
+        <button type="button" id="byte-left" aria-label="Move Byte left">← Left</button>
+        <button type="button" id="byte-home">Reset spot</button>
+        <button type="button" id="byte-right" aria-label="Move Byte right">Right →</button>
+      </div>
+      <p class="byte-help" id="byte-keyboard-help">With Byte focused, use Left/Right to move or Home to reset. Escape closes controls. Roaming pauses while Byte or his controls have focus.</p>
+      <div class="byte-controls"><button type="button" id="byte-close">Close controls</button><button type="button" id="byte-hide">Hide Byte</button></div>
+    </div>
+  </section>
+  <script src="../assets/wiki-companion.js" defer></script>
 </body>
 </html>

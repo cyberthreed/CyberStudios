@@ -1,0 +1,42 @@
+/* Shared Wiki artwork and the same little browser companion used on Tumblr. */
+.brand-icon { flex-shrink:0; overflow:hidden; }
+.brand-icon img { display:block; width:100%; height:100%; padding:2px; object-fit:contain; }
+.welcome-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(190px,260px); align-items:center; gap:22px; }
+.welcome-copy { min-width:0; }
+.wiki-cy { margin:0; min-width:0; text-align:center; }
+.wiki-cy img { display:block; width:100%; height:auto; object-fit:contain; transform:scaleX(-1); filter:drop-shadow(0 12px 14px #7d4f9e20); }
+.wiki-cy figcaption { margin-top:8px; color:var(--ink); font:700 11px/1.7 "Segoe UI",sans-serif; letter-spacing:1px; }
+.wiki-profile { display:flex; align-items:center; gap:10px; padding:3px 3px 10px; }
+.wiki-profile img { display:block; width:72px; height:80px; object-fit:contain; flex-shrink:0; }
+.wiki-profile strong { display:block; font-size:18px; }
+.wiki-profile small { display:block; margin-top:4px; color:var(--muted); font-size:10px; }
+.byte-companion { position:fixed; z-index:200; left:18px; bottom:max(16px,env(safe-area-inset-bottom)); width:88px; }
+.byte-companion[hidden],.byte-menu[hidden] { display:none; }
+.byte-character { display:grid; place-items:center; padding:4px; width:88px; min-height:88px; border:0; background:transparent; border-radius:20px; }
+.byte-character img { display:block; width:76px; height:76px; object-fit:contain; image-rendering:pixelated; filter:drop-shadow(0 5px 4px #62477e24); pointer-events:none; }
+.byte-caption { display:block; padding:1px 6px; border:1px solid var(--border); border-radius:99px; background:var(--paper); color:var(--ink); font-size:10px; text-align:center; }
+.byte-menu { position:fixed; z-index:201; left:16px; bottom:max(128px,calc(env(safe-area-inset-bottom) + 112px)); width:280px; max-width:calc(100vw - 32px); max-height:calc(100vh - 150px); max-height:calc(100dvh - 150px); overflow-y:auto; overscroll-behavior:contain; }
+.byte-menu .byte-body { padding:15px; }
+.byte-menu p { font-size:12px; color:var(--muted); line-height:1.7; }
+.byte-menu .byte-controls { display:flex; flex-wrap:wrap; gap:7px; }
+.byte-menu button { flex:1 1 30%; min-height:44px; border:1px solid var(--border); border-radius:10px; background:var(--paper); color:var(--ink); padding:7px; font:12px "Segoe UI",sans-serif; }
+.byte-menu .move-controls { margin-top:10px; }
+.byte-menu .wide { flex-basis:100%; }
+.byte-response { min-height:2.8em; margin:0 0 12px; }
+.byte-character.is-happy { animation:byte-bounce .4s ease 2; }
+.byte-character.is-asleep { opacity:.75; }
+.footer { padding-bottom:max(130px,calc(env(safe-area-inset-bottom) + 110px)); }
+@keyframes byte-bounce { 50% { transform:translateY(-10px) rotate(-4deg); } }
+@media(max-width:880px) {
+  .sidebar .wiki-profile { display:none; }
+}
+@media(max-width:700px) {
+  .welcome-grid { grid-template-columns:minmax(0,1fr); gap:12px; }
+  .wiki-cy { grid-row:1; width:min(220px,100%); justify-self:center; }
+  .wiki-cy figcaption { margin-top:2px; }
+  .byte-companion,.byte-menu { left:12px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .byte-character,.byte-character.is-happy { animation:none!important; }
+}
+
