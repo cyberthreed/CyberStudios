@@ -4,9 +4,6 @@
   "description": "Deep forest, olive, and muted brass. A dark, earthy workspace with pale green strings, cool functions, and regular comments.",
   "version": "1.0.0",
   "publisher": "cyberthreed",
-  "author": {
-    "name": "CyberStudios"
-  },
   "license": "MIT",
   "engines": {
     "vscode": "^1.100.0"
@@ -20,7 +17,12 @@
     "dark",
     "timberline"
   ],
-  "homepage": "https://github.com/cyberthreed",
+  "homepage": "https://github.com/cyberthreed/CyberStudios/tree/main/themes/vscode/timberline",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyberthreed/CyberStudios.git",
+    "directory": "themes/vscode/timberline"
+  },
   "galleryBanner": {
     "color": "#141E19",
     "theme": "dark"

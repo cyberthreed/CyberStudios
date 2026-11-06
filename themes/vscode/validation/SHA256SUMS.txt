@@ -1,0 +1,8 @@
+f6578e0600a30da30cbbdfc7453cd7e139e1b838d6c870e8663b3fdd90787e82  cy afterhours/dist/cyberstudios-cy-afterhours-1.0.0.vsix
+4f7355adbfe00287741042cdd1e007c0afca8549943f57ed431c2839a2e32032  byte terminal/dist/cyberstudios-byte-terminal-1.0.0.vsix
+dfffb098b807954092e7c1a668376ba065ea25c0c12367bd8c8682c2b4e543e2  aero lagoon/dist/cyberstudios-aero-lagoon-1.0.0.vsix
+d2088b66ef6f6ed7a90e635b3cfb04a10d8b9111c71069d49edc5837afb38ac6  rose quartz/dist/cyberstudios-rose-quartz-1.0.0.vsix
+9a21d77150a8f9805e39348edceda86772f847ea32456b8d8919bc28721ffa7e  obsidian forge/dist/cyberstudios-obsidian-forge-1.0.0.vsix
+6d8d06a17d10abe33bb151b9503f77a99e7fff0e2510db71951431b2fbdb8322  steel horizon/dist/cyberstudios-steel-horizon-1.0.0.vsix
+5f886c7116257d586e3d48379f0a4cf951cb46d4d544cffaa131bcef1cb8b1c4  timberline/dist/cyberstudios-timberline-1.0.0.vsix
+0e3610012a0f66c0a7b2b43410271ea3606ae34daa4c8b2af95343749f8948c5  concrete day/dist/cyberstudios-concrete-day-1.0.0.vsix

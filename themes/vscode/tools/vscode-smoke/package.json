@@ -1,0 +1,7 @@
+{
+  "name": "cyberstudios-local-theme-check",
+  "version": "0.0.1",
+  "publisher": "local",
+  "engines": { "vscode": "^1.100.0" },
+  "private": true
+}

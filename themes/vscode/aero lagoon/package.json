@@ -4,9 +4,6 @@
   "description": "Glacier blue, pearl surfaces, and deep teal accents. An airy light theme with darker syntax colors that stay readable against its pale background.",
   "version": "1.0.0",
   "publisher": "cyberthreed",
-  "author": {
-    "name": "CyberStudios"
-  },
   "license": "MIT",
   "engines": {
     "vscode": "^1.100.0"
@@ -20,7 +17,12 @@
     "light",
     "aero-lagoon"
   ],
-  "homepage": "https://github.com/cyberthreed",
+  "homepage": "https://github.com/cyberthreed/CyberStudios/tree/main/themes/vscode/aero%20lagoon",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyberthreed/CyberStudios.git",
+    "directory": "themes/vscode/aero lagoon"
+  },
   "galleryBanner": {
     "color": "#F2FAFD",
     "theme": "light"

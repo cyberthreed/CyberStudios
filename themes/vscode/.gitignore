@@ -1,0 +1,9 @@
+node_modules/
+AGENTS.md
+*.zip
+releases/
+validation/*-resolved.json
+validation/isolated-profile.json
+validation/vscode-run.log
+.DS_Store
+Thumbs.db

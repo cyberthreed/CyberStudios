@@ -4,9 +4,6 @@
   "description": "Warm charcoal, bronze controls, pale steel functions, and sage strings. A grounded dark theme with warm highlights and regular comments.",
   "version": "1.0.0",
   "publisher": "cyberthreed",
-  "author": {
-    "name": "CyberStudios"
-  },
   "license": "MIT",
   "engines": {
     "vscode": "^1.100.0"
@@ -20,7 +17,12 @@
     "dark",
     "obsidian-forge"
   ],
-  "homepage": "https://github.com/cyberthreed",
+  "homepage": "https://github.com/cyberthreed/CyberStudios/tree/main/themes/vscode/obsidian%20forge",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyberthreed/CyberStudios.git",
+    "directory": "themes/vscode/obsidian forge"
+  },
   "galleryBanner": {
     "color": "#1B1816",
     "theme": "dark"

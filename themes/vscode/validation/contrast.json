@@ -1,0 +1,178 @@
+[
+  {
+    "name": "Cy Afterhours",
+    "workbenchColors": 396,
+    "textMateRules": 40,
+    "semanticRules": 29,
+    "contrastChecks": 87,
+    "minimumContrast": 5.25,
+    "lowest": [
+      {
+        "label": "syntax #AD9DBB on editor.selectionBackground",
+        "ratio": 5.25
+      },
+      {
+        "label": "syntax #BCA9FF on editor.selectionBackground",
+        "ratio": 6.47
+      },
+      {
+        "label": "syntax #AD9DBB on editor.lineHighlightBackground",
+        "ratio": 6.49
+      }
+    ]
+  },
+  {
+    "name": "Byte Terminal",
+    "workbenchColors": 396,
+    "textMateRules": 40,
+    "semanticRules": 29,
+    "contrastChecks": 87,
+    "minimumContrast": 4.91,
+    "lowest": [
+      {
+        "label": "syntax #90A5AF on editor.selectionBackground",
+        "ratio": 4.91
+      },
+      {
+        "label": "syntax #90A5AF on editor.lineHighlightBackground",
+        "ratio": 6.04
+      },
+      {
+        "label": "syntax #F2A0A8 on editor.selectionBackground",
+        "ratio": 6.22
+      }
+    ]
+  },
+  {
+    "name": "Aero Lagoon",
+    "workbenchColors": 396,
+    "textMateRules": 40,
+    "semanticRules": 29,
+    "contrastChecks": 87,
+    "minimumContrast": 4.52,
+    "lowest": [
+      {
+        "label": "syntax #536D79 on editor.selectionBackground",
+        "ratio": 4.52
+      },
+      {
+        "label": "activityBar.foreground",
+        "ratio": 4.52
+      },
+      {
+        "label": "activityBar.inactiveForeground",
+        "ratio": 4.61
+      }
+    ]
+  },
+  {
+    "name": "Rose Quartz",
+    "workbenchColors": 396,
+    "textMateRules": 40,
+    "semanticRules": 29,
+    "contrastChecks": 87,
+    "minimumContrast": 4.57,
+    "lowest": [
+      {
+        "label": "activityBarTop.inactiveForeground",
+        "ratio": 4.57
+      },
+      {
+        "label": "tab.inactiveForeground",
+        "ratio": 4.57
+      },
+      {
+        "label": "peekViewTitleDescription.foreground",
+        "ratio": 4.57
+      }
+    ]
+  },
+  {
+    "name": "Obsidian Forge",
+    "workbenchColors": 396,
+    "textMateRules": 40,
+    "semanticRules": 29,
+    "contrastChecks": 87,
+    "minimumContrast": 5.13,
+    "lowest": [
+      {
+        "label": "syntax #AA9F8F on editor.selectionBackground",
+        "ratio": 5.13
+      },
+      {
+        "label": "syntax #AA9F8F on editor.lineHighlightBackground",
+        "ratio": 6.11
+      },
+      {
+        "label": "activityBarTop.inactiveForeground",
+        "ratio": 6.31
+      }
+    ]
+  },
+  {
+    "name": "Steel Horizon",
+    "workbenchColors": 396,
+    "textMateRules": 40,
+    "semanticRules": 29,
+    "contrastChecks": 87,
+    "minimumContrast": 5.16,
+    "lowest": [
+      {
+        "label": "syntax #9EADBD on editor.selectionBackground",
+        "ratio": 5.16
+      },
+      {
+        "label": "syntax #F2A0A8 on editor.selectionBackground",
+        "ratio": 5.84
+      },
+      {
+        "label": "syntax #AABEDC on editor.selectionBackground",
+        "ratio": 6.26
+      }
+    ]
+  },
+  {
+    "name": "Timberline",
+    "workbenchColors": 396,
+    "textMateRules": 40,
+    "semanticRules": 29,
+    "contrastChecks": 87,
+    "minimumContrast": 5.16,
+    "lowest": [
+      {
+        "label": "syntax #A1AF9D on editor.selectionBackground",
+        "ratio": 5.16
+      },
+      {
+        "label": "activityBarTop.inactiveForeground",
+        "ratio": 5.78
+      },
+      {
+        "label": "tab.inactiveForeground",
+        "ratio": 5.78
+      }
+    ]
+  },
+  {
+    "name": "Concrete Day",
+    "workbenchColors": 396,
+    "textMateRules": 40,
+    "semanticRules": 29,
+    "contrastChecks": 87,
+    "minimumContrast": 4.55,
+    "lowest": [
+      {
+        "label": "activityBarTop.inactiveForeground",
+        "ratio": 4.55
+      },
+      {
+        "label": "tab.inactiveForeground",
+        "ratio": 4.55
+      },
+      {
+        "label": "peekViewTitleDescription.foreground",
+        "ratio": 4.55
+      }
+    ]
+  }
+]

@@ -4,9 +4,6 @@
   "description": "Warm cream, dusty rose, and plum. A light workspace with rose controls, violet functions, and forest-green strings.",
   "version": "1.0.0",
   "publisher": "cyberthreed",
-  "author": {
-    "name": "CyberStudios"
-  },
   "license": "MIT",
   "engines": {
     "vscode": "^1.100.0"
@@ -20,7 +17,12 @@
     "light",
     "rose-quartz"
   ],
-  "homepage": "https://github.com/cyberthreed",
+  "homepage": "https://github.com/cyberthreed/CyberStudios/tree/main/themes/vscode/rose%20quartz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyberthreed/CyberStudios.git",
+    "directory": "themes/vscode/rose quartz"
+  },
   "galleryBanner": {
     "color": "#FFF7F3",
     "theme": "light"

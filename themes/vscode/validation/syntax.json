@@ -1,0 +1,618 @@
+[
+  {
+    "name": "Cy Afterhours",
+    "files": [
+      {
+        "file": "studio.ts",
+        "grammar": "source.ts",
+        "tokenCount": 195,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.py",
+        "grammar": "source.python",
+        "tokenCount": 90,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.html",
+        "grammar": "text.html.basic",
+        "tokenCount": 89,
+        "distinctColors": 5
+      },
+      {
+        "file": "studio.css",
+        "grammar": "source.css",
+        "tokenCount": 120,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.json",
+        "grammar": "source.json",
+        "tokenCount": 44,
+        "distinctColors": 4
+      },
+      {
+        "file": "studio.yaml",
+        "grammar": "source.yaml",
+        "tokenCount": 29,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sql",
+        "grammar": "source.sql",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sh",
+        "grammar": "source.shell",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.md",
+        "grammar": "text.html.markdown",
+        "tokenCount": 53,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.diff",
+        "grammar": "source.diff",
+        "tokenCount": 14,
+        "distinctColors": 5
+      }
+    ],
+    "assertions": [
+      "studio.ts: // dream → comment",
+      "studio.ts: export → keyword",
+      "studio.ts: CyberStudios → string",
+      "studio.ts: 88 → number",
+      "studio.ts: welcome → function",
+      "studio.ts: Companion → type",
+      "studio.json: studio → property",
+      "studio.json: CyberStudios → string",
+      "studio.html: main → keyword",
+      "studio.css: max-width → property"
+    ]
+  },
+  {
+    "name": "Byte Terminal",
+    "files": [
+      {
+        "file": "studio.ts",
+        "grammar": "source.ts",
+        "tokenCount": 195,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.py",
+        "grammar": "source.python",
+        "tokenCount": 90,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.html",
+        "grammar": "text.html.basic",
+        "tokenCount": 89,
+        "distinctColors": 5
+      },
+      {
+        "file": "studio.css",
+        "grammar": "source.css",
+        "tokenCount": 120,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.json",
+        "grammar": "source.json",
+        "tokenCount": 44,
+        "distinctColors": 4
+      },
+      {
+        "file": "studio.yaml",
+        "grammar": "source.yaml",
+        "tokenCount": 29,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sql",
+        "grammar": "source.sql",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sh",
+        "grammar": "source.shell",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.md",
+        "grammar": "text.html.markdown",
+        "tokenCount": 53,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.diff",
+        "grammar": "source.diff",
+        "tokenCount": 14,
+        "distinctColors": 5
+      }
+    ],
+    "assertions": [
+      "studio.ts: // dream → comment",
+      "studio.ts: export → keyword",
+      "studio.ts: CyberStudios → string",
+      "studio.ts: 88 → number",
+      "studio.ts: welcome → function",
+      "studio.ts: Companion → type",
+      "studio.json: studio → property",
+      "studio.json: CyberStudios → string",
+      "studio.html: main → keyword",
+      "studio.css: max-width → property"
+    ]
+  },
+  {
+    "name": "Aero Lagoon",
+    "files": [
+      {
+        "file": "studio.ts",
+        "grammar": "source.ts",
+        "tokenCount": 195,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.py",
+        "grammar": "source.python",
+        "tokenCount": 90,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.html",
+        "grammar": "text.html.basic",
+        "tokenCount": 89,
+        "distinctColors": 5
+      },
+      {
+        "file": "studio.css",
+        "grammar": "source.css",
+        "tokenCount": 120,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.json",
+        "grammar": "source.json",
+        "tokenCount": 44,
+        "distinctColors": 4
+      },
+      {
+        "file": "studio.yaml",
+        "grammar": "source.yaml",
+        "tokenCount": 29,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sql",
+        "grammar": "source.sql",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sh",
+        "grammar": "source.shell",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.md",
+        "grammar": "text.html.markdown",
+        "tokenCount": 53,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.diff",
+        "grammar": "source.diff",
+        "tokenCount": 14,
+        "distinctColors": 5
+      }
+    ],
+    "assertions": [
+      "studio.ts: // dream → comment",
+      "studio.ts: export → keyword",
+      "studio.ts: CyberStudios → string",
+      "studio.ts: 88 → number",
+      "studio.ts: welcome → function",
+      "studio.ts: Companion → type",
+      "studio.json: studio → property",
+      "studio.json: CyberStudios → string",
+      "studio.html: main → keyword",
+      "studio.css: max-width → property"
+    ]
+  },
+  {
+    "name": "Rose Quartz",
+    "files": [
+      {
+        "file": "studio.ts",
+        "grammar": "source.ts",
+        "tokenCount": 195,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.py",
+        "grammar": "source.python",
+        "tokenCount": 90,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.html",
+        "grammar": "text.html.basic",
+        "tokenCount": 89,
+        "distinctColors": 5
+      },
+      {
+        "file": "studio.css",
+        "grammar": "source.css",
+        "tokenCount": 120,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.json",
+        "grammar": "source.json",
+        "tokenCount": 44,
+        "distinctColors": 4
+      },
+      {
+        "file": "studio.yaml",
+        "grammar": "source.yaml",
+        "tokenCount": 29,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sql",
+        "grammar": "source.sql",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sh",
+        "grammar": "source.shell",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.md",
+        "grammar": "text.html.markdown",
+        "tokenCount": 53,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.diff",
+        "grammar": "source.diff",
+        "tokenCount": 14,
+        "distinctColors": 5
+      }
+    ],
+    "assertions": [
+      "studio.ts: // dream → comment",
+      "studio.ts: export → keyword",
+      "studio.ts: CyberStudios → string",
+      "studio.ts: 88 → number",
+      "studio.ts: welcome → function",
+      "studio.ts: Companion → type",
+      "studio.json: studio → property",
+      "studio.json: CyberStudios → string",
+      "studio.html: main → keyword",
+      "studio.css: max-width → property"
+    ]
+  },
+  {
+    "name": "Obsidian Forge",
+    "files": [
+      {
+        "file": "studio.ts",
+        "grammar": "source.ts",
+        "tokenCount": 195,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.py",
+        "grammar": "source.python",
+        "tokenCount": 90,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.html",
+        "grammar": "text.html.basic",
+        "tokenCount": 89,
+        "distinctColors": 5
+      },
+      {
+        "file": "studio.css",
+        "grammar": "source.css",
+        "tokenCount": 120,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.json",
+        "grammar": "source.json",
+        "tokenCount": 44,
+        "distinctColors": 4
+      },
+      {
+        "file": "studio.yaml",
+        "grammar": "source.yaml",
+        "tokenCount": 29,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sql",
+        "grammar": "source.sql",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sh",
+        "grammar": "source.shell",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.md",
+        "grammar": "text.html.markdown",
+        "tokenCount": 53,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.diff",
+        "grammar": "source.diff",
+        "tokenCount": 14,
+        "distinctColors": 5
+      }
+    ],
+    "assertions": [
+      "studio.ts: // dream → comment",
+      "studio.ts: export → keyword",
+      "studio.ts: CyberStudios → string",
+      "studio.ts: 88 → number",
+      "studio.ts: welcome → function",
+      "studio.ts: Companion → type",
+      "studio.json: studio → property",
+      "studio.json: CyberStudios → string",
+      "studio.html: main → keyword",
+      "studio.css: max-width → property"
+    ]
+  },
+  {
+    "name": "Steel Horizon",
+    "files": [
+      {
+        "file": "studio.ts",
+        "grammar": "source.ts",
+        "tokenCount": 195,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.py",
+        "grammar": "source.python",
+        "tokenCount": 90,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.html",
+        "grammar": "text.html.basic",
+        "tokenCount": 89,
+        "distinctColors": 5
+      },
+      {
+        "file": "studio.css",
+        "grammar": "source.css",
+        "tokenCount": 120,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.json",
+        "grammar": "source.json",
+        "tokenCount": 44,
+        "distinctColors": 4
+      },
+      {
+        "file": "studio.yaml",
+        "grammar": "source.yaml",
+        "tokenCount": 29,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sql",
+        "grammar": "source.sql",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sh",
+        "grammar": "source.shell",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.md",
+        "grammar": "text.html.markdown",
+        "tokenCount": 53,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.diff",
+        "grammar": "source.diff",
+        "tokenCount": 14,
+        "distinctColors": 5
+      }
+    ],
+    "assertions": [
+      "studio.ts: // dream → comment",
+      "studio.ts: export → keyword",
+      "studio.ts: CyberStudios → string",
+      "studio.ts: 88 → number",
+      "studio.ts: welcome → function",
+      "studio.ts: Companion → type",
+      "studio.json: studio → property",
+      "studio.json: CyberStudios → string",
+      "studio.html: main → keyword",
+      "studio.css: max-width → property"
+    ]
+  },
+  {
+    "name": "Timberline",
+    "files": [
+      {
+        "file": "studio.ts",
+        "grammar": "source.ts",
+        "tokenCount": 195,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.py",
+        "grammar": "source.python",
+        "tokenCount": 90,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.html",
+        "grammar": "text.html.basic",
+        "tokenCount": 89,
+        "distinctColors": 5
+      },
+      {
+        "file": "studio.css",
+        "grammar": "source.css",
+        "tokenCount": 120,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.json",
+        "grammar": "source.json",
+        "tokenCount": 44,
+        "distinctColors": 4
+      },
+      {
+        "file": "studio.yaml",
+        "grammar": "source.yaml",
+        "tokenCount": 29,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sql",
+        "grammar": "source.sql",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sh",
+        "grammar": "source.shell",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.md",
+        "grammar": "text.html.markdown",
+        "tokenCount": 53,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.diff",
+        "grammar": "source.diff",
+        "tokenCount": 14,
+        "distinctColors": 5
+      }
+    ],
+    "assertions": [
+      "studio.ts: // dream → comment",
+      "studio.ts: export → keyword",
+      "studio.ts: CyberStudios → string",
+      "studio.ts: 88 → number",
+      "studio.ts: welcome → function",
+      "studio.ts: Companion → type",
+      "studio.json: studio → property",
+      "studio.json: CyberStudios → string",
+      "studio.html: main → keyword",
+      "studio.css: max-width → property"
+    ]
+  },
+  {
+    "name": "Concrete Day",
+    "files": [
+      {
+        "file": "studio.ts",
+        "grammar": "source.ts",
+        "tokenCount": 195,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.py",
+        "grammar": "source.python",
+        "tokenCount": 90,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.html",
+        "grammar": "text.html.basic",
+        "tokenCount": 89,
+        "distinctColors": 5
+      },
+      {
+        "file": "studio.css",
+        "grammar": "source.css",
+        "tokenCount": 120,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.json",
+        "grammar": "source.json",
+        "tokenCount": 44,
+        "distinctColors": 4
+      },
+      {
+        "file": "studio.yaml",
+        "grammar": "source.yaml",
+        "tokenCount": 29,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sql",
+        "grammar": "source.sql",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.sh",
+        "grammar": "source.shell",
+        "tokenCount": 34,
+        "distinctColors": 6
+      },
+      {
+        "file": "studio.md",
+        "grammar": "text.html.markdown",
+        "tokenCount": 53,
+        "distinctColors": 8
+      },
+      {
+        "file": "studio.diff",
+        "grammar": "source.diff",
+        "tokenCount": 14,
+        "distinctColors": 5
+      }
+    ],
+    "assertions": [
+      "studio.ts: // dream → comment",
+      "studio.ts: export → keyword",
+      "studio.ts: CyberStudios → string",
+      "studio.ts: 88 → number",
+      "studio.ts: welcome → function",
+      "studio.ts: Companion → type",
+      "studio.json: studio → property",
+      "studio.json: CyberStudios → string",
+      "studio.html: main → keyword",
+      "studio.css: max-width → property"
+    ]
+  }
+]

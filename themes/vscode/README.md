@@ -6,7 +6,7 @@
 
 *eight little workspaces for pixels, daydreams & too many open tabs.*
 
-Standalone VS Code color themes with coordinated workbench colors, syntax highlighting, semantic token rules, and terminal palettes. Each labeled folder is a complete, independent theme project. Everything in this collection is local; nothing has been published to GitHub or the Visual Studio Marketplace.
+Standalone VS Code color themes with coordinated workbench colors, syntax highlighting, semantic token rules, and terminal palettes. Each labeled folder is a complete, independent theme project. The source is hosted here on GitHub. These themes are not listed on the Visual Studio Marketplace.
 
 Five dark themes. Three light themes. A place for late-night experiments, quiet focus, and whatever you're making next. ♡
 
@@ -27,11 +27,13 @@ Five dark themes. Three light themes. A place for late-night experiments, quiet 
 
 ## 💾 bring one to your desktop
 
-The [installers ZIP](releases/CyberStudios-Themes-Installers-1.0.0.zip) contains all eight VSIX files. The [complete collection ZIP](releases/CyberStudios-Themes-1.0.0.zip) also contains each independent project's editable source and documentation.
+Installer downloads are being prepared for a theme-library release on the [CyberStudios Releases page](https://github.com/cyberthreed/CyberStudios/releases). Until that release is published, build a theme locally using the packaging instructions below.
+
+The installers ZIP contains the eight standalone themes. Cybercore Cotton Candy remains a separate Soft & Vivid settings-preset collection.
 
 1. Open VS Code and go to **Extensions**.
 2. Choose **… → Install from VSIX…**
-3. Inside the theme's labeled folder, open **dist** and select its `.vsix` file.
+3. Select the downloaded `.vsix` file, or the file you built locally in the theme's **dist** folder.
 4. Open **Preferences: Color Theme** from the Command Palette and pick the theme by name.
 
 You can install all eight and switch between them with **Ctrl+K, Ctrl+T** (Windows/Linux) or **⌘K, ⌘T** (macOS). VS Code may display an extension trust prompt when you install a locally packaged extension. These packages contribute colors only and have no executable extension entry point.
@@ -69,9 +71,9 @@ To refresh the generated READMEs and changelogs while preserving hand-edited the
 
 ## 💿 when you're ready to share
 
-Each labeled folder can become its own repository, or you can keep the entire collection together. The theme READMEs are ready to use. Build output is intentionally ignored by Git; add a theme's VSIX as a GitHub Release attachment when you want to share an installable copy. The local ZIP bundles also contain ready-to-install copies.
+The collection lives in this repository under `themes/vscode/`. The theme READMEs are ready to use. Build output is intentionally ignored by Git; add a theme's VSIX as a GitHub Release attachment when you want to share an installable copy. The local ZIP bundles also contain ready-to-install copies.
 
-The manifests use `cyberthreed` as their local publisher namespace. A Marketplace listing would require a registered publisher with that ID or an updated manifest. No Marketplace account, listing, repository URL, release, or upload has been created for these projects.
+The manifests use `cyberthreed` as their local publisher namespace. A Marketplace listing would require a registered publisher with that ID or an updated manifest. The source folders are published in this repository. A theme-library release and Marketplace listing have not been published yet.
 
 ## ✧ checked, with a few little notes
 

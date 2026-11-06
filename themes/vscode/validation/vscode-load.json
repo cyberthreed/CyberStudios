@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Cy Afterhours",
+    "extensionId": "cyberthreed.cyberstudios-cy-afterhours",
+    "version": "1.144.1",
+    "resolvedColors": 396,
+    "kind": 2,
+    "loaded": true
+  },
+  {
+    "name": "Byte Terminal",
+    "extensionId": "cyberthreed.cyberstudios-byte-terminal",
+    "version": "1.144.1",
+    "resolvedColors": 396,
+    "kind": 2,
+    "loaded": true
+  },
+  {
+    "name": "Aero Lagoon",
+    "extensionId": "cyberthreed.cyberstudios-aero-lagoon",
+    "version": "1.144.1",
+    "resolvedColors": 396,
+    "kind": 1,
+    "loaded": true
+  },
+  {
+    "name": "Rose Quartz",
+    "extensionId": "cyberthreed.cyberstudios-rose-quartz",
+    "version": "1.144.1",
+    "resolvedColors": 396,
+    "kind": 1,
+    "loaded": true
+  },
+  {
+    "name": "Obsidian Forge",
+    "extensionId": "cyberthreed.cyberstudios-obsidian-forge",
+    "version": "1.144.1",
+    "resolvedColors": 396,
+    "kind": 2,
+    "loaded": true
+  },
+  {
+    "name": "Steel Horizon",
+    "extensionId": "cyberthreed.cyberstudios-steel-horizon",
+    "version": "1.144.1",
+    "resolvedColors": 396,
+    "kind": 2,
+    "loaded": true
+  },
+  {
+    "name": "Timberline",
+    "extensionId": "cyberthreed.cyberstudios-timberline",
+    "version": "1.144.1",
+    "resolvedColors": 396,
+    "kind": 2,
+    "loaded": true
+  },
+  {
+    "name": "Concrete Day",
+    "extensionId": "cyberthreed.cyberstudios-concrete-day",
+    "version": "1.144.1",
+    "resolvedColors": 396,
+    "kind": 1,
+    "loaded": true
+  }
+]

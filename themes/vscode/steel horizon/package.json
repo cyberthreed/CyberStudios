@@ -4,9 +4,6 @@
   "description": "Midnight navy, slate panels, and brushed-blue controls. Cool, restrained syntax with amber numbers and regular comments.",
   "version": "1.0.0",
   "publisher": "cyberthreed",
-  "author": {
-    "name": "CyberStudios"
-  },
   "license": "MIT",
   "engines": {
     "vscode": "^1.100.0"
@@ -20,7 +17,12 @@
     "dark",
     "steel-horizon"
   ],
-  "homepage": "https://github.com/cyberthreed",
+  "homepage": "https://github.com/cyberthreed/CyberStudios/tree/main/themes/vscode/steel%20horizon",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyberthreed/CyberStudios.git",
+    "directory": "themes/vscode/steel horizon"
+  },
   "galleryBanner": {
     "color": "#151C25",
     "theme": "dark"

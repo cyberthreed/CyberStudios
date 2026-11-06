@@ -73,9 +73,9 @@ With Node.js 22 or later installed, open a terminal in this folder and run:
 npm run package
 ```
 
-This downloads Microsoft's pinned `@vscode/vsce` packager if needed and writes an installable VSIX to `dist/`. It does not publish anything. The folder can be used as its own GitHub repository whenever you are ready. `dist/` is ignored by Git; attach the VSIX to a GitHub Release if you want to distribute a built copy.
+This downloads Microsoft's pinned `@vscode/vsce` packager if needed and writes an installable VSIX to `dist/`. It does not publish anything. The source is included in the CyberStudios VS Code theme collection. `dist/` is ignored by Git; attach the VSIX to a GitHub Release if you want to distribute a built copy.
 
-The manifest uses `cyberthreed` as the local publisher namespace. Marketplace publishing would require a matching registered publisher or a manifest change; no Marketplace registration or listing is implied. Set the repository URL after you create your repository.
+The manifest uses `cyberthreed` as the extension publisher namespace. Marketplace publishing would require a matching registered publisher or a manifest change; no Marketplace registration or listing is implied. The repository URL points to CyberStudios, with this theme's folder recorded in the manifest.
 
 ## ☁️ a little preview note
 
@@ -85,5 +85,4 @@ Color themes style the editor's colors and syntax. Fonts, file icons, window lay
 
 MIT. Made by [CyberStudios](https://github.com/cyberthreed/CyberStudios).
 
-*dream in pixels. create without limits.* ♡
-
+*made of pixels, daydreams & too many open tabs.* ♡

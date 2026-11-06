@@ -1,0 +1,19 @@
+{
+  "name": "cyberstudios-theme-workshop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local source and packaging tools for eight CyberStudios VS Code themes.",
+  "scripts": {
+    "build": "node tools/build-themes.mjs",
+    "docs": "node tools/build-themes.mjs --docs-only",
+    "check": "node tools/validate-themes.mjs && node tools/check-syntax.mjs",
+    "package": "node tools/package-themes.mjs",
+    "smoke": "node tools/run-vscode-smoke.mjs"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "4.1.0",
+    "jsonc-parser": "3.3.1",
+    "vscode-oniguruma": "2.0.1",
+    "vscode-textmate": "9.3.2"
+  }
+}
