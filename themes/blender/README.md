@@ -134,7 +134,7 @@ The HTML preview is an interface illustration. Its desktop, phone, and tablet la
 
 <br>
 
-The palette comes from the [original Cybercore Cotton Candy collection](https://github.com/cyberthreed/CyberStudios/tree/main/themes/cybercore-cotton-candy). Exact colors and source references live in `source-palettes.json`.
+The palette comes from the [original Cybercore Cotton Candy collection](https://github.com/cyberthreed/CyberStudios/tree/main/themes/vscode/cybercore-cotton-candy). Exact colors and source references live in `source-palettes.json`.
 
 Blender's installed **Blender Light** preset supplied the native XML structure. The generated fields were checked against the installed Blender API.
 

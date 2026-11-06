@@ -77,7 +77,7 @@ The same dreamy interface with richer pinks, violets, and blues for more colorfu
 
 Explore the collection:
 
-[♡ Cybercore Cotton Candy](themes/cybercore-cotton-candy/)
+[♡ Cybercore Cotton Candy](themes/vscode/cybercore-cotton-candy/)
 
 ---
 

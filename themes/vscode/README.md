@@ -10,6 +10,8 @@ Standalone VS Code color themes with coordinated workbench colors, syntax highli
 
 Five dark themes. Three light themes. A place for late-night experiments, quiet focus, and whatever you're making next. ♡
 
+**[♡ Cybercore Cotton Candy · Soft & Vivid](cybercore-cotton-candy/)**
+
 ## ✧ find your workspace
 
 | Theme | Mode | Palette | Folder |
