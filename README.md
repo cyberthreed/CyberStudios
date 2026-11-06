@@ -26,6 +26,10 @@ From adaptive gameplay systems and experimental software to virtual companions a
 
 ---
 
+### 💿 [✧ JOIN THE CYBERSPACE DISCORD ♡](https://cyberspacelink.carrd.co)
+
+*join the discord for gaming, community, resources, and updates on my projects!*
+
 ### ☁️ currently running...
 
 ```text
