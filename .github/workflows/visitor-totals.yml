@@ -1,0 +1,50 @@
+name: Refresh public visitor totals
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/visitor-totals.yml'
+      - '.github/scripts/refresh-visitor-totals.mjs'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: public-visitor-totals
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out refresh script
+        uses: actions/checkout@v4
+        with:
+          path: source
+      - name: Check out read-only public totals branch
+        uses: actions/checkout@v4
+        with:
+          ref: visitor-stats
+          path: totals
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch aggregate totals
+        run: node source/.github/scripts/refresh-visitor-totals.mjs --output totals/visitor-totals.json
+      - name: Publish totals when they change
+        working-directory: totals
+        run: |
+          if git diff --quiet -- visitor-totals.json; then
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- visitor-totals.json
+          git commit -m 'Refresh public visitor totals'
+          git push origin HEAD:visitor-stats

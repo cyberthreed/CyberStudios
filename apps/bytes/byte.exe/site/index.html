@@ -873,7 +873,7 @@
   </main>
 
   <footer class="shell footer">
-    <section class="panel cs-visitors" data-goatcounter-site="https://cyberstudios-byte.goatcounter.com" aria-labelledby="cs-visitor-heading">
+    <section class="panel cs-visitors" data-goatcounter-site="https://cyberstudios-byte.goatcounter.com" data-counter-key="byte" data-counter-source="https://raw.githubusercontent.com/cyberthreed/CyberStudios/visitor-stats/visitor-totals.json" aria-labelledby="cs-visitor-heading">
   <div class="windowbar"><span id="cs-visitor-heading">visitor.count</span><span aria-hidden="true">♡</span></div>
   <div class="cs-visitor-body">
     
@@ -881,7 +881,7 @@
       <output class="cs-counter-total" aria-label="Recorded visits" hidden></output>
       <span class="cs-counter-message" role="status">Loading visitor count…</span>
     </div>
-    <p class="cs-counter-caption">Recorded visits to Byte’s website<br>Updates periodically. ♡</p>
+    <p class="cs-counter-caption">Recorded visits to Byte’s website<br>Last reported total. ♡</p>
     <p class="cs-counter-credit"><a href="https://www.goatcounter.com/" target="_blank" rel="noopener">Stats by GoatCounter ↗</a> · <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener">Privacy</a></p>
   </div>
 </section>
@@ -943,7 +943,7 @@
   </script>
 
   <script>
-// Shared, key-free GoatCounter widget. Embedded inline in each complete HTML file.
+// Shared GoatCounter collector and read-only GitHub aggregate display, embedded inline.
 (() => {
   'use strict';
   const widget = document.querySelector('.cs-visitors[data-goatcounter-site]');
@@ -951,6 +951,8 @@
   const total = widget.querySelector('.cs-counter-total');
   const message = widget.querySelector('.cs-counter-message');
   const site = widget.getAttribute('data-goatcounter-site');
+  const source = widget.getAttribute('data-counter-source');
+  const key = widget.getAttribute('data-counter-key');
   if (!total || !message) return;
   const unavailable = () => {
     total.hidden = true;
@@ -971,7 +973,9 @@
     else show('000000 · PREVIEW');
     return;
   }
-  if (!/^https:\/\/[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.goatcounter\.com$/.test(site || '')) {
+  if (!/^https:\/\/[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.goatcounter\.com$/.test(site || '') ||
+      source !== 'https://raw.githubusercontent.com/cyberthreed/CyberStudios/visitor-stats/visitor-totals.json' ||
+      !['tumblr','byte','wiki'].includes(key)) {
     unavailable();
     return;
   }
@@ -993,14 +997,17 @@
   widget.setAttribute('data-counter-state', 'loading');
   const controller = new AbortController();
   const timeout = window.setTimeout(() => controller.abort(), 8000);
-  // This endpoint is a public read-only aggregate. No API keys or dashboard access are exposed.
-  fetch(site + '/counter/TOTAL.json', {credentials: 'omit', signal: controller.signal})
+  // Read a scheduled, public aggregate snapshot. No browser analytics requests are proxied.
+  // GoatCounter collection above still follows the visitor's browser filtering.
+  fetch(source, {credentials: 'omit', cache: 'no-store', signal: controller.signal})
     .then(response => {
       if (!response.ok) throw new Error('Counter unavailable');
       return response.json();
     })
     .then(data => {
-      const value = String(data.count ?? '');
+      const entry = data.version === 1 && data.sites && data.sites[key];
+      if (!entry || !entry.available) throw new Error('Counter unavailable');
+      const value = String(entry.count ?? '');
       if (value.length > 32 || !/^\d[\d,.\s\u00a0\u202f]*$/.test(value)) throw new Error('Invalid count');
       show(value);
     })
