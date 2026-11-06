@@ -1,0 +1,41 @@
+{
+  "name": "cyberstudios-byte-terminal",
+  "displayName": "Byte Terminal · CyberStudios",
+  "description": "Deep graphite with cyan controls, lavender keywords, and mint strings. A terminal-inspired workspace for late-night experiments with Byte.",
+  "version": "1.0.0",
+  "publisher": "cyberthreed",
+  "author": {
+    "name": "CyberStudios"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "CyberStudios",
+    "dark",
+    "byte-terminal"
+  ],
+  "homepage": "https://github.com/cyberthreed",
+  "galleryBanner": {
+    "color": "#101A20",
+    "theme": "dark"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "id": "Byte Terminal",
+        "label": "Byte Terminal",
+        "uiTheme": "vs-dark",
+        "path": "./themes/byte-terminal-color-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "node scripts/package.mjs"
+  }
+}
