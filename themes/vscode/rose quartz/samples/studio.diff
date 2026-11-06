@@ -1,0 +1,7 @@
+diff --git a/studio.ts b/studio.ts
+--- a/studio.ts
++++ b/studio.ts
+@@ -1,2 +1,2 @@
+-const energy = 42;
++const energy = 88;
+ const studio = "CyberStudios";

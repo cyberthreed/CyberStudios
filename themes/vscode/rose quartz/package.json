@@ -1,0 +1,41 @@
+{
+  "name": "cyberstudios-rose-quartz",
+  "displayName": "Rose Quartz · CyberStudios",
+  "description": "Warm cream, dusty rose, and plum. A light workspace with rose controls, violet functions, and forest-green strings.",
+  "version": "1.0.0",
+  "publisher": "cyberthreed",
+  "author": {
+    "name": "CyberStudios"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "CyberStudios",
+    "light",
+    "rose-quartz"
+  ],
+  "homepage": "https://github.com/cyberthreed",
+  "galleryBanner": {
+    "color": "#FFF7F3",
+    "theme": "light"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "id": "Rose Quartz",
+        "label": "Rose Quartz",
+        "uiTheme": "vs",
+        "path": "./themes/rose-quartz-color-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "node scripts/package.mjs"
+  }
+}
