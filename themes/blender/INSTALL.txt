@@ -1,0 +1,17 @@
+CYBERSTUDIOS BLENDER THEMES / 1.0.0
+
+dream in pixels. create without limits.
+
+Ten XML presets: four new cute, four new masculine, plus Cotton Candy Soft and Vivid.
+
+1. Extract the preset ZIP.
+2. Open Blender: Edit > Preferences > Themes > Install...
+3. Choose any XML from the presets folder.
+4. Save Preferences if automatic saving is off.
+
+Only XML files are needed in Blender.
+Checked with Blender 5.2.3 LTS; other versions are untested.
+
+The separate Source ZIP contains the rebuild tools and offline HTML gallery.
+
+Made with love by CyberStudios.
