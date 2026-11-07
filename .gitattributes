@@ -1,0 +1,3 @@
+# Preserve the exact bytes of downloadable Blender presets.
+themes/blender/**/*.xml -text
+site/themes/downloads/*.xml -text
