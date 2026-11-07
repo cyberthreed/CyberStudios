@@ -41,6 +41,7 @@ jobs:
           test -f _pages/docs/index.html
           test -f _pages/themes/index.html
           test -f _pages/themes/blender/index.html
+          test -f _pages/themes/blender/gallery.html
           test -f _pages/themes/downloads/Cybercore_Cotton_Candy_Soft.xml
           test -f _pages/themes/downloads/Cybercore_Cotton_Candy_Vivid.xml
           test -f _pages/byte/index.html
