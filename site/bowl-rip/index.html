@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6dbf3">
+  <meta name="description" content="A static preview of bowl.rip, a cozy Windows desktop companion by CyberStudios, with UI concept art. Currently in preview and not yet released.">
+  <title>bowl.rip preview ♡ CyberStudios Wiki</title>
+  <style>
+    :root {
+      --ink:#7e5c9d;
+      --muted:#a186b5;
+      --border:#e7c9f5;
+      --paper:#fffaffed;
+      --bar:linear-gradient(100deg,#f6dbf3,#e5efff);
+      --shadow:#dfc6e759;
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      font:13px "Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%,#ffdaedb0,transparent 35%),
+        radial-gradient(circle at 90% 22%,#c8effabf,transparent 35%),
+        linear-gradient(125deg,#fff1fb,#f5ecff 58%,#e9f9ff);
+    }
+
+    body.night {
+      --ink:#dfc3ee;
+      --muted:#b99dc9;
+      --border:#69507d;
+      --paper:#332b47f2;
+      --bar:linear-gradient(100deg,#47304f,#303c59);
+      --shadow:#23192e55;
+      background:linear-gradient(125deg,#4f294c,#302745 55%,#233c59);
+    }
+
+    a { color:inherit; }
+    button { font:inherit; cursor:pointer; }
+
+    :focus-visible {
+      outline:3px solid #b68fdf;
+      outline-offset:3px;
+    }
+
+    .shell {
+      width:min(1150px,calc(100% - 34px));
+      margin:auto;
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:15px;
+      padding:25px 0;
+    }
+
+    .brand {
+      display:flex;
+      gap:13px;
+      align-items:center;
+      text-decoration:none;
+    }
+
+    .brand-icon {
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#ffd6ee,#c9effd);
+      border:2px solid var(--border);
+      border-radius:18px;
+      box-shadow:0 6px 0 var(--shadow);
+      font-size:29px;
+      color:#9e76c0;
+    }
+
+    .brand small {
+      display:block;
+      color:var(--muted);
+      font-size:10px;
+      letter-spacing:2px;
+      font-weight:700;
+    }
+
+    .brand strong {
+      display:block;
+      font-size:25px;
+      margin-top:3px;
+    }
+
+    .topnav {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .topnav a,.topnav button {
+      border:1px solid var(--border);
+      border-radius:22px;
+      background:var(--paper);
+      padding:10px 14px;
+      text-decoration:none;
+      color:var(--ink);
+      font-size:11px;
+      font-weight:650;
+    }
+
+    .layout {
+      display:grid;
+      grid-template-columns:220px minmax(0,1fr);
+      gap:18px;
+      align-items:start;
+    }
+
+    .panel {
+      border:2px solid var(--border);
+      border-radius:20px;
+      background:var(--paper);
+      overflow:hidden;
+      box-shadow:0 9px 0 var(--shadow),0 24px 40px #b78bc313;
+    }
+
+    .windowbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      min-height:44px;
+      padding:10px 16px;
+      background:var(--bar);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .sidebar {
+      position:sticky;
+      top:16px;
+    }
+
+    .sidebar-inner { padding:15px; }
+
+    .sidebar a {
+      display:block;
+      text-decoration:none;
+      padding:11px 12px;
+      margin-bottom:4px;
+      border-radius:10px;
+      font-size:12px;
+    }
+
+    .sidebar a:hover {
+      background:#f1e3fc;
+      color:#8c63b3;
+    }
+
+    .sidebar a.active {
+      background:#eedcfb;
+      color:#8658ae;
+      font-weight:700;
+    }
+
+    .sidebar-label {
+      margin:11px 8px;
+      font:700 10px Consolas,monospace;
+      letter-spacing:1px;
+      color:var(--muted);
+    }
+
+    .main-column {
+      display:grid;
+      gap:19px;
+      min-width:0;
+    }
+
+    .hero {
+      padding:37px;
+      background:
+        radial-gradient(circle at 85% 18%,#ffffff9c,transparent 40%),
+        linear-gradient(135deg,#ffe5f3,#e7e2ff 65%,#dff5ff);
+      color:#7e5c9d;
+    }
+
+    .hero .eyebrow {
+      font:700 11px Consolas,monospace;
+      letter-spacing:1.5px;
+      color:#a47dc1;
+    }
+
+    .hero h1 {
+      margin:17px 0;
+      font-size:clamp(34px,5vw,55px);
+      line-height:1.1;
+    }
+
+    .hero h1 span { color:#d782bd; }
+
+    .hero p {
+      max-width:630px;
+      color:#866c9c;
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .content { padding:26px; }
+
+    .heading {
+      margin:0 0 12px;
+      font-size:23px;
+    }
+
+    .heading span { color:#d782bd; }
+
+    .subtext {
+      color:var(--muted);
+      line-height:1.8;
+      font-size:13px;
+    }
+
+    .status {
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:20px;
+      background:#eedcfb;
+      color:#936bb2;
+      font:10px Consolas,monospace;
+    }
+
+    .info {
+      padding:15px;
+      border:1px dashed var(--border);
+      border-radius:12px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .info strong { color:var(--ink); }
+
+    .gallery {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px;
+      margin-top:20px;
+    }
+
+    .shot {
+      margin:0;
+      border:2px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      background:var(--paper);
+      box-shadow:0 7px 0 var(--shadow);
+    }
+
+    .shot a { display:block; }
+
+    .shot img {
+      display:block;
+      width:100%;
+      height:auto;
+      aspect-ratio:4/3;
+      object-fit:cover;
+    }
+
+    .shot figcaption {
+      padding:10px 14px;
+      background:var(--bar);
+      color:var(--ink);
+      font-size:11px;
+      line-height:1.6;
+    }
+
+    .shot figcaption strong {
+      display:block;
+      font:700 10px Consolas,monospace;
+      letter-spacing:1px;
+    }
+
+    .features {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .feature {
+      padding:18px;
+      border:1px solid var(--border);
+      border-radius:17px;
+      background:var(--paper);
+    }
+
+    .feature h3 {
+      margin:0 0 6px;
+      font-size:15px;
+    }
+
+    .feature p {
+      margin:0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.75;
+    }
+
+    .meta {
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:6px 16px;
+      margin:16px 0 0;
+      font-size:12px;
+    }
+
+    .meta dt {
+      font:700 10px Consolas,monospace;
+      letter-spacing:1px;
+      color:var(--muted);
+      padding-top:2px;
+    }
+
+    .meta dd { margin:0; color:var(--ink); }
+
+    .actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .btn {
+      display:inline-block;
+      border:1px solid var(--border);
+      border-radius:22px;
+      background:var(--paper);
+      padding:10px 16px;
+      text-decoration:none;
+      color:var(--ink);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .btn:hover { border-color:#b68fdf; }
+
+    .footer {
+      text-align:center;
+      padding:45px 0;
+      color:var(--muted);
+      font:11px/1.9 Consolas,monospace;
+    }
+
+    .night .hero {
+      background:linear-gradient(135deg,#4d335a,#34324f 70%,#2b4860);
+      color:#dfc3ee;
+    }
+
+    .night .hero h1 span { color:#f0a5d8; }
+    .night .hero p { color:#c5acd9; }
+    .night .status { background:#58416b; color:#e3c8fa; }
+    .night .sidebar a.active { background:#57416b; color:#eed5ff; }
+    .night .sidebar a:hover { background:#57416b; color:#eed5ff; }
+
+    @media(max-width:860px) {
+      .layout { grid-template-columns:1fr; }
+      .sidebar { position:static; }
+      .sidebar-inner {
+        display:flex;
+        flex-wrap:wrap;
+        gap:6px;
+      }
+      .sidebar-label { display:none; }
+      .sidebar a { margin:0; }
+    }
+
+    @media(max-width:700px) {
+      .gallery,.features { grid-template-columns:1fr; }
+    }
+
+    @media(max-width:560px) {
+      .hero { padding:25px 20px; }
+      .content { padding:20px; }
+      .topnav { width:100%; }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+    }
+  </style>
+  <link rel="stylesheet" href="../assets/wiki-branding.css">
+</head>
+
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="../">
+      <span class="brand-icon" aria-hidden="true"><img src="../assets/cyberstudios.png" alt="" width="1280" height="1280" decoding="async"></span>
+      <span>
+        <small>THE CYBERSTUDIOS ARCHIVE</small>
+        <strong>CyberStudios ♡</strong>
+      </span>
+    </a>
+
+    <nav class="topnav">
+      <a href="../themes/">✧ Themes</a>
+      <a href="../ascii-art/">▒ ASCII ART</a>
+      <a href="../">⌂ Wiki Home</a>
+      <a href="../about/">♡ About</a>
+      <a href="../byte/">🐾 Byte.exe</a>
+      <button id="theme-toggle" type="button" aria-pressed="false">
+        ☾ Night mode
+      </button>
+      <button id="byte-toggle" class="theme-button" type="button" aria-pressed="true" hidden>♡ Hide Byte</button>
+    </nav>
+  </header>
+
+  <main class="shell layout">
+
+    <aside class="panel sidebar">
+      <div class="windowbar">
+        <span>◌ bowl.rip</span>
+        <span>⌂</span>
+      </div>
+      <nav class="sidebar-inner">
+        <p class="sidebar-label">PREVIEW</p>
+        <a href="../">⌂ Wiki homepage</a>
+        <a class="active" href="#top">◌ bowl.rip</a>
+        <a href="#concepts">✧ Concept art</a>
+        <a href="#features">♡ What it does</a>
+        <a href="#status">▦ Status</a>
+        <a href="../projects/">▦ Project directory</a>
+        <a href="../about/">♡ About CyberStudios</a>
+      </nav>
+    </aside>
+
+    <div class="main-column">
+      <section class="panel" id="top">
+        <div class="windowbar">
+          <span>◌ bowl.rip_preview</span>
+          <span>CYBERSTUDIOS</span>
+        </div>
+        <div class="hero">
+          <span class="eyebrow">✧ A COZY DESKTOP COMPANION · PREVIEW ✧</span>
+          <h1>Your cozy corner, <span>on your desktop.</span></h1>
+          <p>
+            bowl.rip is a Windows desktop companion about slowing down. Pack, light, bubble and exhale with your favorite illustrated glass, then decorate a lounge of your own and build a collection over time.
+          </p>
+          <p>
+            Everything stays on your device: no accounts, no analytics, no cloud sync. This page is a static preview with concept art, since the app isn't released yet. ♡
+          </p>
+          <p><span class="status">PREVIEW 0.3.0 · NOT YET RELEASED</span></p>
+        </div>
+      </section>
+
+      <section class="panel" id="notice">
+        <div class="windowbar">
+          <span>✧ content_note.txt</span>
+          <span>PLEASE READ</span>
+        </div>
+        <div class="content">
+          <div class="info">
+            <strong>Content note:</strong> bowl.rip is cannabis-themed. A rating will be added once its distribution is decided.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="concepts">
+        <div class="windowbar">
+          <span>✧ concept_art / ui_boards</span>
+          <span>CONCEPT ART</span>
+        </div>
+        <div class="content">
+          <h2 class="heading">UI <span>concept art</span></h2>
+          <p class="subtext">
+            Four interface boards from the design process, covering the companion window, the lounge and collection, creative tools, and the extras. They show the direction rather than the finished app, so details may change before release. Select any image to open it full size.
+          </p>
+
+          <div class="gallery">
+            <figure class="shot">
+              <a href="../assets/bowl-rip/concept-companion.webp" target="_blank" rel="noopener">
+                <img src="../assets/bowl-rip/concept-companion.webp" alt="Concept board for the bowl.rip companion window: a large illustrated glass with Pack, Light and Clear buttons, a four-step pack, light, bubble, exhale sequence, and a size slider from 75 to 200 percent." width="1200" height="900" loading="lazy">
+              </a>
+              <figcaption><strong>ROUND 05 · COMPANION</strong>The main window, the four-step ritual and live sizing.</figcaption>
+            </figure>
+            <figure class="shot">
+              <a href="../assets/bowl-rip/concept-room-collection.webp" target="_blank" rel="noopener">
+                <img src="../assets/bowl-rip/concept-room-collection.webp" alt="Concept board showing a decorated pastel bedroom lounge with an illustrated glass on a daisy table, a decor tray on the left and a glass collection panel on the right." width="1200" height="900" loading="lazy">
+              </a>
+              <figcaption><strong>ROUND 06 · LOUNGE &amp; COLLECTION</strong>A room of your own, plus a shelf for every glass you collect.</figcaption>
+            </figure>
+            <figure class="shot">
+              <a href="../assets/bowl-rip/concept-smoke-discoveries.webp" target="_blank" rel="noopener">
+                <img src="../assets/bowl-rip/concept-smoke-discoveries.webp" alt="Concept board showing the Smoke Painter drawing tool, Polaroid Mode room photos, and a discoveries panel with a Daisy Dream mastery meter." width="1200" height="900" loading="lazy">
+              </a>
+              <figcaption><strong>ROUND 07 · SMOKE ART &amp; DISCOVERIES</strong>Smoke Painter, Polaroid Mode and progress at your own pace.</figcaption>
+            </figure>
+            <figure class="shot">
+              <a href="../assets/bowl-rip/concept-personalities-workshop.webp" target="_blank" rel="noopener">
+                <img src="../assets/bowl-rip/concept-personalities-workshop.webp" alt="Concept board showing Bloop and Puff character personalities, Byte the pixel cat visiting a shelf, a Stargazing constellation game, and the Glass Workshop part picker." width="1200" height="900" loading="lazy">
+              </a>
+              <figcaption><strong>ROUND 08 · PERSONALITIES &amp; WORKSHOP</strong>Bloop and Puff, a visit from Byte, stargazing and the Glass Workshop.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="features">
+        <div class="windowbar">
+          <span>♡ what_it_does.txt</span>
+          <span>PREVIEW FEATURES</span>
+        </div>
+        <div class="content">
+          <h2 class="heading">What <span>it does</span></h2>
+          <p class="subtext">
+            A summary of the current 0.3.0 preview. Features may change before a public release.
+          </p>
+          <div class="features">
+            <div class="feature">
+              <h3>Three companion looks</h3>
+              <p>Glass only, Perch or Full widget. Drag it anywhere on your desktop, scale the glass from 75 to 200%, and give each glass its own remembered spot.</p>
+            </div>
+            <div class="feature">
+              <h3>A lounge to decorate</h3>
+              <p>Nine backgrounds and 48 decorations. Move, resize, rotate, layer and snap furniture, then save up to five room presets.</p>
+            </div>
+            <div class="feature">
+              <h3>A collection to grow</h3>
+              <p>24 glasses, 24 cosmetic strains and 14 lighters, with a Glass Workshop for mixing compatible parts.</p>
+            </div>
+            <div class="feature">
+              <h3>Creative extras</h3>
+              <p>Smoke Painter, room Polaroids, stargazing, per-glass mastery and visits from Byte, who is not always helpful.</p>
+            </div>
+            <div class="feature">
+              <h3>Gentle comforts</h3>
+              <p>Named reminders with quiet hours, synthesized ambient sounds, your own MP3 or WAV tracks, a sleep timer, and private notes and doodles.</p>
+            </div>
+            <div class="feature">
+              <h3>Private by design</h3>
+              <p>Saves live on your computer. No accounts, analytics, cloud sync or automatic startup, and sound starts off.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="status">
+        <div class="windowbar">
+          <span>▦ release_status.txt</span>
+          <span>STATUS</span>
+        </div>
+        <div class="content">
+          <h2 class="heading">Where <span>it stands</span></h2>
+          <dl class="meta">
+            <dt>VERSION</dt><dd>0.3.0-preview.2</dd>
+            <dt>PLATFORM</dt><dd>Windows (x64), built with Electron</dd>
+            <dt>STATUS</dt><dd>Preview. Not yet released or available to download.</dd>
+            <dt>BUILDS</dt><dd>Preview builds are unsigned.</dd>
+            <dt>DISTRIBUTION</dt><dd>To be decided. This page will be updated when there is something to download.</dd>
+            <dt>BY</dt><dd>CyberStudios</dd>
+          </dl>
+          <div class="actions">
+            <a class="btn" href="../projects/">▦ Back to the project directory</a>
+            <a class="btn" href="../byte/">🐾 Meet Byte.exe</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="shell footer">
+    ✦ CYBERSTUDIOS WIKI ♡<br>
+    <strong>dream in pixels. create without limits.</strong><br>
+    BOWL.RIP · PREVIEW<br>
+    © 2026 CyberStudios
+  </footer>
+
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+
+    function setNight(value) {
+      document.body.classList.toggle("night", value);
+      toggle.setAttribute("aria-pressed", String(value));
+      toggle.textContent = value ? "☀ Day mode" : "☾ Night mode";
+
+      try {
+        localStorage.setItem(
+          "cyberstudios-wiki-night",
+          value ? "1" : "0"
+        );
+      } catch (error) {}
+    }
+
+    try {
+      setNight(
+        localStorage.getItem("cyberstudios-wiki-night") === "1"
+      );
+    } catch (error) {
+      setNight(false);
+    }
+
+    toggle.addEventListener("click", () => {
+      setNight(!document.body.classList.contains("night"));
+    });
+  </script>
+  <div class="byte-companion" id="byte-companion" hidden>
+    <button class="byte-character" id="byte-character" type="button" aria-label="Byte: open companion controls" aria-expanded="false" aria-controls="byte-menu" aria-describedby="byte-keyboard-help">
+      <img src="../byte/assets/icon.png" alt="" width="76" height="76">
+    </button>
+    <span class="byte-caption" aria-hidden="true">byte ♡</span>
+  </div>
+  <section class="panel byte-menu" id="byte-menu" aria-labelledby="byte-menu-heading" hidden>
+    <div class="windowbar"><span id="byte-menu-heading">♡ byte's little corner</span><span aria-hidden="true">✧</span></div>
+    <div class="byte-body">
+      <p class="byte-response" id="byte-response" role="status" aria-live="polite" aria-atomic="true">Hello, little star. ♡</p>
+      <div class="byte-controls">
+        <button type="button" id="byte-pet">♡ Pet</button>
+        <button type="button" id="byte-treat">✿ Treat</button>
+        <button type="button" id="byte-rest" aria-pressed="false">☾ Rest</button>
+        <button class="wide" type="button" id="byte-roam" aria-pressed="false">Start roaming</button>
+      </div>
+      <div class="byte-controls move-controls">
+        <button type="button" id="byte-left" aria-label="Move Byte left">← Left</button>
+        <button type="button" id="byte-home">Reset spot</button>
+        <button type="button" id="byte-right" aria-label="Move Byte right">Right →</button>
+      </div>
+      <p class="byte-help" id="byte-keyboard-help">With Byte focused, use Left/Right to move or Home to reset. Escape closes controls. Roaming pauses while Byte or his controls have focus.</p>
+      <div class="byte-controls"><button type="button" id="byte-close">Close controls</button><button type="button" id="byte-hide">Hide Byte</button></div>
+    </div>
+  </section>
+  <script src="../assets/wiki-companion.js" defer></script>
+</body>
+</html>
