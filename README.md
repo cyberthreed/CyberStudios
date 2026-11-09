@@ -54,6 +54,7 @@ From adaptive gameplay systems and experimental software to virtual companions a
 | 🐈‍⬛ **Byte.exe** | A tiny interactive virtual pet starring CyberStudios pixel-cat mascot. | **[Download byte!](https://cyberthreed.github.io/CyberStudios/byte/)** |
 | 🩷 **Cybercore Cotton Candy** | Dreamy pastel VS Code customization presets in Soft and Vivid. | **[🌷 Theme collection](https://github.com/cyberthreed/CyberStudios/tree/main/themes)** |
 | 🍸 **[TipsyZois](https://cyberthreed.github.io/CyberStudios/projects/tipsyzois.html)** | From a first buzz to a messy morning after: five intoxication stages, drunk interactions, custom emotions, and serious stakes for your inZOI stories. | ✨ Released · [Nexus Mods](https://www.nexusmods.com/inzoi/mods/1691) |
+| ✧ **ASCII Apparition Exhibition** | A gallery of animated ASCII artworks, digital apparitions, and experiments made from characters and code. | ♡ [Explore the gallery](https://cyberthreed.github.io/CyberStudios/ascii-art/) |
 | 💿 **CyberCore** | An adaptive AI gameplay ecosystem and framework for immersive simulation experiences. | 🛠️ In development |
 | 🫧 **FamilyTies** | A CyberCore gameplay module exploring relationships, social memory, and family connections. | 🛠️ In development |
 | ☁️ **Cybercore Theme Studio** | An interactive tool for creating and exporting custom VS Code palettes. | ✧ Planned |
@@ -99,7 +100,11 @@ Explore the collection:
 
 Byte is CyberStudios' official mascot, a tiny black-and-purple pixel cat with glowing cyan eyes, a star on his forehead, and a personality all his own.
 
-He's currently starring in **Byte.exe**, an interactive virtual pet project where visitors will be able to play with him, care for him, and discover his little habits.
+He's the star of **Byte.exe**, CyberStudios' first released desktop companion! ♡
+
+Give him a home on your Windows desktop, play with him, keep him company, or let him wander around while you're coding, creating, and collecting far too many open tabs.
+
+**Byte.exe v1.0.0 is available now.** Your newest screen dweller is waiting to meet you. 🐾
 
 *Please do not feed the computer after midnight. Byte has questions.*
 
@@ -107,11 +112,13 @@ He's currently starring in **Byte.exe**, an interactive virtual pet project wher
 
 ### 💜 meet cy!
 
-**Cy** is the face of CyberStudios, our resident digital dreamer and creative mascot.
+She's my digital alter ego, the face of CyberStudios, and a piece of myself living somewhere between imagination and cyberspace.
 
-She represents the artistic side of the studio: imagination, individuality, experimentation, and the belief that technology can be expressive.
+Cy is an extension of me, but she isn't literally me or some perfect version of who I want to be. She has her own identity, her own world, and room to become something entirely her own.
 
-Where Cy creates, Byte follows. ♡
+She's the creative heart of CyberStudios, exploring everything from digital art and strange experiments to the worlds I'm building through code.
+
+And wherever Cy goes, there's a good chance Byte isn't far behind. 🐈‍⬛
 
 ---
 
