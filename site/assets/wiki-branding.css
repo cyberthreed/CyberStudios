@@ -35,6 +35,9 @@
   .wiki-cy { grid-row:1; width:min(220px,100%); justify-self:center; }
   .wiki-cy figcaption { margin-top:2px; }
   .byte-companion,.byte-menu { left:12px; }
+  .byte-companion { width:60px; bottom:max(8px,env(safe-area-inset-bottom)); }
+  .byte-character { width:60px; min-height:60px; padding:2px; }
+  .byte-character img { width:50px; height:50px; }
 }
 @media(prefers-reduced-motion:reduce) {
   .byte-character,.byte-character.is-happy { animation:none!important; }
