@@ -1,0 +1,676 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6dbf3">
+  <meta name="description" content="A curated CyberStudios gallery of ASCII art, beginning with the ASCII Apparition Exhibition: #00 THE MACHINE DREAMS OF ANGELS.">
+  <title>ASCII ART ♡ CyberStudios Wiki</title>
+  <style>
+    :root {
+      --ink:#7e5c9d;
+      --muted:#a186b5;
+      --border:#e7c9f5;
+      --paper:#fffaffed;
+      --bar:linear-gradient(100deg,#f6dbf3,#e5efff);
+      --shadow:#dfc6e759;
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      font:13px "Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%,#ffdaedb0,transparent 35%),
+        radial-gradient(circle at 90% 22%,#c8effabf,transparent 35%),
+        linear-gradient(125deg,#fff1fb,#f5ecff 58%,#e9f9ff);
+    }
+
+    body.night {
+      --ink:#dfc3ee;
+      --muted:#b99dc9;
+      --border:#69507d;
+      --paper:#332b47f2;
+      --bar:linear-gradient(100deg,#47304f,#303c59);
+      --shadow:#23192e55;
+      background:linear-gradient(125deg,#4f294c,#302745 55%,#233c59);
+    }
+
+    a { color:inherit; }
+    button,input { font:inherit; }
+    button { cursor:pointer; }
+
+    :focus-visible {
+      outline:3px solid #b68fdf;
+      outline-offset:3px;
+    }
+
+    .shell {
+      width:min(1150px,calc(100% - 34px));
+      margin:auto;
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:15px;
+      padding:25px 0;
+    }
+
+    .brand {
+      display:flex;
+      gap:13px;
+      align-items:center;
+      text-decoration:none;
+    }
+
+    .brand-icon {
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#ffd6ee,#c9effd);
+      border:2px solid var(--border);
+      border-radius:18px;
+      box-shadow:0 6px 0 var(--shadow);
+      font-size:29px;
+      color:#9e76c0;
+    }
+
+    .brand small {
+      display:block;
+      color:var(--muted);
+      font-size:10px;
+      letter-spacing:2px;
+      font-weight:700;
+    }
+
+    .brand strong {
+      display:block;
+      font-size:25px;
+      margin-top:3px;
+    }
+
+    .topnav {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .topnav a,.topnav button {
+      border:1px solid var(--border);
+      border-radius:22px;
+      background:var(--paper);
+      padding:10px 14px;
+      text-decoration:none;
+      color:var(--ink);
+      font-size:11px;
+      font-weight:650;
+    }
+
+    .layout {
+      display:grid;
+      grid-template-columns:220px minmax(0,1fr);
+      gap:18px;
+      align-items:start;
+    }
+
+    .panel {
+      border:2px solid var(--border);
+      border-radius:20px;
+      background:var(--paper);
+      overflow:hidden;
+      box-shadow:0 9px 0 var(--shadow),0 24px 40px #b78bc313;
+    }
+
+    .windowbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      min-height:44px;
+      padding:10px 16px;
+      background:var(--bar);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .sidebar {
+      position:sticky;
+      top:16px;
+    }
+
+    .sidebar-inner { padding:15px; }
+
+    .sidebar a {
+      display:block;
+      text-decoration:none;
+      padding:11px 12px;
+      margin-bottom:4px;
+      border-radius:10px;
+      font-size:12px;
+    }
+
+    .sidebar a:hover {
+      background:#f1e3fc;
+      color:#8c63b3;
+    }
+
+    .sidebar a.active {
+      background:#eedcfb;
+      color:#8658ae;
+      font-weight:700;
+    }
+
+    .sidebar-label {
+      margin:11px 8px;
+      font:700 10px Consolas,monospace;
+      letter-spacing:1px;
+      color:var(--muted);
+    }
+
+    .main-column {
+      display:grid;
+      gap:19px;
+      min-width:0;
+    }
+
+    .hero {
+      padding:37px;
+      background:
+        radial-gradient(circle at 85% 18%,#ffffff9c,transparent 40%),
+        linear-gradient(135deg,#ffe5f3,#e7e2ff 65%,#dff5ff);
+      color:#7e5c9d;
+    }
+
+    .hero .eyebrow {
+      font:700 11px Consolas,monospace;
+      letter-spacing:1.5px;
+      color:#a47dc1;
+    }
+
+    .hero h1 {
+      margin:17px 0;
+      font-size:clamp(34px,5vw,55px);
+      line-height:1.1;
+    }
+
+    .hero h1 span { color:#d782bd; }
+
+    .hero p {
+      max-width:630px;
+      color:#866c9c;
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .content { padding:26px; }
+
+    .heading {
+      margin:0 0 12px;
+      font-size:23px;
+    }
+
+    .heading span { color:#d782bd; }
+
+    .subtext {
+      color:var(--muted);
+      line-height:1.8;
+      font-size:13px;
+    }
+
+    .search {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:0 15px;
+      margin:20px 0;
+      border:1px solid var(--border);
+      border-radius:13px;
+      background:var(--paper);
+    }
+
+    .search input {
+      width:100%;
+      min-width:0;
+      padding:14px 0;
+      border:0;
+      outline:0;
+      background:transparent;
+      color:var(--ink);
+    }
+
+    .search input::placeholder { color:var(--muted); }
+
+    .projects {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+
+    .project {
+      padding:20px;
+      background:var(--paper);
+      border:1px solid var(--border);
+      border-radius:17px;
+    }
+
+    .project[hidden] { display:none; }
+
+    .project-heading {
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .project-icon {
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      flex-shrink:0;
+      border-radius:16px;
+      background:linear-gradient(135deg,#ffe1f2,#dcd7ff);
+      font-size:26px;
+      color:#9d76c0;
+    }
+
+    .project-icon img {
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      image-rendering:pixelated;
+    }
+
+    .project h3 {
+      margin:0 0 4px;
+      font-size:16px;
+    }
+
+    .category {
+      font-size:10px;
+      color:var(--muted);
+    }
+
+    .project p {
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.75;
+    }
+
+    .status {
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:20px;
+      background:#eedcfb;
+      color:#936bb2;
+      font:10px Consolas,monospace;
+    }
+
+    .project a {
+      display:inline-block;
+      margin-top:15px;
+      font-size:12px;
+      font-weight:700;
+      text-underline-offset:4px;
+    }
+
+    .article {
+      padding:10px 0;
+      border-bottom:1px solid var(--border);
+    }
+
+    .article:last-child { border-bottom:0; }
+
+    .article h3 {
+      font-size:16px;
+      margin:15px 0 8px;
+    }
+
+    .article p {
+      line-height:1.8;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .article strong { color:var(--ink); }
+
+    .info {
+      margin-top:18px;
+      padding:15px;
+      border:1px dashed var(--border);
+      border-radius:12px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .empty {
+      display:none;
+      color:var(--muted);
+      margin:15px 0;
+    }
+
+    .empty.visible { display:block; }
+
+    .footer {
+      text-align:center;
+      padding:45px 0;
+      color:var(--muted);
+      font:11px/1.9 Consolas,monospace;
+    }
+
+    .night .hero {
+      background:linear-gradient(135deg,#4d335a,#34324f 70%,#2b4860);
+      color:#dfc3ee;
+    }
+
+    .night .hero h1 span { color:#f0a5d8; }
+    .night .hero p { color:#c5acd9; }
+    .night .project { background:#3c304f; }
+    .night .status { background:#58416b; color:#e3c8fa; }
+    .night .sidebar a.active { background:#57416b; color:#eed5ff; }
+    .night .sidebar a:hover { background:#57416b; color:#eed5ff; }
+
+    @media(max-width:860px) {
+      .layout { grid-template-columns:1fr; }
+      .sidebar { position:static; }
+      .sidebar-inner {
+        display:flex;
+        flex-wrap:wrap;
+        gap:6px;
+      }
+      .sidebar-label { display:none; }
+      .sidebar a { margin:0; }
+    }
+
+    @media(max-width:560px) {
+      .projects { grid-template-columns:1fr; }
+      .hero { padding:25px 20px; }
+      .content { padding:20px; }
+      .topnav { width:100%; }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+    }
+    .gallery-label { font:700 10px Consolas,monospace; letter-spacing:1.5px; color:var(--muted); }
+    .entry { display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr); gap:24px; margin-top:20px; align-items:start; }
+    .entry-no { display:inline-block; padding:7px 12px; border-radius:20px; background:#eedcfb; color:#8658ae; font:700 12px Consolas,monospace; letter-spacing:1px; }
+    .entry h3 { margin:14px 0 8px; font-size:22px; line-height:1.25; text-transform:uppercase; }
+    .entry p { color:var(--muted); line-height:1.8; font-size:13px; }
+    .specimen { margin:0; border:2px solid var(--border); border-radius:16px; overflow:hidden; background:#0c0913; box-shadow:0 7px 0 var(--shadow); }
+    .specimen img { display:block; width:100%; height:auto; aspect-ratio:710/1262; object-fit:cover; object-position:top; }
+    .specimen figcaption { padding:8px 12px; background:var(--bar); color:var(--ink); font:10px Consolas,monospace; letter-spacing:1px; }
+    .meta { display:grid; grid-template-columns:auto 1fr; gap:6px 16px; margin:16px 0; font-size:12px; }
+    .meta dt { font:700 10px Consolas,monospace; letter-spacing:1px; color:var(--muted); padding-top:2px; }
+    .meta dd { margin:0; color:var(--ink); }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+    .btn { display:inline-block; border:1px solid var(--border); border-radius:22px; background:var(--paper); padding:10px 16px; text-decoration:none; color:var(--ink); font-size:12px; font-weight:700; cursor:pointer; }
+    .btn.primary { background:linear-gradient(100deg,#f6dbf3,#d9e6ff); }
+    .btn:hover { border-color:#b68fdf; }
+    .viewer { margin-top:22px; border:2px solid var(--border); border-radius:16px; overflow:hidden; background:#0c0913; }
+    .viewer[hidden] { display:none; }
+    .viewer iframe { display:block; width:100%; height:min(1180px,92vh); border:0; background:#0c0913; }
+    .viewer-bar { display:flex; justify-content:space-between; gap:10px; padding:8px 14px; background:var(--bar); font:700 11px Consolas,monospace; }
+    .viewer-bar a, .viewer-bar button { color:var(--ink); background:none; border:0; font:inherit; text-decoration:underline; }
+    .collection-meta { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:6px; }
+    .card-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:18px; }
+    .art-card { padding:18px; border:1px solid var(--border); border-radius:17px; background:var(--paper); }
+    .art-card h3 { margin:12px 0 6px; font-size:16px; }
+    .art-card p { color:var(--muted); font-size:12px; line-height:1.7; }
+    .art-card .thumb { aspect-ratio:4/3; border-radius:12px; overflow:hidden; background:#0c0913; }
+    .art-card .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+    .empty-state { margin-top:18px; padding:34px 20px; text-align:center; border:2px dashed var(--border); border-radius:18px; color:var(--muted); line-height:1.8; }
+    .empty-state pre { margin:0 0 14px; font:13px/1.35 Consolas,monospace; color:#b68fdf; }
+    .empty-state strong { color:var(--ink); display:block; font-size:15px; }
+    .night .empty-state pre { color:#e3c8fa; }
+    .night .entry-no { background:#58416b; color:#e3c8fa; }
+    .night .btn.primary { background:linear-gradient(100deg,#47304f,#303c59); }
+    @media(max-width:860px) { .entry { grid-template-columns:1fr; } .specimen { max-width:340px; } }
+    @media(max-width:560px) { .card-grid { grid-template-columns:1fr; } .viewer iframe { height:80vh; } }
+  </style>
+  <link rel="stylesheet" href="../assets/wiki-branding.css">
+</head>
+
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="../">
+      <span class="brand-icon" aria-hidden="true"><img src="../assets/cyberstudios.png" alt="" width="1280" height="1280" decoding="async"></span>
+      <span>
+        <small>THE CYBERSTUDIOS ARCHIVE</small>
+        <strong>CyberStudios ♡</strong>
+      </span>
+    </a>
+
+    <nav class="topnav">
+      <a href="../themes/">✧ Themes</a>
+      <a href="./" aria-current="page">▒ ASCII ART</a>
+      <a href="../">⌂ Wiki Home</a>
+      <a href="../about/">♡ About</a>
+      <a href="../byte/">🐾 Byte.exe</a>
+      <button id="theme-toggle" type="button" aria-pressed="false">
+        ☾ Night mode
+      </button>
+      <button id="byte-toggle" class="theme-button" type="button" aria-pressed="true" hidden>♡ Hide Byte</button>
+    </nav>
+  </header>
+
+  <main class="shell layout">
+
+    <aside class="panel sidebar">
+      <div class="windowbar">
+        <span>▒ ascii.gallery</span>
+        <span>⌂</span>
+      </div>
+      <nav class="sidebar-inner">
+        <p class="sidebar-label">GALLERY</p>
+        <a href="../">⌂ Wiki homepage</a>
+        <a class="active" href="#top">▒ ASCII ART</a>
+        <a href="#apparition">✧ Apparition Exhibition</a>
+        <a href="#entry-00">♡ #00 Angels</a>
+        <a href="#other-projects">▦ Other projects</a>
+        <a href="../projects/">▦ Project directory</a>
+        <a href="../about/">♡ About CyberStudios</a>
+      </nav>
+    </aside>
+
+    <div class="main-column">
+      <section class="panel" id="top">
+        <div class="windowbar">
+          <span>▒ ascii_art.exe</span>
+          <span>CYBERSTUDIOS</span>
+        </div>
+        <div class="hero">
+          <span class="eyebrow">✧ A CURATED DIGITAL GALLERY ✧</span>
+          <h1>Made of <span>characters.</span> Remembered like light.</h1>
+          <p>
+            Typography as a material. This gallery holds CyberStudios' experiments in ASCII art, from a numbered series of animated apparitions to standalone pieces that wander their own way.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel" id="apparition">
+        <div class="windowbar">
+          <span>✧ collection_a / apparition_exhibition</span>
+          <span>COLLECTION A</span>
+        </div>
+        <div class="content">
+          <div class="collection-meta"><span class="gallery-label">COLLECTION A · ONGOING SERIES</span></div>
+          <h2 class="heading">ASCII <span>Apparition</span> Exhibition</h2>
+          <p class="subtext">
+            A numbered, ongoing series of experimental ASCII artworks. Each apparition is a complete piece with its own number, and new entries are added to the end of the series.
+          </p>
+
+          <article class="entry" id="entry-00" data-exhibition="00">
+            <figure class="specimen">
+              <img src="../assets/ascii-art/angels-preview.png" alt="Preview of THE MACHINE DREAMS OF ANGELS: a long-haired angel with towering feathered wings, rendered in lavender, pink, and icy blue characters on near-black." width="710" height="1262" loading="lazy">
+              <figcaption>#00 · capture from the live artwork</figcaption>
+            </figure>
+            <div>
+              <span class="entry-no">#00</span>
+              <h3>THE MACHINE DREAMS OF ANGELS</h3>
+              <p>
+                An interactive, animated ASCII exhibition that translates a gothic sigilism illustration into thousands of individually rendered characters: wings, long hair, an ornate sword, and thorn-covered linework, reconstructed through code.
+              </p>
+              <p><em>even sleeping machines remember the sky.</em></p>
+              <dl class="meta">
+                <dt>EXHIBITION</dt><dd>ASCII Apparition Exhibition · #00</dd>
+                <dt>ARTIST</dt><dd>cyberthreed · CyberStudios</dd>
+                <dt>MADE WITH</dt><dd>Python · JavaScript · HTML5 · CSS3 · Canvas API</dd>
+                <dt>CONTROLS</dt><dd>Pause/play · glow · motion · presence · Space, G, R</dd>
+                <dt>RIGHTS</dt><dd>Original artwork © 2026 cyberthreed. Please credit cyberthreed when sharing.</dd>
+              </dl>
+              <div class="actions">
+                <button class="btn primary" id="viewer-toggle" type="button" aria-expanded="true" aria-controls="viewer">▣ Hide live view</button>
+                <a class="btn" href="exhibition/00-the-machine-dreams-of-angels/">↗ Open full interactive project</a>
+                <a class="btn" href="https://github.com/cyberthreed/CyberStudios/tree/main/ASCII%20art/the%20machine%20dreams%20of%20angels">♡ Project source</a>
+              </div>
+            </div>
+          </article>
+
+          <div class="viewer" id="viewer">
+            <div class="viewer-bar"><span>#00 · the machine dreams of angels</span><span><a href="exhibition/00-the-machine-dreams-of-angels/">open in full page</a> · <button type="button" id="viewer-close">close</button></span></div>
+            <iframe id="viewer-frame" title="THE MACHINE DREAMS OF ANGELS, interactive ASCII artwork" src="exhibition/00-the-machine-dreams-of-angels/" loading="lazy"></iframe>
+          </div>
+
+          <div class="info">
+            <strong>Future entries:</strong> the next apparition will be #01. Each new piece is added as another entry in this collection.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="other-projects">
+        <div class="windowbar">
+          <span>▦ collection_b / other_projects</span>
+          <span>COLLECTION B</span>
+        </div>
+        <div class="content">
+          <div class="collection-meta"><span class="gallery-label">COLLECTION B · STANDALONE WORK</span></div>
+          <h2 class="heading">Other <span>projects</span></h2>
+          <p class="subtext">
+            Standalone ASCII artwork that exists outside the numbered Apparition series. These pieces are not given exhibition numbers.
+          </p>
+
+          <div class="card-grid" id="other-grid"></div>
+
+          <div class="empty-state" id="other-empty">
+<pre aria-hidden="true">  .  ˚  ✧  .
+ ( ·  ·  · )
+  ˙ ‿‿‿ ˙</pre>
+            <strong>nothing here yet</strong>
+            standalone pieces will appear here when they're ready ♡
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="shell footer">
+    ✦ CYBERSTUDIOS WIKI ♡<br>
+    <strong>dream in pixels. create without limits.</strong><br>
+    ASCII ART · SOMETHING SACRED INSIDE OBSOLETE HARDWARE<br>
+    © 2026 CyberStudios
+  </footer>
+
+  <script>
+    const viewer = document.getElementById("viewer");
+    const viewerFrame = document.getElementById("viewer-frame");
+    const viewerToggle = document.getElementById("viewer-toggle");
+
+    function setViewer(open) {
+      if (open && !viewerFrame.getAttribute("src")) {
+        viewerFrame.setAttribute("src", viewerFrame.dataset.src);
+      }
+      viewer.hidden = !open;
+      viewerToggle.setAttribute("aria-expanded", String(open));
+      viewerToggle.textContent = open ? "▣ Hide live view" : "▶ Show live view";
+      if (open) viewer.scrollIntoView({ block: "nearest" });
+    }
+
+    viewerToggle.addEventListener("click", () => setViewer(viewer.hidden));
+    document.getElementById("viewer-close").addEventListener("click", () => {
+      setViewer(false);
+      viewerToggle.focus();
+    });
+
+    /* Future Collection B entries: push objects into this array. */
+    const otherProjects = [];
+    const grid = document.getElementById("other-grid");
+    for (const p of otherProjects) {
+      const card = document.createElement("article");
+      card.className = "art-card";
+      card.innerHTML = '<div class="thumb"><img alt="" loading="lazy"></div><h3></h3><p></p><a class="btn"></a>';
+      card.querySelector("img").src = p.preview;
+      card.querySelector("img").alt = p.alt || "";
+      card.querySelector("h3").textContent = p.title;
+      card.querySelector("p").textContent = p.description;
+      const link = card.querySelector("a");
+      link.href = p.href;
+      link.textContent = "Open project →";
+      grid.appendChild(card);
+    }
+    document.getElementById("other-empty").hidden = otherProjects.length > 0;
+
+    const toggle = document.getElementById("theme-toggle");
+
+    function setNight(value) {
+      document.body.classList.toggle("night", value);
+      toggle.setAttribute("aria-pressed", String(value));
+      toggle.textContent = value ? "☀ Day mode" : "☾ Night mode";
+
+      try {
+        localStorage.setItem(
+          "cyberstudios-wiki-night",
+          value ? "1" : "0"
+        );
+      } catch (error) {}
+    }
+
+    try {
+      setNight(
+        localStorage.getItem("cyberstudios-wiki-night") === "1"
+      );
+    } catch (error) {
+      setNight(false);
+    }
+
+    toggle.addEventListener("click", () => {
+      setNight(!document.body.classList.contains("night"));
+    });
+  </script>
+  <div class="byte-companion" id="byte-companion" hidden>
+    <button class="byte-character" id="byte-character" type="button" aria-label="Byte: open companion controls" aria-expanded="false" aria-controls="byte-menu" aria-describedby="byte-keyboard-help">
+      <img src="../byte/assets/icon.png" alt="" width="76" height="76">
+    </button>
+    <span class="byte-caption" aria-hidden="true">byte ♡</span>
+  </div>
+  <section class="panel byte-menu" id="byte-menu" aria-labelledby="byte-menu-heading" hidden>
+    <div class="windowbar"><span id="byte-menu-heading">♡ byte's little corner</span><span aria-hidden="true">✧</span></div>
+    <div class="byte-body">
+      <p class="byte-response" id="byte-response" role="status" aria-live="polite" aria-atomic="true">Hello, little star. ♡</p>
+      <div class="byte-controls">
+        <button type="button" id="byte-pet">♡ Pet</button>
+        <button type="button" id="byte-treat">✿ Treat</button>
+        <button type="button" id="byte-rest" aria-pressed="false">☾ Rest</button>
+        <button class="wide" type="button" id="byte-roam" aria-pressed="false">Start roaming</button>
+      </div>
+      <div class="byte-controls move-controls">
+        <button type="button" id="byte-left" aria-label="Move Byte left">← Left</button>
+        <button type="button" id="byte-home">Reset spot</button>
+        <button type="button" id="byte-right" aria-label="Move Byte right">Right →</button>
+      </div>
+      <p class="byte-help" id="byte-keyboard-help">With Byte focused, use Left/Right to move or Home to reset. Escape closes controls. Roaming pauses while Byte or his controls have focus.</p>
+      <div class="byte-controls"><button type="button" id="byte-close">Close controls</button><button type="button" id="byte-hide">Hide Byte</button></div>
+    </div>
+  </section>
+  <script src="../assets/wiki-companion.js" defer></script>
+</body>
+</html>
