@@ -1,0 +1,1052 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6dbf3">
+  <meta name="description" content="Meet CyberStudios Theme Switcher: a Blender add-on for switching, saving, importing and exporting your favorite interface themes.">
+  <meta property="og:title" content="CyberStudios Theme Switcher ♡">
+  <meta property="og:description" content="Your Blender. Your colors. Your cyberspace.">
+  <meta property="og:image" content="https://cyberthreed.github.io/CyberStudios/assets/blender-cotton-candy.jpg">
+  <title>Theme Switcher ♡ CyberStudios Wiki</title>
+
+  <style>
+    :root {
+      --ink: #7e5c9d;
+      --muted: #a186b5;
+      --border: #e7c9f5;
+      --paper: #fffaffed;
+      --bar: linear-gradient(100deg,#f6dbf3,#e5efff);
+      --shadow: #dfc6e759;
+      --accent: #d782bd;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font: 13px/1.7 "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%,#ffdaedb0,transparent 35%),
+        radial-gradient(circle at 90% 22%,#c8effabf,transparent 35%),
+        linear-gradient(125deg,#fff1fb,#f5ecff 58%,#e9f9ff);
+    }
+
+    body.night {
+      --ink: #dfc3ee;
+      --muted: #b99dc9;
+      --border: #69507d;
+      --paper: #332b47f2;
+      --bar: linear-gradient(100deg,#47304f,#303c59);
+      --shadow: #23192e55;
+      --accent: #f0a5d8;
+      background: linear-gradient(125deg,#4f294c,#302745 55%,#233c59);
+    }
+
+    a { color: inherit; }
+    button { cursor: pointer; font: inherit; }
+
+    :focus-visible {
+      outline: 3px solid #b68fdf;
+      outline-offset: 3px;
+    }
+
+    .shell {
+      width: min(1150px,calc(100% - 34px));
+      margin: auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 25px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      background: linear-gradient(135deg,#ffd6ee,#c9effd);
+      box-shadow: 0 6px 0 var(--shadow);
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+
+    .brand strong { font-size: 25px; }
+
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .topnav a, .topnav button {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--paper);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 650;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 220px minmax(0,1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      min-width: 0;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      background: var(--paper);
+      box-shadow: 0 9px 0 var(--shadow),0 24px 40px #b78bc313;
+    }
+
+    .windowbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      min-height: 44px;
+      padding: 10px 16px;
+      background: var(--bar);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .sidebar { position: sticky; top: 16px; }
+    .sidebar-inner { padding: 15px; }
+
+    .sidebar-label {
+      margin: 11px 8px;
+      font: 700 10px Consolas,monospace;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 11px 12px;
+      margin-bottom: 4px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      background: #eedcfb;
+      color: #8658ae;
+    }
+
+    .sidebar a.active { font-weight: 700; }
+
+    .main-column {
+      display: grid;
+      gap: 19px;
+      min-width: 0;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 40px 37px;
+      background:
+        radial-gradient(circle at 85% 18%,#ffffff9c,transparent 40%),
+        linear-gradient(135deg,#ffe5f3,#e7e2ff 65%,#dff5ff);
+      color: #7e5c9d;
+    }
+
+    .hero::after {
+      content: "✧";
+      position: absolute;
+      right: 7%;
+      top: 15%;
+      font-size: 115px;
+      line-height: 1;
+      color: #ffffff88;
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      font: 700 11px Consolas,monospace;
+      letter-spacing: 1.5px;
+      color: #a47dc1;
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      margin: 18px 0;
+      font-size: clamp(36px,5vw,57px);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+    }
+
+    .hero h1 span { color: #d782bd; }
+
+    .hero p {
+      position: relative;
+      z-index: 1;
+      max-width: 590px;
+      font-size: 14px;
+      line-height: 1.85;
+      color: #866c9c;
+    }
+
+    .hero-actions, .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 43px;
+      padding: 11px 17px;
+      border: 1px solid #c99ee5;
+      border-radius: 12px;
+      background: #f0d6fc;
+      color: #704a90;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      transition: transform .18s ease,box-shadow .18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 #c6a7dc70;
+    }
+
+    .button.alt {
+      background: #ffffffba;
+      border-color: #ddc4ed;
+    }
+
+    .content { padding: 27px; }
+
+    .heading {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.3;
+    }
+
+    .heading span { color: var(--accent); }
+
+    .subtext {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .status {
+      display: inline-block;
+      margin: 9px 7px 0 0;
+      padding: 7px 11px;
+      border-radius: 20px;
+      background: #eedcfb;
+      color: #936bb2;
+      font: 10px Consolas,monospace;
+    }
+
+    .preview {
+      padding: 12px;
+      margin-top: 18px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: linear-gradient(135deg,#f9e8ff,#e7f7ff);
+    }
+
+    .preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .preview-caption {
+      padding: 12px 5px 2px;
+      color: #8b6ca6;
+      font: 11px/1.6 Consolas,monospace;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 13px;
+      margin-top: 20px;
+    }
+
+    .feature {
+      padding: 19px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--paper);
+    }
+
+    .feature-symbol {
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      margin-bottom: 13px;
+      border-radius: 13px;
+      background: linear-gradient(135deg,#ffe1f2,#dcd7ff);
+      color: #936bb2;
+      font-size: 22px;
+    }
+
+    .feature h3 {
+      margin: 0 0 7px;
+      font-size: 15px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .article {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article:last-child { border-bottom: 0; }
+
+    .article h3 {
+      margin: 6px 0 9px;
+      font-size: 16px;
+    }
+
+    .article p, .article li {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .article li { margin-bottom: 7px; }
+    .article strong { color: var(--ink); }
+
+    code {
+      padding: 2px 5px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      background: var(--paper);
+      font: 12px Consolas,monospace;
+      overflow-wrap: anywhere;
+    }
+
+    .info {
+      margin-top: 19px;
+      padding: 16px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .theme-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 19px 0;
+    }
+
+    .theme-tags span {
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 11px;
+    }
+
+    .download-card {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: var(--paper);
+    }
+
+    .download-card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .download-card p { color: var(--muted); }
+
+    .footer {
+      padding: 45px 0;
+      text-align: center;
+      color: var(--muted);
+      font: 11px/1.9 Consolas,monospace;
+    }
+
+    .night .hero {
+      background: linear-gradient(135deg,#4d335a,#34324f 70%,#2b4860);
+      color: #dfc3ee;
+    }
+
+    .night .hero h1 span { color: #f0a5d8; }
+    .night .hero p { color: #c5acd9; }
+    .night .eyebrow { color: #dbb3ef; }
+    .night .status { background: #58416b; color: #e3c8fa; }
+    .night .sidebar a:hover,
+    .night .sidebar a.active {
+      background: #57416b;
+      color: #eed5ff;
+    }
+    .night .preview {
+      background: linear-gradient(135deg,#433453,#2f4257);
+    }
+    .night .preview-caption { color: #d5b9e9; }
+    .night .button.alt {
+      background: #443651;
+      color: #e9d3f7;
+      border-color: #765b90;
+    }
+
+    @media(max-width:860px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .sidebar-inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .sidebar-label { display: none; }
+      .sidebar a { margin: 0; }
+    }
+
+    @media(max-width:560px) {
+      .hero { padding: 29px 21px; }
+      .hero::after { font-size: 70px; }
+      .content { padding: 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .topnav { width: 100%; }
+      .button { width: 100%; }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html { scroll-behavior: auto; }
+      .button { transition: none; }
+      .button:hover { transform: none; }
+    }
+  </style>
+
+  <link rel="stylesheet" href="../assets/wiki-branding.css">
+</head>
+
+<body>
+
+  <header class="shell topbar">
+    <a class="brand" href="../">
+      <span class="brand-icon">
+        <img src="../assets/cyberstudios.png"
+             alt="" width="1280" height="1280">
+      </span>
+      <span>
+        <small>THE CYBERSTUDIOS ARCHIVE</small>
+        <strong>CyberStudios ♡</strong>
+      </span>
+    </a>
+
+    <nav class="topnav" aria-label="Main navigation">
+      <a href="../">⌂ Wiki Home</a>
+      <a href="./">▦ Projects</a>
+      <a href="../themes/">✧ Themes</a>
+      <a href="../about/">♡ About</a>
+      <button id="theme-toggle" type="button"
+              aria-pressed="false">☾ Night mode</button>
+      <button id="byte-toggle" class="theme-button"
+              type="button" aria-pressed="true" hidden>
+        ♡ Hide Byte
+      </button>
+    </nav>
+  </header>
+
+  <main class="shell layout">
+
+    <aside class="panel sidebar">
+      <div class="windowbar">
+        <span>✿ theme_switcher.exe</span>
+        <span>♡</span>
+      </div>
+
+      <nav class="sidebar-inner" aria-label="Project sections">
+        <p class="sidebar-label">PROJECT DIRECTORY</p>
+        <a class="active" href="#overview">♡ Overview</a>
+        <a href="#preview">✧ Preview</a>
+        <a href="#features">▦ Features</a>
+        <a href="#themes">✿ Included themes</a>
+        <a href="#installation">⌘ Installation</a>
+        <a href="#usage">☁ How to use</a>
+        <a href="#download">⇩ Download</a>
+
+        <p class="sidebar-label">EXPLORE MORE</p>
+        <a href="./">▦ All projects</a>
+        <a href="../themes/blender/gallery.html">
+          ✧ Blender theme gallery
+        </a>
+        <a href="../about/">♡ About CyberStudios</a>
+      </nav>
+    </aside>
+
+    <div class="main-column">
+
+      <!-- HERO -->
+      <section class="panel" id="overview">
+        <div class="windowbar">
+          <span>✿ cyberstudios / theme_switcher</span>
+          <span>v0.1.0 · RELEASED</span>
+        </div>
+
+        <div class="hero">
+          <span class="eyebrow">
+            ✧ CYBERSTUDIOS / BLENDER ADD-ONS ✧
+          </span>
+
+          <h1>Your Blender has <span>a wardrobe.</span></h1>
+
+          <p>
+            One workspace. A hundred different moods.
+          </p>
+
+          <p>
+            Meet <strong>CyberStudios Theme Switcher</strong>,
+            a little add-on for giving your Blender interface
+            a personality of its own. Switch between installed
+            themes, collect your favorites, paste custom theme
+            code, and export your creations whenever you like.
+          </p>
+
+          <p>
+            From pastel cyberspace to dark, cozy workstations,
+            your creative environment should feel just as
+            personal as the things you make in it. ♡
+          </p>
+
+          <div class="hero-actions">
+            <a class="button"
+               href="https://github.com/cyberthreed/CyberStudios/releases/download/blender-theme-switcher-v0.1.0/cyberstudios_theme_switcher-0.1.0.zip">
+              ⇩ Download add-on
+            </a>
+            <a class="button alt" href="#features">
+              ✧ Explore features
+            </a>
+          </div>
+
+          <div>
+            <span class="status">BLENDER 4.2+</span>
+            <span class="status">10 INCLUDED THEMES</span>
+            <span class="status">FREE · MIT LICENSE</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PREVIEW -->
+      <section class="panel" id="preview">
+        <div class="windowbar">
+          <span>✧ workspace.preview</span>
+          <span>CYBERCORE COLLECTION</span>
+        </div>
+
+        <div class="content">
+          <h2 class="heading">
+            A little <span>color therapy</span> ♡
+          </h2>
+
+          <p class="subtext">
+            The same Blender workspace, with a completely
+            different atmosphere. Explore the bundled
+            CyberStudios themes or bring your own favorites.
+          </p>
+
+          <figure class="preview">
+            <img src="../assets/blender-cotton-candy.jpg"
+                 alt="CyberStudios Cotton Candy Blender interface theme"
+                 loading="lazy">
+            <figcaption class="preview-caption">
+              ✧ A glimpse into the Cybercore Blender collection
+            </figcaption>
+          </figure>
+
+          <div class="button-row">
+            <a class="button alt"
+               href="../themes/blender/gallery.html">
+              ✿ Browse all 10 theme palettes
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="panel" id="features">
+        <div class="windowbar">
+          <span>▦ switcher.features</span>
+          <span>WHAT'S INSIDE</span>
+        </div>
+
+        <div class="content">
+          <h2 class="heading">
+            Everything in <span>one little window.</span>
+          </h2>
+
+          <p class="subtext">
+            No digging through folders. No losing the perfect
+            palette. Just you, your workspace, and the freedom
+            to change things up.
+          </p>
+
+          <div class="feature-grid">
+            <article class="feature">
+              <div class="feature-symbol">⇄</div>
+              <h3>Instant theme switching</h3>
+              <p>
+                Apply bundled, saved, and other installed
+                Blender themes from one convenient menu.
+              </p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-symbol">♡</div>
+              <h3>Your personal collection</h3>
+              <p>
+                Save custom themes under your own names
+                and find them in My Saved Themes.
+              </p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-symbol">⌘</div>
+              <h3>Paste theme code</h3>
+              <p>
+                Copy compatible Blender theme XML,
+                paste it from your clipboard, and
+                save it as a reusable preset.
+              </p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-symbol">⇩</div>
+              <h3>Import and export</h3>
+              <p>
+                Bring in XML theme files and export
+                copies of your favorite themes
+                to your computer.
+              </p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-symbol">❐</div>
+              <h3>Copy theme XML</h3>
+              <p>
+                Copy a listed theme's code directly
+                to your clipboard for safekeeping
+                or sharing.
+              </p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-symbol">✿</div>
+              <h3>Save your current look</h3>
+              <p>
+                Already customized Blender?
+                Capture your current interface
+                theme as a named preset.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- THEME COLLECTION -->
+      <section class="panel" id="themes">
+        <div class="windowbar">
+          <span>✿ included_palettes.db</span>
+          <span>10 THEMES</span>
+        </div>
+
+        <div class="content">
+          <h2 class="heading">
+            The <span>CyberStudios collection.</span>
+          </h2>
+
+          <p class="subtext">
+            Ten bundled themes to get you started.
+            Sweet pastels, gentle lavender, darker
+            workspaces, and a little something for
+            whatever mood you're creating in.
+          </p>
+
+          <div class="theme-tags">
+            <span>♡ Cotton Candy Soft</span>
+            <span>✿ Cotton Candy Vivid</span>
+            <span>☾ Moonlit Bunny</span>
+            <span>✧ Lavender Macaron</span>
+            <span>♡ Strawberry Milk</span>
+            <span>✿ Peach Parfait</span>
+            <span>◇ Concrete Day</span>
+            <span>⌁ Steel Horizon</span>
+            <span>✦ Obsidian Forge</span>
+            <span>☁ Timberline</span>
+          </div>
+
+          <p class="subtext">
+            The switcher also works with compatible
+            themes you've installed separately.
+            Your palette collection doesn't have
+            to stop here.
+          </p>
+
+          <a class="button alt"
+             href="../themes/blender/gallery.html">
+            ✧ Explore the theme gallery
+          </a>
+        </div>
+      </section>
+
+      <!-- INSTALL -->
+      <section class="panel" id="installation">
+        <div class="windowbar">
+          <span>⌘ installation.guide</span>
+          <span>GETTING STARTED</span>
+        </div>
+
+        <div class="content">
+          <h2 class="heading">
+            Let's get <span>you installed.</span> ♡
+          </h2>
+
+          <div class="article">
+            <h3>01 // Download the add-on</h3>
+            <p>
+              Download the packaged
+              <strong>CyberStudios Theme Switcher</strong>
+              ZIP from the official GitHub release.
+              Keep the ZIP file intact.
+            </p>
+          </div>
+
+          <div class="article">
+            <h3>02 // Open Blender Preferences</h3>
+            <p>
+              In Blender, navigate to
+              <strong>Edit → Preferences → Add-ons</strong>.
+              Open the add-ons menu and select
+              <strong>Install from Disk...</strong>
+            </p>
+          </div>
+
+          <div class="article">
+            <h3>03 // Install and enable</h3>
+            <p>
+              Select the downloaded ZIP file,
+              install it, and enable
+              <strong>CyberStudios Theme Switcher</strong>.
+            </p>
+          </div>
+
+          <div class="article">
+            <h3>04 // Pick your first theme</h3>
+            <p>
+              Go to <strong>Preferences → Themes</strong>
+              and open the CyberStudios Theme Switcher
+              menu to choose a theme.
+            </p>
+            <p>
+              For the complete manager, open the add-on
+              entry in Blender's Add-ons preferences.
+            </p>
+          </div>
+
+          <div class="info">
+            ♡ <strong>Compatibility note:</strong>
+            The add-on declares Blender 4.2 or newer
+            as its minimum version and was reported
+            tested on Blender 5.2.3 LTS.
+            Save Blender's preferences if you want
+            your selected appearance to persist
+            after restarting.
+          </div>
+        </div>
+      </section>
+
+      <!-- USAGE -->
+      <section class="panel" id="usage">
+        <div class="windowbar">
+          <span>☁ theme_manager.help</span>
+          <span>USER GUIDE</span>
+        </div>
+
+        <div class="content">
+          <h2 class="heading">
+            Make yourself <span>at home.</span>
+          </h2>
+
+          <div class="article">
+            <h3>♡ Add a theme from code</h3>
+            <p>
+              Copy valid Blender theme XML to your
+              clipboard, enter a name in the add-on
+              preferences, click
+              <strong>Paste Theme Code</strong>,
+              then <strong>Save Theme</strong>.
+            </p>
+            <p>
+              Your new preset will appear under
+              <strong>My Saved Themes</strong>.
+            </p>
+          </div>
+
+          <div class="article">
+            <h3>✿ Import an existing theme</h3>
+            <p>
+              Select <strong>Import XML File</strong>,
+              choose a compatible <code>.xml</code>
+              file, confirm its name, and save it
+              to your personal collection.
+            </p>
+          </div>
+
+          <div class="article">
+            <h3>⇩ Export a theme</h3>
+            <p>
+              Find the theme in the manager and
+              select its Export icon to save
+              a copy of its XML file to your computer.
+            </p>
+          </div>
+
+          <div class="article">
+            <h3>☁ Keep your favorites</h3>
+            <p>
+              Use <strong>Save Current Theme As...</strong>
+              to preserve the theme Blender is
+              currently using.
+            </p>
+            <p>
+              Personal themes are stored in the
+              add-on's user data directory, separately
+              from its bundled themes.
+            </p>
+          </div>
+
+          <div class="info">
+            ✧ The code-paste feature accepts Blender
+            theme XML, not arbitrary Python scripts.
+            Only personal saved themes can be
+            deleted through the manager.
+          </div>
+        </div>
+      </section>
+
+      <!-- DOWNLOAD -->
+      <section class="panel" id="download">
+        <div class="windowbar">
+          <span>⇩ download_center.exe</span>
+          <span>OFFICIAL RELEASE</span>
+        </div>
+
+        <div class="content">
+          <h2 class="heading">
+            Ready for a <span>new look?</span>
+          </h2>
+
+          <div class="download-card">
+            <span class="eyebrow">✧ CYBERSTUDIOS RELEASE</span>
+            <h3>Theme Switcher v0.1.0 ♡</h3>
+
+            <p>
+              Your new Blender theme collection
+              starts here. Free to download,
+              customize, and explore.
+            </p>
+
+            <span class="status">BLENDER 4.2+</span>
+            <span class="status">XML SUPPORT</span>
+            <span class="status">MIT LICENSE</span>
+
+            <div class="button-row">
+              <a class="button"
+                 href="https://github.com/cyberthreed/CyberStudios/releases/download/blender-theme-switcher-v0.1.0/cyberstudios_theme_switcher-0.1.0.zip">
+                ⇩ Download v0.1.0 ZIP
+              </a>
+
+              <a class="button alt"
+                 href="https://github.com/cyberthreed/CyberStudios/releases/tag/blender-theme-switcher-v0.1.0">
+                ↗ Release notes
+              </a>
+
+              <a class="button alt"
+                 href="https://github.com/cyberthreed/CyberStudios/tree/main/plug-ins/blender/CyberStudios%20Theme%20addon">
+                ⌘ Source code
+              </a>
+            </div>
+          </div>
+
+          <p class="subtext" style="margin-top:20px">
+            Made with ♡ by CyberStudios.
+            Because your software should feel
+            like your space, too.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="shell footer">
+    ✦ CYBERSTUDIOS WIKI ♡<br>
+    <strong>dream in pixels. create without limits.</strong><br>
+    YOUR BLENDER. YOUR COLORS. YOUR CYBERSPACE.<br>
+    © 2026 CyberStudios
+  </footer>
+
+  <!-- Shared day/night preference -->
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+
+    function setNight(value) {
+      document.body.classList.toggle("night", value);
+      toggle.setAttribute("aria-pressed", String(value));
+      toggle.textContent = value ? "☀ Day mode" : "☾ Night mode";
+
+      try {
+        localStorage.setItem(
+          "cyberstudios-wiki-night",
+          value ? "1" : "0"
+        );
+      } catch (error) {}
+    }
+
+    try {
+      setNight(
+        localStorage.getItem("cyberstudios-wiki-night") === "1"
+      );
+    } catch (error) {
+      setNight(false);
+    }
+
+    toggle.addEventListener("click", () => {
+      setNight(!document.body.classList.contains("night"));
+    });
+
+    // Highlight the current sidebar section.
+    const sectionLinks = document.querySelectorAll(
+      '.sidebar a[href^="#"]'
+    );
+
+    sectionLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        sectionLinks.forEach(item =>
+          item.classList.remove("active")
+        );
+        link.classList.add("active");
+      });
+    });
+  </script>
+
+  <!-- Byte: shared CyberStudios companion -->
+  <div class="byte-companion" id="byte-companion" hidden>
+    <button class="byte-character" id="byte-character"
+            type="button"
+            aria-label="Byte: open companion controls"
+            aria-expanded="false"
+            aria-controls="byte-menu"
+            aria-describedby="byte-keyboard-help">
+      <img src="../byte/assets/icon.png"
+           alt="" width="76" height="76">
+    </button>
+    <span class="byte-caption" aria-hidden="true">byte ♡</span>
+  </div>
+
+  <section class="panel byte-menu" id="byte-menu"
+           aria-labelledby="byte-menu-heading" hidden>
+    <div class="windowbar">
+      <span id="byte-menu-heading">♡ byte's little corner</span>
+      <span aria-hidden="true">✧</span>
+    </div>
+
+    <div class="byte-body">
+      <p class="byte-response" id="byte-response"
+         role="status" aria-live="polite"
+         aria-atomic="true">
+        Hello, little star. ♡
+      </p>
+
+      <div class="byte-controls">
+        <button type="button" id="byte-pet">♡ Pet</button>
+        <button type="button" id="byte-treat">✿ Treat</button>
+        <button type="button" id="byte-rest"
+                aria-pressed="false">☾ Rest</button>
+        <button class="wide" type="button"
+                id="byte-roam" aria-pressed="false">
+          Start roaming
+        </button>
+      </div>
+
+      <div class="byte-controls move-controls">
+        <button type="button" id="byte-left">← Left</button>
+        <button type="button" id="byte-home">Reset spot</button>
+        <button type="button" id="byte-right">Right →</button>
+      </div>
+
+      <p class="byte-help" id="byte-keyboard-help">
+        With Byte focused, use Left/Right to move
+        or Home to reset. Escape closes controls.
+        Roaming pauses while Byte or his controls
+        have focus.
+      </p>
+
+      <div class="byte-controls">
+        <button type="button" id="byte-close">
+          Close controls
+        </button>
+        <button type="button" id="byte-hide">
+          Hide Byte
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script src="../assets/wiki-companion.js" defer></script>
+</body>
+</html>
