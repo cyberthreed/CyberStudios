@@ -1,8 +1,8 @@
-CYBERSTUDIOS BLENDER THEMES / 1.0.0
+CYBERSTUDIOS BLENDER THEMES / 1.1.0
 
 dream in pixels. create without limits.
 
-Ten XML presets: four new cute, four new masculine, plus Cotton Candy Soft and Vivid.
+Twenty XML presets: nine cute, nine masculine, plus Cotton Candy Soft and Vivid.
 
 1. Extract the preset ZIP.
 2. Open Blender: Edit > Preferences > Themes > Install...

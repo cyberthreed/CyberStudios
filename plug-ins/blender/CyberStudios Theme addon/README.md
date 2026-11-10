@@ -2,7 +2,7 @@
 
 **your blender. your colors. your cyberspace.**
 
-`CYBERSTUDIOS.EXE` · `BLENDER ADD-ON` · `VERSION 0.1.0`
+`CYBERSTUDIOS.EXE` · `BLENDER ADD-ON` · `VERSION 0.2.0`
 
 ---
 
@@ -25,7 +25,7 @@ A little less file hunting. A lot more personal expression.
 | Feature | Description |
 |---|---|
 | ✿ Quick Theme Switching | Switch between themes directly from Blender's Preferences. |
-| ♡ 10 Bundled Themes | Explore the included CyberStudios theme collection. |
+| ♡ 20 Bundled Themes | Explore the included CyberStudios theme collection. |
 | ☁ Personal Theme Library | Save custom themes under names you choose. |
 | ⌘ Paste Theme Code | Copy valid Blender XML theme code and save it as a reusable preset. |
 | ✧ Import XML | Add theme files from your computer. |
@@ -35,7 +35,7 @@ A little less file hunting. A lot more personal expression.
 
 **Three collections, one interface:**
 
-- **CyberStudios Themes:** The ten presets bundled with the add-on.
+- **CyberStudios Themes:** The twenty presets bundled with the add-on.
 - **My Saved Themes:** Your personally saved presets.
 - **Other Installed Themes:** Compatible theme presets already installed in Blender.
 
@@ -45,7 +45,7 @@ Your saved themes are stored separately from the bundled collection.
 
 ## 02 // THE CYBERSTUDIOS COLLECTION ♡
 
-A collection of ten different interface aesthetics, from soft pastel sweetness to darker, atmospheric palettes.
+A collection of twenty different interface aesthetics, from soft pastel sweetness to darker, atmospheric palettes.
 
 | Theme | File |
 |---|---|
@@ -59,6 +59,16 @@ A collection of ten different interface aesthetics, from soft pastel sweetness t
 | ⌁ Steel Horizon | `Steel_Horizon.xml` |
 | ✦ Obsidian Forge | `Obsidian_Forge.xml` |
 | ☁ Timberline | `Timberline.xml` |
+| ❀ Mint Meringue | `Mint_Meringue.xml` |
+| ♡ Blush Chiffon | `Blush_Chiffon.xml` |
+| ☾ Sakura Dusk | `Sakura_Dusk.xml` |
+| ☁ Sky Sorbet | `Sky_Sorbet.xml` |
+| ✿ Butter Bloom | `Butter_Bloom.xml` |
+| ⚒ Iron Oxide | `Iron_Oxide.xml` |
+| ≈ Deep Current | `Deep_Current.xml` |
+| ◇ Desert Sandstone | `Desert_Sandstone.xml` |
+| ⌁ Carbon Volt | `Carbon_Volt.xml` |
+| ▲ Ridgeline | `Ridgeline.xml` |
 
 *Cybercore is CyberStudios' original aesthetic direction, blending pastel cyberspace, vaporwave nostalgia, dreamy digital environments, and soft futuristic interfaces.*
 
@@ -72,11 +82,11 @@ The theme manager isn't limited to that aesthetic. Other installed and user-crea
 
 - Blender 4.2 or newer, according to the add-on manifest
 - Tested by the project on Blender 5.2.3 LTS
-- CyberStudios Theme Switcher v0.1.0
+- CyberStudios Theme Switcher v0.2.0
 
 **Installation**
 
-1. Download the packaged add-on: `cyberstudios_theme_switcher-0.1.0.zip`.
+1. Download the packaged add-on: `cyberstudios_theme_switcher-0.2.0.zip`.
 2. Open Blender.
 3. Navigate to **Edit → Preferences → Add-ons**.
 4. Open the add-ons menu and choose **Install from Disk...**
@@ -170,7 +180,7 @@ Your creative environment can change as often as your ideas do.
 | Property | Value |
 |---|---|
 | Add-on | CyberStudios Theme Switcher |
-| Current version | 0.1.0 |
+| Current version | 0.2.0 |
 | Platform | Blender |
 | Minimum declared version | Blender 4.2 |
 | Reported tested version | Blender 5.2.3 LTS |
@@ -187,7 +197,7 @@ To build the installable ZIP on Windows, run the included `build.ps1` script fro
 
 The script creates:
 
-`cyberstudios_theme_switcher-0.1.0.zip`
+`cyberstudios_theme_switcher-0.2.0.zip`
 
 The extension requests file access for theme import/export and clipboard access for copying and pasting theme XML.
 

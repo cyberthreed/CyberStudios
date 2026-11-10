@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Ridgeline | CyberStudios | dream in pixels. create without limits. | SPDX-License-Identifier: MIT -->
+<bpy>
+  <Theme>
+    <user_interface>
+      <ThemeUserInterface menu_shadow_fac="0.3" menu_shadow_width="4" icon_alpha="1" icon_saturation="1" widget_emboss="#27342F10" link="#6fa9e6ff" editor_border="#9DAAA2" editor_outline="#9DAAA2FF" editor_outline_active="#2F6B4FFF" widget_text_cursor="#2F6B4F" panel_roundness="0.4" panel_header="#CBD4CDFF" panel_title="#27342F" panel_text="#27342F" panel_back="#DDE3DEFF" panel_sub_back="#E5EAE5A0" panel_outline="#9DAAA280" panel_active="#4772b3ff" transparent_checker_primary="#DDE3DE" transparent_checker_secondary="#EEF1EE" transparent_checker_size="8" axis_x="#AD3D50" axis_y="#28735A" axis_z="#356CA8" axis_w="#5A5287" gizmo_hi="#2F6B4F" gizmo_primary="#8D651B" gizmo_secondary="#287F88" gizmo_view_align="#2F6B4F" gizmo_a="#28735A" gizmo_b="#AD3D50" icon_scene="#5A5287FF" icon_collection="#566860FF" icon_object="#2F6B4FFF" icon_object_data="#28735AFF" icon_modifier="#356CA8FF" icon_shading="#8A5A2BFF" icon_folder="#8D651BFF" icon_autokey="#AD3D50FF" icon_border_intensity="0.7">
+        <wcol_regular>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#E5EAE5FF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_regular>
+        <wcol_tool>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#CBD4CDFF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_tool>
+        <wcol_toolbar_item>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#DDE3DEFF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_toolbar_item>
+        <wcol_radio>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#CBD4CDFF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_radio>
+        <wcol_text>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#E5EAE5FF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_text>
+        <wcol_option>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#E5EAE5FF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_option>
+        <wcol_toggle>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#CBD4CDFF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_toggle>
+        <wcol_num>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#E5EAE5FF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_num>
+        <wcol_numslider>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#E5EAE5FF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_numslider>
+        <wcol_box>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#E5EAE5FF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_box>
+        <wcol_curve>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#E5EAE5FF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_curve>
+        <wcol_menu>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#DDE3DEFF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_menu>
+        <wcol_pulldown>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#DDE3DEFF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_pulldown>
+        <wcol_menu_back>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#DDE3DEFF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_menu_back>
+        <wcol_pie_menu>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#E5EAE5FF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_pie_menu>
+        <wcol_tooltip>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#E5EAE5FF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_tooltip>
+        <wcol_menu_item>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#E5EAE5FF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_menu_item>
+        <wcol_scroll>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#EEF1EEFF" inner_sel="#B9CABFFF" item="#9DAAA2FF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_scroll>
+        <wcol_progress>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#E5EAE5FF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_progress>
+        <wcol_list_item>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#E5EAE5FF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_list_item>
+        <wcol_state>
+          <ThemeWidgetStateColors error="#CFB1B3FF" warning="#C5BDA3FF" info="#ABBFCEFF" success="#A7C1B6FF" inner_anim="#AAC4B9" inner_anim_sel="#91B4A7" inner_key="#C7C0A7" inner_key_sel="#BBAE8C" inner_driven="#B8BAC6" inner_driven_sel="#A6A6B9" inner_overridden="#AAC7C6" inner_overridden_sel="#91B9BA" inner_changed="#ACC1B6" inner_changed_sel="#94B1A2" blend="0.5">
+          </ThemeWidgetStateColors>
+        </wcol_state>
+        <wcol_tab>
+          <ThemeWidgetColors outline="#9DAAA2FF" outline_sel="#2F6B4FFF" inner="#CBD4CDFF" inner_sel="#B9CABFFF" item="#2F6B4FFF" text="#27342F" text_sel="#27342F" show_shaded="FALSE" shadetop="0" shadedown="0" roundness=".4">
+          </ThemeWidgetColors>
+        </wcol_tab>
+      </ThemeUserInterface>
+    </user_interface>
+    <regions>
+      <ThemeRegions>
+        <asset_shelf>
+          <ThemeRegionsAssetShelf back="#DDE3DEFF" header_back="#CBD4CDFF">
+          </ThemeRegionsAssetShelf>
+        </asset_shelf>
+        <channels>
+          <ThemeRegionsChannels back="#DDE3DE" text="#27342F" text_selected="#27342F">
+          </ThemeRegionsChannels>
+        </channels>
+        <scrubbing>
+          <ThemeRegionsScrubbing back="#CBD4CDFF" text="#27342F" time_marker="#56686080" time_marker_selected="#2F6B4FFF">
+          </ThemeRegionsScrubbing>
+        </scrubbing>
+        <sidebars>
+          <ThemeRegionsSidebars back="#DDE3DEFF" tab_back="#CBD4CDFF">
+          </ThemeRegionsSidebars>
+        </sidebars>
+      </ThemeRegions>
+    </regions>
+    <common>
+      <ThemeCommon>
+        <anim>
+          <ThemeCommonAnim playhead="#2F6B4F" preview_range="#2F6B4F40" scene_strip_range="#00000080" channels="#DDE3DE80" channels_sub="#E5EAE580" channel_group="#C2D2CA90" channel_group_active="#B0C7BDB0" channel="#DDE3DEFF" channel_selected="#60c04044" keyframe="#8D651B" keyframe_selected="#2F6B4F" keyframe_extreme="#AD3D50" keyframe_extreme_selected="#8A5A2B" keyframe_breakdown="#356CA8" keyframe_breakdown_selected="#5A5287" keyframe_jitter="#28735A" keyframe_jitter_selected="#287F88" keyframe_moving_hold="#566860" keyframe_moving_hold_selected="#2F6B4F" keyframe_generated="#566860" keyframe_generated_selected="#2F6B4F" long_key="#56686080" long_key_selected="#2F6B4FB3">
+          </ThemeCommonAnim>
+        </anim>
+        <curves>
+          <ThemeCommonCurves handle_free="#8D651B" handle_sel_free="#2F6B4F" handle_auto="#AD3D50" handle_sel_auto="#8A5A2B" handle_vect="#356CA8" handle_sel_vect="#287F88" handle_align="#28735A" handle_sel_align="#2F6B4F" handle_auto_clamped="#5A5287" handle_sel_auto_clamped="#6E5470" handle_vertex="#27342F" handle_vertex_select="#2F6B4F" handle_vertex_size="5">
+          </ThemeCommonCurves>
+        </curves>
+      </ThemeCommon>
+    </common>
+    <view_3d>
+      <ThemeView3D grid="#AEB9B275" grid_major="#AEB9B2B0" grid_axis_brightness="0.58" clipping_border_3d="#606060ff" wire="#27342F" wire_edit="#27342F" edge_width="1" gp_wire_edit="#56686080" gp_vertex="#27342F" gp_vertex_select="#2F6B4F" gp_vertex_size="3" text_grease_pencil="#5A5287" object_selected="#5F8C77" object_active="#2F6B4F" camera="#566860" empty="#566860" light="#8D651B90" speaker="#566860" vertex="#27342F" vertex_select="#2F6B4F" vertex_size="3" edge_select="#2F6B4F" edge_mode_select="#5A5287" face="#27342F12" face_select="#2F6B4F45" face_mode_select="#2F6B4F50" facedot_size="4" face_back="#ff0000b3" face_front="#0000ff00" bevel="#356CA8" seam="#AD3D50" sharp="#287F88" crease="#5A5287" freestyle="#7fff7f33" extra_edge_len="#ff6149" extra_edge_angle="#cccc00" extra_face_angle="#b3b3ff" extra_face_area="#00cc00" editmesh_active="#ffffff80" normal="#287F88" vertex_normal="#356CA8" split_normal="#5A5287" vertex_unreferenced="#356CA8" face_retopology="#356CA830" nurb_uline="#909000" nurb_vline="#803060" nurb_sel_uline="#f0ff40" nurb_sel_vline="#f090a0" bone_pose="#356CA8" bone_pose_active="#2F6B4F" bone_solid="#9DAAA2" bone_locked_weight="#ff000080" before_current_frame="#f22e23" after_current_frame="#78f244" bundle_solid="#c8c8c8" camera_path="#2F6B4F" camera_passepartout="#000000" skin_root="#b44d4d" view_overlay="#27342F" transform="#2F6B4F" outline_width="1" object_origin_size="6">
+        <space>
+          <ThemeSpaceGradient title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+            <gradients>
+              <ThemeGradientColors background_type="SINGLE_COLOR" high_gradient="#EEF1EE" gradient="#EEF1EE">
+              </ThemeGradientColors>
+            </gradients>
+          </ThemeSpaceGradient>
+        </space>
+      </ThemeView3D>
+    </view_3d>
+    <graph_editor>
+      <ThemeGraphEditor grid="#AEB9B2" vertex="#27342F" vertex_select="#2F6B4F" vertex_active="#27342F" vertex_size="6">
+        <space>
+          <ThemeSpaceGeneric back="#E1E6E8" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeGraphEditor>
+    </graph_editor>
+    <file_browser>
+      <ThemeFileBrowser selected_file="#5680c2" row_alternate="#ffffff0f">
+        <space>
+          <ThemeSpaceGeneric back="#EEF1EE" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeFileBrowser>
+    </file_browser>
+    <nla_editor>
+      <ThemeNLAEditor grid="#AEB9B2" active_action="#2F6B4F66" active_action_unset="#9DAAA24D" strips="#9DAAA2" strips_selected="#2F6B4F" transition_strips="#9AB3C8" transition_strips_selected="#356CA8" meta_strips="#A9A9BB" meta_strips_selected="#5A5287" sound_strips="#95B6A9" sound_strips_selected="#28735A" tweak="#4df31a" tweak_duplicate="#d90000" keyframe_border="#27342FFF" keyframe_border_selected="#27342FFF">
+        <space>
+          <ThemeSpaceGeneric back="#E1E6E8" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeNLAEditor>
+    </nla_editor>
+    <dopesheet_editor>
+      <ThemeDopeSheet grid="#AEB9B2" keyframe_border="#27342FFF" keyframe_border_selected="#27342FFF" keyframe_scale_factor="1" summary="#d3660066" anim_interpolation_linear="#94e575cc" anim_interpolation_constant="#e59c7bcc" anim_interpolation_other="#5dbabeb3" simulated_frames="#721e65ff">
+        <space>
+          <ThemeSpaceGeneric back="#E1E6E8" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeDopeSheet>
+    </dopesheet_editor>
+    <image_editor>
+      <ThemeImageEditor grid="#AEB9B2FF" vertex="#27342F" vertex_select="#2F6B4F" vertex_size="3" face="#27342F12" face_select="#2F6B4F45" face_mode_select="#00000000" facedot_size="3" editmesh_active="#ffffff40" wire_edit="#27342F" edge_width="1" edge_select="#2F6B4F" scope_back="#DDE3DEFF" preview_stitch_face="#7f7f0033" preview_stitch_edge="#ff00ff33" preview_stitch_vert="#0000ff33" preview_stitch_stitchable="#00ff00ff" preview_stitch_unstitchable="#ff0000ff" preview_stitch_active="#e1d2c323" uv_shadow="#56686060" metadatabg="#CBD4CD" metadatatext="#27342F">
+        <space>
+          <ThemeSpaceGeneric back="#EEF1EE" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeImageEditor>
+    </image_editor>
+    <sequence_editor>
+      <ThemeSequenceEditor grid="#AEB9B2" movie_strip="#AEC2CF" movieclip_strip="#C6BDAC" image_strip="#C7C0A7" scene_strip="#AAC4B9" audio_strip="#AAC7C6" effect_strip="#B8BAC6" transition_strip="#BEBBBF" color_strip="#9DAAA2" meta_strip="#B8BAC6" mask_strip="#C6BDAC" text_strip="#BEBBBF" active_strip="#2F6B4F" selected_strip="#2F6B4F" keyframe_border="#27342FFF" keyframe_border_selected="#27342FFF" preview_back="#EEF1EE" metadatabg="#CBD4CD" metadatatext="#27342F" row_alternate="#27342F0D" text_strip_cursor="#2F6B4FFF" selected_text="#B9CABFFF">
+        <space>
+          <ThemeSpaceGeneric back="#E1E6E8" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeSequenceEditor>
+    </sequence_editor>
+    <properties>
+      <ThemeProperties match="#B9CABF">
+        <space>
+          <ThemeSpaceGeneric back="#DDE3DE" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeProperties>
+    </properties>
+    <text_editor>
+      <ThemeTextEditor line_numbers="#566860" line_numbers_background="#DDE3DE" selected_text="#B9CABF" cursor="#2F6B4F" syntax_builtin="#2F6B4F" syntax_symbols="#6E5470" syntax_special="#6E5470" syntax_preprocessor="#5A5287" syntax_reserved="#5A5287" syntax_comment="#566860" syntax_string="#8A5A2B" syntax_numbers="#3A6384">
+        <space>
+          <ThemeSpaceGeneric back="#EEF1EE" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeTextEditor>
+    </text_editor>
+    <node_editor>
+      <ThemeNodeEditor grid="#AEB9B2" node_outline="#9DAAA2FF" node_selected="#5F8C77" node_active="#2F6B4F" wire="#9DAAA2FF" wire_inner="#566860" wire_select="#2F6B4FFF" node_backdrop="#DDE3DEFF" converter_node="#AEC2CF" color_node="#C7C0A7" group_node="#AAC4B9" group_socket_node="#CBD4CD" frame_node="#DDE3DECC" matte_node="#C6BDAC" distor_node="#AAC7C6" noodle_curving="4" grid_levels="3" dash_alpha="0.5" input_node="#C6BDAC" output_node="#B8BAC6" filter_node="#BEBBBF" vector_node="#BEBBBF" texture_node="#C7C0A7" shader_node="#AAC4B9" script_node="#AEC2CF" geometry_node="#AAC7C6" attribute_node="#AEC2CF" simulation_zone="#8A5A2B30" repeat_zone="#8D651B30" foreach_geometry_element_zone="#356CA830" closure_zone="#28735A30">
+        <space>
+          <ThemeSpaceGeneric back="#EEF1EE" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeNodeEditor>
+    </node_editor>
+    <outliner>
+      <ThemeOutliner match="#2F6B4F" selected_highlight="#B9CABF" active="#B9CABF" selected_object="#27342F" active_object="#27342F" edited_object="#2F6B4F45" row_alternate="#27342F09">
+        <space>
+          <ThemeSpaceGeneric back="#DDE3DE" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeOutliner>
+    </outliner>
+    <info>
+      <ThemeInfo info_selected="#B9CABF" info_selected_text="#27342F" info_error_text="#27342F" info_warning_text="#27342F" info_info_text="#27342F" info_debug="#5A5287FF" info_debug_text="#27342F" info_property="#28735AFF" info_property_text="#27342F" info_operator="#356CA8FF" info_operator_text="#27342F">
+        <space>
+          <ThemeSpaceGeneric back="#EEF1EE" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeInfo>
+    </info>
+    <preferences>
+      <ThemePreferences match="#4772b3">
+        <space>
+          <ThemeSpaceGeneric back="#DDE3DE" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemePreferences>
+    </preferences>
+    <console>
+      <ThemeConsole line_output="#3469A2" line_input="#27342F" line_info="#28735A" line_error="#AD3D50" cursor="#2F6B4F" select="#B9CABFFF">
+        <space>
+          <ThemeSpaceGeneric back="#E1E6E8" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeConsole>
+    </console>
+    <clip_editor>
+      <ThemeClipEditor grid="#AEB9B2FF" marker_outline="#27342F" marker="#8D651B" active_marker="#2F6B4F" selected_marker="#2F6B4F" disabled_marker="#566860" locked_marker="#9DAAA2" path_before="#ff0000" path_after="#0000ff" path_keyframe_before="#ffc4c4" path_keyframe_after="#c4c4ff" metadatabg="#CBD4CD" metadatatext="#27342F">
+        <space>
+          <ThemeSpaceGeneric back="#EEF1EE" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeClipEditor>
+    </clip_editor>
+    <topbar>
+      <ThemeTopBar>
+        <space>
+          <ThemeSpaceGeneric back="#EEF1EE" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeTopBar>
+    </topbar>
+    <statusbar>
+      <ThemeStatusBar>
+        <space>
+          <ThemeSpaceGeneric back="#EEF1EE" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeStatusBar>
+    </statusbar>
+    <spreadsheet>
+      <ThemeSpreadsheet row_alternate="#27342F0B">
+        <space>
+          <ThemeSpaceGeneric back="#EEF1EE" title="#27342F" text="#27342F" text_hi="#27342F" header="#CBD4CDFF" header_text="#27342F" header_text_hi="#27342F">
+          </ThemeSpaceGeneric>
+        </space>
+      </ThemeSpreadsheet>
+    </spreadsheet>
+    <bone_color_sets>
+      <ThemeBoneColorSet normal="#9a0000" select="#bd1111" active="#f70a0a" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#f74018" select="#f66913" active="#fa9900" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#1e9109" select="#59b70b" active="#83ef1d" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#0a3694" select="#3667df" active="#5ec1ef" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#a9294e" select="#c1416a" active="#f05d91" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#430c78" select="#543aa3" active="#8764d5" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#24785a" select="#3c9579" active="#6fb6ab" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#4b707c" select="#6a8691" active="#9bc2cd" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#f4c90c" select="#eec236" active="#f3ff00" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#1e2024" select="#484c56" active="#ffffff" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#6f2f6a" select="#9845be" active="#d330d6" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#6c8e22" select="#7fb022" active="#bbef5b" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#8d8d8d" select="#b0b0b0" active="#dedede" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#834326" select="#8b5811" active="#bd6a11" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#08310e" select="#1c430b" active="#34622b" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#000000" select="#000000" active="#000000" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#000000" select="#000000" active="#000000" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#000000" select="#000000" active="#000000" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#000000" select="#000000" active="#000000" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+      <ThemeBoneColorSet normal="#000000" select="#000000" active="#000000" show_colored_constraints="FALSE">
+      </ThemeBoneColorSet>
+    </bone_color_sets>
+    <collection_color>
+      <ThemeCollectionColor color="#dd473f">
+      </ThemeCollectionColor>
+      <ThemeCollectionColor color="#e5a057">
+      </ThemeCollectionColor>
+      <ThemeCollectionColor color="#e4d050">
+      </ThemeCollectionColor>
+      <ThemeCollectionColor color="#3fb931">
+      </ThemeCollectionColor>
+      <ThemeCollectionColor color="#3887c7">
+      </ThemeCollectionColor>
+      <ThemeCollectionColor color="#844fcd">
+      </ThemeCollectionColor>
+      <ThemeCollectionColor color="#c169b5">
+      </ThemeCollectionColor>
+      <ThemeCollectionColor color="#7a5441">
+      </ThemeCollectionColor>
+    </collection_color>
+    <strip_color>
+      <ThemeStripColor color="#e2605b">
+      </ThemeStripColor>
+      <ThemeStripColor color="#f1a355">
+      </ThemeStripColor>
+      <ThemeStripColor color="#f1dc55">
+      </ThemeStripColor>
+      <ThemeStripColor color="#7bcc7b">
+      </ThemeStripColor>
+      <ThemeStripColor color="#5db6ea">
+      </ThemeStripColor>
+      <ThemeStripColor color="#8d59da">
+      </ThemeStripColor>
+      <ThemeStripColor color="#c673b8">
+      </ThemeStripColor>
+      <ThemeStripColor color="#7a5441">
+      </ThemeStripColor>
+      <ThemeStripColor color="#5f5f5f">
+      </ThemeStripColor>
+    </strip_color>
+  </Theme>
+  <ThemeStyle>
+    <panel_title>
+      <ThemeFontStyle points="12" character_weight="400" shadow="3" shadow_offset_x="0" shadow_offset_y="-1" shadow_alpha="1" shadow_value="0.8">
+      </ThemeFontStyle>
+    </panel_title>
+    <widget>
+      <ThemeFontStyle points="11" character_weight="400" shadow="1" shadow_offset_x="0" shadow_offset_y="-1" shadow_alpha="0" shadow_value="0.8">
+      </ThemeFontStyle>
+    </widget>
+    <tooltip>
+      <ThemeFontStyle points="11" character_weight="400" shadow="1" shadow_offset_x="0" shadow_offset_y="-1" shadow_alpha="0.5" shadow_value="0">
+      </ThemeFontStyle>
+    </tooltip>
+  </ThemeStyle>
+</bpy>

@@ -23,7 +23,7 @@ Pick the atmosphere that feels like somewhere you want to create.
 | ♡ Collection | What's inside | Open the folder |
 |---|---|---|
 | 🖥️ **VS Code** | Color-theme source projects and the original Cotton Candy settings presets | [Enter the code room →](vscode/) |
-| 🧊 **Blender** | The Cotton Candy Blender project guide, with its Soft and Vivid editions | [Enter the 3D room →](blender/) |
+| 🧊 **Blender** | Twenty XML themes, from Cotton Candy Soft and Vivid to soft feminine and grounded masculine palettes | [Enter the 3D room →](blender/) |
 
 *One studio. Different windows. Plenty of room for another idea.*
 
@@ -61,7 +61,7 @@ Cotton Candy uses VS Code settings presets. The other eight folders contain inde
 
 ### 🧊 a daydream with a project file
 
-**[♡ Cybercore Cotton Candy for Blender](blender/cybercore%20cotton%20candy/)** brings the collection's pastel identity into the 3D workspace: pink sidebars, lavender controls, pearl-white editors, and powder-blue animation spaces.
+**[♡ Blender themes](blender/)** bring twenty XML presets into the 3D workspace, including [Cybercore Cotton Candy](blender/cybercore%20cotton%20candy/): pink sidebars, lavender controls, pearl-white editors, and powder-blue animation spaces.
 
 The project guide introduces **Soft** and **Vivid**, explains the theme files, and keeps its installation and compatibility notes together. Start there for the current project contents.
 

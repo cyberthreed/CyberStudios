@@ -85,12 +85,12 @@ foreach($theme in $catalog.themes) {
   $bitmap.Save((Join-Path (Join-Path $CollectionRoot $theme.folder) 'preview.png'),[System.Drawing.Imaging.ImageFormat]::Png)
  } finally {$canvas.Dispose();$bitmap.Dispose()}
 }
-$sheet=[System.Drawing.Bitmap]::new(1200,1600)
+$sheet=[System.Drawing.Bitmap]::new(1800,([int][Math]::Ceiling($catalog.themes.Count/3)*400))
 $sheetCanvas=[System.Drawing.Graphics]::FromImage($sheet)
 $sheetCanvas.InterpolationMode=[System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
 try{
  $i=0
- foreach($theme in $catalog.themes){$image=[System.Drawing.Image]::FromFile((Join-Path (Join-Path $CollectionRoot $theme.folder) 'preview.png'));try{$sheetCanvas.DrawImage($image,([int]($i%2)*600),([int][Math]::Floor($i/2)*400),600,400)}finally{$image.Dispose()};$i++}
+ foreach($theme in $catalog.themes){$image=[System.Drawing.Image]::FromFile((Join-Path (Join-Path $CollectionRoot $theme.folder) 'preview.png'));try{$sheetCanvas.DrawImage($image,([int]($i%3)*600),([int][Math]::Floor($i/3)*400),600,400)}finally{$image.Dispose()};$i++}
  $sheet.Save((Join-Path $CollectionRoot 'preview-collection.png'),[System.Drawing.Imaging.ImageFormat]::Png)
 }finally{$sheetCanvas.Dispose();$sheet.Dispose()}
 Write-Output ('Rendered '+$catalog.themes.Count+' palette previews and the collection sheet.')
