@@ -2,7 +2,7 @@
 
 **your blender. your colors. your cyberspace.**
 
-`CYBERSTUDIOS.EXE` · `BLENDER ADD-ON` · `VERSION 0.2.0`
+`CYBERSTUDIOS.EXE` · `BLENDER ADD-ON` · `VERSION 0.1.0`
 
 ---
 
@@ -82,11 +82,11 @@ The theme manager isn't limited to that aesthetic. Other installed and user-crea
 
 - Blender 4.2 or newer, according to the add-on manifest
 - Tested by the project on Blender 5.2.3 LTS
-- CyberStudios Theme Switcher v0.2.0
+- CyberStudios Theme Switcher v0.1.0
 
 **Installation**
 
-1. Download the packaged add-on: `cyberstudios_theme_switcher-0.2.0.zip`.
+1. Download the packaged add-on: `cyberstudios_theme_switcher-0.1.0.zip`.
 2. Open Blender.
 3. Navigate to **Edit → Preferences → Add-ons**.
 4. Open the add-ons menu and choose **Install from Disk...**
@@ -180,7 +180,7 @@ Your creative environment can change as often as your ideas do.
 | Property | Value |
 |---|---|
 | Add-on | CyberStudios Theme Switcher |
-| Current version | 0.2.0 |
+| Current version | 0.1.0 |
 | Platform | Blender |
 | Minimum declared version | Blender 4.2 |
 | Reported tested version | Blender 5.2.3 LTS |
@@ -197,7 +197,7 @@ To build the installable ZIP on Windows, run the included `build.ps1` script fro
 
 The script creates:
 
-`cyberstudios_theme_switcher-0.2.0.zip`
+`cyberstudios_theme_switcher-0.1.0.zip`
 
 The extension requests file access for theme import/export and clipboard access for copying and pasting theme XML.
 

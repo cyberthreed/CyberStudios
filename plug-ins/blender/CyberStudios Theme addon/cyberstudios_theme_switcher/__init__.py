@@ -1,7 +1,7 @@
 bl_info = {
     "name": "CyberStudios Theme Switcher",
     "author": "CyberStudios",
-    "version": (0, 2, 0),
+    "version": (0, 1, 0),
     "blender": (4, 2, 0),
     "location": "Preferences > Themes, and Preferences > Add-ons > CyberStudios Theme Switcher",
     "description": "Switch between the CyberStudios themes and any installed theme, paste theme XML, save it under a name and export it.",

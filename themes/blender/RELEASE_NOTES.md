@@ -1,8 +1,8 @@
-# ♡ CyberStudios Blender Themes · 1.1.0
+# ♡ CyberStudios Blender Themes · 1.0.0
 
 **dream in pixels. create without limits.**
 
-A little wardrobe for your 3D workspace: **five new soft feminine themes** and **five new grounded masculine themes**. Everything from 1.0.0 is still included, bringing the collection to **twenty presets**.
+A little wardrobe for your 3D workspace: **five new soft feminine themes** and **five new grounded masculine themes**. The original ten presets are still included, bringing the collection to **twenty presets**.
 
 ## 🎀 new soft feminine palettes
 
@@ -22,7 +22,7 @@ A little wardrobe for your 3D workspace: **five new soft feminine themes** and *
 
 ## 💾 install
 
-Download **CyberStudios-Blender-Themes-1.1.0.zip**, extract it, and install any XML through **Edit → Preferences → Themes → Install…**. Only XML files are needed in Blender.
+Download **CyberStudios-Blender-Themes-1.0.0.zip**, extract it, and install any XML through **Edit → Preferences → Themes → Install…**. Only XML files are needed in Blender.
 
 The **Source ZIP** contains the editable projects, readmes, build tools, preview illustrations, and an offline HTML gallery with all twenty XML downloads embedded.
 

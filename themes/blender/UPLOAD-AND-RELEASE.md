@@ -16,13 +16,13 @@ The curated source folder contains public project files only. The tools are rebu
 ## 💿 create the GitHub Release
 
 1. Open https://github.com/cyberthreed/CyberStudios/releases/new.
-2. Under **Choose a tag**, enter **blender-themes-v1.1.0** and choose **Create new tag**.
+2. Under **Choose a tag**, enter **blender-themes-v1.0.0** and choose **Create new tag**.
 3. Set **Target** to **main**, after the source upload has been committed.
-4. Use this title: **♡ CyberStudios Blender Themes · 1.1.0**.
+4. Use this title: **♡ CyberStudios Blender Themes · 1.0.0**.
 5. Copy the contents of `RELEASE_NOTES.md` into the release description.
 6. Attach these files from the sibling **releases** folder:
-   - `CyberStudios-Blender-Themes-1.1.0.zip` — the twenty installable presets, guide, license, and checksum list.
-   - `CyberStudios-Blender-Themes-Source-1.1.0.zip` — the full curated source collection.
+   - `CyberStudios-Blender-Themes-1.0.0.zip` — the twenty installable presets, guide, license, and checksum list.
+   - `CyberStudios-Blender-Themes-Source-1.0.0.zip` — the full curated source collection.
    - `SHA256SUMS.txt` — integrity hashes for the two ZIP files.
 7. Review the **pre-release** and **latest release** options. Use pre-release if you want the first public upload treated as a testing release. The latest label applies to the whole CyberStudios repository, which also has Byte and VS Code releases.
 8. Choose **Save draft** to review it later, or **Publish release** when you're ready.
