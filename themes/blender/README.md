@@ -65,6 +65,8 @@ This collection contains **twenty Blender XML presets** across nineteen project 
 3. In Blender, open **Edit → Preferences → Themes → Install…**.
 4. Select the XML preset you want. Save Preferences if automatic saving is off.
 
+Prefer a switcher? The [CyberStudios Theme Switcher](https://cyberthreed.github.io/CyberStudios/projects/theme-switcher.html) add-on bundles all twenty themes: [get the add-on](https://github.com/cyberthreed/CyberStudios/releases/tag/blender-theme-switcher-v1.0.0).
+
 **Installers only need XML.** The `tools/` folders, palette catalog, preview images, and documentation are source and support files. They are safe to include in the repository upload, and do not need to be installed in Blender.
 
 ### 🫧 checked, with a few little notes

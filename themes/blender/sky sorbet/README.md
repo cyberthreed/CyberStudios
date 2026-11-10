@@ -40,6 +40,8 @@ A little atmosphere, from the first cube to the last adjustment.
 3. Choose **Install…** and select the XML file.
 4. Save Preferences if automatic preference saving is turned off.
 
+Also available in the [CyberStudios Theme Switcher](https://cyberthreed.github.io/CyberStudios/projects/theme-switcher.html) add-on, which bundles all twenty themes: [get the add-on](https://github.com/cyberthreed/CyberStudios/releases/tag/blender-theme-switcher-v1.0.0).
+
 **Only the XML file is needed to install the theme.** The collection's tools are for rebuilding its source files.
 
 ### 🫧 a few practical little notes

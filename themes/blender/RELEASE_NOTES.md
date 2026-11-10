@@ -22,7 +22,7 @@ A little wardrobe for your 3D workspace: **five new soft feminine themes** and *
 
 ## 💾 install
 
-Download **CyberStudios-Blender-Themes-1.1.0.zip**, extract it, and install any XML through **Edit → Preferences → Themes → Install…**. Only XML files are needed in Blender.
+Download **CyberStudios-Blender-Themes-1.1.0.zip**, extract it, and install any XML through **Edit → Preferences → Themes → Install…**. Only XML files are needed in Blender. Prefer a switcher? All twenty themes are also bundled in the [CyberStudios Theme Switcher](https://cyberthreed.github.io/CyberStudios/projects/theme-switcher.html) add-on.
 
 The **Source ZIP** contains the editable projects, readmes, build tools, preview illustrations, and an offline HTML gallery with all twenty XML downloads embedded.
 
