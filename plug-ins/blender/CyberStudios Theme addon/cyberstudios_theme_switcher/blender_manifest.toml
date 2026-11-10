@@ -1,7 +1,7 @@
 schema_version = "1.0.0"
 
 id = "cyberstudios_theme_switcher"
-version = "0.1.0"
+version = "1.0.0"
 name = "CyberStudios Theme Switcher"
 tagline = "Switch, paste, save and export Blender interface themes"
 maintainer = "CyberStudios"

@@ -1,6 +1,6 @@
 {
   "collection": "CyberStudios Blender Themes",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "tagline": "dream in pixels. create without limits.",
   "themes": [
     {"id":"strawberry-milk","folder":"strawberry milk","name":"Strawberry Milk","family":"Cute","mode":"Light","description":"Baby pink, vanilla cream, and berry-colored details. A little strawberry sweetness between the panels.","paper":"#FFF7FA","panel":"#FCE5EE","header":"#F5D0E0","field":"#FFF0F6","ink":"#5D3045","muted":"#87546A","border":"#D8A2BB","accent":"#AD3E70","selection":"#E9B6CE","timeline":"#E7F1FC","grid":"#CBB4C4","syntax":["#7650AF","#9F3B69","#346B92","#2D7771","#805A88","#87546A"]},
