@@ -32,9 +32,11 @@
     return canvas;
   };
   const downsample = [];
+  const phone = matchMedia("(max-width: 700px)");
   function present() {
     const box = display.getBoundingClientRect();
-    const ratio = Math.min(box.width / width, box.height / height) * devicePixelRatio;
+    const scale = phone.matches ? Math.min(devicePixelRatio, 2) : devicePixelRatio;
+    const ratio = Math.min(box.width / width, box.height / height) * scale;
     const targetW = Math.max(1, Math.round(width * ratio));
     const targetH = Math.max(1, Math.round(height * ratio));
     if (display.width !== targetW || display.height !== targetH) {
