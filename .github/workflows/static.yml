@@ -49,6 +49,10 @@ jobs:
           test -f _pages/ascii-art/index.html
           test -f _pages/ascii-art/exhibition/00-the-machine-dreams-of-angels/index.html
           test -f _pages/ascii-art/exhibition/00-the-machine-dreams-of-angels/outputs/page_frame.json
+          test -f _pages/ascii-art/antagonist/index.html
+          test -f _pages/ascii-art/antagonist/animation.js
+          test -f _pages/ascii-art/antagonist/ascii_data.js
+          test -f _pages/assets/ascii-art/antagonist-preview.webp
           test -f _pages/assets/ascii-art/angels-preview.png
           test -f _pages/themes/downloads/Cybercore_Cotton_Candy_Soft.xml
           test -f _pages/themes/downloads/Cybercore_Cotton_Candy_Vivid.xml

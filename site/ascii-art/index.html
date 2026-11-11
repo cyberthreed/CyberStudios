@@ -477,6 +477,7 @@
         <a href="#apparition">✧ Apparition Exhibition</a>
         <a href="#entry-00">♡ #00 Angels</a>
         <a href="#other-projects">▦ Other projects</a>
+        <a href="antagonist/">▒ Antagonist</a>
         <p class="sidebar-label">STUDIO</p>
         <a href="../">⌂ Wiki Home</a>
         <a href="../projects/">▦ Projects</a>
@@ -623,7 +624,15 @@
     });
 
     /* Future Collection B entries: push objects into this array. */
-    const otherProjects = [];
+    const otherProjects = [
+      {
+        title: "Antagonist",
+        description: "An animated ASCII study of Harness of rigeki, based on original character artwork by @2.grotesque on Instagram.",
+        preview: "../assets/ascii-art/antagonist-preview.webp",
+        alt: "Monochrome ASCII rendering of a tall, ragged figure with a branching lightning arm.",
+        href: "antagonist/"
+      }
+    ];
     const grid = document.getElementById("other-grid");
     for (const p of otherProjects) {
       const card = document.createElement("article");
