@@ -43,3 +43,6 @@
   .byte-character,.byte-character.is-happy { animation:none!important; }
 }
 
+.topnav a[aria-current="page"] { background:#eedcfb; color:#8658ae; border-color:#cfa8ee; }
+.sidebar a[aria-current="page"] { background:#eedcfb; color:#8658ae; font-weight:700; }
+.night .topnav a[aria-current="page"],.night .sidebar a[aria-current="page"] { background:#57416b; color:#eed5ff; }
