@@ -281,8 +281,6 @@
       text-decoration:none;
       border-bottom:1px dashed currentColor;
     }
-    .contrib-graph { direction:rtl; overflow-x:auto; margin:14px 0 16px; padding:12px; border:1px solid var(--line, #e7d3f3); border-radius:12px; background:rgba(255,255,255,.55); }
-    .contrib-graph img { display:block; width:100%; min-width:520px; max-width:663px; height:auto; }
     .empty { display:none; margin-top:15px; color:var(--muted); }
     .empty.visible { display:block; }
 
@@ -693,17 +691,33 @@
 
       <section class="panel" id="contributions" aria-labelledby="contributions-heading">
         <div class="windowbar">
-          <span>⌘ github.contributions</span>
+          <span>⌘ open-source.contributions</span>
           <span>@cyberthreed</span>
         </div>
         <div class="content">
-          <h2 class="section-heading" id="contributions-heading">GitHub contributions ✧</h2>
-          <p class="subtext">A year of commits, pull requests, and little experiments across my repositories.</p>
-          <div class="contrib-graph">
-            <img src="https://ghchart.rshah.org/a77bd0/cyberthreed" width="663" height="104" loading="lazy"
-              alt="GitHub contribution graph for @cyberthreed over the past year">
+          <h2 class="section-heading" id="contributions-heading">Open-source contributions ✧</h2>
+          <p class="subtext">Pull requests I've sent to other open-source projects.</p>
+          <div class="project-grid">
+            <article class="project">
+              <div class="project-top"><div class="project-icon" aria-hidden="true">✿</div><div><h3>BlenderKit</h3><p class="category">Asset popup · UI fix</p></div></div>
+              <p>Show the original file size in the asset popup.</p>
+              <span class="status">MERGED</span>
+              <div><a class="project-link" href="https://github.com/BlenderKit/Blendkit/pull/2359" target="_blank" rel="noopener noreferrer">View pull request →</a></div>
+            </article>
+            <article class="project">
+              <div class="project-top"><div class="project-icon" aria-hidden="true">✿</div><div><h3>BlenderKit</h3><p class="category">Search · bug fix</p></div></div>
+              <p>Remove failed searches from the search history.</p>
+              <span class="status">OPEN</span>
+              <div><a class="project-link" href="https://github.com/BlenderKit/Blendkit/pull/2358" target="_blank" rel="noopener noreferrer">View pull request →</a></div>
+            </article>
+            <article class="project">
+              <div class="project-top"><div class="project-icon" aria-hidden="true">⌂</div><div><h3>ha-mcp</h3><p class="category">Home Assistant MCP · feature</p></div></div>
+              <p>Support image entities in the camera image tool.</p>
+              <span class="status">OPEN</span>
+              <div><a class="project-link" href="https://github.com/homeassistant-ai/ha-mcp/pull/3055" target="_blank" rel="noopener noreferrer">View pull request →</a></div>
+            </article>
           </div>
-          <a class="button" href="https://github.com/cyberthreed" target="_blank" rel="noopener noreferrer">↗ View full activity on GitHub</a>
+          <p class="subtext" style="margin-top:16px"><a class="project-link" href="https://github.com/cyberthreed" target="_blank" rel="noopener noreferrer">↗ All activity on GitHub</a></p>
         </div>
       </section>
 
