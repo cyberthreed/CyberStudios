@@ -785,5 +785,17 @@
     </div>
   </section>
   <script src="../assets/wiki-companion.js" defer></script>
+  <script>
+(() => {
+  const host = window.location.hostname;
+  if (host !== 'cyberthreed.tumblr.com' && host !== 'cyberthreed.github.io') return;
+  const t = document.createElement('script');
+  t.src = 'https://gc.zgo.at/count.js';
+  t.async = true;
+  t.setAttribute('data-goatcounter', 'https://cyberstudios-wiki.goatcounter.com/count');
+  t.setAttribute('data-goatcounter-settings', '{"no_events":true}');
+  document.head.appendChild(t);
+})();
+  </script>
 </body>
 </html>
