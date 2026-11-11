@@ -281,6 +281,8 @@
       text-decoration:none;
       border-bottom:1px dashed currentColor;
     }
+    .contrib-graph { direction:rtl; overflow-x:auto; margin:14px 0 16px; padding:12px; border:1px solid var(--line, #e7d3f3); border-radius:12px; background:rgba(255,255,255,.55); }
+    .contrib-graph img { display:block; width:100%; min-width:520px; max-width:663px; height:auto; }
     .empty { display:none; margin-top:15px; color:var(--muted); }
     .empty.visible { display:block; }
 
@@ -686,6 +688,22 @@
           <p class="empty" id="empty-results" role="status">
             No matching projects found. Try a different search. ♡
           </p>
+        </div>
+      </section>
+
+      <section class="panel" id="contributions" aria-labelledby="contributions-heading">
+        <div class="windowbar">
+          <span>⌘ github.contributions</span>
+          <span>@cyberthreed</span>
+        </div>
+        <div class="content">
+          <h2 class="section-heading" id="contributions-heading">GitHub contributions ✧</h2>
+          <p class="subtext">A year of commits, pull requests, and little experiments across my repositories.</p>
+          <div class="contrib-graph">
+            <img src="https://ghchart.rshah.org/a77bd0/cyberthreed" width="663" height="104" loading="lazy"
+              alt="GitHub contribution graph for @cyberthreed over the past year">
+          </div>
+          <a class="button" href="https://github.com/cyberthreed" target="_blank" rel="noopener noreferrer">↗ View full activity on GitHub</a>
         </div>
       </section>
 
