@@ -610,13 +610,15 @@ modmanifest --version</pre>
           <div class="article">
             <h3><a href="https://github.com/CyberStudiosTM/ModManifest/releases/tag/v0.1.0">📦 ModManifest v0.1.0 release →</a></h3>
             <p>
-              Download the wheel or source archive from the release assets, then install the wheel.
-              Requires Python 3.11 or newer. ModManifest v0.1.0 is distributed through GitHub Releases
-              and is not published on PyPI, so <code>pip install modmanifest</code> will not install it.
+              Requires Python 3.11 or newer. ModManifest v0.1.0 is published on
+              <a href="https://pypi.org/project/modmanifest/">PyPI</a> and as GitHub Release assets.
             </p>
-            <pre class="mm-code">pip install modmanifest-0.1.0-py3-none-any.whl
+            <pre class="mm-code">python -m pip install modmanifest
 modmanifest inspect "./MyMod"</pre>
-            <p>Or install from source:</p>
+            <p>
+              Or download the wheel or source archive from the release assets and install the wheel
+              (<code>pip install modmanifest-0.1.0-py3-none-any.whl</code>), or install from source:
+            </p>
             <pre class="mm-code">git clone https://github.com/CyberStudiosTM/ModManifest.git
 cd ModManifest
 pip install .</pre>
