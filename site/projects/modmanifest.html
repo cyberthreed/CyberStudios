@@ -593,7 +593,6 @@ modmanifest --version</pre>
             <ul class="subtext">
               <li>ModManifest is not an antivirus, malware scanner, official game validator, or runtime compatibility tester.</li>
               <li>A completed inspection doesn't establish that a mod is safe, authentic, compatible, or functional in-game.</li>
-              <li>Sims 4 coverage was validated with synthetic fixtures. inZOI coverage used synthetic fixtures plus limited read-only inspection of real mod folders.</li>
               <li>7z, RAR, and other archive formats are listed, not opened. Scripts and binary game data are not audited.</li>
             </ul>
           </div>
@@ -695,5 +694,17 @@ pip install .</pre>
     </div>
   </section>
   <script src="../assets/wiki-companion.js" defer></script>
+  <script>
+(() => {
+  const host = window.location.hostname;
+  if (host !== 'cyberthreed.tumblr.com' && host !== 'cyberthreed.github.io') return;
+  const t = document.createElement('script');
+  t.src = 'https://gc.zgo.at/count.js';
+  t.async = true;
+  t.setAttribute('data-goatcounter', 'https://cyberstudios-wiki.goatcounter.com/count');
+  t.setAttribute('data-goatcounter-settings', '{"no_events":true}');
+  document.head.appendChild(t);
+})();
+  </script>
 </body>
 </html>
