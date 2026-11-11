@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6dbf3">
+  <meta name="description" content="GhostPort is a local-first command-line utility for inspecting TCP ports, identifying listening processes, and checking how local HTTP services respond. Meet Portgeist, its pixel-art mascot.">
+  <title>GhostPort ♡ CyberStudios Wiki</title>
+  <style>
+    :root {
+      --ink:#7e5c9d;
+      --muted:#a186b5;
+      --border:#e7c9f5;
+      --paper:#fffaffed;
+      --bar:linear-gradient(100deg,#f6dbf3,#e5efff);
+      --shadow:#dfc6e759;
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      font:13px "Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%,#ffdaedb0,transparent 35%),
+        radial-gradient(circle at 90% 22%,#c8effabf,transparent 35%),
+        linear-gradient(125deg,#fff1fb,#f5ecff 58%,#e9f9ff);
+    }
+
+    body.night {
+      --ink:#dfc3ee;
+      --muted:#b99dc9;
+      --border:#69507d;
+      --paper:#332b47f2;
+      --bar:linear-gradient(100deg,#47304f,#303c59);
+      --shadow:#23192e55;
+      background:linear-gradient(125deg,#4f294c,#302745 55%,#233c59);
+    }
+
+    a { color:inherit; }
+    button,input { font:inherit; }
+    button { cursor:pointer; }
+
+    :focus-visible {
+      outline:3px solid #b68fdf;
+      outline-offset:3px;
+    }
+
+    .shell {
+      width:min(1150px,calc(100% - 34px));
+      margin:auto;
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:15px;
+      padding:25px 0;
+    }
+
+    .brand {
+      display:flex;
+      gap:13px;
+      align-items:center;
+      text-decoration:none;
+    }
+
+    .brand-icon {
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#ffd6ee,#c9effd);
+      border:2px solid var(--border);
+      border-radius:18px;
+      box-shadow:0 6px 0 var(--shadow);
+      font-size:29px;
+      color:#9e76c0;
+    }
+
+    .brand small {
+      display:block;
+      color:var(--muted);
+      font-size:10px;
+      letter-spacing:2px;
+      font-weight:700;
+    }
+
+    .brand strong {
+      display:block;
+      font-size:25px;
+      margin-top:3px;
+    }
+
+    .topnav {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .topnav a,.topnav button {
+      border:1px solid var(--border);
+      border-radius:22px;
+      background:var(--paper);
+      padding:10px 14px;
+      text-decoration:none;
+      color:var(--ink);
+      font-size:11px;
+      font-weight:650;
+    }
+
+    .layout {
+      display:grid;
+      grid-template-columns:220px minmax(0,1fr);
+      gap:18px;
+      align-items:start;
+    }
+
+    .panel {
+      border:2px solid var(--border);
+      border-radius:20px;
+      background:var(--paper);
+      overflow:hidden;
+      box-shadow:0 9px 0 var(--shadow),0 24px 40px #b78bc313;
+    }
+
+    .windowbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      min-height:44px;
+      padding:10px 16px;
+      background:var(--bar);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .sidebar {
+      position:sticky;
+      top:16px;
+    }
+
+    .sidebar-inner { padding:15px; }
+
+    .sidebar a {
+      display:block;
+      text-decoration:none;
+      padding:11px 12px;
+      margin-bottom:4px;
+      border-radius:10px;
+      font-size:12px;
+    }
+
+    .sidebar a:hover {
+      background:#f1e3fc;
+      color:#8c63b3;
+    }
+
+    .sidebar a.active {
+      background:#eedcfb;
+      color:#8658ae;
+      font-weight:700;
+    }
+
+    .sidebar-label {
+      margin:11px 8px;
+      font:700 10px Consolas,monospace;
+      letter-spacing:1px;
+      color:var(--muted);
+    }
+
+    .main-column {
+      display:grid;
+      gap:19px;
+      min-width:0;
+    }
+
+    .hero {
+      padding:37px;
+      background:
+        radial-gradient(circle at 85% 18%,#ffffff9c,transparent 40%),
+        linear-gradient(135deg,#ffe5f3,#e7e2ff 65%,#dff5ff);
+      color:#7e5c9d;
+    }
+
+    .hero .eyebrow {
+      font:700 11px Consolas,monospace;
+      letter-spacing:1.5px;
+      color:#a47dc1;
+    }
+
+    .hero h1 {
+      margin:17px 0;
+      font-size:clamp(34px,5vw,55px);
+      line-height:1.1;
+    }
+
+    .hero h1 span { color:#d782bd; }
+
+    .hero p {
+      max-width:630px;
+      color:#866c9c;
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .content { padding:26px; }
+
+    .heading {
+      margin:0 0 12px;
+      font-size:23px;
+    }
+
+    .heading span { color:#d782bd; }
+
+    .subtext {
+      color:var(--muted);
+      line-height:1.8;
+      font-size:13px;
+    }
+
+    .search {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:0 15px;
+      margin:20px 0;
+      border:1px solid var(--border);
+      border-radius:13px;
+      background:var(--paper);
+    }
+
+    .search input {
+      width:100%;
+      min-width:0;
+      padding:14px 0;
+      border:0;
+      outline:0;
+      background:transparent;
+      color:var(--ink);
+    }
+
+    .search input::placeholder { color:var(--muted); }
+
+    .projects {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+
+    .project {
+      padding:20px;
+      background:var(--paper);
+      border:1px solid var(--border);
+      border-radius:17px;
+    }
+
+    .project[hidden] { display:none; }
+
+    .project-heading {
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .project-icon {
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      flex-shrink:0;
+      border-radius:16px;
+      background:linear-gradient(135deg,#ffe1f2,#dcd7ff);
+      font-size:26px;
+      color:#9d76c0;
+    }
+
+    .project-icon img {
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      image-rendering:pixelated;
+    }
+
+    .project h3 {
+      margin:0 0 4px;
+      font-size:16px;
+    }
+
+    .category {
+      font-size:10px;
+      color:var(--muted);
+    }
+
+    .project p {
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.75;
+    }
+
+    .status {
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:20px;
+      background:#eedcfb;
+      color:#936bb2;
+      font:10px Consolas,monospace;
+    }
+
+    .project a {
+      display:inline-block;
+      margin-top:15px;
+      font-size:12px;
+      font-weight:700;
+      text-underline-offset:4px;
+    }
+
+    .article {
+      padding:10px 0;
+      border-bottom:1px solid var(--border);
+    }
+
+    .article:last-child { border-bottom:0; }
+
+    .article h3 {
+      font-size:16px;
+      margin:15px 0 8px;
+    }
+
+    .article p {
+      line-height:1.8;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .article strong { color:var(--ink); }
+
+    .info {
+      margin-top:18px;
+      padding:15px;
+      border:1px dashed var(--border);
+      border-radius:12px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .empty {
+      display:none;
+      color:var(--muted);
+      margin:15px 0;
+    }
+
+    .empty.visible { display:block; }
+
+    .footer {
+      text-align:center;
+      padding:45px 0;
+      color:var(--muted);
+      font:11px/1.9 Consolas,monospace;
+    }
+
+    .night .hero {
+      background:linear-gradient(135deg,#4d335a,#34324f 70%,#2b4860);
+      color:#dfc3ee;
+    }
+
+    .night .hero h1 span { color:#f0a5d8; }
+    .night .hero p { color:#c5acd9; }
+    .night .project { background:#3c304f; }
+    .night .status { background:#58416b; color:#e3c8fa; }
+    .night .sidebar a.active { background:#57416b; color:#eed5ff; }
+    .night .sidebar a:hover { background:#57416b; color:#eed5ff; }
+
+    @media(max-width:860px) {
+      .layout { grid-template-columns:1fr; }
+      .sidebar { position:static; }
+      .sidebar-inner {
+        display:flex;
+        flex-wrap:wrap;
+        gap:6px;
+      }
+      .sidebar-label { display:none; }
+      .sidebar a { margin:0; }
+    }
+
+    @media(max-width:560px) {
+      .projects { grid-template-columns:1fr; }
+      .hero { padding:25px 20px; }
+      .content { padding:20px; }
+      .topnav { width:100%; }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+    }
+  </style>
+  <style>
+    .gp-banner,.gp-shot { display:block; width:100%; height:auto; border:1px solid var(--border); border-radius:8px; image-rendering:pixelated; }
+    .gp-shot { image-rendering:auto; }
+    .gp-code { margin:12px 0; padding:12px 14px; overflow-x:auto; border:1px solid var(--border); border-radius:8px; background:#fff7ffcc; color:var(--ink); font:12.5px Consolas,"Cascadia Mono",monospace; }
+    body.night .gp-code { background:#2a2147; }
+    .gp-table { width:100%; border-collapse:collapse; margin:12px 0; }
+    .gp-table th,.gp-table td { padding:8px 10px; border:1px solid var(--border); text-align:left; vertical-align:top; }
+    .gp-table code { font-family:Consolas,"Cascadia Mono",monospace; }
+    .gp-poses { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:14px; margin:14px 0; text-align:center; }
+    .gp-poses figure { margin:0; }
+    .gp-poses img { width:96px; height:96px; image-rendering:pixelated; }
+    .gp-poses figcaption { margin-top:4px; color:var(--muted); }
+    .gp-idle { display:block; margin:12px auto; width:128px; height:128px; image-rendering:pixelated; }
+  </style>
+  <link rel="stylesheet" href="../assets/wiki-branding.css">
+</head>
+
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="../">
+      <span class="brand-icon" aria-hidden="true"><img src="../assets/cyberstudios.png" alt="" width="1280" height="1280" decoding="async"></span>
+      <span>
+        <small>THE CYBERSTUDIOS ARCHIVE</small>
+        <strong>CyberStudios ♡</strong>
+      </span>
+    </a>
+
+    <nav class="topnav" aria-label="Top navigation">
+      <a href="../themes/">✧ Themes</a>
+      <a href="../">⌂ Wiki Home</a>
+      <a href="./">▦ Projects</a>
+      <a href="../ascii-art/">▒ ASCII ART</a>
+      <a href="../about/">♡ About</a>
+      <button id="theme-toggle" type="button" aria-pressed="false">
+        ☾ Night mode
+      </button>
+      <button id="byte-toggle" class="theme-button" type="button" aria-pressed="true" hidden>♡ Hide Byte</button>
+    </nav>
+  </header>
+
+  <main class="shell layout">
+    <aside class="panel sidebar">
+      <div class="windowbar">
+        <span>👻 ghostport.project</span>
+        <span>♡</span>
+      </div>
+      <nav class="sidebar-inner" aria-label="GhostPort navigation">
+        <p class="sidebar-label">GHOSTPORT</p>
+        <a class="active" href="#overview">♡ Overview</a>
+        <a href="#commands">✧ Commands</a>
+        <a href="#safety">🔐 Safety &amp; limits</a>
+        <a href="#portgeist">👻 Portgeist</a>
+        <a href="#release">↗ Install &amp; links</a>
+        <a href="./">▦ All projects</a>
+        <a href="../themes/">✧ Theme library</a>
+        <a href="../ascii-art/">▒ ASCII ART</a>
+      </nav>
+    </aside>
+
+    <div class="main-column">
+      <section class="panel" id="overview">
+        <div class="windowbar">
+          <span>👻 ghostport.html</span>
+          <span>v0.1.1 · PYTHON CLI</span>
+        </div>
+        <div class="hero">
+          <span class="eyebrow">✧ CYBERSTUDIOS / DEVELOPER UTILITIES ✧</span>
+          <h1>A little ghost in <span>your localhost.</span></h1>
+          <img class="gp-banner" src="../assets/ghostport/ghostport-banner.png" alt="GhostPort banner: a pixel-art ghost with an Ethernet cable tail beside retro desktop windows, with the tagline Your friendly localhost investigator." width="1600" height="600">
+          <p>
+            Somewhere inside your computer, a service is listening.
+            GhostPort helps you investigate: it inspects TCP ports on your
+            own machine, identifies the listening process when the operating
+            system allows it, and checks how local HTTP services respond.
+          </p>
+          <p>
+            No dashboards, no cloud account, no background daemon. Just you,
+            your terminal, and a little ghost with questions. GhostPort is an
+            independent CyberStudios™ project and does not require CyberCore
+            or any other CyberStudios software.
+          </p>
+          <span class="status">v0.1.1 · WINDOWS · LINUX · macOS · PYTHON 3.11+</span>
+        </div>
+      </section>
+
+      <section class="panel" id="commands">
+        <div class="windowbar">
+          <span>✧ ghostport.commands</span>
+          <span>INSPECT</span>
+        </div>
+        <div class="content">
+          <h2 class="heading">Ask your <span>localhost</span> a question ♡</h2>
+
+          <div class="article">
+            <h3>🔎 One command, three independent checks</h3>
+            <p>
+              <strong>TCP</strong> reports whether the port accepts connections on
+              IPv4 and IPv6 loopback. <strong>Process</strong> reports the PID and name
+              when permissions allow, and never changes the TCP result when it can't.
+              <strong>HTTP</strong>, when requested, sends a single bounded GET request
+              and reports the status code, content type, server header, and response time.
+            </p>
+            <pre class="gp-code">ghostport inspect PORT [--http] [--expect-json] [--json] [--verbose]
+                       [--timeout SECONDS] [--path /PATH]</pre>
+            <table class="gp-table">
+              <thead><tr><th>Option</th><th>What it does</th></tr></thead>
+              <tbody>
+                <tr><td><code>--http</code></td><td>Send one bounded HTTP GET request and inspect the response headers.</td></tr>
+                <tr><td><code>--expect-json</code></td><td>Check that the content type is a supported JSON media type. Requires <code>--http</code>.</td></tr>
+                <tr><td><code>--json</code></td><td>Stable, versioned machine-readable output for scripts.</td></tr>
+                <tr><td><code>--verbose</code>, <code>-v</code></td><td>Extra diagnostics with sensitive values redacted.</td></tr>
+                <tr><td><code>--timeout</code>, <code>-t</code></td><td>Per-operation timeout from 0.05 to 30 seconds. Default: 3 seconds.</td></tr>
+                <tr><td><code>--path</code></td><td>HTTP request path. Default: <code>/</code>.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="article">
+            <h3>✧ Real output</h3>
+            <p>
+              Output from <code>ghostport inspect 8765 --http --expect-json</code>,
+              run against a temporary local Python JSON test server.
+            </p>
+            <img class="gp-shot" src="../assets/ghostport/ghostport-terminal.png" alt="Terminal screenshot of GhostPort inspecting localhost port 8765: TCP open, process python.exe, HTTP 200 application/json, and a passing JSON media type check." width="1160" height="652">
+            <p>
+              A JSON content type doesn't conclusively identify a service, and
+              GhostPort doesn't claim it does. The response body is never read or displayed.
+            </p>
+          </div>
+
+          <div class="article">
+            <h3>🚦 Exit codes</h3>
+            <table class="gp-table">
+              <thead><tr><th>Code</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td><code>0</code></td><td>TCP connection succeeded and requested HTTP checks passed.</td></tr>
+                <tr><td><code>1</code></td><td>TCP connection failed, timed out, or encountered an error.</td></tr>
+                <tr><td><code>2</code></td><td>Invalid arguments or unsupported option combinations.</td></tr>
+                <tr><td><code>3</code></td><td>TCP succeeded, but the requested HTTP or JSON check failed.</td></tr>
+              </tbody>
+            </table>
+            <p>
+              The <code>--json</code> report uses <code>schema_version: 1</code> with independent
+              <code>tcp</code>, <code>process</code>, and <code>http</code> sections.
+              Additive changes keep the schema version; breaking changes require a new one.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="safety">
+        <div class="windowbar">
+          <span>🔐 ghostport.safety</span>
+          <span>LOCAL-FIRST</span>
+        </div>
+        <div class="content">
+          <h2 class="heading">Safety, privacy &amp; <span>limits</span></h2>
+          <div class="article">
+            <h3>What GhostPort won't do</h3>
+            <ul class="subtext">
+              <li>Connects only to <code>127.0.0.1</code> and <code>::1</code>. No arbitrary host scanning.</li>
+              <li>Never kills, signals, or modifies processes.</li>
+              <li>Needs no administrator privileges.</li>
+              <li>No telemetry and no external requests.</li>
+              <li>Doesn't follow redirects, and ignores proxy environment variables for HTTP probes.</li>
+              <li>Redacts sensitive headers, credentials, query values, and command-line arguments in verbose diagnostics.</li>
+            </ul>
+          </div>
+          <div class="article">
+            <h3>Known limitations</h3>
+            <ul class="subtext">
+              <li>Process identification depends on OS permissions, and macOS may need elevated permissions.</li>
+              <li>Closed loopback ports can take about two seconds to report on Windows.</li>
+              <li>The three-second default timeout applies per network operation, not as a total deadline.</li>
+              <li>TLS-only services aren't supported by the plain HTTP probe.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="portgeist">
+        <div class="windowbar">
+          <span>👻 portgeist.exe</span>
+          <span>MASCOT</span>
+        </div>
+        <div class="content">
+          <h2 class="heading">Meet <span>Portgeist</span> ♡</h2>
+          <div class="article">
+            <p>
+              Portgeist is GhostPort's pixel-art mascot: a friendly little network caretaker
+              with mint cursor eyes and an Ethernet cable tail. The poses are decorative and
+              don't represent diagnostic results.
+            </p>
+            <img class="gp-idle" src="../assets/ghostport/portgeist-idle.gif" alt="Portgeist floating gently and blinking its cursor eyes" width="256" height="256">
+            <div class="gp-poses">
+              <figure><img src="../assets/ghostport/portgeist-connected.png" alt="Portgeist with sparkling eyes" width="512" height="512"><figcaption>Connected</figcaption></figure>
+              <figure><img src="../assets/ghostport/portgeist-sleeping.png" alt="Portgeist sleeping" width="512" height="512"><figcaption>Sleeping</figcaption></figure>
+              <figure><img src="../assets/ghostport/portgeist-confused.png" alt="Portgeist looking confused" width="512" height="512"><figcaption>Confused</figcaption></figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="release">
+        <div class="windowbar">
+          <span>↗ ghostport.links</span>
+          <span>MIT LICENSE</span>
+        </div>
+        <div class="content">
+          <h2 class="heading">Install &amp; <span>links</span></h2>
+          <div class="article">
+            <h3><a href="https://pypi.org/project/ghostport-cli/">📦 ghostport-cli on PyPI →</a></h3>
+            <pre class="gp-code">python -m pip install ghostport-cli
+ghostport inspect 8080 --http</pre>
+            <p>
+              The PyPI package is named <code>ghostport-cli</code>; the command and import name are <code>ghostport</code>.
+              Requires Python 3.11 or newer.
+            </p>
+            <p>
+              <a href="https://github.com/CyberStudiosTM/GhostPort">Source on GitHub →</a> ·
+              <a href="https://github.com/CyberStudiosTM/GhostPort/releases/tag/v0.1.1">v0.1.1 release →</a> ·
+              <a href="https://github.com/CyberStudiosTM/GhostPort#readme">README →</a> ·
+              <a href="https://github.com/CyberStudiosTM/GhostPort/blob/main/SECURITY.md">Security policy →</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="shell footer">
+    ✦ CYBERSTUDIOS WIKI ♡<br>
+    <strong>dream in pixels. create without limits.</strong><br>
+    GHOSTPORT · A LITTLE GHOST IN YOUR LOCALHOST<br>
+    © 2026 CyberStudios
+  </footer>
+
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+
+    function setNight(value) {
+      document.body.classList.toggle("night", value);
+      toggle.setAttribute("aria-pressed", String(value));
+      toggle.textContent = value ? "☀ Day mode" : "☾ Night mode";
+
+      try {
+        localStorage.setItem(
+          "cyberstudios-wiki-night",
+          value ? "1" : "0"
+        );
+      } catch (error) {}
+    }
+
+    try {
+      setNight(
+        localStorage.getItem("cyberstudios-wiki-night") === "1"
+      );
+    } catch (error) {
+      setNight(false);
+    }
+
+    toggle.addEventListener("click", () => {
+      setNight(!document.body.classList.contains("night"));
+    });
+  </script>
+  <div class="byte-companion" id="byte-companion" hidden>
+    <button class="byte-character" id="byte-character" type="button" aria-label="Byte: open companion controls" aria-expanded="false" aria-controls="byte-menu" aria-describedby="byte-keyboard-help">
+      <img src="../byte/assets/icon.png" alt="" width="76" height="76">
+    </button>
+    <span class="byte-caption" aria-hidden="true">byte ♡</span>
+  </div>
+  <section class="panel byte-menu" id="byte-menu" aria-labelledby="byte-menu-heading" hidden>
+    <div class="windowbar"><span id="byte-menu-heading">♡ byte's little corner</span><span aria-hidden="true">✧</span></div>
+    <div class="byte-body">
+      <p class="byte-response" id="byte-response" role="status" aria-live="polite" aria-atomic="true">Hello, little star. ♡</p>
+      <div class="byte-controls">
+        <button type="button" id="byte-pet">♡ Pet</button>
+        <button type="button" id="byte-treat">✿ Treat</button>
+        <button type="button" id="byte-rest" aria-pressed="false">☾ Rest</button>
+        <button class="wide" type="button" id="byte-roam" aria-pressed="false">Start roaming</button>
+      </div>
+      <div class="byte-controls move-controls">
+        <button type="button" id="byte-left" aria-label="Move Byte left">← Left</button>
+        <button type="button" id="byte-home">Reset spot</button>
+        <button type="button" id="byte-right" aria-label="Move Byte right">Right →</button>
+      </div>
+      <p class="byte-help" id="byte-keyboard-help">With Byte focused, use Left/Right to move or Home to reset. Escape closes controls. Roaming pauses while Byte or his controls have focus.</p>
+      <div class="byte-controls"><button type="button" id="byte-close">Close controls</button><button type="button" id="byte-hide">Hide Byte</button></div>
+    </div>
+  </section>
+  <script src="../assets/wiki-companion.js" defer></script>
+</body>
+</html>

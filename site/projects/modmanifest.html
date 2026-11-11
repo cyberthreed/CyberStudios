@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6dbf3">
+  <meta name="description" content="ModManifest is a read-only command-line utility for inspecting, validating, and auditing The Sims 4 and inZOI mod packages, with evidence-based reporting.">
+  <title>ModManifest ♡ CyberStudios Wiki</title>
+  <style>
+    :root {
+      --ink:#7e5c9d;
+      --muted:#a186b5;
+      --border:#e7c9f5;
+      --paper:#fffaffed;
+      --bar:linear-gradient(100deg,#f6dbf3,#e5efff);
+      --shadow:#dfc6e759;
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      font:13px "Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%,#ffdaedb0,transparent 35%),
+        radial-gradient(circle at 90% 22%,#c8effabf,transparent 35%),
+        linear-gradient(125deg,#fff1fb,#f5ecff 58%,#e9f9ff);
+    }
+
+    body.night {
+      --ink:#dfc3ee;
+      --muted:#b99dc9;
+      --border:#69507d;
+      --paper:#332b47f2;
+      --bar:linear-gradient(100deg,#47304f,#303c59);
+      --shadow:#23192e55;
+      background:linear-gradient(125deg,#4f294c,#302745 55%,#233c59);
+    }
+
+    a { color:inherit; }
+    button,input { font:inherit; }
+    button { cursor:pointer; }
+
+    :focus-visible {
+      outline:3px solid #b68fdf;
+      outline-offset:3px;
+    }
+
+    .shell {
+      width:min(1150px,calc(100% - 34px));
+      margin:auto;
+    }
+
+    .topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:15px;
+      padding:25px 0;
+    }
+
+    .brand {
+      display:flex;
+      gap:13px;
+      align-items:center;
+      text-decoration:none;
+    }
+
+    .brand-icon {
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#ffd6ee,#c9effd);
+      border:2px solid var(--border);
+      border-radius:18px;
+      box-shadow:0 6px 0 var(--shadow);
+      font-size:29px;
+      color:#9e76c0;
+    }
+
+    .brand small {
+      display:block;
+      color:var(--muted);
+      font-size:10px;
+      letter-spacing:2px;
+      font-weight:700;
+    }
+
+    .brand strong {
+      display:block;
+      font-size:25px;
+      margin-top:3px;
+    }
+
+    .topnav {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .topnav a,.topnav button {
+      border:1px solid var(--border);
+      border-radius:22px;
+      background:var(--paper);
+      padding:10px 14px;
+      text-decoration:none;
+      color:var(--ink);
+      font-size:11px;
+      font-weight:650;
+    }
+
+    .layout {
+      display:grid;
+      grid-template-columns:220px minmax(0,1fr);
+      gap:18px;
+      align-items:start;
+    }
+
+    .panel {
+      border:2px solid var(--border);
+      border-radius:20px;
+      background:var(--paper);
+      overflow:hidden;
+      box-shadow:0 9px 0 var(--shadow),0 24px 40px #b78bc313;
+    }
+
+    .windowbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      min-height:44px;
+      padding:10px 16px;
+      background:var(--bar);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .sidebar {
+      position:sticky;
+      top:16px;
+    }
+
+    .sidebar-inner { padding:15px; }
+
+    .sidebar a {
+      display:block;
+      text-decoration:none;
+      padding:11px 12px;
+      margin-bottom:4px;
+      border-radius:10px;
+      font-size:12px;
+    }
+
+    .sidebar a:hover {
+      background:#f1e3fc;
+      color:#8c63b3;
+    }
+
+    .sidebar a.active {
+      background:#eedcfb;
+      color:#8658ae;
+      font-weight:700;
+    }
+
+    .sidebar-label {
+      margin:11px 8px;
+      font:700 10px Consolas,monospace;
+      letter-spacing:1px;
+      color:var(--muted);
+    }
+
+    .main-column {
+      display:grid;
+      gap:19px;
+      min-width:0;
+    }
+
+    .hero {
+      padding:37px;
+      background:
+        radial-gradient(circle at 85% 18%,#ffffff9c,transparent 40%),
+        linear-gradient(135deg,#ffe5f3,#e7e2ff 65%,#dff5ff);
+      color:#7e5c9d;
+    }
+
+    .hero .eyebrow {
+      font:700 11px Consolas,monospace;
+      letter-spacing:1.5px;
+      color:#a47dc1;
+    }
+
+    .hero h1 {
+      margin:17px 0;
+      font-size:clamp(34px,5vw,55px);
+      line-height:1.1;
+    }
+
+    .hero h1 span { color:#d782bd; }
+
+    .hero p {
+      max-width:630px;
+      color:#866c9c;
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .content { padding:26px; }
+
+    .heading {
+      margin:0 0 12px;
+      font-size:23px;
+    }
+
+    .heading span { color:#d782bd; }
+
+    .subtext {
+      color:var(--muted);
+      line-height:1.8;
+      font-size:13px;
+    }
+
+    .search {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:0 15px;
+      margin:20px 0;
+      border:1px solid var(--border);
+      border-radius:13px;
+      background:var(--paper);
+    }
+
+    .search input {
+      width:100%;
+      min-width:0;
+      padding:14px 0;
+      border:0;
+      outline:0;
+      background:transparent;
+      color:var(--ink);
+    }
+
+    .search input::placeholder { color:var(--muted); }
+
+    .projects {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+
+    .project {
+      padding:20px;
+      background:var(--paper);
+      border:1px solid var(--border);
+      border-radius:17px;
+    }
+
+    .project[hidden] { display:none; }
+
+    .project-heading {
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .project-icon {
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      flex-shrink:0;
+      border-radius:16px;
+      background:linear-gradient(135deg,#ffe1f2,#dcd7ff);
+      font-size:26px;
+      color:#9d76c0;
+    }
+
+    .project-icon img {
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      image-rendering:pixelated;
+    }
+
+    .project h3 {
+      margin:0 0 4px;
+      font-size:16px;
+    }
+
+    .category {
+      font-size:10px;
+      color:var(--muted);
+    }
+
+    .project p {
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.75;
+    }
+
+    .status {
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:20px;
+      background:#eedcfb;
+      color:#936bb2;
+      font:10px Consolas,monospace;
+    }
+
+    .project a {
+      display:inline-block;
+      margin-top:15px;
+      font-size:12px;
+      font-weight:700;
+      text-underline-offset:4px;
+    }
+
+    .article {
+      padding:10px 0;
+      border-bottom:1px solid var(--border);
+    }
+
+    .article:last-child { border-bottom:0; }
+
+    .article h3 {
+      font-size:16px;
+      margin:15px 0 8px;
+    }
+
+    .article p {
+      line-height:1.8;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .article strong { color:var(--ink); }
+
+    .info {
+      margin-top:18px;
+      padding:15px;
+      border:1px dashed var(--border);
+      border-radius:12px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .empty {
+      display:none;
+      color:var(--muted);
+      margin:15px 0;
+    }
+
+    .empty.visible { display:block; }
+
+    .footer {
+      text-align:center;
+      padding:45px 0;
+      color:var(--muted);
+      font:11px/1.9 Consolas,monospace;
+    }
+
+    .night .hero {
+      background:linear-gradient(135deg,#4d335a,#34324f 70%,#2b4860);
+      color:#dfc3ee;
+    }
+
+    .night .hero h1 span { color:#f0a5d8; }
+    .night .hero p { color:#c5acd9; }
+    .night .project { background:#3c304f; }
+    .night .status { background:#58416b; color:#e3c8fa; }
+    .night .sidebar a.active { background:#57416b; color:#eed5ff; }
+    .night .sidebar a:hover { background:#57416b; color:#eed5ff; }
+
+    @media(max-width:860px) {
+      .layout { grid-template-columns:1fr; }
+      .sidebar { position:static; }
+      .sidebar-inner {
+        display:flex;
+        flex-wrap:wrap;
+        gap:6px;
+      }
+      .sidebar-label { display:none; }
+      .sidebar a { margin:0; }
+    }
+
+    @media(max-width:560px) {
+      .projects { grid-template-columns:1fr; }
+      .hero { padding:25px 20px; }
+      .content { padding:20px; }
+      .topnav { width:100%; }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+    }
+  </style>
+  <style>
+    .mm-code { margin:12px 0; padding:12px 14px; overflow-x:auto; border:1px solid var(--border); border-radius:8px; background:#fff7ffcc; color:var(--ink); font:12.5px Consolas,"Cascadia Mono",monospace; }
+    body.night .mm-code { background:#2a2147; }
+    .mm-table { width:100%; border-collapse:collapse; margin:12px 0; }
+    .mm-table th,.mm-table td { padding:8px 10px; border:1px solid var(--border); text-align:left; vertical-align:top; }
+    .mm-table code { font-family:Consolas,"Cascadia Mono",monospace; }
+  </style>
+  <link rel="stylesheet" href="../assets/wiki-branding.css">
+</head>
+
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="../">
+      <span class="brand-icon" aria-hidden="true"><img src="../assets/cyberstudios.png" alt="" width="1280" height="1280" decoding="async"></span>
+      <span>
+        <small>THE CYBERSTUDIOS ARCHIVE</small>
+        <strong>CyberStudios ♡</strong>
+      </span>
+    </a>
+
+    <nav class="topnav" aria-label="Top navigation">
+      <a href="../themes/">✧ Themes</a>
+      <a href="../">⌂ Wiki Home</a>
+      <a href="./">▦ Projects</a>
+      <a href="../ascii-art/">▒ ASCII ART</a>
+      <a href="../about/">♡ About</a>
+      <button id="theme-toggle" type="button" aria-pressed="false">
+        ☾ Night mode
+      </button>
+      <button id="byte-toggle" class="theme-button" type="button" aria-pressed="true" hidden>♡ Hide Byte</button>
+    </nav>
+  </header>
+
+  <main class="shell layout">
+    <aside class="panel sidebar">
+      <div class="windowbar">
+        <span>▦ modmanifest.project</span>
+        <span>♡</span>
+      </div>
+      <nav class="sidebar-inner" aria-label="ModManifest navigation">
+        <p class="sidebar-label">MODMANIFEST</p>
+        <a class="active" href="#overview">♡ Overview</a>
+        <a href="#games">🎮 Game support</a>
+        <a href="#safety">🛡 Safety &amp; AI audit</a>
+        <a href="#reports">◇ Reports &amp; limits</a>
+        <a href="#release">↗ Install &amp; links</a>
+        <a href="./">▦ All projects</a>
+        <a href="../themes/">✧ Theme library</a>
+        <a href="../ascii-art/">▒ ASCII ART</a>
+      </nav>
+    </aside>
+
+    <div class="main-column">
+      <section class="panel" id="overview">
+        <div class="windowbar">
+          <span>▦ modmanifest.html</span>
+          <span>v0.1.0 · PYTHON CLI</span>
+        </div>
+        <div class="hero">
+          <span class="eyebrow">✧ CYBERSTUDIOS / DEVELOPER UTILITIES ✧</span>
+          <h1>Know what was <span>actually checked.</span></h1>
+          <p>
+            ModManifest is an open-source, read-only command-line utility for inspecting,
+            validating, and auditing game mod packages for <strong>The Sims 4</strong>
+            and <strong>inZOI</strong>.
+          </p>
+          <p>
+            Not everything inside a mod package can be verified. ModManifest tells you what
+            it found, what it only observed, and where its knowledge ends. It never extracts,
+            executes, modifies, or uploads anything.
+          </p>
+          <span class="status">v0.1.0 · WINDOWS · LINUX · macOS · PYTHON 3.11+</span>
+        </div>
+      </section>
+
+      <section class="panel" id="games">
+        <div class="windowbar">
+          <span>🎮 modmanifest.games</span>
+          <span>SIMS 4 · inZOI</span>
+        </div>
+        <div class="content">
+          <h2 class="heading">Two games, <span>honest scope</span> ♡</h2>
+
+          <div class="article">
+            <h3>Commands</h3>
+            <pre class="mm-code">modmanifest inspect PATH [--json]
+modmanifest validate PATH --game sims4|inzoi [--json]
+modmanifest audit-ai PATH [--json]
+modmanifest --version</pre>
+            <p><code>PATH</code> is a folder, <code>.zip</code>, <code>.ts4script</code>, or <code>.package</code>.</p>
+            <table class="mm-table">
+              <thead><tr><th>Command</th><th>Runs</th></tr></thead>
+              <tbody>
+                <tr><td><code>inspect</code></td><td>Archive safety, game recognition and validation, AI metadata audit.</td></tr>
+                <tr><td><code>validate</code></td><td>Archive safety and the selected game's validation.</td></tr>
+                <tr><td><code>audit-ai</code></td><td>Archive safety and the AI metadata audit.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="article">
+            <h3>The Sims 4</h3>
+            <ul class="subtext">
+              <li><code>.package</code> files (DBPF 2.1): signature, header, index bounds and size, resource ranges, and duplicate keys. Resource contents are not decoded.</li>
+              <li><code>.ts4script</code> files: opened as a ZIP, <code>.py</code> and <code>.pyc</code> entries listed, compiled-code header checked. Script contents are not analyzed or executed.</li>
+              <li>No standard Sims 4 manifest is assumed, so dependencies and versions are not extracted.</li>
+            </ul>
+          </div>
+
+          <div class="article">
+            <h3>inZOI</h3>
+            <p>
+              A root <code>mod_manifest.json</code> marks a <strong>candidate</strong> mod, not a valid package.
+              There is no official specification behind these checks; they are based on observed sample packages.
+            </p>
+            <ul class="subtext">
+              <li>JSON syntax and field types are checked. Observed fields are never required.</li>
+              <li>Identity, author, version, description, declared dependencies, and game-version metadata are reported as written. Dependencies and compatibility are not verified.</li>
+              <li><code>FileChecksums</code> shape, path safety, and listed-file existence are checked. Digests are <strong>NOT CHECKED</strong>: the algorithm couldn't be established, so none is guessed.</li>
+              <li><code>.pak</code>, <code>.ucas</code>, and <code>.utoc</code> files are recognized as Unreal content containers and inventoried, but their internals are not inspected.</li>
+              <li>Unrelated folders, such as mod-manager state, are reported as unrecognized rather than invalid. Point ModManifest at one mod folder at a time.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="safety">
+        <div class="windowbar">
+          <span>🛡 modmanifest.safety</span>
+          <span>ARCHIVES &amp; METADATA</span>
+        </div>
+        <div class="content">
+          <h2 class="heading">Archive safety &amp; <span>AI metadata audit</span></h2>
+
+          <div class="article">
+            <h3>🛡 Archive and folder safety</h3>
+            <p>
+              Checks cover path traversal and absolute paths, drive letters and alternate streams, backslashes,
+              duplicate and case-colliding entries, symlinks and special files, entry count, total and per-entry size,
+              compression ratio, signature mismatch, encrypted entries (reported as unsupported), and nested archives
+              (listed, not opened). Limits are configurable with <code>--max-entries</code>, <code>--max-total-mb</code>,
+              <code>--max-entry-mb</code>, and <code>--timeout</code>.
+            </p>
+          </div>
+
+          <div class="article">
+            <h3>✦ AI metadata audit</h3>
+            <p>
+              Reports AI-related indicators found in JSON, TOML, YAML, and XML manifests, text and Markdown notes,
+              PNG text chunks, XMP, and selected EXIF fields. Indicators fall into three categories: explicit declaration,
+              tool reference, and ambiguous indicator. C2PA support is detection only: possible structures are reported,
+              never parsed or signature-validated.
+            </p>
+            <p>
+              <strong>An AI-related metadata reference is not proof that a mod was AI-generated, and finding nothing
+              doesn't prove AI was absent.</strong> Metadata may be absent, incomplete, or removed. AI indicators never change the exit code.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="reports">
+        <div class="windowbar">
+          <span>◇ modmanifest.reports</span>
+          <span>JSON SCHEMA 1</span>
+        </div>
+        <div class="content">
+          <h2 class="heading">Reports &amp; <span>limitations</span></h2>
+
+          <div class="article">
+            <h3>◇ Statuses and JSON</h3>
+            <p>
+              Findings are <code>PASS</code>, <code>WARNING</code>, <code>ERROR</code>, <code>UNSUPPORTED</code>, or
+              <code>NOT CHECKED</code> (<code>NOT_CHECKED</code> in JSON). Each carries a stable code and an evidence basis,
+              so unverified conditions stay visible. Add <code>--json</code> for stable, machine-readable output using
+              <code>schema_version: 1</code>. Reports use base names, never absolute paths.
+            </p>
+            <table class="mm-table">
+              <thead><tr><th>Exit code</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td><code>0</code></td><td>Scan complete, no <code>ERROR</code> findings.</td></tr>
+                <tr><td><code>1</code></td><td>One or more <code>ERROR</code> findings.</td></tr>
+                <tr><td><code>2</code></td><td>Invalid arguments or missing path.</td></tr>
+                <tr><td><code>3</code></td><td>Incomplete scan, or <code>validate</code> recognized nothing.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="article">
+            <h3>Limitations</h3>
+            <ul class="subtext">
+              <li>ModManifest is not an antivirus, malware scanner, official game validator, or runtime compatibility tester.</li>
+              <li>A completed inspection doesn't establish that a mod is safe, authentic, compatible, or functional in-game.</li>
+              <li>Sims 4 coverage was validated with synthetic fixtures. inZOI coverage used synthetic fixtures plus limited read-only inspection of real mod folders.</li>
+              <li>7z, RAR, and other archive formats are listed, not opened. Scripts and binary game data are not audited.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="release">
+        <div class="windowbar">
+          <span>↗ modmanifest.links</span>
+          <span>MIT LICENSE</span>
+        </div>
+        <div class="content">
+          <h2 class="heading">Install &amp; <span>links</span></h2>
+          <div class="article">
+            <h3><a href="https://github.com/CyberStudiosTM/ModManifest/releases/tag/v0.1.0">📦 ModManifest v0.1.0 release →</a></h3>
+            <p>
+              Download the wheel or source archive from the release assets, then install the wheel.
+              Requires Python 3.11 or newer.
+            </p>
+            <pre class="mm-code">pip install modmanifest-0.1.0-py3-none-any.whl
+modmanifest inspect "./MyMod"</pre>
+            <p>Or install from source:</p>
+            <pre class="mm-code">git clone https://github.com/CyberStudiosTM/ModManifest.git
+cd ModManifest
+pip install .</pre>
+            <p>
+              <a href="https://github.com/CyberStudiosTM/ModManifest">Source on GitHub →</a> ·
+              <a href="https://github.com/CyberStudiosTM/ModManifest#readme">README →</a> ·
+              <a href="https://github.com/CyberStudiosTM/ModManifest/blob/main/CHANGELOG.md">Changelog →</a> ·
+              <a href="https://github.com/CyberStudiosTM/ModManifest/issues">Report an issue →</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="shell footer">
+    ✦ CYBERSTUDIOS WIKI ♡<br>
+    <strong>dream in pixels. create without limits.</strong><br>
+    MODMANIFEST · INSPECT THE PACKAGE. KNOW WHAT WAS CHECKED.<br>
+    © 2026 CyberStudios
+  </footer>
+
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+
+    function setNight(value) {
+      document.body.classList.toggle("night", value);
+      toggle.setAttribute("aria-pressed", String(value));
+      toggle.textContent = value ? "☀ Day mode" : "☾ Night mode";
+
+      try {
+        localStorage.setItem(
+          "cyberstudios-wiki-night",
+          value ? "1" : "0"
+        );
+      } catch (error) {}
+    }
+
+    try {
+      setNight(
+        localStorage.getItem("cyberstudios-wiki-night") === "1"
+      );
+    } catch (error) {
+      setNight(false);
+    }
+
+    toggle.addEventListener("click", () => {
+      setNight(!document.body.classList.contains("night"));
+    });
+  </script>
+  <div class="byte-companion" id="byte-companion" hidden>
+    <button class="byte-character" id="byte-character" type="button" aria-label="Byte: open companion controls" aria-expanded="false" aria-controls="byte-menu" aria-describedby="byte-keyboard-help">
+      <img src="../byte/assets/icon.png" alt="" width="76" height="76">
+    </button>
+    <span class="byte-caption" aria-hidden="true">byte ♡</span>
+  </div>
+  <section class="panel byte-menu" id="byte-menu" aria-labelledby="byte-menu-heading" hidden>
+    <div class="windowbar"><span id="byte-menu-heading">♡ byte's little corner</span><span aria-hidden="true">✧</span></div>
+    <div class="byte-body">
+      <p class="byte-response" id="byte-response" role="status" aria-live="polite" aria-atomic="true">Hello, little star. ♡</p>
+      <div class="byte-controls">
+        <button type="button" id="byte-pet">♡ Pet</button>
+        <button type="button" id="byte-treat">✿ Treat</button>
+        <button type="button" id="byte-rest" aria-pressed="false">☾ Rest</button>
+        <button class="wide" type="button" id="byte-roam" aria-pressed="false">Start roaming</button>
+      </div>
+      <div class="byte-controls move-controls">
+        <button type="button" id="byte-left" aria-label="Move Byte left">← Left</button>
+        <button type="button" id="byte-home">Reset spot</button>
+        <button type="button" id="byte-right" aria-label="Move Byte right">Right →</button>
+      </div>
+      <p class="byte-help" id="byte-keyboard-help">With Byte focused, use Left/Right to move or Home to reset. Escape closes controls. Roaming pauses while Byte or his controls have focus.</p>
+      <div class="byte-controls"><button type="button" id="byte-close">Close controls</button><button type="button" id="byte-hide">Hide Byte</button></div>
+    </div>
+  </section>
+  <script src="../assets/wiki-companion.js" defer></script>
+</body>
+</html>
