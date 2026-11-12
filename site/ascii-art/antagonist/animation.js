@@ -42,9 +42,9 @@
       display.height = targetH;
     }
     let source = art, w = width, h = height, stage = 0;
-    while (w / 2 >= targetW && h / 2 >= targetH) {
-      w = Math.max(targetW, Math.round(w / 2));
-      h = Math.max(targetH, Math.round(h / 2));
+    while (w / 2 >= targetW * 0.7 && h / 2 >= targetH * 0.7) {
+      w = Math.round(w / 2);
+      h = Math.round(h / 2);
       const buffer = downsample[stage] || (downsample[stage] = createCanvas(w, h));
       if (buffer.width !== w || buffer.height !== h) { buffer.width = w; buffer.height = h; }
       const bufferCtx = buffer.getContext("2d", { alpha: false });
