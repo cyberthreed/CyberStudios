@@ -532,11 +532,26 @@
   for (const input of [inputs.wind, inputs.lightning, inputs.blink]) input.addEventListener("input", () => render(time));
   $("glow").addEventListener("click", event => {
     glow = !glow;
-    display.style.filter = glow ? "drop-shadow(0 0 2px #cbd4dd55)" : "none";
+    applyFilter();
     event.currentTarget.textContent = `glow: ${glow ? "on" : "off"}`;
     event.currentTarget.setAttribute("aria-pressed", String(glow));
   });
-  display.style.filter = "drop-shadow(0 0 2px #cbd4dd55)";
+  let inverted = new URLSearchParams(location.search).get("invert") === "1";
+  function applyFilter() {
+    const parts = [];
+    if (inverted) parts.push("invert(1)");
+    if (glow) parts.push("drop-shadow(0 0 2px #cbd4dd55)");
+    display.style.filter = parts.length ? parts.join(" ") : "none";
+  }
+  $("invert").addEventListener("click", event => {
+    inverted = !inverted;
+    applyFilter();
+    event.currentTarget.textContent = `invert: ${inverted ? "on" : "off"}`;
+    event.currentTarget.setAttribute("aria-pressed", String(inverted));
+  });
+  $("invert").textContent = `invert: ${inverted ? "on" : "off"}`;
+  $("invert").setAttribute("aria-pressed", String(inverted));
+  applyFilter();
   function resizeArt(zoomed) {
     for (const canvas of [display, maskCanvas].filter(Boolean)) {
       canvas.classList.toggle("zoomed", zoomed);
