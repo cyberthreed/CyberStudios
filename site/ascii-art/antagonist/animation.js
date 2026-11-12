@@ -35,7 +35,7 @@
   const phone = matchMedia("(max-width: 700px)");
   function present() {
     const box = display.getBoundingClientRect();
-    const scale = phone.matches ? Math.min(devicePixelRatio, 2) : devicePixelRatio;
+    const scale = phone.matches ? Math.min(devicePixelRatio, 2) / 2 : devicePixelRatio;
     const ratio = Math.min(box.width / width, box.height / height) * scale;
     const targetW = Math.max(1, Math.round(width * ratio));
     const targetH = Math.max(1, Math.round(height * ratio));
@@ -538,7 +538,8 @@
     event.currentTarget.textContent = `glow: ${glow ? "on" : "off"}`;
     event.currentTarget.setAttribute("aria-pressed", String(glow));
   });
-  display.style.filter = "drop-shadow(0 0 2px #cbd4dd55)";
+  if (phone.matches) { glow = false; $("glow").textContent = "glow: off"; $("glow").setAttribute("aria-pressed", "false"); }
+  else display.style.filter = "drop-shadow(0 0 2px #cbd4dd55)";
   function resizeArt(zoomed) {
     for (const canvas of [display, maskCanvas].filter(Boolean)) {
       canvas.classList.toggle("zoomed", zoomed);
