@@ -32,15 +32,9 @@
     return canvas;
   };
   const downsample = [];
-  const phone = matchMedia("(max-width: 700px)");
-  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  let stored = null;
-  try { stored = localStorage.getItem("antagonistLite"); } catch (e) {}
-  let lite = stored === null ? (isIOS && phone.matches) : stored === "1";
   function present() {
     const box = display.getBoundingClientRect();
-    const scale = lite ? Math.min(devicePixelRatio, 2) / 2 : (phone.matches ? Math.min(devicePixelRatio, 2) : devicePixelRatio);
-    const ratio = Math.min(box.width / width, box.height / height) * scale;
+    const ratio = Math.min(box.width / width, box.height / height) * devicePixelRatio;
     const targetW = Math.max(1, Math.round(width * ratio));
     const targetH = Math.max(1, Math.round(height * ratio));
     if (display.width !== targetW || display.height !== targetH) {
@@ -542,22 +536,7 @@
     event.currentTarget.textContent = `glow: ${glow ? "on" : "off"}`;
     event.currentTarget.setAttribute("aria-pressed", String(glow));
   });
-  function applyLite() {
-    document.body.classList.toggle("lite", lite);
-    $("lite").textContent = `iphone mode: ${lite ? "on" : "off"}`;
-    $("lite").setAttribute("aria-pressed", String(lite));
-    glow = !lite;
-    display.style.filter = glow ? "drop-shadow(0 0 2px #cbd4dd55)" : "none";
-    $("glow").textContent = `glow: ${glow ? "on" : "off"}`;
-    $("glow").setAttribute("aria-pressed", String(glow));
-  }
-  applyLite();
-  $("lite").addEventListener("click", () => {
-    lite = !lite;
-    try { localStorage.setItem("antagonistLite", lite ? "1" : "0"); } catch (e) {}
-    applyLite();
-    present();
-  });
+  display.style.filter = "drop-shadow(0 0 2px #cbd4dd55)";
   function resizeArt(zoomed) {
     for (const canvas of [display, maskCanvas].filter(Boolean)) {
       canvas.classList.toggle("zoomed", zoomed);
