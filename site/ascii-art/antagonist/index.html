@@ -39,8 +39,7 @@ button:focus-visible,input:focus-visible{outline:2px solid #ddd;outline-offset:3
 .masthead a:hover,.credit a:hover{color:#fff}
 .credit{width:min(100%,760px);margin:0 auto 20px;padding:0 12px;text-align:center;font-size:11px;line-height:1.8;color:var(--muted)}
 .footer{width:min(100%,760px);margin:0 auto;padding-top:16px;display:flex;justify-content:space-between;gap:16px;font-size:9px;color:#929292;letter-spacing:.05em}
-@media(max-width:700px){.page{padding:17px 16px}.tagline{display:none}.intro{padding:24px 0 18px;display:block}.note{text-align:left;max-width:none;margin-top:12px}.viewport{height:70vh;height:70dvh;min-height:320px}.subtext{padding:0 8px}.subtext p{line-height:1.8}.footer{font-size:8px}}
-body.lite #full,body.lite #export{display:none}
+@media(max-width:700px){.page{padding:17px 16px}.tagline{display:none}.intro{padding:24px 0 18px;display:block}.note{text-align:left;max-width:none;margin-top:12px}.viewport{height:70vh;min-height:320px}.subtext{padding:0 8px}.subtext p{line-height:1.8}.footer{font-size:8px}}
 </style>
 </head>
 <body>
@@ -62,7 +61,6 @@ body.lite #full,body.lite #export{display:none}
 <label class="control">lightning <input id="lightning" type="range" min="0" max="2" step="0.1" value="1"></label>
 <label class="control">performance <select id="performance"><option value="30">balanced</option><option value="15">low power</option><option value="60">smooth</option></select></label>
 <button id="glow" type="button" aria-pressed="true">glow: on</button>
-<button id="lite" type="button" aria-pressed="false">iphone mode: off</button>
 <button id="fit" type="button">fit</button><button id="zoom" type="button">zoom</button>
 <button id="full" type="button">fullscreen</button>
 <button id="screenshot" type="button">screenshot</button><button id="export" type="button">high-res PNG</button>
