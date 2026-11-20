@@ -6,53 +6,44 @@
   <meta name="referrer" content="no-referrer">
   <meta name="description" content="Create an Elsewhere account for Elsewhere Messenger and supported Elsewhere OS apps.">
   <title>Create an Elsewhere account</title>
-  <link rel="stylesheet" href="./style.css?v=elsewhaero-1">
+  <link rel="stylesheet" href="./style.css?v=messenger-dialog-1">
   <link rel="icon" href="./butterfly.png" type="image/png">
 </head>
 <body class="signup-page">
-  <main class="account-window">
+  <main class="account-window" aria-labelledby="account-title">
     <div class="window-bar">
-      <img src="./butterfly.png" width="30" height="30" alt="">
-      <span>Elsewhere Accounts</span>
+      <img src="./butterfly.png" width="24" height="24" alt="">
+      <span>Elsewhere Messenger · Account Setup</span>
     </div>
-    <div class="window-content">
-      <aside class="brand-panel" aria-label="Elsewhere by CyberStudios">
-        <div class="brand-art" aria-hidden="true">
-          <span class="bubble bubble-large"></span>
-          <span class="bubble bubble-small"></span>
-          <span class="bubble bubble-bottom"></span>
-          <img src="./butterfly.png" width="256" height="256" alt="">
-        </div>
-        <div class="wordmark">Elsewhere</div>
-        <div class="studio-mark">CyberStudios</div>
-      </aside>
-      <section class="account-panel" aria-labelledby="account-title">
-        <header>
-          <h1 id="account-title">Create your Elsewhere account</h1>
-          <p>One account for Elsewhere Messenger and supported Elsewhere OS apps.</p>
-        </header>
-        <form id="age">
-              <label for="birth-date">Date of birth</label>
-          <input type="date" id="birth-date" required autocomplete="bday">
-          <button>Continue</button>
-        </form>
-        <form id="signup" hidden>
-          <label for="email">Email address</label>
-          <input type="email" id="email" maxlength="254" autocomplete="email" required>
-          <label class="inline"><input type="checkbox" id="terms" required>
-            <span>I agree to the <a href="./terms.html" target="_blank" rel="noopener noreferrer">Terms and Conditions</a>.</span>
-          </label>
-          <div id="challenge" aria-label="Bot check"></div>
-          <button id="submit" disabled>Send verification code</button>
-        </form>
-        <p id="status" role="status" tabindex="-1"></p>
-        <footer class="account-links">
-          <a href="./terms.html">Terms</a>
-          <a href="./privacy.html">Privacy Policy</a>
-          <a href="./license.html">License</a>
-        </footer>
-      </section>
+    <header class="account-heading">
+      <img src="./butterfly.png" width="68" height="68" alt="">
+      <div>
+        <h1 id="account-title">Create an Elsewhere account</h1>
+        <p>Use your account to sign in to Elsewhere Messenger.</p>
+      </div>
+    </header>
+    <div class="account-panel">
+    <form id="age">
+      <label for="birth-date">Date of birth</label>
+      <input type="date" id="birth-date" required autocomplete="bday">
+      <button>Continue</button>
+    </form>
+    <form id="signup" hidden>
+      <label for="email">Email address</label>
+      <input type="email" id="email" maxlength="254" autocomplete="email" required>
+      <label class="inline"><input type="checkbox" id="terms" required>
+        <span>I agree to the <a href="./terms.html" target="_blank" rel="noopener noreferrer">Terms and Conditions</a>.</span>
+      </label>
+      <div id="challenge" aria-label="Bot check"></div>
+      <button id="submit" disabled>Send verification code</button>
+    </form>
+    <p id="status" role="status" tabindex="-1"></p>
     </div>
+    <footer class="account-links" aria-label="Account policies">
+      <a href="./terms.html">Terms</a>
+      <a href="./privacy.html">Privacy Policy</a>
+      <a href="./license.html">License</a>
+    </footer>
   </main>
   <script type="module" src="./signup.js?v=elsewhaero-1"></script>
 </body>
