@@ -55,6 +55,7 @@ age.addEventListener('submit', async event => {
     await loadChallenge()
     widget = window.turnstile.render('#challenge', {
       sitekey: TURNSTILE_SITE_KEY,
+      size: document.querySelector('#challenge').clientWidth < 300 ? 'compact' : 'normal',
       action: 'elsewhere_signup',
       callback: proof => { token = proof; submit.disabled = sending },
       'expired-callback': () => { token = ''; submit.disabled = true },
