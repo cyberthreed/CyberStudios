@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-11-19T22:12:46.778Z",
+  "updated_at": "2026-11-20T03:26:35.459Z",
   "sites": {
     "tumblr": {
       "available": true,
@@ -14,8 +14,8 @@
     },
     "wiki": {
       "available": true,
-      "count": "112",
-      "updated_at": "2026-11-19T22:12:46.778Z"
+      "count": "114",
+      "updated_at": "2026-11-20T03:26:35.459Z"
     }
   }
 }
