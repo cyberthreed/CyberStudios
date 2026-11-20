@@ -18,10 +18,16 @@ function announce(message) {
 function loadChallenge() {
   return new Promise((resolve, reject) => {
     const script = document.createElement('script')
-    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'
+    window.onElsewhereTurnstileLoad = () => {
+      delete window.onElsewhereTurnstileLoad
+      resolve()
+    }
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onElsewhereTurnstileLoad'
     script.async = true
-    script.onload = () => window.turnstile.ready(resolve)
-    script.onerror = reject
+    script.onerror = () => {
+      delete window.onElsewhereTurnstileLoad
+      reject(new Error('Could not load Turnstile.'))
+    }
     document.head.append(script)
   })
 }
