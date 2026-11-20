@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Create an Elsewhere account</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <header><strong>CyberStudios</strong><h1>Create an Elsewhere account</h1>
+      <p>One account for Elsewhere Messenger and supported Elsewhere OS apps.</p></header>
+    <form id="age">
+      <label for="birth-date">Date of birth</label>
+      <input type="date" id="birth-date" required autocomplete="bday">
+      <button>Continue</button>
+    </form>
+    <form id="signup" hidden>
+      <label for="email">Email address</label>
+      <input type="email" id="email" maxlength="254" autocomplete="email" required>
+      <label class="inline"><input type="checkbox" id="terms" required>
+        <span>I agree to the <a href="./terms.html" target="_blank" rel="noopener noreferrer">Terms and Conditions</a>.</span>
+      </label>
+      <div id="challenge" aria-label="Bot check"></div>
+      <button id="submit" disabled>Send verification code</button>
+    </form>
+    <p id="status" role="status" tabindex="-1"></p>
+    <footer><a href="./privacy.html">Privacy Policy</a> · <a href="./license.html">License information</a></footer>
+  </main>
+  <script type="module" src="./signup.js"></script>
+</body>
+</html>
