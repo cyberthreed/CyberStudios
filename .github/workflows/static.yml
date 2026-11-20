@@ -3,6 +3,10 @@ name: Deploy CyberStudios Wiki and Byte.exe
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'site/elsewhere-accounts/**'
 
 permissions:
   contents: read
@@ -40,6 +44,9 @@ jobs:
           cp "$angels/outputs/page_frame.json" "_pages/ascii-art/exhibition/00-the-machine-dreams-of-angels/outputs/page_frame.json"
 
           test -f _pages/index.html
+          test -f _pages/elsewhere-accounts/index.html
+          test -f _pages/elsewhere-accounts/terms.html
+          test -f _pages/elsewhere-accounts/privacy.html
           test -f _pages/about/index.html
           test -f _pages/projects/index.html
           test -f _pages/docs/index.html
