@@ -414,6 +414,7 @@
         <p class="sidebar-title">NAVIGATION</p>
         <a class="selected" href="#home">⌂ Welcome</a>
         <a href="projects/">▦ Project directory</a>
+        <a href="elsewhere/messenger.html">✧ Elsewhere Messenger</a>
         <a href="themes/">✧ Theme library</a>
         <a href="ascii-art/">▒ ASCII ART</a>
         <a href="about/">♡ About the studio</a>
@@ -459,7 +460,7 @@
 
           <div class="button-row">
             <a class="button" href="#projects">✦ Explore projects</a>
-            <a class="button alt" href="byte/">♡ Meet Byte.exe</a>
+            <a class="button alt" href="elsewhere/messenger.html">♡ Meet Elsewhere Messenger</a>
             <a class="button alt" href="themes/">✧ Find your theme</a>
           </div>
 
@@ -473,6 +474,23 @@
               <img src="assets/cy-working.webp" alt="Cy with purple curls, star headphones, glasses, and a glowing code window" width="632" height="632" decoding="async">
               <figcaption>Cy ♡<br>the studio dreamer</figcaption>
             </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="featured" aria-labelledby="featured-heading">
+        <div class="windowbar"><span>♡ featured.project</span><span>ELSEWHERE</span></div>
+        <div class="content">
+          <div class="welcome-grid">
+            <div>
+              <h2 class="section-heading" id="featured-heading">Elsewhere Messenger</h2>
+              <p class="subtext">I wanted a buddy list that felt like mine again. So I built a little glass window for it. Bring your friends, dig through the skins, or see what else lives inside Elsewhere.</p>
+              <div class="button-row">
+                <a class="button" href="elsewhere/messenger.html">Open the Messenger guide</a>
+                <a class="button alt" href="elsewhere/">Explore Elsewhere OS</a>
+              </div>
+            </div>
+            <img src="elsewhere-accounts/butterfly.png" alt="" width="256" height="256" loading="lazy" style="width:min(100%,190px);height:auto;align-self:center;justify-self:center">
           </div>
         </div>
       </section>
@@ -508,6 +526,10 @@
 │
 ├── ♡ Digital Companions
 │   └── Bytes → Byte.exe · released
+│
+├── ✧ Elsewhere
+│   ├── Elsewhere OS · in development
+│   └── Elsewhere Messenger · Windows beta
 │
 ├── ✧ Creative Tools
 │   ├── VS Code theme library · eight themes
@@ -554,6 +576,8 @@
           </label>
 
           <div class="project-grid" id="project-grid">
+            <article class="project" data-search="elsewhere messenger chat friends dms windows beta"><div class="project-top"><div class="project-icon" aria-hidden="true">✧</div><div><h3>Elsewhere Messenger</h3><p class="category">Elsewhere / Windows</p></div></div><p>Blue glass, a buddy list, and a little window for your people. Explore the Windows beta, Elsewhere Accounts, and connected services.</p><div><a class="project-link" href="elsewhere/messenger.html">Open the guide</a></div></article>
+            <article class="project" data-search="elsewhere os windows shell desktop elsewhaero"><div class="project-top"><div class="project-icon" aria-hidden="true">✧</div><div><h3>Elsewhere OS</h3><p class="category">Elsewhere / Windows</p></div></div><p>A sky-blue desktop shell project for Windows 11, with windows, sounds, and a workspace you can make your own.</p><div><a class="project-link" href="elsewhere/">Open the guide</a></div></article>
 
             <article class="project" data-search="byte.exe byte pet desktop cat windows bytes companion">
               <div class="project-top">
@@ -607,7 +631,7 @@
             <article class="project" data-search="modmanifest sims 4 sims4 inzoi mod package inspect validate audit ai metadata archive safety json cli python developer utility">
               <div class="project-top"><div class="project-icon" aria-hidden="true">▦</div><div><h3>ModManifest</h3><p class="category">Developer Utilities</p></div></div>
               <p>A read-only CLI that inspects, validates, and audits Sims 4 and inZOI mod packages.</p>
-              <span class="status">v0.1.1 · PYTHON CLI · GITHUB RELEASE</span>
+              <span class="status">v0.1.1 · PYTHON CLI · PYPI</span>
               <div><a class="project-link" href="projects/modmanifest.html">Explore ModManifest →</a></div>
             </article>
 
