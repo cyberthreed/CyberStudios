@@ -6,7 +6,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'site/elsewhere-accounts/**'
+      - 'site/**'
 
 permissions:
   contents: read
@@ -47,6 +47,9 @@ jobs:
           test -f _pages/elsewhere-accounts/index.html
           test -f _pages/elsewhere-accounts/terms.html
           test -f _pages/elsewhere-accounts/privacy.html
+          test -f _pages/elsewhere/index.html
+          test -f _pages/elsewhere/messenger.html
+          test -f _pages/elsewhere/guide.css
           test -f _pages/about/index.html
           test -f _pages/projects/index.html
           test -f _pages/docs/index.html

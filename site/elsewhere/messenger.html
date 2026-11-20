@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#d9f5ff">
+  <meta name="description" content="Start using Elsewhere Messenger on Windows. Account setup, integrations, troubleshooting, privacy, and FAQs.">
+  <title>Elsewhere Messenger · CyberStudios Wiki</title>
+  <link rel="icon" href="../elsewhere-accounts/butterfly.png" type="image/png">
+  <link rel="stylesheet" href="./guide.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <div class="top-inner">
+      <a class="identity" href="./"><img src="../elsewhere-accounts/butterfly.png" width="48" height="48" alt=""><span>Elsewhere <small>CyberStudios</small></span></a>
+      <nav aria-label="Project navigation">
+        <a href="./">Elsewhere OS</a>
+        <a href="./messenger.html" aria-current="page">Messenger</a>
+        <a href="../projects/">Back to the Wiki</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <header class="hero">
+      <div>
+        <h1>Elsewhere Messenger</h1>
+        <p>I missed buddy lists and chat windows with a little character. So I made Elsewhere Messenger, a Windows chat app with glass skins, a Photo Studio, and a place for your friends to find you.</p>
+        <div class="actions"><a class="primary" href="../elsewhere-accounts/">Create an account</a><a href="#getting-started">Read the setup guide</a><a href="https://github.com/CyberStudiosTM/Elsewhere-OS/tree/main/Elsewhere%20Messenger">View on GitHub</a></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <span class="orb orb-a"></span><span class="orb orb-b"></span>
+        <img src="../elsewhere-accounts/butterfly.png" width="256" height="256" alt="">
+      </div>
+    </header>
+    <div class="guide">
+      <nav class="page-menu" aria-label="Elsewhere Messenger guide">
+        <strong>Elsewhere Messenger guide</strong>
+        <a href="#getting-started">Getting started</a>
+<a href="#features">Features and skins</a>
+<a href="#connections">Connected services</a>
+<a href="#troubleshooting">Troubleshooting</a>
+<a href="#faq">FAQ</a>
+<a href="#policies">Account policies</a>
+        <a class="related" href="./">Elsewhere OS</a>
+      </nav>
+      <article class="chapters" aria-label="Elsewhere Messenger documentation">
+        <section id="getting-started" class="chapter"><h2>Before you open a chat</h2><ol><li>Open the Windows beta build if you already have it installed. For source and project updates, see the <a href="https://github.com/CyberStudiosTM/Elsewhere-OS/tree/main/Elsewhere%20Messenger">Elsewhere Messenger repository folder</a>.</li><li>To use online Elsewhere messaging, <a href="../elsewhere-accounts/">create an Elsewhere account</a>. Complete the age check, accept the Terms, and request a code.</li><li>Open Messenger and choose <strong>I have a code</strong>. Enter the same email address and the code, then set your handle and display name.</li><li>Use <strong>New DM</strong> or <strong>Add contact</strong> to find someone by exact handle. Once they accept, you can talk.</li></ol></section><section id="features" class="chapter"><h2>Make the window yours</h2><div class="cards"><a href="#skins"><strong>Pick your skin</strong><span>Classic blue glass or Dead Signal after dark.</span></a><a href="#photo"><strong>Photo Studio</strong><span>Bring a photo or use your webcam. Add a filter, frame, or sticker.</span></a><a href="#preview"><strong>Desktop notifications</strong><span>Choose whether your notifications show a preview.</span></a></div></section><section id="connections" class="chapter"><h2>What connects where</h2><ul><li><strong>Elsewhere</strong> handles your account, friend requests, and online DMs.</li><li><strong>Instagram</strong> shows conversations available through your connection. Use Instagram itself for a new conversation if it is not already in Messenger.</li><li><strong>Discord</strong> supports bot-accessible server channels inside Messenger. Personal DMs open in Discord.</li><li><strong>Spotify</strong> can show now playing when playback access is available.</li></ul></section><section id="troubleshooting" class="chapter"><h2>When something doesn’t connect</h2><ul><li>If Accounts says it is not configured, check that you are using a build connected to the Elsewhere beta.</li><li>If a code does not arrive, start with <a href="#no-code">the email checklist</a>.</li><li>If an integration fails, note the name of the integration and its exact error. Email <a href="mailto:elsewhere.os.info@gmail.com">elsewhere.os.info@gmail.com</a> with the app version and what you tried. Leave out tokens, codes, and private chats.</li></ul></section><section id="faq" class="chapter"><h2>Frequently asked questions</h2><details id="messenger-standalone"><summary>Do I need Elsewhere OS installed?</summary><p>No. Elsewhere Messenger is a separate desktop app for Windows.</p></details>
+<details id="messenger-download"><summary>Where do I get an installer?</summary><p>There is no public Windows installer listed yet. When one is available, it will be linked from <a href="https://github.com/CyberStudiosTM/Elsewhere-OS/releases">official Elsewhere releases</a>. The GitHub source folder is for building and inspecting the app. A source update ZIP expects the matching project files.</p></details>
+<details id="beta"><summary>Is this a finished public release?</summary><p>The 0.2.1 account flow is a beta. The signup website is live. Code delivery and sign-in still need a verified test across the complete Windows flow.</p></details>
+<details id="account-required"><summary>Do I need an account for everything?</summary><p>You can use the local Messenger experience without an Elsewhere account. The account is for online Elsewhere contacts, friend requests, and direct messages.</p></details>
+<details id="no-code"><summary>What if my verification email never arrives?</summary><p>Check the address and your spam folder, then request a fresh code after the app allows you to retry. Use the latest code. If it still fails, contact <a href="mailto:elsewhere.os.info@gmail.com">elsewhere.os.info@gmail.com</a> with the on-screen error. Keep codes and passwords private.</p></details>
+<details id="contact-handle"><summary>How do I add someone?</summary><p>Sign in, choose Add contact or New DM under Elsewhere, and enter their exact handle. They need to accept your friend request before you can start an online DM.</p></details>
+<details id="switch"><summary>Can I switch between accounts?</summary><p>The Windows beta can remember multiple sign-ins. Use the account switcher to change accounts, or Forget to remove a remembered sign-in from the device.</p></details>
+<details id="private"><summary>Are online messages end-to-end encrypted?</summary><p>Online Elsewhere messages are stored by the service and are not end-to-end encrypted. Conversations are limited to participants through the app. <a href="../elsewhere-accounts/privacy.html">Read the Privacy Policy</a> for the rest.</p></details>
+<details id="discord-dms"><summary>Can I read personal Discord DMs here?</summary><p>Personal DMs open in Discord. Messenger can show and send to server channels available to the bot you connected. Both the bot and the channel permissions matter.</p></details>
+<details id="discord-permissions"><summary>Why did Discord return Missing Permissions?</summary><p>Check whether the bot is in that server and has access to view and send messages in that specific channel. Channel overrides can change what the bot can do.</p></details>
+<details id="instagram-contacts"><summary>Why are some Instagram contacts missing?</summary><p>Messenger can show the conversations available through the connected Instagram API. In the Instagram connection panel, load more if another page is available. A conversation with unknown follow status can appear under Instagram Chats.</p></details>
+<details id="instagram-new"><summary>Can I start a new Instagram chat inside Messenger?</summary><p>New DM can open a conversation already available to Messenger. For a new Instagram conversation, Messenger hands off to Instagram.</p></details>
+<details id="spotify"><summary>Does Spotify play music inside Messenger?</summary><p>The connection shows playback status when Spotify grants access. If it says playback unavailable, check the account and the access attached to your Spotify app.</p></details>
+<details id="preview"><summary>How do I hide notification previews?</summary><p>Open Tools, then Desktop Notifications, and turn off message previews. Notification visibility also depends on your Windows settings.</p></details>
+<details id="skins"><summary>Can I change the Messenger look?</summary><p>Use Tools, then Change Skin. Classic is the blue-glass look. Dead Signal is the dark, red-accented skin.</p></details>
+<details id="photo"><summary>Do I need a webcam for Photo Studio?</summary><p>No. You can import a picture and use the tools for filters, frames, and stickers. Choose the webcam to take a new photo if your camera is available and allowed.</p></details>
+<details id="nudge"><summary>Can I nudge an Instagram or Discord contact?</summary><p>Nudges are an Elsewhere messaging feature. External integrations keep their own messaging controls.</p></details>
+<details id="call-mail"><summary>Where do Call and Mail go?</summary><p>Call opens the service you choose, such as Discord, Instagram, or the Windows phone handler. Mail opens your default email compose handler.</p></details>
+<details id="account-deletion"><summary>How do I delete my account or report a problem?</summary><p>Contact <a href="mailto:elsewhere.os.info@gmail.com">elsewhere.os.info@gmail.com</a> for an account deletion request. For a problem with a person in Messenger, use its report or block controls where available. Signing out only ends your session.</p></details></section><section id="policies" class="chapter"><h2>Account policies</h2><p><a href="../elsewhere-accounts/terms.html">Terms and Conditions</a> · <a href="../elsewhere-accounts/privacy.html">Privacy Policy</a> · <a href="../elsewhere-accounts/license.html">License information</a></p></section>
+      </article>
+      <nav class="contents" aria-label="On this page">
+        <strong>On this page</strong>
+        <a href="#messenger-download">Downloads</a>
+<a href="#no-code">Verification email</a>
+<a href="#contact-handle">Friends and DMs</a>
+<a href="#discord-dms">Discord</a>
+<a href="#instagram-contacts">Instagram</a>
+<a href="#private">Message privacy</a>
+<a href="#account-deletion">Account help</a>
+      </nav>
+    </div>
+  </main>
+  <footer class="footer">
+    <a href="../">CyberStudios Wiki</a>
+    <a href="https://github.com/CyberStudiosTM/Elsewhere-OS">Elsewhere on GitHub</a>
+    <a href="mailto:elsewhere.os.info@gmail.com">elsewhere.os.info@gmail.com</a>
+  </footer>
+  <script src="./guide.js" defer></script>
+</body>
+</html>
