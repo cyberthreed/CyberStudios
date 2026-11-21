@@ -127,3 +127,6 @@ footer { border-top: 1px solid #b9cce2; padding-top: 12px; }
   .account-heading h1 { font-size: 18px; }
   .account-panel { padding-inline: 12px; }
 }
+
+.account-panel .step-note { margin: 0 0 4px; }
+.account-panel .step-done { margin: 0 0 6px; font-size: 18px; font-weight: 700; color: #174d96; }

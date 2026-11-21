@@ -37,6 +37,24 @@
       <div id="challenge" aria-label="Bot check"></div>
       <button id="submit" disabled>Send verification code</button>
     </form>
+    <form id="verify" hidden>
+      <p class="step-note">We emailed a code to <strong id="code-email"></strong>. It can take a minute, so check your spam folder too.</p>
+      <label for="code">Code from your email</label>
+      <input id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="12" required>
+      <button>Verify code</button>
+    </form>
+    <form id="password" hidden>
+      <p class="step-note">Your email is verified. Now choose the password you’ll use to sign in to Elsewhere Messenger.</p>
+      <label for="new-password">Password (at least 8 characters)</label>
+      <input type="password" id="new-password" autocomplete="new-password" minlength="8" maxlength="72" required>
+      <label for="confirm-password">Type it again</label>
+      <input type="password" id="confirm-password" autocomplete="new-password" minlength="8" maxlength="72" required>
+      <button>Save password</button>
+    </form>
+    <div id="done" hidden>
+      <p class="step-done">You’re all set! ✧</p>
+      <p>Open <strong>Elsewhere Messenger</strong> and sign in with your email and the password you just chose. The first time you sign in, you’ll pick your @handle.</p>
+    </div>
     <p id="status" role="status" tabindex="-1"></p>
     </div>
     <footer class="account-links" aria-label="Account policies">
@@ -45,6 +63,6 @@
       <a href="./license.html">License</a>
     </footer>
   </main>
-  <script type="module" src="./signup.js?v=elsewhaero-1"></script>
+  <script type="module" src="./signup.js?v=password-1"></script>
 </body>
 </html>
