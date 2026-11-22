@@ -608,9 +608,10 @@
       empty.classList.toggle("visible", visible === 0);
     }
 
-    search.addEventListener("input", filterProjects);
+    // The project search lives on the Projects page now; only wire it up where it exists.
+    if (search) search.addEventListener("input", filterProjects);
 
-    document.addEventListener("keydown", event => {
+    if (search) document.addEventListener("keydown", event => {
       if (
         event.key === "/" &&
         !event.ctrlKey &&
