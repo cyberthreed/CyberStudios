@@ -45,6 +45,11 @@
       button.setAttribute('aria-pressed', String(button.dataset.themeChoice === theme));
     }
     swapImages(theme);
+    // The tab icon follows the logo (Aero has its own).
+    for (const link of document.querySelectorAll('link[data-href-aero]')) {
+      if (!link.dataset.hrefOriginal) link.dataset.hrefOriginal = link.getAttribute('href') || '';
+      link.setAttribute('href', theme === 'aero' ? link.dataset.hrefAero : link.dataset.hrefOriginal);
+    }
     if (save) {
       try {
         localStorage.setItem(KEY, theme);
