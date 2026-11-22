@@ -370,6 +370,15 @@
     .cs-visitors .cs-counter-total { max-width:100%; color:#2e2c35; font:700 26px/1.3 Consolas,monospace; letter-spacing:.06em; overflow-wrap:anywhere; }
     .cs-visitors .cs-counter-message { margin:0; color:#625e69; font:12px/1.5 "Segoe UI",system-ui,sans-serif; }
     .cs-visitors .cs-counter-total[hidden],.cs-visitors .cs-counter-message[hidden] { display:none!important; }
+    .latest-list { list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+    .latest-list li { display:grid; gap:2px; padding:10px 12px; border:1px solid rgba(160,120,200,.28); border-radius:12px; background:rgba(255,255,255,.45); }
+    body.night .latest-list li { background:rgba(255,255,255,.06); }
+    .latest-list span { opacity:.85; }
+    .explore-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:10px; margin:6px 0 16px; }
+    .explore-card { display:grid; gap:4px; padding:12px; border:1px solid rgba(160,120,200,.3); border-radius:14px; background:rgba(255,255,255,.5); color:inherit; text-decoration:none; transition:transform .15s; }
+    .explore-card:hover { transform:translateY(-2px); }
+    body.night .explore-card { background:rgba(255,255,255,.06); }
+    .explore-card span { font-size:.9em; opacity:.8; }
   </style>
   <link rel="stylesheet" href="assets/wiki-branding.css">
 </head>
@@ -384,13 +393,8 @@
     </a>
 
     <nav class="topnav" aria-label="Main navigation">
-      <a href="./" aria-current="page">⌂ Wiki Home</a>
-      <a href="projects/">▦ Projects</a>
-      <a href="themes/">✧ Themes</a>
-      <a href="ascii-art/">▒ ASCII ART</a>
-      <a href="docs/">Resources</a>
-      <a href="about/">♡ About</a>
-      <a href="byte/">🐾 Byte.exe</a>
+      <a class="topnav-feature" href="elsewhere/messenger.html">♡ Elsewhere Messenger</a>
+      <a class="topnav-feature" href="byte/">🐾 Byte.exe</a>
       <button id="theme-toggle" class="theme-button" type="button" aria-pressed="false">
         ☾ Night mode
       </button>
@@ -411,20 +415,22 @@
           <img src="assets/cy-thoughtful.webp" alt="" width="240" height="240" decoding="async">
           <div><strong>Cy ♡</strong><small>CyberStudios</small></div>
         </div>
-        <p class="sidebar-title">NAVIGATION</p>
+        <p class="sidebar-title">ON THIS PAGE</p>
         <a class="selected" href="#home">⌂ Welcome</a>
-        <a href="projects/">▦ Project directory</a>
-        <a href="elsewhere/messenger.html">✧ Elsewhere Messenger</a>
-        <a href="themes/">✧ Theme library</a>
-        <a href="ascii-art/">▒ ASCII ART</a>
-        <a href="about/">♡ About the studio</a>
-        <a href="#bytes">✦ The Bytes</a>
+        <a href="#featured">♡ Elsewhere Messenger</a>
+        <a href="#bytes">🐾 Meet Byte</a>
+        <a href="#latest">✦ Latest releases</a>
+        <a href="#explore">✧ Explore the wiki</a>
+        <p class="sidebar-title">WIKI MAP</p>
+        <a href="./" aria-current="page">⌂ Wiki home</a>
+        <a href="elsewhere/messenger.html">♡ Elsewhere Messenger</a>
+        <a href="byte/">🐾 Byte.exe</a>
+        <a href="projects/">▦ Projects</a>
+        <a href="themes/">✧ Themes</a>
+        <a href="ascii-art/">▒ ASCII art</a>
         <a href="docs/">⌘ Resources</a>
-        <a href="#faq">? Frequently asked</a>
-
-        <p class="sidebar-title">EXTERNAL</p>
-        <a href="byte/">🐾 Byte.exe website</a>
-        <a href="https://github.com/cyberthreed/CyberStudios">↗ Source repository</a>
+        <a href="about/">✿ About</a>
+        <a href="https://github.com/cyberthreed" target="_blank" rel="noopener noreferrer">↗ GitHub</a>
 
         <div class="sidebar-note">
           ✧ welcome, visitor!<br>
@@ -459,7 +465,7 @@
           </p>
 
           <div class="button-row">
-            <a class="button" href="#projects">✦ Explore projects</a>
+            <a class="button" href="projects/">✦ Explore projects</a>
             <a class="button alt" href="elsewhere/messenger.html">♡ Meet Elsewhere Messenger</a>
             <a class="button alt" href="themes/">✧ Find your theme</a>
           </div>
@@ -495,263 +501,6 @@
         </div>
       </section>
 
-      <section class="panel" id="github" aria-labelledby="github-heading">
-        <div class="windowbar">
-          <span>⌘ github.profile</span>
-          <span class="dots" aria-hidden="true">● ● ●</span>
-        </div>
-        <div class="content">
-          <h2 class="section-heading" id="github-heading">Find me on GitHub ♡</h2>
-          <p class="subtext">Explore my repositories, source code, and little projects in progress.</p>
-          <a class="button" href="https://github.com/cyberthreed" target="_blank" rel="noopener noreferrer">↗ Visit my GitHub · @cyberthreed</a>
-                    <a class="button alt" href="https://github.com/CyberStudiosTM" target="_blank" rel="noopener noreferrer">↗ CyberStudiosTM organization</a>
-                    <a class="button alt" href="https://github.com/cyberthreed/CyberStudios-ModKit" target="_blank" rel="noopener noreferrer">↗ CyberStudios ModKit · source-available mods</a>
-                  </div>
-      </section>
-
-      <section class="panel" id="studio">
-        <div class="windowbar">
-          <span>♡ about_cyberstudios.txt</span>
-          <span>STUDIO PROFILE</span>
-        </div>
-
-        <div class="content">
-          <h2 class="section-heading">For the curious, the creative, and the ghosts in the machine. ✧</h2>
-
-          <p class="subtext">
-            Some ideas become gameplay systems. Some become pastel workspaces, little browser experiments, or a pixel cat who decides your desktop is his desktop. CyberStudios brings them together through a love of creative code, expressive design, and digital places with a personality of their own.
-          </p>
-
-          <div class="tree">✦ CYBERSTUDIOS
-│
-├── ♡ Digital Companions
-│   └── Bytes → Byte.exe · released
-│
-├── ✧ Elsewhere
-│   ├── Elsewhere OS · in development
-│   └── Elsewhere Messenger · Windows beta
-│
-├── ✧ Creative Tools
-│   ├── VS Code theme library · eight themes
-│   ├── Cybercore Cotton Candy · VS Code / Blender
-│   └── Cybercore Theme Studio · planned
-│
-├── ⚙ Developer Utilities
-│   ├── GhostPort · v0.1.1
-│   └── ModManifest · v0.1.1
-│
-├── ⌘ Gameplay Systems
-│   ├── TipsyZois · released
-│   └── CyberCore Gameplay · in development
-│       └── FamilyTies · in development
-│
-└── ☁ Web Experiments
-    └── Cybercore WebOS · planned</div>
-
-          <p class="subtext" style="margin-top:18px">
-            I believe software can be colorful. Strange. Nostalgic. Unexpected. A little surreal. The projects below are different ways of exploring that belief, from things you can use today to ideas still taking shape. <a class="small-link" href="about/">Step inside the studio →</a>
-          </p>
-        </div>
-      </section>
-
-      <section class="panel" id="projects">
-        <div class="windowbar">
-          <span>▦ projects.directory</span>
-          <span>ALL PROJECTS</span>
-        </div>
-
-        <div class="content">
-          <h2 class="section-heading">Project directory ✧</h2>
-          <p class="subtext">
-            A little bit of everything. Browse CyberStudios projects
-            and find what you're looking for.
-          </p>
-
-          <label class="search-field">
-            <span aria-hidden="true">⌕</span>
-            <input id="project-search" type="search"
-              placeholder="Search the project archive..."
-              aria-label="Search projects">
-            <span class="mono" style="font-size:10px;color:var(--muted)">/</span>
-          </label>
-
-          <div class="project-grid" id="project-grid">
-            <article class="project" data-search="elsewhere messenger chat friends dms windows beta"><div class="project-top"><div class="project-icon" aria-hidden="true">✧</div><div><h3>Elsewhere Messenger</h3><p class="category">Elsewhere / Windows</p></div></div><p>Blue glass, a buddy list, and a little window for your people. Explore the Windows beta, Elsewhere Accounts, and connected services.</p><div><a class="project-link" href="elsewhere/messenger.html">Open the guide</a></div></article>
-            <article class="project" data-search="elsewhere os windows shell desktop elsewhaero"><div class="project-top"><div class="project-icon" aria-hidden="true">✧</div><div><h3>Elsewhere OS</h3><p class="category">Elsewhere / Windows</p></div></div><p>A sky-blue desktop shell project for Windows 11, with windows, sounds, and a workspace you can make your own.</p><div><a class="project-link" href="elsewhere/">Open the guide</a></div></article>
-
-            <article class="project" data-search="byte.exe byte pet desktop cat windows bytes companion">
-              <div class="project-top">
-                <div class="project-icon">
-                  <img src="byte/assets/icon.png" alt="Byte, the pixel cat"
-                    onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-                  <span hidden aria-hidden="true">🐈‍⬛</span>
-                </div>
-                <div>
-                  <h3>Byte.exe</h3>
-                  <p class="category">Bytes / Desktop Companions</p>
-                </div>
-              </div>
-              <p>
-            CyberStudios' original pixel cat and professional screen dweller. Pet, feed, play, talk, and let Byte keep you company in his room or on your Windows desktop.
-          </p>
-              <span class="status">v1.0.0 · WINDOWS x64</span>
-              <div><a class="project-link" href="byte/">Visit Byte's page →</a></div>
-            </article>
-
-            <article class="project" data-search="themes vscode blender cy afterhours byte terminal aero lagoon rose quartz obsidian forge steel horizon timberline concrete day cybercore cotton candy soft vivid colors editor"><div class="project-top"><div class="project-icon" aria-hidden="true">✿</div><div><h3>CyberStudios Theme Library</h3><p class="category">VS Code / Blender</p></div></div><p>Eight little workspaces for your code, plus twenty themes for Blender. Pastel daydreams, midnight terminals, forest greens, and a palette for whatever you’re making next.</p><span class="status">VS CODE v1.0.0 · 20 BLENDER THEMES</span><div><a class="project-link" href="themes/">Explore themes &amp; downloads →</a></div></article>
-
-            <article class="project" data-search="ascii art apparition exhibition angels machine dreams interactive canvas gallery characters creative coding">
-              <div class="project-top"><div class="project-icon" aria-hidden="true">▒</div><div><h3>ASCII Apparition Exhibition</h3><p class="category">Creative Coding / Interactive Art</p></div></div>
-              <p>Digital apparitions built from letters, symbols and code. Wander through animated ASCII artwork and character studies that make plain text feel haunted and alive.</p>
-              <span class="status">ACTIVE COLLECTION · ANGELS #00 AVAILABLE</span>
-              <div><a class="project-link" href="ascii-art/">Visit the gallery →</a></div>
-            </article>
-
-            <article class="project" data-search="blender themes cotton candy soft vivid strawberry milk lavender macaron peach parfait moonlit bunny mint meringue blush chiffon sakura dusk sky sorbet butter bloom obsidian forge steel horizon timberline concrete day iron oxide deep current desert sandstone carbon volt ridgeline xml 3d modeling interface colors">
-              <div class="project-top"><div class="project-icon" aria-hidden="true">❖</div><div><h3>CyberStudios Blender Themes</h3><p class="category">Blender / Themes</p></div></div>
-              <p>Twenty Blender themes, from Cotton Candy Soft and Vivid to Strawberry Milk, Mint Meringue, Sakura Dusk, Obsidian Forge, Deep Current, Carbon Volt, Ridgeline, and Concrete Day.</p>
-              <span class="status">20 THEMES · BLENDER 5.2 · XML AVAILABLE</span>
-              <div><a class="project-link" href="themes/blender/gallery.html">Browse all 20 themes →</a></div>
-            </article>
-
-            <article class="project" data-search="blender add-on addon plugin plug-in theme switcher paste xml export save themes interface">
-              <div class="project-top"><div class="project-icon" aria-hidden="true">⇄</div><div><h3>CyberStudios Theme Switcher</h3><p class="category">Blender / Plug-ins</p></div></div>
-              <p>A Blender add-on that switches between the CyberStudios themes and any theme you have installed. Paste a theme’s code, save it under a name, and export it to your computer.</p>
-              <span class="status">v1.0.0 · BLENDER 4.2+ · TESTED ON 5.2</span>
-              <div><a class="project-link" href="https://github.com/cyberthreed/CyberStudios/releases/tag/blender-theme-switcher-v1.0.0">Get the add-on →</a></div>
-            </article>
-
-            <article class="project" data-search="ghostport portgeist localhost port tcp inspect process http json cli python pypi developer utility diagnostics">
-              <div class="project-top"><div class="project-icon" aria-hidden="true">👻</div><div><h3>GhostPort</h3><p class="category">Developer Utilities</p></div></div>
-              <p>A tiny local-first CLI for inspecting TCP ports, listening processes, and HTTP responses.</p>
-              <span class="status">v0.1.1 · PYTHON CLI · PYPI</span>
-              <div><a class="project-link" href="projects/ghostport.html">Meet GhostPort →</a></div>
-            </article>
-
-            <article class="project" data-search="modmanifest sims 4 sims4 inzoi mod package inspect validate audit ai metadata archive safety json cli python developer utility">
-              <div class="project-top"><div class="project-icon" aria-hidden="true">▦</div><div><h3>ModManifest</h3><p class="category">Developer Utilities</p></div></div>
-              <p>A read-only CLI that inspects, validates, and audits Sims 4 and inZOI mod packages.</p>
-              <span class="status">v0.1.1 · PYTHON CLI · PYPI</span>
-              <div><a class="project-link" href="projects/modmanifest.html">Explore ModManifest →</a></div>
-            </article>
-
-            <article class="project" data-search="bowl.rip bowl rip desktop companion windows electron lounge glass collection preview">
-              <div class="project-top"><div class="project-icon" aria-hidden="true">◌</div><div><h3>bowl.rip</h3><p class="category">Desktop Companions</p></div></div>
-              <p>A cozy Windows desktop companion with illustrated glass to collect, a lounge to decorate, ambient sounds, reminders and Byte stopping by. Everything stays on your device.</p>
-              <p><strong>Content note:</strong> cannabis-themed.</p>
-              <span class="status">PREVIEW 0.3.0 · GITHUB RELEASE COMING</span>
-              <div><a class="project-link" href="bowl-rip/">See the preview →</a></div>
-            </article>
-
-            <article class="project" data-search="tipsyzois inzoi gameplay mod released alcohol mixed drinks intoxication emotions portraits social interactions hangovers dui crashes poisoning cyberthreed">
-              <div class="project-top">
-                <div class="project-icon" aria-hidden="true">🍸</div>
-                <div>
-                  <h3>TipsyZois</h3>
-                  <p class="category">inZOI / Gameplay Mod</p>
-                </div>
-              </div>
-              <p>
-                Your Zoi said “just one drink.” Five intoxication
-                stages, custom emotions, drunk interactions, and
-                hangovers give inZOI's mixed drinks a whole story.
-                The morning after might deserve its own chapter.
-              </p>
-              <span class="status">RELEASED · inZOI</span>
-              <div>
-                <a class="project-link" href="projects/tipsyzois.html">
-                  Explore TipsyZois →
-                </a>
-              </div>
-            </article>
-
-            <article class="project" data-search="modkit mod kit inzoi mods source available source code github tipsyzois powernaps pajamaparty allowproposalonvacation curseforge nexus">
-              <div class="project-top"><div class="project-icon" aria-hidden="true">⌘</div><div><h3>CyberStudios ModKit</h3><p class="category">inZOI / Source-Available Mods</p></div></div>
-              <p>Source code for my inZOI mods, with download pages for TipsyZois, PowerNaps, PajamaParty, and AllowProposalOnVacation.</p>
-              <span class="status">SOURCE-AVAILABLE · inZOI</span>
-              <div><a class="project-link" href="projects/modkit.html">Explore ModKit →</a></div>
-            </article>
-            <article class="project" data-search="cybercore gameplay inzoi ai ecosystem sdk framework mods">
-              <div class="project-top">
-                <div class="project-icon" aria-hidden="true">⌘</div>
-                <div>
-                  <h3>CyberCore Gameplay</h3>
-                  <p class="category">inZOI / Gameplay Framework</p>
-                </div>
-              </div>
-              <p>
-            An in-development gameplay framework exploring shared context, memory, and compatible modules for more connected simulation experiences.
-          </p>
-              <span class="status">IN DEVELOPMENT</span>
-            </article>
-
-            <article class="project" data-search="familyties inzoi family relationships memories social graph">
-              <div class="project-top">
-                <div class="project-icon" aria-hidden="true">♡</div>
-                <div>
-                  <h3>FamilyTies</h3>
-                  <p class="category">CyberCore / Gameplay Module</p>
-                </div>
-              </div>
-              <p>
-            A developing CyberCore module about the history between people: family connections, social memories, and the interactions that give relationships a past.
-          </p>
-              <span class="status">IN DEVELOPMENT</span>
-            </article>
-
-            <article class="project" data-search="cybercore theme studio planned palette creator vscode export">
-              <div class="project-top"><div class="project-icon" aria-hidden="true">✧</div><div><h3>Cybercore Theme Studio</h3><p class="category">Creative Experiments</p></div></div>
-              <p>A planned palette workshop for creating and exporting custom VS Code colors. Another way to make your developer workspace feel like your own.</p>
-              <span class="status">PLANNED</span>
-              <div><a class="project-link" href="projects/#theme-studio">Peek at the idea →</a></div>
-            </article>
-
-            <article class="project" data-search="cybercore webos planned browser desktop tiny applications internet nostalgia">
-              <div class="project-top"><div class="project-icon" aria-hidden="true">▣</div><div><h3>Cybercore WebOS</h3><p class="category">Creative Experiments</p></div></div>
-              <p>A planned browser desktop full of tiny applications and nostalgic internet energy. A little digital place to open, explore, and make yourself at home.</p>
-              <span class="status">PLANNED</span>
-              <div><a class="project-link" href="projects/#webos">Peek at the idea →</a></div>
-            </article>
-          </div>
-
-          <p class="empty" id="empty-results" role="status">
-            No matching projects found. Try a different search. ♡
-          </p>
-        </div>
-      </section>
-
-      <section class="panel" id="contributions" aria-labelledby="contributions-heading">
-        <div class="windowbar">
-          <span>⌘ open-source.contributions</span>
-          <span>@cyberthreed</span>
-        </div>
-        <div class="content">
-          <h2 class="section-heading" id="contributions-heading">Open-source contributions ✧</h2>
-          <p class="subtext">Pull requests I've sent to other open-source projects.</p>
-          <div class="project-grid">
-            <article class="project">
-              <div class="project-top"><div class="project-icon" aria-hidden="true">✿</div><div><h3>BlenderKit</h3><p class="category">Asset popup · UI fix</p></div></div>
-              <p>Show the original file size in the asset popup.</p>
-              <span class="status">MERGED</span>
-              <div><a class="project-link" href="https://github.com/BlenderKit/Blendkit/pull/2359" target="_blank" rel="noopener noreferrer">View pull request →</a></div>
-            </article>
-            <article class="project">
-              <div class="project-top"><div class="project-icon" aria-hidden="true">✿</div><div><h3>BlenderKit</h3><p class="category">Search · bug fix</p></div></div>
-              <p>Remove failed searches from the search history.</p>
-              <span class="status">OPEN</span>
-              <div><a class="project-link" href="https://github.com/BlenderKit/Blendkit/pull/2358" target="_blank" rel="noopener noreferrer">View pull request →</a></div>
-            </article>
-            <article class="project">
-              <div class="project-top"><div class="project-icon" aria-hidden="true">⌂</div><div><h3>ha-mcp</h3><p class="category">Home Assistant MCP · feature</p></div></div>
-              <p>Support image entities in the camera image tool.</p>
-              <span class="status">OPEN</span>
-              <div><a class="project-link" href="https://github.com/homeassistant-ai/ha-mcp/pull/3055" target="_blank" rel="noopener noreferrer">View pull request →</a></div>
-            </article>
-          </div>
-          <p class="subtext" style="margin-top:16px"><a class="project-link" href="https://github.com/cyberthreed" target="_blank" rel="noopener noreferrer">↗ All activity on GitHub</a></p>
-        </div>
-      </section>
-
       <section class="panel" id="bytes">
         <div class="windowbar">
           <span>✦ bytes.fieldguide</span>
@@ -759,7 +508,7 @@
         </div>
 
         <div class="content">
-          <h2 class="section-heading">Meet the Bytes ♡</h2>
+          <h2 class="section-heading">Meet Byte ♡</h2>
           <p class="subtext">
             Byte is our original pixel-cat mascot and the first companion in the Bytes family. Black-and-purple fur, bright cyan eyes, a star on his forehead, and a full-time job keeping Cy company. Byte.exe gives him a cozy room and a place on your Windows desktop.
           </p>
@@ -781,93 +530,35 @@
         </div>
       </section>
 
-      <section class="panel" id="resources">
-        <div class="windowbar">
-          <span>⌘ resources.index</span>
-          <span>USEFUL LINKS</span>
-        </div>
-
+      <section class="panel" id="latest" aria-labelledby="latest-heading">
+        <div class="windowbar"><span>✦ whats_new.log</span><span>LATEST RELEASES</span></div>
         <div class="content">
-          <h2 class="section-heading">Resources & documentation</h2>
-
-          <div class="info-grid">
-            <div class="info-card">
-              <h3>⌘ Source repository</h3>
-              <p>
-                Explore CyberStudios code, project folders,
-                and documentation on
-                <a class="small-link"
-                  href="https://github.com/cyberthreed/CyberStudios">
-                  GitHub</a>.
-              </p>
-            </div>
-            <div class="info-card">
-              <h3>✧ Byte documentation</h3>
-              <p>
-                Read Byte.exe's installation, development,
-                and application notes in the
-                <a class="small-link"
-                  href="https://github.com/cyberthreed/CyberStudios/tree/main/apps/bytes/byte.exe">
-                  Byte source directory</a>.
-              </p>
-            </div>
-          </div>
+          <h2 class="section-heading" id="latest-heading">Latest releases ✧</h2>
+          <ul class="latest-list">
+            <li><strong>Elsewhere Messenger · Windows beta</strong><span>Photo Studio, SkinMapper with 16 starter skins, group chats, photo strips, and easier sign-up.</span><a class="small-link" href="elsewhere/messenger.html">Open the guide →</a></li>
+            <li><strong>Byte.exe v1.0.0</strong><span>Byte's cozy room and a place on your Windows desktop.</span><a class="small-link" href="byte/">Adopt Byte →</a></li>
+            <li><strong>Theme Library</strong><span>Eight VS Code themes, twenty Blender themes, and the Theme Switcher add-on.</span><a class="small-link" href="themes/">Find your theme →</a></li>
+            <li><strong>GhostPort &amp; ModManifest v0.1.1</strong><span>Two little command-line tools on PyPI.</span><a class="small-link" href="projects/#dev-tools">See the tools →</a></li>
+          </ul>
         </div>
       </section>
 
-      <section class="panel" id="faq">
-        <div class="windowbar">
-          <span>? help_and_questions.txt</span>
-          <span>FAQ</span>
-        </div>
-
+      <section class="panel" id="explore" aria-labelledby="explore-heading">
+        <div class="windowbar"><span>✧ wiki.map</span><span>EXPLORE</span></div>
         <div class="content">
-          <h2 class="section-heading">A few little questions</h2>
-
-          <details>
-            <summary>Is CyberStudios the same thing as Byte.exe?</summary>
-            <p>
-              No. CyberStudios is the parent studio. Byte.exe is one
-              of its creations and the first desktop companion in
-              the Bytes product line.
-            </p>
-          </details>
-
-          <details>
-            <summary>Is Cybercore the same as CyberCore Gameplay?</summary>
-            <p>
-              No. Cybercore refers to a dreamy digital aesthetic
-              used in projects such as the Cotton Candy VS Code
-              themes. CyberCore Gameplay is a separate inZOI
-              gameplay framework in development.
-            </p>
-          </details>
-
-          <details>
-            <summary>Does Byte.exe need an account?</summary>
-            <p>
-              No. Byte.exe is a local-first desktop companion.
-              Its care state is stored on your computer.
-            </p>
-          </details>
-
-          <details>
-            <summary>Is Byte.exe an AI chatbot?</summary>
-            <p>
-              No. Byte uses locally defined interactions and
-              responses. His Talk feature does not require an
-              online AI provider.
-            </p>
-          </details>
-
-          <details>
-            <summary>Where can I download Byte.exe?</summary>
-            <p>
-              Visit the
-              <a class="small-link" href="byte/">official Byte.exe page</a>
-              for the Windows download and instructions.
-            </p>
-          </details>
+          <h2 class="section-heading" id="explore-heading">Explore the wiki ♡</h2>
+          <div class="explore-grid">
+            <a class="explore-card" href="projects/"><strong>▦ Projects</strong><span>Every CyberStudios project, grouped and searchable.</span></a>
+            <a class="explore-card" href="themes/"><strong>✧ Themes</strong><span>VS Code and Blender palettes for your workspace.</span></a>
+            <a class="explore-card" href="ascii-art/"><strong>▒ ASCII art</strong><span>Digital apparitions made from letters and code.</span></a>
+            <a class="explore-card" href="about/"><strong>✿ About the studio</strong><span>Cy, Byte, the studio tree, and a few questions.</span></a>
+            <a class="explore-card" href="docs/"><strong>⌘ Resources</strong><span>Install guides, controls, and troubleshooting.</span></a>
+          </div>
+          <div class="button-row">
+            <a class="button" href="https://github.com/cyberthreed" target="_blank" rel="noopener noreferrer">↗ GitHub · @cyberthreed</a>
+            <a class="button alt" href="https://github.com/CyberStudiosTM" target="_blank" rel="noopener noreferrer">↗ CyberStudiosTM</a>
+            <a class="button alt" href="https://github.com/cyberthreed/CyberStudios-ModKit" target="_blank" rel="noopener noreferrer">↗ ModKit source</a>
+          </div>
         </div>
       </section>
 

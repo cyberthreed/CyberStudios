@@ -46,3 +46,12 @@
 .topnav a[aria-current="page"] { background:#eedcfb; color:#8658ae; border-color:#cfa8ee; }
 .sidebar a[aria-current="page"] { background:#eedcfb; color:#8658ae; font-weight:700; }
 .night .topnav a[aria-current="page"],.night .sidebar a[aria-current="page"] { background:#57416b; color:#eed5ff; }
+
+/* Navigation reorganization: the top bar only holds featured projects; the side menu is the wiki map. */
+.topnav .topnav-feature { font-weight: 700; }
+@media (max-width: 760px) {
+  .sidebar .sidebar-inner, .sidebar nav.sidebar-inner { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 6px; padding-bottom: 8px; scrollbar-width: thin; }
+  .sidebar .sidebar-inner > *, .sidebar nav.sidebar-inner > * { flex: 0 0 auto; white-space: nowrap; }
+  .sidebar .wiki-profile, .sidebar .sidebar-note { display: none; }
+  .sidebar .sidebar-title, .sidebar .sidebar-label { align-self: center; margin: 0 4px; }
+}
