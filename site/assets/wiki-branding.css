@@ -55,3 +55,125 @@
   .sidebar .wiki-profile, .sidebar .sidebar-note { display: none; }
   .sidebar .sidebar-title, .sidebar .sidebar-label { align-self: center; margin: 0 4px; }
 }
+
+/* ---------- Theme picker: ☀ Day · ☾ Night · 🫧 Aero (assets/wiki-theme.js) ---------- */
+.theme-picker { display: inline-flex; flex-wrap: wrap; gap: 4px; }
+.theme-picker .theme-button[aria-pressed="true"] { background: #eedcfb; color: #6f4597; border-color: #cfa8ee; font-weight: 700; }
+.night .theme-picker .theme-button[aria-pressed="true"] { background: #57416b; color: #eed5ff; }
+/* Wrong-picture guard: a themed image stays hidden until its picture (or the original fallback) is ready. */
+html[data-theme="night"] img[data-src-night]:not([data-theme-ready]),
+html[data-theme="aero"] img[data-src-aero]:not([data-theme-ready]) { visibility: hidden; }
+
+/* About uses .sidebar-content; keep its menu one swipeable row on phones too. */
+@media (max-width: 760px) {
+  .sidebar .sidebar-content { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 6px; padding-bottom: 8px; scrollbar-width: thin; }
+  .sidebar .sidebar-content > * { flex: 0 0 auto; white-space: nowrap; }
+}
+
+/* ---------- 🫧 Frutiger Aero ---------- */
+html[data-theme="aero"] {
+  --ink: #0b2a4a;
+  --muted: #2b5677;
+  --pink: #cdeeff;
+  --lilac: #d9f2ff;
+  --sky: #c4ebff;
+  --mint: #dcf6d2;
+  --border: #96d0f0;
+  --paper: #f4fbffee;
+  --bar: linear-gradient(180deg, #f4fcff 0%, #c9eefd 46%, #9edcf7 54%, #cdeffc 100%);
+  --shadow: #145c9433;
+  --wallpaper: linear-gradient(180deg, #2f9be6 0%, #7cc9f3 45%, #c9ecff 78%, #e9f9ff 100%);
+  --accent: #0a74c4;
+  color-scheme: light;
+}
+html[data-theme="aero"] body {
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse 30% 9% at 16% 13%, #ffffffe6 0 40%, transparent 72%),
+    radial-gradient(ellipse 22% 7% at 30% 18%, #ffffffb8 0 40%, transparent 72%),
+    radial-gradient(ellipse 28% 8% at 74% 10%, #ffffffd9 0 40%, transparent 72%),
+    radial-gradient(ellipse 18% 6% at 88% 22%, #ffffffa6 0 40%, transparent 72%),
+    radial-gradient(circle at 8% 46%, transparent 0 13px, #ffffff8c 14px 16px, transparent 17px),
+    radial-gradient(circle at 93% 38%, transparent 0 9px, #ffffff80 10px 11.5px, transparent 12.5px),
+    radial-gradient(circle at 90% 58%, transparent 0 17px, #ffffff70 18px 20px, transparent 21px),
+    radial-gradient(circle at 5% 70%, transparent 0 7px, #ffffff80 8px 9.5px, transparent 10.5px),
+    radial-gradient(ellipse 75% 22% at 18% 102%, #8fd85f 0 62%, #6cc243 74%, transparent 75%),
+    radial-gradient(ellipse 85% 26% at 88% 106%, #74cc4c 0 62%, #4fae36 74%, transparent 75%),
+    repeating-conic-gradient(from 190deg at 12% -8%, #ffffff14 0 5deg, transparent 5deg 13deg),
+    var(--wallpaper);
+  background-attachment: fixed;
+}
+html[data-theme="aero"] .panel {
+  background: #f4fbff;
+  border-color: #ffffffe6;
+  box-shadow: 0 12px 28px #0f5a9033, inset 0 1px 0 #ffffff;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html[data-theme="aero"] .panel {
+    background: #ffffffb8;
+    -webkit-backdrop-filter: blur(10px) saturate(1.15);
+    backdrop-filter: blur(10px) saturate(1.15);
+  }
+}
+html[data-theme="aero"] .windowbar {
+  background: var(--bar);
+  color: #06345c;
+  border-bottom: 1px solid #7cc4ea;
+  box-shadow: inset 0 1px 0 #ffffff, inset 0 -1px 0 #ffffff66;
+  text-shadow: 0 1px 0 #ffffffb3;
+}
+html[data-theme="aero"] .topnav a,
+html[data-theme="aero"] .theme-button,
+html[data-theme="aero"] .button,
+html[data-theme="aero"] .byte-menu button {
+  color: #0b3a63;
+  border: 1px solid #7cc6ec;
+  background: linear-gradient(180deg, #ffffff 0%, #e6f7ff 46%, #c2e9fb 54%, #e9f9ff 100%);
+  box-shadow: inset 0 1px 0 #ffffff, 0 2px 6px #145a961f;
+  text-shadow: 0 1px 0 #ffffffcc;
+}
+html[data-theme="aero"] .topnav a:hover,
+html[data-theme="aero"] .theme-button:hover,
+html[data-theme="aero"] .button:hover { background: linear-gradient(180deg, #ffffff 0%, #d8f3ff 46%, #a9e0f9 54%, #dff5ff 100%); color: #06345c; }
+html[data-theme="aero"] .topnav a[aria-current="page"],
+html[data-theme="aero"] .sidebar a[aria-current="page"],
+html[data-theme="aero"] .sidebar a.selected,
+html[data-theme="aero"] .sidebar a.active,
+html[data-theme="aero"] .theme-picker .theme-button[aria-pressed="true"] {
+  color: #0d3a10;
+  border-color: #6cbf4a;
+  background: linear-gradient(180deg, #f2ffe9 0%, #cdf3b6 46%, #a6e382 54%, #d6f6c4 100%);
+  font-weight: 700;
+}
+html[data-theme="aero"] .sidebar a { color: var(--ink); }
+html[data-theme="aero"] .byte-caption { background: #ffffffd9; border-color: #96d0f0; color: #0b2a4a; }
+html[data-theme="aero"] .footer { color: #0b2a4a; text-shadow: 0 1px 0 #ffffff99; }
+html[data-theme="aero"] a:not(.button):not(.topnav a):not(.sidebar a) { color: #0a5aa3; }
+
+/* Aero: page-specific accents (heroes, headings, buttons) swap pink/lavender for aqua, navy and leaf green. */
+html[data-theme="aero"] .hero {
+  background:
+    radial-gradient(circle at 85% 18%, #ffffffc0, transparent 34%),
+    linear-gradient(180deg, #ffffffe0 0%, #e4f7ff 48%, #c9ecfb 100%);
+  color: #0b2a4a;
+}
+html[data-theme="aero"] .eyebrow,
+html[data-theme="aero"] .hero .eyebrow { color: #1f6f45; }
+html[data-theme="aero"] .hero h1 span,
+html[data-theme="aero"] .heading span,
+html[data-theme="aero"] h2 span { color: #0a6fbd; }
+html[data-theme="aero"] .hero p { color: #24506f; }
+html[data-theme="aero"] .hero-bottom { border-top-color: #8fcbe9; color: #24506f; }
+html[data-theme="aero"] .button { box-shadow: 0 4px 0 #6fb4dc80, inset 0 1px 0 #ffffffcc; }
+html[data-theme="aero"] .button.alt { background: linear-gradient(180deg, #fbfff6 0%, #e2f8d3 46%, #bfeaa5 54%, #e3f8d6 100%); color: #164d2b; }
+html[data-theme="aero"] .btn.primary { background: linear-gradient(180deg, #f4fcff 0%, #c9eefd 46%, #9edcf7 54%, #cdeffc 100%); color: #0b2a4a; }
+html[data-theme="aero"] code { background: #d9f1fc; color: #0b2a4a; }
+html[data-theme="aero"] .windowbar .dots { color: #0a6fbd; }
+html[data-theme="aero"] .status,
+html[data-theme="aero"] .entry-no { background: #d6f0fc; color: #0b4f86; }
+html[data-theme="aero"] .hero-tags span,
+html[data-theme="aero"] .preview-caption { color: #1d5a86; }
+html[data-theme="aero"] .focus-icon,
+html[data-theme="aero"] .feature-symbol { color: #0a6fbd; }
+html[data-theme="aero"] .wiki-cy img,
+html[data-theme="aero"] .hero img { filter: drop-shadow(0 12px 14px #145c9433); }

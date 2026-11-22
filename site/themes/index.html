@@ -2,21 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script>/* Apply the saved wiki theme before anything draws. */(function(){var t='day';try{t=localStorage.getItem('cyberstudios-wiki-theme');if(['day','night','aero'].indexOf(t)<0){t=localStorage.getItem('cyberstudios-wiki-night')==='1'?'night':'day';}}catch(e){t='day';}document.documentElement.setAttribute('data-theme',t);})();</script>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#f6dbf3">
   <meta name="description" content="Find your next little workspace: eight CyberStudios VS Code themes and twenty Blender presets, with an interactive gallery, downloads, and installation guides.">
   <title>Theme Library ♡ CyberStudios Wiki</title>
   <link rel="stylesheet" href="../assets/themes.css">
   <link rel="stylesheet" href="../assets/wiki-branding.css">
+  <script src="../assets/wiki-theme.js" defer></script>
 </head>
 <body>
+  <script>if(document.documentElement.getAttribute('data-theme')==='night')document.body.classList.add('night');</script>
   <a class="skip-link" href="#main">Skip to the theme library</a>
   <header class="shell topbar">
     <a class="brand" href="../"><span class="brand-icon" aria-hidden="true"><img src="../assets/cyberstudios.png" alt="" width="1280" height="1280" decoding="async"></span><span><small>THE CYBERSTUDIOS ARCHIVE</small><strong>CyberStudios ♡</strong></span></a>
     <nav class="topnav" aria-label="Main navigation">
       <a class="topnav-feature" href="../elsewhere/messenger.html">♡ Elsewhere Messenger</a>
       <a class="topnav-feature" href="../byte/">🐾 Byte.exe</a>
-      <button id="theme-toggle" type="button" aria-pressed="false" hidden>☾ Night mode</button>
+      <div class="theme-picker" role="group" aria-label="Wiki theme"><button type="button" class="theme-button" data-theme-choice="day" aria-pressed="true">☀ Day</button><button type="button" class="theme-button" data-theme-choice="night" aria-pressed="false">☾ Night</button><button type="button" class="theme-button" data-theme-choice="aero" aria-pressed="false">🫧 Aero</button></div>
       <button id="byte-toggle" type="button" aria-pressed="true" hidden>♡ Hide Byte</button>
     </nav>
   </header>
@@ -149,18 +152,7 @@
   <footer class="shell footer">✦ CYBERSTUDIOS WIKI ♡<br><strong>dream in pixels. create without limits.</strong><br>made of pixels, daydreams &amp; too many open tabs.<br>© 2026 CyberStudios</footer>
   <script>
     (() => {
-      const button = document.getElementById('theme-toggle');
-      const setNight = enabled => {
-        document.body.classList.toggle('night', enabled);
-        button.setAttribute('aria-pressed', String(enabled));
-        button.textContent = enabled ? '☀ Day mode' : '☾ Night mode';
-        try { localStorage.setItem('cyberstudios-wiki-night', enabled ? '1' : '0'); } catch (_) {}
-      };
-      let enabled = false;
-      try { enabled = localStorage.getItem('cyberstudios-wiki-night') === '1'; } catch (_) {}
-      setNight(enabled);
-      button.hidden = false;
-      button.addEventListener('click', () => setNight(!document.body.classList.contains('night')));
+      /* Theme switching lives in assets/wiki-theme.js. */
     })();
   </script>
   <div class="byte-companion" id="byte-companion" hidden>

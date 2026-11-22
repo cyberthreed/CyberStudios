@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script>/* Apply the saved wiki theme before anything draws. */(function(){var t='day';try{t=localStorage.getItem('cyberstudios-wiki-theme');if(['day','night','aero'].indexOf(t)<0){t=localStorage.getItem('cyberstudios-wiki-night')==='1'?'night':'day';}}catch(e){t='day';}document.documentElement.setAttribute('data-theme',t);})();</script>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#f6dbf3">
   <meta name="description" content="Explore the CyberStudios project directory, including Elsewhere Messenger, Elsewhere OS, Byte.exe, TipsyZois, creative tools, and gameplay systems.">
@@ -406,9 +407,11 @@
     .project-group:first-child { margin-top:0; }
   </style>
   <link rel="stylesheet" href="../assets/wiki-branding.css">
+  <script src="../assets/wiki-theme.js" defer></script>
 </head>
 
 <body>
+  <script>if(document.documentElement.getAttribute('data-theme')==='night')document.body.classList.add('night');</script>
   <header class="shell topbar">
     <a class="brand" href="../">
       <span class="brand-icon" aria-hidden="true"><img src="../assets/cyberstudios.png" alt="" width="1280" height="1280" decoding="async"></span>
@@ -421,9 +424,7 @@
     <nav class="topnav" aria-label="Main navigation">
       <a class="topnav-feature" href="../elsewhere/messenger.html">♡ Elsewhere Messenger</a>
       <a class="topnav-feature" href="../byte/">🐾 Byte.exe</a>
-      <button id="theme-toggle" type="button" aria-pressed="false">
-        ☾ Night mode
-      </button>
+      <div class="theme-picker" role="group" aria-label="Wiki theme"><button type="button" class="theme-button" data-theme-choice="day" aria-pressed="true">☀ Day</button><button type="button" class="theme-button" data-theme-choice="night" aria-pressed="false">☾ Night</button><button type="button" class="theme-button" data-theme-choice="aero" aria-pressed="false">🫧 Aero</button></div>
       <button id="byte-toggle" class="theme-button" type="button" aria-pressed="true" hidden>♡ Hide Byte</button>
     </nav>
   </header>
@@ -814,32 +815,7 @@
 
     search.addEventListener("input", filterProjects);
 
-    const toggle = document.getElementById("theme-toggle");
-
-    function setNight(value) {
-      document.body.classList.toggle("night", value);
-      toggle.setAttribute("aria-pressed", String(value));
-      toggle.textContent = value ? "☀ Day mode" : "☾ Night mode";
-
-      try {
-        localStorage.setItem(
-          "cyberstudios-wiki-night",
-          value ? "1" : "0"
-        );
-      } catch (error) {}
-    }
-
-    try {
-      setNight(
-        localStorage.getItem("cyberstudios-wiki-night") === "1"
-      );
-    } catch (error) {
-      setNight(false);
-    }
-
-    toggle.addEventListener("click", () => {
-      setNight(!document.body.classList.contains("night"));
-    });
+    /* Theme switching lives in assets/wiki-theme.js. */
   </script>
   <div class="byte-companion" id="byte-companion" hidden>
     <button class="byte-character" id="byte-character" type="button" aria-label="Byte: open companion controls" aria-expanded="false" aria-controls="byte-menu" aria-describedby="byte-keyboard-help">
