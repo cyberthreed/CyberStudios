@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - 'site/**'
+      - '.github/workflows/static.yml'
 
 permissions:
   contents: read
@@ -18,13 +19,9 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    name: Deploy CyberStudios Website
+  build:
+    name: Build CyberStudios Website
     runs-on: ubuntu-latest
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout repository
@@ -75,6 +72,16 @@ jobs:
         with:
           path: ./_pages
 
+  deploy:
+    name: Deploy CyberStudios Website
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
       - name: Deploy website
         id: deployment
         uses: actions/deploy-pages@v4
