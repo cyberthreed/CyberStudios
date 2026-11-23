@@ -71,9 +71,9 @@ The root tools are for maintaining the collection; individual theme folders do n
 
 To refresh the generated READMEs and changelogs while preserving hand-edited theme colors, run `npm run docs`. Then rebuild the installers and bundles to keep the downloadable copies in step with the source.
 
-## 💿 when you're ready to share
+## 💿 where to get the themes
 
-The collection lives in this repository under `themes/vscode/`. The theme READMEs are ready to use. Build output is intentionally ignored by Git; add a theme's VSIX as a GitHub Release attachment when you want to share an installable copy. The local ZIP bundles also contain ready-to-install copies.
+You’ll find the source for each theme in `themes/vscode/`. To install one, download the installers ZIP from the release below and choose its `.vsix` file.
 
 The manifests use `cyberthreed` as their local publisher namespace. A Marketplace listing would require a registered publisher with that ID or an updated manifest. The source folders and [v1.0.0 installer release](https://github.com/cyberthreed/CyberStudios/releases/tag/vscode-themes-v1.0.0) are published. These themes are not listed on the Visual Studio Marketplace.
 

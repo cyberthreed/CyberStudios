@@ -7,7 +7,7 @@ Checked on Windows with VS Code **1.144.1**, Node.js **24.22.1**, and Microsoft'
 ## ♡ checks that passed
 
 - All eight projects packaged successfully into independent VSIX files.
-- All eight VSIX files installed and loaded in a separate temporary VS Code profile. The user's normal VS Code profile was not used for installation.
+- All eight VSIX files installed and loaded in a temporary VS Code profile.
 - VS Code's theme exporter resolved all **396 specified interface colors per theme** to the expected values, with the correct light/dark theme kind.
 - **696 contrast checks** passed across the collection: syntax on normal, current-line, and selection backgrounds; sidebar and menu text; inputs and buttons; status controls; diagnostics; and all 16 terminal ANSI colors. The lowest tested pair was **4.52:1**.
 - The installed VS Code TextMate grammars tokenized **80 sample files** across TypeScript, Python, HTML, CSS, JSON, YAML, SQL, shell, Markdown, and diff.
