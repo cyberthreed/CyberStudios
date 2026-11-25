@@ -411,6 +411,7 @@
   <link rel="icon" href="../assets/favicon.png" data-href-aero="../assets/favicon-aero.png" type="image/png" sizes="64x64">
   <link rel="icon" href="../assets/favicon-192.png" data-href-aero="../assets/favicon-aero-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="../assets/favicon-192.png">
+  <script src="../assets/wiki-search.js?v=1" defer></script>
 </head>
 
 <body>
@@ -424,9 +425,13 @@
       </span>
     </a>
 
+    <form class="wiki-search" role="search" autocomplete="off"><span aria-hidden="true">⌕</span><input type="search" placeholder="Search CyberStudios Wiki" aria-label="Search CyberStudios Wiki" role="combobox" aria-expanded="false" aria-controls="wiki-search-results" aria-autocomplete="list"><ul class="wiki-search-results" id="wiki-search-results" role="listbox" hidden></ul></form>
+
     <nav class="topnav" aria-label="Main navigation">
-      <a class="topnav-feature" href="../elsewhere/messenger.html">♡ Elsewhere Messenger</a>
+      <a class="topnav-home" href="../">⌂ Home</a>
+<a class="topnav-feature" href="../elsewhere/messenger.html">♡ Elsewhere Messenger</a>
       <a class="topnav-feature" href="../byte/">🐾 Byte.exe</a>
+      <a class="topnav-projects" href="../projects/" aria-current="page">▦ Projects</a>
       <div class="theme-picker" role="group" aria-label="Wiki theme"><button type="button" class="theme-button" data-theme-choice="day" aria-pressed="true">☀ Day</button><button type="button" class="theme-button" data-theme-choice="night" aria-pressed="false">☾ Night</button><button type="button" class="theme-button" data-theme-choice="aero" aria-pressed="false">🫧 Aero</button></div>
       <button id="byte-toggle" class="theme-button" type="button" aria-pressed="true" hidden>♡ Hide Byte</button>
     </nav>
@@ -498,7 +503,7 @@
 
           <div class="projects">
             <h3 class="project-group" id="elsewhere" data-group="elsewhere">♡ Elsewhere</h3>
-            <article class="project" data-in="elsewhere" data-search="elsewhere messenger chat friends dms windows beta"><div class="project-heading"><div class="project-icon" aria-hidden="true">✧</div><div><h3>Elsewhere Messenger</h3><p class="category">Elsewhere / Windows</p></div></div><p>Blue glass, a buddy list, and a little window for your people. Explore the Windows beta, Elsewhere Accounts, and connected services.</p><div><a class="project-link" href="../elsewhere/messenger.html">Open the guide</a></div></article>
+            <article class="project" data-in="elsewhere" data-search="elsewhere messenger chat friends dms windows beta creative studio pixel doll studio skinmapper skins"><div class="project-heading"><div class="project-icon" aria-hidden="true">✧</div><div><h3>Elsewhere Messenger</h3><p class="category">Elsewhere / Windows</p></div></div><p>Blue glass, a buddy list, and a little window for your people. Now with Creative Studio, Pixel Doll Studio, SkinMapper and official skin collections (v0.2.48 beta).</p><div><a class="project-link" href="../elsewhere/messenger.html">Open the guide</a></div></article>
             <article class="project" data-in="elsewhere" data-search="elsewhere os windows shell desktop elsewhaero"><div class="project-heading"><div class="project-icon" aria-hidden="true">✧</div><div><h3>Elsewhere OS</h3><p class="category">Elsewhere / Windows</p></div></div><p>A sky-blue desktop shell project for Windows 11, with windows, sounds, and a workspace you can make your own.</p><div><a class="project-link" href="../elsewhere/">Open the guide</a></div></article>
             <h3 class="project-group" id="companions" data-group="companions">🐾 Desktop companions</h3>
             <article class="project" data-in="companions"

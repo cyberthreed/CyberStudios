@@ -177,3 +177,25 @@ html[data-theme="aero"] .focus-icon,
 html[data-theme="aero"] .feature-symbol { color: #0a6fbd; }
 html[data-theme="aero"] .wiki-cy img,
 html[data-theme="aero"] .hero img { filter: drop-shadow(0 12px 14px #145c9433); }
+
+/* Wiki search ("Search CyberStudios Wiki") */
+.wiki-search { position: relative; display: flex; align-items: center; gap: 6px; flex: 1 1 220px; max-width: 340px; min-width: 0; padding: 0 10px; border: 2px solid var(--border, #e5cdf1); border-radius: 14px; background: #ffffffd9; color: var(--ink, #7e5c9d); box-shadow: 0 3px 0 var(--shadow, #c9a9dd55); }
+.wiki-search input { flex: 1; min-width: 0; padding: 9px 2px; border: 0; background: transparent; color: inherit; font: inherit; font-size: 12px; outline: none; }
+.wiki-search input::placeholder { color: var(--muted, #9b7bb7); opacity: 1; }
+.wiki-search:focus-within { border-color: var(--accent, #d782bd); }
+.wiki-search-results { position: absolute; z-index: 60; top: calc(100% + 6px); left: 0; right: 0; max-height: 340px; overflow-y: auto; margin: 0; padding: 4px; list-style: none; border: 2px solid var(--border, #e5cdf1); border-radius: 12px; background: #fffaff; box-shadow: 0 10px 26px #4a2a6633; }
+.wiki-search-results a { display: grid; gap: 1px; padding: 7px 9px; border-radius: 8px; color: var(--ink, #7e5c9d); text-decoration: none; }
+.wiki-search-results a small { color: var(--muted, #9b7bb7); font-size: 10px; }
+.wiki-search-results li.is-active a, .wiki-search-results a:hover { background: #f4ddfa; }
+.wiki-search-empty { padding: 8px 10px; color: var(--muted, #9b7bb7); font-size: 12px; }
+.night .wiki-search, html[data-theme="night"] .wiki-search { background: #2e2140d9; border-color: #6a4f86; color: #eed5ff; }
+.night .wiki-search-results, html[data-theme="night"] .wiki-search-results { background: #241a33; border-color: #6a4f86; }
+.night .wiki-search-results a, html[data-theme="night"] .wiki-search-results a { color: #eed5ff; }
+.night .wiki-search-results li.is-active a, .night .wiki-search-results a:hover { background: #57416b; }
+html[data-theme="aero"] .wiki-search { background: linear-gradient(180deg, #ffffff 0%, #eaf8ff 100%); border-color: #96d0f0; color: #0b2a4a; box-shadow: 0 3px 0 #6fb4dc55, inset 0 1px 0 #ffffff; }
+html[data-theme="aero"] .wiki-search input::placeholder { color: #2b5677; }
+html[data-theme="aero"] .wiki-search-results { background: #f4fbff; border-color: #96d0f0; }
+html[data-theme="aero"] .wiki-search-results a { color: #0b2a4a; }
+html[data-theme="aero"] .wiki-search-results a small { color: #2b5677; }
+html[data-theme="aero"] .wiki-search-results li.is-active a, html[data-theme="aero"] .wiki-search-results a:hover { background: #d6f0fc; }
+@media (max-width: 760px) { .wiki-search { flex-basis: 100%; max-width: none; order: 2; } }

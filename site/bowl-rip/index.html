@@ -397,6 +397,7 @@
   <link rel="icon" href="../assets/favicon.png" data-href-aero="../assets/favicon-aero.png" type="image/png" sizes="64x64">
   <link rel="icon" href="../assets/favicon-192.png" data-href-aero="../assets/favicon-aero-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="../assets/favicon-192.png">
+  <script src="../assets/wiki-search.js?v=1" defer></script>
 </head>
 
 <body>
@@ -410,9 +411,13 @@
       </span>
     </a>
 
+    <form class="wiki-search" role="search" autocomplete="off"><span aria-hidden="true">⌕</span><input type="search" placeholder="Search CyberStudios Wiki" aria-label="Search CyberStudios Wiki" role="combobox" aria-expanded="false" aria-controls="wiki-search-results" aria-autocomplete="list"><ul class="wiki-search-results" id="wiki-search-results" role="listbox" hidden></ul></form>
+
     <nav class="topnav" aria-label="Main navigation">
-      <a class="topnav-feature" href="../elsewhere/messenger.html">♡ Elsewhere Messenger</a>
+      <a class="topnav-home" href="../">⌂ Home</a>
+<a class="topnav-feature" href="../elsewhere/messenger.html">♡ Elsewhere Messenger</a>
       <a class="topnav-feature" href="../byte/">🐾 Byte.exe</a>
+      <a class="topnav-projects" href="../projects/">▦ Projects</a>
       <div class="theme-picker" role="group" aria-label="Wiki theme"><button type="button" class="theme-button" data-theme-choice="day" aria-pressed="true">☀ Day</button><button type="button" class="theme-button" data-theme-choice="night" aria-pressed="false">☾ Night</button><button type="button" class="theme-button" data-theme-choice="aero" aria-pressed="false">🫧 Aero</button></div>
       <button id="byte-toggle" class="theme-button" type="button" aria-pressed="true" hidden>♡ Hide Byte</button>
     </nav>

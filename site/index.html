@@ -386,6 +386,7 @@
   <link rel="icon" href="assets/favicon.png" data-href-aero="assets/favicon-aero.png" type="image/png" sizes="64x64">
   <link rel="icon" href="assets/favicon-192.png" data-href-aero="assets/favicon-aero-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="assets/favicon-192.png">
+  <script src="assets/wiki-search.js?v=1" defer></script>
 </head>
 <body>
   <script>if(document.documentElement.getAttribute('data-theme')==='night')document.body.classList.add('night');</script>
@@ -398,9 +399,13 @@
       </span>
     </a>
 
+    <form class="wiki-search" role="search" autocomplete="off"><span aria-hidden="true">⌕</span><input type="search" placeholder="Search CyberStudios Wiki" aria-label="Search CyberStudios Wiki" role="combobox" aria-expanded="false" aria-controls="wiki-search-results" aria-autocomplete="list"><ul class="wiki-search-results" id="wiki-search-results" role="listbox" hidden></ul></form>
+
     <nav class="topnav" aria-label="Main navigation">
-      <a class="topnav-feature" href="elsewhere/messenger.html">♡ Elsewhere Messenger</a>
+      <a class="topnav-home" href="./" aria-current="page">⌂ Home</a>
+<a class="topnav-feature" href="elsewhere/messenger.html">♡ Elsewhere Messenger</a>
       <a class="topnav-feature" href="byte/">🐾 Byte.exe</a>
+      <a class="topnav-projects" href="projects/">▦ Projects</a>
       <div class="theme-picker" role="group" aria-label="Wiki theme"><button type="button" class="theme-button" data-theme-choice="day" aria-pressed="true">☀ Day</button><button type="button" class="theme-button" data-theme-choice="night" aria-pressed="false">☾ Night</button><button type="button" class="theme-button" data-theme-choice="aero" aria-pressed="false">🫧 Aero</button></div>
       <button id="byte-toggle" class="theme-button" type="button" aria-pressed="true" hidden>♡ Hide Byte</button>
     </nav>
@@ -424,6 +429,7 @@
         <a href="#featured">♡ Elsewhere Messenger</a>
         <a href="#bytes">🐾 Meet Byte</a>
         <a href="#latest">✦ Latest releases</a>
+        <a href="#projects">▦ Project directory</a>
         <a href="#explore">✧ Explore the wiki</a>
         <p class="sidebar-title">WIKI MAP</p>
         <a href="./" aria-current="page">⌂ Wiki home</a>
@@ -539,11 +545,177 @@
         <div class="content">
           <h2 class="section-heading" id="latest-heading">Latest releases ✧</h2>
           <ul class="latest-list">
-            <li><strong>Elsewhere Messenger · Windows beta</strong><span>Photo Studio, SkinMapper with 16 starter skins, group chats, photo strips, and easier sign-up.</span><a class="small-link" href="elsewhere/messenger.html">Open the guide →</a></li>
+            <li><strong>Elsewhere Messenger v0.2.48 · Windows beta</strong><span>Creative Studio, Pixel Doll Studio, SkinMapper, official skin collections, group chats, and photo strips.</span><a class="small-link" href="elsewhere/messenger.html">Open the guide →</a></li>
             <li><strong>Byte.exe v1.0.0</strong><span>Byte's cozy room and a place on your Windows desktop.</span><a class="small-link" href="byte/">Adopt Byte →</a></li>
             <li><strong>Theme Library</strong><span>Eight VS Code themes, twenty Blender themes, and the Theme Switcher add-on.</span><a class="small-link" href="themes/">Find your theme →</a></li>
             <li><strong>GhostPort &amp; ModManifest v0.1.1</strong><span>Two little command-line tools on PyPI.</span><a class="small-link" href="projects/#dev-tools">See the tools →</a></li>
           </ul>
+        </div>
+      </section>
+
+      <section class="panel" id="projects">
+        <div class="windowbar">
+          <span>▦ projects.directory</span>
+          <span>ALL PROJECTS</span>
+        </div>
+
+        <div class="content">
+          <h2 class="section-heading">Project directory ✧</h2>
+          <p class="subtext">
+            A little bit of everything. Browse CyberStudios projects
+            and find what you're looking for.
+          </p>
+
+          <label class="search-field">
+            <span aria-hidden="true">⌕</span>
+            <input id="project-search" type="search"
+              placeholder="Search the project archive..."
+              aria-label="Search projects">
+            <span class="mono" style="font-size:10px;color:var(--muted)">/</span>
+          </label>
+
+          <div class="project-grid" id="project-grid">
+            <article class="project" data-search="elsewhere messenger chat friends dms windows beta creative studio pixel doll studio skinmapper skins"><div class="project-top"><div class="project-icon" aria-hidden="true">✧</div><div><h3>Elsewhere Messenger</h3><p class="category">Elsewhere / Windows</p></div></div><p>Blue glass, a buddy list, and a little window for your people. Now with Creative Studio, Pixel Doll Studio, SkinMapper and official skin collections (v0.2.48 beta).</p><div><a class="project-link" href="elsewhere/messenger.html">Open the guide</a></div></article>
+            <article class="project" data-search="elsewhere os windows shell desktop elsewhaero"><div class="project-top"><div class="project-icon" aria-hidden="true">✧</div><div><h3>Elsewhere OS</h3><p class="category">Elsewhere / Windows</p></div></div><p>A sky-blue desktop shell project for Windows 11, with windows, sounds, and a workspace you can make your own.</p><div><a class="project-link" href="elsewhere/">Open the guide</a></div></article>
+
+            <article class="project" data-search="byte.exe byte pet desktop cat windows bytes companion">
+              <div class="project-top">
+                <div class="project-icon">
+                  <img src="byte/assets/icon.png" alt="Byte, the pixel cat"
+                    onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+                  <span hidden aria-hidden="true">🐈‍⬛</span>
+                </div>
+                <div>
+                  <h3>Byte.exe</h3>
+                  <p class="category">Bytes / Desktop Companions</p>
+                </div>
+              </div>
+              <p>
+            CyberStudios' original pixel cat and professional screen dweller. Pet, feed, play, talk, and let Byte keep you company in his room or on your Windows desktop.
+          </p>
+              <span class="status">v1.0.0 · WINDOWS x64</span>
+              <div><a class="project-link" href="byte/">Visit Byte's page →</a></div>
+            </article>
+
+            <article class="project" data-search="themes vscode blender cy afterhours byte terminal aero lagoon rose quartz obsidian forge steel horizon timberline concrete day cybercore cotton candy soft vivid colors editor"><div class="project-top"><div class="project-icon" aria-hidden="true">✿</div><div><h3>CyberStudios Theme Library</h3><p class="category">VS Code / Blender</p></div></div><p>Eight little workspaces for your code, plus twenty themes for Blender. Pastel daydreams, midnight terminals, forest greens, and a palette for whatever you’re making next.</p><span class="status">VS CODE v1.0.0 · 20 BLENDER THEMES</span><div><a class="project-link" href="themes/">Explore themes &amp; downloads →</a></div></article>
+
+            <article class="project" data-search="ascii art apparition exhibition angels machine dreams interactive canvas gallery characters creative coding">
+              <div class="project-top"><div class="project-icon" aria-hidden="true">▒</div><div><h3>ASCII Apparition Exhibition</h3><p class="category">Creative Coding / Interactive Art</p></div></div>
+              <p>Digital apparitions built from letters, symbols and code. Wander through animated ASCII artwork and character studies that make plain text feel haunted and alive.</p>
+              <span class="status">ACTIVE COLLECTION · ANGELS #00 AVAILABLE</span>
+              <div><a class="project-link" href="ascii-art/">Visit the gallery →</a></div>
+            </article>
+
+            <article class="project" data-search="blender themes cotton candy soft vivid strawberry milk lavender macaron peach parfait moonlit bunny mint meringue blush chiffon sakura dusk sky sorbet butter bloom obsidian forge steel horizon timberline concrete day iron oxide deep current desert sandstone carbon volt ridgeline xml 3d modeling interface colors">
+              <div class="project-top"><div class="project-icon" aria-hidden="true">❖</div><div><h3>CyberStudios Blender Themes</h3><p class="category">Blender / Themes</p></div></div>
+              <p>Twenty Blender themes, from Cotton Candy Soft and Vivid to Strawberry Milk, Mint Meringue, Sakura Dusk, Obsidian Forge, Deep Current, Carbon Volt, Ridgeline, and Concrete Day.</p>
+              <span class="status">20 THEMES · BLENDER 5.2 · XML AVAILABLE</span>
+              <div><a class="project-link" href="themes/blender/gallery.html">Browse all 20 themes →</a></div>
+            </article>
+
+            <article class="project" data-search="blender add-on addon plugin plug-in theme switcher paste xml export save themes interface">
+              <div class="project-top"><div class="project-icon" aria-hidden="true">⇄</div><div><h3>CyberStudios Theme Switcher</h3><p class="category">Blender / Plug-ins</p></div></div>
+              <p>A Blender add-on that switches between the CyberStudios themes and any theme you have installed. Paste a theme’s code, save it under a name, and export it to your computer.</p>
+              <span class="status">v1.0.0 · BLENDER 4.2+ · TESTED ON 5.2</span>
+              <div><a class="project-link" href="https://github.com/cyberthreed/CyberStudios/releases/tag/blender-theme-switcher-v1.0.0">Get the add-on →</a></div>
+            </article>
+
+            <article class="project" data-search="ghostport portgeist localhost port tcp inspect process http json cli python pypi developer utility diagnostics">
+              <div class="project-top"><div class="project-icon" aria-hidden="true">👻</div><div><h3>GhostPort</h3><p class="category">Developer Utilities</p></div></div>
+              <p>A tiny local-first CLI for inspecting TCP ports, listening processes, and HTTP responses.</p>
+              <span class="status">v0.1.1 · PYTHON CLI · PYPI</span>
+              <div><a class="project-link" href="projects/ghostport.html">Meet GhostPort →</a></div>
+            </article>
+
+            <article class="project" data-search="modmanifest sims 4 sims4 inzoi mod package inspect validate audit ai metadata archive safety json cli python developer utility">
+              <div class="project-top"><div class="project-icon" aria-hidden="true">▦</div><div><h3>ModManifest</h3><p class="category">Developer Utilities</p></div></div>
+              <p>A read-only CLI that inspects, validates, and audits Sims 4 and inZOI mod packages.</p>
+              <span class="status">v0.1.1 · PYTHON CLI · PYPI</span>
+              <div><a class="project-link" href="projects/modmanifest.html">Explore ModManifest →</a></div>
+            </article>
+
+            <article class="project" data-search="bowl.rip bowl rip desktop companion windows electron lounge glass collection preview">
+              <div class="project-top"><div class="project-icon" aria-hidden="true">◌</div><div><h3>bowl.rip</h3><p class="category">Desktop Companions</p></div></div>
+              <p>A cozy Windows desktop companion with illustrated glass to collect, a lounge to decorate, ambient sounds, reminders and Byte stopping by. Everything stays on your device.</p>
+              <p><strong>Content note:</strong> cannabis-themed.</p>
+              <span class="status">PREVIEW 0.3.0 · GITHUB RELEASE COMING</span>
+              <div><a class="project-link" href="bowl-rip/">See the preview →</a></div>
+            </article>
+
+            <article class="project" data-search="tipsyzois inzoi gameplay mod released alcohol mixed drinks intoxication emotions portraits social interactions hangovers dui crashes poisoning cyberthreed">
+              <div class="project-top">
+                <div class="project-icon" aria-hidden="true">🍸</div>
+                <div>
+                  <h3>TipsyZois</h3>
+                  <p class="category">inZOI / Gameplay Mod</p>
+                </div>
+              </div>
+              <p>
+                Your Zoi said “just one drink.” Five intoxication
+                stages, custom emotions, drunk interactions, and
+                hangovers give inZOI's mixed drinks a whole story.
+                The morning after might deserve its own chapter.
+              </p>
+              <span class="status">RELEASED · inZOI</span>
+              <div>
+                <a class="project-link" href="projects/tipsyzois.html">
+                  Explore TipsyZois →
+                </a>
+              </div>
+            </article>
+
+            <article class="project" data-search="modkit mod kit inzoi mods source available source code github tipsyzois powernaps pajamaparty allowproposalonvacation curseforge nexus">
+              <div class="project-top"><div class="project-icon" aria-hidden="true">⌘</div><div><h3>CyberStudios ModKit</h3><p class="category">inZOI / Source-Available Mods</p></div></div>
+              <p>Source code for my inZOI mods, with download pages for TipsyZois, PowerNaps, PajamaParty, and AllowProposalOnVacation.</p>
+              <span class="status">SOURCE-AVAILABLE · inZOI</span>
+              <div><a class="project-link" href="projects/modkit.html">Explore ModKit →</a></div>
+            </article>
+            <article class="project" data-search="cybercore gameplay inzoi ai ecosystem sdk framework mods">
+              <div class="project-top">
+                <div class="project-icon" aria-hidden="true">⌘</div>
+                <div>
+                  <h3>CyberCore Gameplay</h3>
+                  <p class="category">inZOI / Gameplay Framework</p>
+                </div>
+              </div>
+              <p>
+            An in-development gameplay framework exploring shared context, memory, and compatible modules for more connected simulation experiences.
+          </p>
+              <span class="status">IN DEVELOPMENT</span>
+            </article>
+
+            <article class="project" data-search="familyties inzoi family relationships memories social graph">
+              <div class="project-top">
+                <div class="project-icon" aria-hidden="true">♡</div>
+                <div>
+                  <h3>FamilyTies</h3>
+                  <p class="category">CyberCore / Gameplay Module</p>
+                </div>
+              </div>
+              <p>
+            A developing CyberCore module about the history between people: family connections, social memories, and the interactions that give relationships a past.
+          </p>
+              <span class="status">IN DEVELOPMENT</span>
+            </article>
+
+            <article class="project" data-search="cybercore theme studio planned palette creator vscode export">
+              <div class="project-top"><div class="project-icon" aria-hidden="true">✧</div><div><h3>Cybercore Theme Studio</h3><p class="category">Creative Experiments</p></div></div>
+              <p>A planned palette workshop for creating and exporting custom VS Code colors. Another way to make your developer workspace feel like your own.</p>
+              <span class="status">PLANNED</span>
+              <div><a class="project-link" href="projects/#theme-studio">Peek at the idea →</a></div>
+            </article>
+
+            <article class="project" data-search="cybercore webos planned browser desktop tiny applications internet nostalgia">
+              <div class="project-top"><div class="project-icon" aria-hidden="true">▣</div><div><h3>Cybercore WebOS</h3><p class="category">Creative Experiments</p></div></div>
+              <p>A planned browser desktop full of tiny applications and nostalgic internet energy. A little digital place to open, explore, and make yourself at home.</p>
+              <span class="status">PLANNED</span>
+              <div><a class="project-link" href="projects/#webos">Peek at the idea →</a></div>
+            </article>
+          </div>
+
+          <p class="empty" id="empty-results" role="status">
+            No matching projects found. Try a different search. ♡
+          </p>
         </div>
       </section>
 
