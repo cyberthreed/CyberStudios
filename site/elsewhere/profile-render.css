@@ -1,0 +1,86 @@
+/* Elsewhere Profiles renderer styles (shared by the app and the public web page).
+   .ep-rail is Elsewhere's protected chrome (Elsewhaero); everything inside .ep-page belongs to the creator's theme. */
+.ep-host { min-height: 100%; background: #dfeefb; }
+.ep-rail { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 10px; padding: 6px 12px; color: #fff; font: 12px "Segoe UI", Tahoma, sans-serif; text-shadow: 0 1px 2px #003071; background: linear-gradient(to bottom, #7bc7ff 0%, #2388ed 9%, #095bd0 29%, #003da5 64%, #1267d6 87%, #6eb8fb 100%); border-bottom: 1px solid #063e97; }
+.ep-rail-logo { font-size: 16px; }
+.ep-rail-name { display: grid; line-height: 1.15; min-width: 0; }
+.ep-rail-name strong { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ep-rail-name small { opacity: .85; }
+.ep-rail-actions { margin-left: auto; display: flex; flex-wrap: wrap; gap: 6px; }
+.ep-rail-actions button { padding: 4px 11px; border: 1px solid #bfe2ff; border-radius: 12px; color: #fff; font: inherit; font-weight: bold; text-shadow: 0 1px #164583; cursor: pointer; background: linear-gradient(#ffffff55, #ffffff22); }
+.ep-rail-actions button.is-primary { border-color: #d4ffb8; background: linear-gradient(#b6f28c 0%, #62c23d 50%, #3a9a1f 100%); }
+.ep-rail-actions button:hover { filter: brightness(1.08); }
+.ep-rail-actions button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.ep-page { --ep-radius: 4px; min-height: 100%; padding: 16px; box-sizing: border-box; color: var(--ep-ink); font: 13px/1.5 var(--ep-font); background-color: var(--ep-bg); }
+.ep-page * { box-sizing: border-box; }
+.ep-pattern-stars { background-image: radial-gradient(circle at 20% 30%, #ffffffaa 0 1.5px, transparent 2px), radial-gradient(circle at 70% 60%, #ffffff88 0 1px, transparent 1.5px), radial-gradient(circle at 45% 85%, #ffffff99 0 1.2px, transparent 1.8px); background-size: 90px 90px, 130px 130px, 70px 70px; }
+.ep-pattern-hearts { background-image: radial-gradient(circle at 30% 30%, #ffffff55 0 4px, transparent 4.5px), radial-gradient(circle at 70% 30%, #ffffff55 0 4px, transparent 4.5px); background-size: 40px 40px; }
+.ep-pattern-grid { background-image: linear-gradient(#ffffff40 1px, transparent 1px), linear-gradient(90deg, #ffffff40 1px, transparent 1px); background-size: 22px 22px; }
+.ep-pattern-dots { background-image: radial-gradient(#ffffff66 1.6px, transparent 2px); background-size: 18px 18px; }
+.ep-pattern-checker { background-image: conic-gradient(#ffffff33 25%, transparent 0 50%, #ffffff33 0 75%, transparent 0); background-size: 32px 32px; }
+.ep-pattern-stripes { background-image: repeating-linear-gradient(45deg, #ffffff30 0 10px, transparent 10px 20px); }
+.ep-pattern-sparkles { background-image: radial-gradient(ellipse 30% 8% at 18% 12%, #ffffffcc 0 40%, transparent 70%), radial-gradient(ellipse 26% 7% at 78% 8%, #ffffffaa 0 40%, transparent 70%), radial-gradient(circle at 10% 60%, transparent 0 12px, #ffffff80 13px 15px, transparent 16px), radial-gradient(circle at 90% 75%, transparent 0 9px, #ffffff70 10px 11px, transparent 12px); background-attachment: fixed; }
+
+.ep-banner { display: block; width: 100%; max-height: 220px; object-fit: cover; margin: 0 auto 12px; border-radius: var(--ep-radius); }
+.ep-draft-note { margin: 0 0 12px; padding: 6px 10px; border: 1px dashed var(--ep-accent); border-radius: 6px; background: #fff8; font-size: 12px; }
+.ep-box { margin: 0 0 12px; padding: 0 0 10px; border: 1px solid color-mix(in srgb, var(--ep-heading) 55%, transparent); border-radius: var(--ep-radius); background: var(--ep-panel); overflow: hidden; }
+.ep-box > :not(.ep-box-title) { margin-left: 12px; margin-right: 12px; }
+.ep-box-title { margin: 0 0 8px; padding: 4px 10px; color: #fff; font-size: 13px; font-weight: bold; background: var(--ep-heading); }
+.ep-text p { margin: 0 0 8px; overflow-wrap: anywhere; }
+.ep-empty, .ep-note { margin: 4px 0; opacity: .75; font-size: 12px; }
+.ep-identity { display: flex; gap: 12px; align-items: flex-start; padding: 12px; }
+.ep-identity > * { margin: 0 !important; }
+.ep-avatar { width: 120px; height: 120px; flex: 0 0 120px; object-fit: cover; border: 2px solid var(--ep-heading); border-radius: var(--ep-radius); background: #fff; }
+.ep-avatar-blank { display: grid; place-items: center; color: #fff; font-size: 36px; font-weight: bold; background: var(--ep-heading); }
+.ep-identity-text { min-width: 0; }
+.ep-name { margin: 0 0 4px; color: var(--ep-heading); font-size: 22px; line-height: 1.2; overflow-wrap: anywhere; }
+.ep-headline { margin: 0 0 6px; font-style: italic; }
+.ep-mood, .ep-status { margin: 0 0 3px; font-size: 12px; }
+.ep-handle { margin: 6px 0 0; opacity: .7; font-size: 12px; }
+.ep-interests { width: calc(100% - 24px); border-collapse: collapse; }
+.ep-interests th { width: 32%; padding: 5px 8px; text-align: left; vertical-align: top; color: #fff; font-size: 12px; background: color-mix(in srgb, var(--ep-heading) 75%, #fff); border-bottom: 1px solid var(--ep-panel); }
+.ep-interests td { padding: 5px 8px; vertical-align: top; overflow-wrap: anywhere; background: color-mix(in srgb, var(--ep-heading) 10%, var(--ep-panel)); border-bottom: 1px solid var(--ep-panel); }
+.ep-track { margin: 0 0 8px; font-weight: bold; }
+.ep-track small { font-weight: normal; opacity: .8; }
+.ep-button { display: inline-block; padding: 4px 12px; border: 1px solid color-mix(in srgb, var(--ep-accent) 70%, #000); border-radius: 4px; color: #fff; font: inherit; font-weight: bold; text-decoration: none; cursor: pointer; background: var(--ep-accent); }
+.ep-button:disabled { opacity: .6; cursor: default; }
+.ep-link-button { margin-left: auto; padding: 0; border: 0; color: var(--ep-accent); font: inherit; font-size: 11px; text-decoration: underline; cursor: pointer; background: none; }
+.ep-links { margin: 0; padding-left: 18px; }
+.ep-links a, .ep-text a { color: var(--ep-accent); }
+.ep-friend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(86px, 1fr)); gap: 10px; }
+.ep-friend { display: grid; justify-items: center; gap: 2px; padding: 4px; color: var(--ep-heading); text-align: center; text-decoration: none; font-size: 12px; overflow-wrap: anywhere; }
+.ep-friend:hover span:not(.ep-friend-pic) { text-decoration: underline; }
+.ep-friend small { opacity: .7; font-size: 10px; }
+.ep-friend-pic { display: grid; place-items: center; width: 64px; height: 64px; border: 2px solid var(--ep-heading); border-radius: var(--ep-radius); color: #fff; font-weight: bold; font-size: 20px; background: color-mix(in srgb, var(--ep-heading) 80%, #fff); }
+.ep-guestbook-box .ep-friend { display: inline-flex; gap: 6px; align-items: center; padding: 0; font-weight: bold; }
+.ep-guestbook-box .ep-friend-pic { width: 26px; height: 26px; font-size: 11px; }
+.ep-guestbook, .ep-bulletins { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ep-guestbook li, .ep-bulletins li { padding: 8px; border-radius: 6px; background: color-mix(in srgb, var(--ep-heading) 8%, var(--ep-panel)); }
+.ep-entry-head { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.ep-entry-head time, .ep-bulletins time { font-size: 11px; opacity: .7; }
+.ep-compose { display: grid; gap: 6px; margin-bottom: 10px; }
+.ep-compose textarea { width: 100%; padding: 7px; border: 1px solid color-mix(in srgb, var(--ep-heading) 50%, transparent); border-radius: 6px; color: var(--ep-ink); font: inherit; background: #fff; resize: vertical; }
+.ep-compose-row { display: flex; align-items: center; gap: 8px; }
+.ep-compose-row .ep-note { flex: 1; color: #b3261e; opacity: 1; }
+
+/* Classic Profile: two-column homepage */
+.ep-layout-classic { --ep-radius: 0; }
+.ep-layout-classic .ep-columns { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr); gap: 14px; max-width: 980px; margin: 0 auto; }
+/* Elsewhere Original: glossy modular panels */
+.ep-layout-original { --ep-radius: 14px; }
+.ep-layout-original .ep-modules { columns: 2 320px; column-gap: 14px; max-width: 1040px; margin: 0 auto; }
+.ep-layout-original .ep-box { break-inside: avoid; box-shadow: 0 6px 18px #0b2a4a22, inset 0 1px 0 #fff; border-color: #ffffffcc; }
+.ep-layout-original .ep-box-title { color: var(--ep-heading); text-shadow: 0 1px 0 #fff; background: linear-gradient(180deg, #ffffffee 0%, color-mix(in srgb, var(--ep-heading) 18%, #fff) 50%, color-mix(in srgb, var(--ep-heading) 30%, #fff) 52%, #ffffffcc 100%); border-bottom: 1px solid #ffffffaa; }
+.ep-layout-original .ep-button { border-radius: 12px; background: linear-gradient(180deg, color-mix(in srgb, var(--ep-accent) 55%, #fff) 0%, var(--ep-accent) 50%, color-mix(in srgb, var(--ep-accent) 80%, #000) 100%); }
+
+.ep-state { display: grid; justify-items: center; gap: 6px; padding: 60px 20px; text-align: center; color: #0b2a4a; font: 14px "Segoe UI", Tahoma, sans-serif; }
+.ep-state h1 { margin: 0; font-size: 22px; }
+.ep-lock { font-size: 40px; }
+
+@media (max-width: 720px) {
+  .ep-layout-classic .ep-columns { grid-template-columns: 1fr; }
+  .ep-identity { flex-direction: column; align-items: center; text-align: center; }
+  .ep-page { padding: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .ep-page, .ep-page * { animation: none !important; transition: none !important; background-attachment: scroll !important; } }
