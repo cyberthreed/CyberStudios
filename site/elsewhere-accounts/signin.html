@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Sign in to your Elsewhere account for Elsewhere Messenger and supported Elsewhere OS apps.">
+  <title>Sign in to Elsewhere</title>
+  <link rel="stylesheet" href="./style.css?v=elsewhaero-1">
+  <link rel="icon" href="./butterfly.png" type="image/png">
+</head>
+<body class="signup-page">
+  <main class="account-window" aria-labelledby="account-title">
+    <div class="window-bar">
+      <img src="./butterfly.png" width="24" height="24" alt="">
+      <span>Elsewhere Messenger · Sign In</span>
+    </div>
+    <header class="account-heading">
+      <img src="./butterfly.png" width="68" height="68" alt="">
+      <div>
+        <h1 id="account-title">Sign in to Elsewhere</h1>
+        <p>Welcome back ♡ Sign in to visit your profile.</p>
+      </div>
+    </header>
+    <div class="account-panel">
+    <form id="signin">
+      <label for="email">Email address</label>
+      <input type="email" id="email" maxlength="254" autocomplete="email" required>
+      <label for="pw">Password</label>
+      <input type="password" id="pw" autocomplete="current-password" maxlength="72" required>
+      <button>Sign in</button>
+      <p class="step-note">New here? <a href="./index.html">Create an Elsewhere account</a></p>
+    </form>
+    <div id="done" hidden>
+      <p class="step-done">You’re signed in! ✧</p>
+      <p id="who"></p>
+      <p><a id="my-profile" href="../elsewhere/profile.html">View my profile</a> · <button type="button" id="signout">Sign out</button></p>
+    </div>
+    <p id="status" role="status" tabindex="-1"></p>
+    </div>
+    <footer class="account-links" aria-label="Account policies">
+      <a href="./terms.html">Terms</a>
+      <a href="./privacy.html">Privacy Policy</a>
+      <a href="./license.html">License</a>
+    </footer>
+  </main>
+  <script type="module" src="./signin.js?v=1"></script>
+</body>
+</html>
