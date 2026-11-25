@@ -7,9 +7,11 @@
   <title>Elsewhere Profile</title>
   <meta name="description" content="An Elsewhere profile: one identity, infinite ways to make it yours.">
   <link rel="icon" href="../elsewhere-accounts/butterfly.png" type="image/png">
-  <link rel="stylesheet" href="profile-render.css?v=1">
+  <link rel="stylesheet" href="profile-render.css?v=2">
   <style>
-    html, body { margin: 0; min-height: 100%; background: #dfeefb; }
+    html, body { margin: 0; min-height: 100%; background: #2f8fe0 url("../assets/elsewhere-desktop.webp") center / cover no-repeat fixed; }
+    #profile { --ep-scene-image: url("../assets/elsewhere-desktop.webp"); }
+    .ep-find { margin: 60px auto; max-width: 520px; border-radius: 18px; background: #ffffffc7; box-shadow: 0 18px 50px #0b2a4a40; }
     .ep-find { display: grid; justify-items: center; gap: 10px; padding: 70px 20px; color: #0b2a4a; font: 14px "Segoe UI", Tahoma, sans-serif; text-align: center; }
     .ep-find h1 { margin: 0; font-size: 26px; }
     .ep-find form { display: flex; gap: 6px; }
@@ -20,6 +22,6 @@
 </head>
 <body>
   <div id="profile" aria-live="polite"><p class="ep-state">Loading…</p></div>
-  <script type="module" src="profile.js?v=1"></script>
+  <script type="module" src="profile.js?v=2"></script>
 </body>
 </html>

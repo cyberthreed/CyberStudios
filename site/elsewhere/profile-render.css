@@ -84,3 +84,53 @@
   .ep-page { padding: 10px; }
 }
 @media (prefers-reduced-motion: reduce) { .ep-page, .ep-page * { animation: none !important; transition: none !important; background-attachment: scroll !important; } }
+
+/* ---------- Elsewhaero polish (2026-11-25) ---------- */
+/* The "elsewhaero" background: Elsewhere's glossy sky world (sun rays, clouds, bubbles, hills). */
+.ep-pattern-elsewhaero {
+  background-color: #7cc9f3;
+  background-image:
+    radial-gradient(ellipse 120% 38% at 50% 108%, #7fd34f 0 40%, #4fae2c 58%, transparent 60%),
+    radial-gradient(ellipse 70% 30% at 12% 100%, #9be86a 0 45%, #5cb83a 62%, transparent 64%),
+    radial-gradient(ellipse 70% 30% at 92% 102%, #8ee05c 0 45%, #55b232 62%, transparent 64%),
+    radial-gradient(ellipse 26% 8% at 18% 14%, #ffffffee 0 40%, transparent 72%),
+    radial-gradient(ellipse 24% 7% at 76% 10%, #ffffffe6 0 40%, transparent 72%),
+    radial-gradient(circle at 8% 52%, transparent 0 16px, #ffffff8c 17px 19px, transparent 20px),
+    radial-gradient(circle at 93% 40%, transparent 0 11px, #ffffff80 12px 13.5px, transparent 14.5px),
+    radial-gradient(circle at 84% 70%, transparent 0 22px, #ffffff66 23px 25px, transparent 26px),
+    radial-gradient(circle at 88% 4%, #fffbe0 0 3%, #fff6c466 9%, transparent 26%),
+    repeating-conic-gradient(from 200deg at 88% 4%, #ffffff1c 0 4deg, transparent 4deg 13deg),
+    linear-gradient(180deg, #1f86df 0%, #5bb8ef 38%, #a9e0fb 70%, #e6f8ff 100%);
+  background-attachment: fixed;
+  padding-bottom: 120px;
+}
+/* Protected rail: glossier glass. */
+.ep-rail { background: linear-gradient(180deg, #8fd3ff 0%, #2d8ff0 46%, #0b5fd0 54%, #2f86e6 100%); box-shadow: inset 0 1px 0 #ffffffaa, 0 2px 10px #0b2a4a33; border-bottom: 0; }
+.ep-rail-actions button { border-radius: 14px; }
+
+/* Elsewhere Original: frosted glass panels, glossy pill headers, glass avatar frame. */
+.ep-layout-original .ep-box { border: 1px solid #ffffffe6; border-radius: 18px; background: color-mix(in srgb, var(--ep-panel) 82%, transparent); box-shadow: 0 10px 28px #0b2a4a2e, inset 0 1px 0 #ffffff; }
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .ep-layout-original .ep-box { -webkit-backdrop-filter: blur(12px) saturate(1.25); backdrop-filter: blur(12px) saturate(1.25); }
+}
+.ep-layout-original .ep-box-title { margin: 8px 10px 10px; padding: 5px 14px; border: 1px solid #ffffffcc; border-radius: 14px; font-size: 13px; color: var(--ep-heading); text-shadow: 0 1px 0 #fff;
+  background: linear-gradient(180deg, #ffffff 0%, color-mix(in srgb, var(--ep-heading) 14%, #fff) 48%, color-mix(in srgb, var(--ep-heading) 26%, #fff) 52%, #ffffffdd 100%); box-shadow: inset 0 1px 0 #fff, 0 2px 6px #0b2a4a1a; }
+.ep-layout-original .ep-identity { padding: 16px; }
+.ep-layout-original .ep-avatar { border: 3px solid #ffffff; border-radius: 22px; box-shadow: 0 6px 16px #0b2a4a40, 0 0 0 1px #9fd3f4; }
+.ep-layout-original .ep-name { font-size: 26px; text-shadow: 0 1px 0 #fff; }
+.ep-layout-original .ep-friend-pic { border: 2px solid #fff; border-radius: 18px; box-shadow: 0 4px 10px #0b2a4a33; background: linear-gradient(180deg, color-mix(in srgb, var(--ep-heading) 55%, #fff), var(--ep-heading)); }
+.ep-layout-original .ep-guestbook li, .ep-layout-original .ep-bulletins li { border: 1px solid #ffffffcc; border-radius: 14px; background: #ffffffb3; }
+.ep-layout-original .ep-interests th { border-radius: 8px 0 0 8px; background: linear-gradient(180deg, color-mix(in srgb, var(--ep-heading) 70%, #fff), var(--ep-heading)); }
+.ep-layout-original .ep-compose textarea { border-radius: 12px; }
+
+/* Classic Profile: same familiar two columns, with glossy title bars and softer corners. */
+.ep-layout-classic { --ep-radius: 8px; }
+.ep-layout-classic .ep-box { box-shadow: 0 4px 14px #16233a1f; }
+.ep-layout-classic .ep-box-title { background: linear-gradient(180deg, color-mix(in srgb, var(--ep-heading) 55%, #fff) 0%, var(--ep-heading) 50%, color-mix(in srgb, var(--ep-heading) 80%, #000) 52%, var(--ep-heading) 100%); text-shadow: 0 1px 1px #0005; box-shadow: inset 0 1px 0 #ffffff88; }
+.ep-layout-classic .ep-button { border-radius: 14px; background: linear-gradient(180deg, color-mix(in srgb, var(--ep-accent) 55%, #fff) 0%, var(--ep-accent) 50%, color-mix(in srgb, var(--ep-accent) 82%, #000) 100%); }
+.ep-layout-classic .ep-avatar, .ep-layout-classic .ep-friend-pic { border-radius: 10px; }
+@media (prefers-reduced-motion: reduce) { .ep-pattern-elsewhaero { background-attachment: scroll; } }
+
+/* The real Elsewhere desktop wallpaper (the host sets --ep-scene-image); the drawn sky above is the fallback. */
+.ep-pattern-elsewhaero { background: var(--ep-scene-image, none) center / cover no-repeat fixed, linear-gradient(180deg, #1f86df 0%, #5bb8ef 38%, #a9e0fb 70%, #e6f8ff 100%); }
+@media (max-width: 700px) { .ep-pattern-elsewhaero { background-attachment: scroll; } }

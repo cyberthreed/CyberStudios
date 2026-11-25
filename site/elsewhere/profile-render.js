@@ -3,11 +3,11 @@
 // Everything the creator types is shown as text (never HTML), links must be https, and images must be
 // https or small data: images. Data arrives already filtered by the server for this viewer.
 export const FONTS = ['Tahoma', 'Verdana', 'Trebuchet MS', 'Georgia', 'Courier New', 'Comic Sans MS', 'Segoe UI', 'Lucida Console', 'Arial'];
-export const PATTERNS = ['none', 'stars', 'hearts', 'grid', 'dots', 'checker', 'stripes', 'sparkles'];
+export const PATTERNS = ['elsewhaero', 'none', 'stars', 'hearts', 'grid', 'dots', 'checker', 'stripes', 'sparkles'];
 export const INTEREST_LABELS = ['General', 'Music', 'Movies', 'Television', 'Books', 'Games', 'Heroes'];
 export const LAYOUT_DEFAULTS = {
-    classic: { bg: '#b3d4fc', panel: '#ffffff', ink: '#1a1a1a', accent: '#ff6600', heading: '#336699', font: 'Verdana', pattern: 'none' },
-    original: { bg: '#7cc9f3', panel: '#f4fbff', ink: '#0b2a4a', accent: '#62c23d', heading: '#0a6fbd', font: 'Segoe UI', pattern: 'sparkles' },
+    classic: { bg: '#cfe6ff', panel: '#ffffff', ink: '#16233a', accent: '#ff5fa2', heading: '#3a7bd5', font: 'Verdana', pattern: 'stars' },
+    original: { bg: '#7cc9f3', panel: '#f4fbff', ink: '#0b2a4a', accent: '#62c23d', heading: '#0a6fbd', font: 'Segoe UI', pattern: 'elsewhaero' },
 };
 export function blankDoc(layout = 'original') {
     return {

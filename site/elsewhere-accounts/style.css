@@ -130,3 +130,92 @@ footer { border-top: 1px solid #b9cce2; padding-top: 12px; }
 
 .account-panel .step-note { margin: 0 0 4px; }
 .account-panel .step-done { margin: 0 0 6px; font-size: 18px; font-weight: 700; color: #174d96; }
+
+
+/* ---------- Elsewhaero look (2026-11-25): sky, clouds, hills, bubbles + frosted glass windows ---------- */
+body, .signup-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  color: var(--ea-ink);
+  background-color: #7cc9f3;
+  background-image:
+    radial-gradient(ellipse 120% 38% at 50% 108%, #7fd34f 0 40%, #4fae2c 58%, transparent 60%),
+    radial-gradient(ellipse 70% 30% at 12% 100%, #9be86a 0 45%, #5cb83a 62%, transparent 64%),
+    radial-gradient(ellipse 70% 30% at 92% 102%, #8ee05c 0 45%, #55b232 62%, transparent 64%),
+    radial-gradient(ellipse 26% 8% at 18% 14%, #ffffffee 0 40%, transparent 72%),
+    radial-gradient(ellipse 18% 6% at 30% 19%, #ffffffc4 0 40%, transparent 72%),
+    radial-gradient(ellipse 24% 7% at 76% 10%, #ffffffe6 0 40%, transparent 72%),
+    radial-gradient(ellipse 16% 5% at 88% 22%, #ffffffb0 0 40%, transparent 72%),
+    radial-gradient(circle at 8% 52%, transparent 0 16px, #ffffff8c 17px 19px, transparent 20px),
+    radial-gradient(circle at 93% 40%, transparent 0 11px, #ffffff80 12px 13.5px, transparent 14.5px),
+    radial-gradient(circle at 84% 64%, transparent 0 22px, #ffffff66 23px 25px, transparent 26px),
+    radial-gradient(circle at 16% 72%, transparent 0 8px, #ffffff80 9px 10px, transparent 11px),
+    radial-gradient(circle at 88% 4%, #fffbe0 0 3%, #fff6c466 9%, transparent 26%),
+    repeating-conic-gradient(from 200deg at 88% 4%, #ffffff1c 0 4deg, transparent 4deg 13deg),
+    linear-gradient(180deg, #1f86df 0%, #5bb8ef 38%, #a9e0fb 70%, #e6f8ff 100%);
+  background-attachment: fixed;
+  font: 14px/1.5 "Segoe UI", Tahoma, sans-serif;
+}
+@media (prefers-reduced-motion: reduce) { body, .signup-page { background-attachment: scroll; } }
+
+/* Legal and info pages: a frosted glass reading window */
+body:not(.signup-page) { padding: 40px 16px 120px; }
+body:not(.signup-page) main {
+  max-width: 760px; padding: 0 28px 24px; border: 1px solid #ffffffe6; border-radius: 18px;
+  background: #f4fbffee; box-shadow: 0 18px 50px #0b2a4a40, inset 0 1px 0 #fff, 0 0 0 1px #9fd3f4; overflow: hidden;
+}
+body:not(.signup-page) main > h1:first-child {
+  margin: 0 -28px 18px; padding: 14px 28px; color: #fff; font-size: 22px; text-shadow: 0 1px 2px #06306e;
+  background: linear-gradient(180deg, #8fd3ff 0%, #2d8ff0 46%, #0b5fd0 54%, #2f86e6 100%); box-shadow: inset 0 1px 0 #ffffffaa;
+}
+body:not(.signup-page) h2 { color: #0a5aa3; }
+body:not(.signup-page) a { color: #0a5aa3; }
+body:not(.signup-page) footer { border-top-color: #bfe0f5; }
+
+/* Sign-up window: frosted glass, glossy cobalt/aqua bar, lime glossy buttons */
+.signup-page { padding: 24px 16px 140px; }
+.account-window {
+  padding: 0; border: 1px solid #ffffffe6; border-radius: 18px; background: #f4fbffee; overflow: hidden;
+  box-shadow: 0 22px 60px #0b2a4a47, inset 0 1px 0 #fff, 0 0 0 1px #9fd3f4;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .account-window, body:not(.signup-page) main { background: #ffffffbd; -webkit-backdrop-filter: blur(14px) saturate(1.3); backdrop-filter: blur(14px) saturate(1.3); }
+}
+.window-bar {
+  min-height: 36px; padding: 4px 14px; border: 0; border-radius: 0;
+  background: linear-gradient(180deg, #8fd3ff 0%, #2d8ff0 46%, #0b5fd0 54%, #2f86e6 100%);
+  box-shadow: inset 0 1px 0 #ffffffaa, inset 0 -1px 0 #0a4ea8; text-shadow: 0 1px 2px #06306e;
+}
+.account-heading {
+  min-height: 96px; padding: 12px 18px; border: 0; border-bottom: 1px solid #cfe9f8;
+  background: radial-gradient(circle at 92% 20%, #ffffff 0 18%, transparent 48%), linear-gradient(110deg, #d4f0ff 0%, #ecf9ff 55%, #f6fcff 100%);
+}
+.account-heading img { filter: drop-shadow(0 4px 8px #0b5fd040); }
+.account-heading h1 { color: #0b2a4a; }
+.account-heading p { color: #2b5677; }
+.account-panel { padding: 20px 22px; border: 0; background: transparent; }
+.account-panel label:not(.inline) { color: #0b2a4a; }
+.account-panel input:not([type=checkbox]) {
+  min-height: 40px; padding: 7px 12px; border: 1px solid #8cc6ea; border-radius: 12px; background: #fff;
+  box-shadow: inset 0 2px 4px #0b2a4a14;
+}
+.account-panel input:not([type=checkbox]):focus { outline: none; border-color: #3fc4f0; box-shadow: inset 0 2px 4px #0b2a4a14, 0 0 0 3px #3fc4f055; }
+.account-panel input[type=checkbox] { accent-color: #4fb028; }
+.account-panel button {
+  min-height: 38px; padding: 6px 22px; border: 1px solid #3f9a1f; border-radius: 19px; color: #fff; text-shadow: 0 1px 1px #24620c;
+  background: linear-gradient(180deg, #d8ffb8 0%, #8fe060 45%, #4fb028 55%, #7cd650 100%);
+  box-shadow: inset 0 1px 0 #ffffffcc, 0 3px 8px #2a6a1040;
+}
+.account-panel button:hover:enabled { border-color: #3f9a1f; background: linear-gradient(180deg, #e6ffd0 0%, #9ee870 45%, #5abd30 55%, #8ae05e 100%); }
+.account-panel button:disabled { border-color: #a9c79d; color: #f3fbef; background: linear-gradient(180deg, #e9f5e1, #b9d9a8); }
+.account-panel #status:not(:empty) { border: 1px solid #bfe0f5; border-radius: 10px; background: #effaff; }
+.account-panel .step-done { color: #0a5aa3; }
+.account-links { padding: 11px 18px; border: 0; border-top: 1px solid #cfe9f8; border-radius: 0; background: linear-gradient(180deg, #f4fbff, #e4f4fd); }
+.account-window a, body:not(.signup-page) footer a { color: #0a5aa3; }
+.account-window :focus-visible { outline-color: #0b5fd0; }
+
+/* The real Elsewhere desktop wallpaper behind every account page (the drawn sky stays as a fallback). */
+body, .signup-page { background: #2f8fe0 url('../assets/elsewhere-desktop.webp') center / cover no-repeat fixed; }
+@media (prefers-reduced-motion: reduce) { body, .signup-page { background-attachment: scroll; } }
+@media (max-width: 700px) { body, .signup-page { background-attachment: scroll; background-position: 30% center; } }
