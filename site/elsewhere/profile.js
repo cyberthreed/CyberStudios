@@ -1,12 +1,13 @@
 // Elsewhere profile on the web: ?u=handle. Uses the same renderer as Elsewhere Messenger.
 // Signed-out visitors only ever receive what the profile owner made public: the server decides.
-import { renderProfile } from './profile-render.js?v=3'
+import { renderProfile } from './profile-render.js?v=4'
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from '../elsewhere-accounts/config.js'
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/+esm'
 
 const host = document.getElementById('profile')
 const handle = (new URLSearchParams(location.search).get('u') || '').replace(/^@/, '').trim().toLowerCase()
 const here = h => `profile.html?u=${encodeURIComponent(h)}`
+const page = (new URLSearchParams(location.search).get('p') || 'home').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 30) || 'home'
 
 function finder(message = '') {
   host.replaceChildren()
@@ -34,6 +35,8 @@ async function show() {
     document.title = `${data.display_name || handle} · Elsewhere`
     renderProfile(host, data, {
       profileHref: here,
+      page,
+      pageHref: slug => here(handle) + (slug === 'home' ? '' : '&p=' + encodeURIComponent(slug)),
       railButtons: [
         { label: '✦ Get Elsewhere', primary: true, onClick: () => { location.href = 'messenger.html' } },
         { label: 'Find a profile', onClick: () => finder() },

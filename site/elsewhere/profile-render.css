@@ -165,12 +165,24 @@
 .ep-canvas.is-editing a { pointer-events: none; }
 /* Narrow screens: one readable column in top-to-bottom order (desktop positions are ignored). */
 @container (max-width: 760px) {
-  .ep-layout-designer { padding: 10px; overflow-x: visible; }
-  .ep-canvas { display: flex; flex-direction: column; gap: 10px; width: 100%; height: auto !important; }
-  .ep-el { position: static; width: auto !important; max-width: 100%; height: auto !important; min-height: 0; transform: none; animation: none; }
-  .ep-el-body { height: auto; }
-  .ep-el-image .ep-el-img, .ep-el-shape { height: auto; min-height: 120px; aspect-ratio: 4 / 3; }
-  .ep-el-divider { height: 4px; }
-  .ep-el-button { min-height: 40px; }
+  .ep-layout-designer { padding: 10px; }
+  .ep-canvas.ep-adapt-reflow { display: flex; flex-direction: column; gap: 10px; width: 100%; height: auto !important; }
+  .ep-adapt-reflow .ep-el { position: static; width: auto !important; max-width: 100%; height: auto !important; min-height: 0; transform: none; animation: none; }
+  .ep-adapt-reflow .ep-el-body { height: auto; }
+  .ep-adapt-reflow .ep-el-image .ep-el-img, .ep-adapt-reflow .ep-el-shape { height: auto; min-height: 120px; aspect-ratio: 4 / 3; }
+  .ep-adapt-reflow .ep-el-divider { height: 4px; }
+  .ep-adapt-reflow .ep-el-button { min-height: 40px; }
   .ep-hide-mobile { display: none !important; }
+  .ep-el-nav { height: auto; }
 }
+.ep-scale-frame { width: 100%; overflow: hidden; }
+.ep-scale-frame > .ep-canvas { transform-origin: 0 0; margin: 0; }
+.ep-start-hidden { display: none; }
+.ep-el[hidden] { display: none !important; }
+.ep-interactive { cursor: pointer; }
+.ep-interactive:focus-visible { outline: 3px solid var(--ep-accent); outline-offset: 2px; }
+.ep-el-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; height: 100%; padding: 6px; }
+.ep-el-nav a { padding: 6px 14px; border-radius: 999px; color: var(--ep-heading); font-weight: bold; text-decoration: none; background: color-mix(in srgb, var(--ep-panel) 85%, transparent); border: 1px solid color-mix(in srgb, var(--ep-heading) 40%, transparent); }
+.ep-el-nav a[aria-current="page"] { color: #fff; background: var(--ep-accent); border-color: var(--ep-accent); }
+.ep-el-code { display: block; width: 100%; height: 100%; border: 0; background: transparent; }
+@container (max-width: 760px) { .ep-el-code { min-height: 260px; } }

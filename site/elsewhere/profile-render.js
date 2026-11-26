@@ -6,9 +6,16 @@
 // ---------- Visual Designer model ----------
 export const DESIGN_WIDTH = 960;
 export const MODULES = ['identity', 'about', 'interests', 'music', 'links', 'friends', 'bulletins', 'guestbook'];
-export const ELEMENT_KINDS = ['heading', 'text', 'image', 'button', 'divider', 'shape', 'module'];
+export const ELEMENT_KINDS = ['heading', 'text', 'image', 'button', 'divider', 'shape', 'module', 'code', 'nav'];
+/** Custom HTML/CSS/JS runs only here: a page on a separate origin, loaded in an opaque-origin sandbox. */
+export const CODE_SANDBOX_URL = 'https://cyberthreed.github.io/CyberStudios/elsewhere/sandbox.html';
+export const CODE_LIMIT = 60000;
 export const ANIMATIONS = ['none', 'float', 'pulse', 'wiggle', 'spin', 'glow'];
-export const blankDesign = () => ({ on: false, height: 900, elements: [] });
+export const TRIGGERS = ['click', 'hover'];
+export const ACTIONS = ['show', 'hide', 'toggle', 'page'];
+export const ADAPT_MODES = ['reflow', 'scale', 'scroll'];
+export const blankDesign = () => ({ on: false, height: 900, elements: [], pages: [], homeName: 'Home', adapt: 'reflow' });
+export const slugify = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 30) || 'page';
 export const FONTS = ['Tahoma', 'Verdana', 'Trebuchet MS', 'Georgia', 'Courier New', 'Comic Sans MS', 'Segoe UI', 'Lucida Console', 'Arial'];
 export const PATTERNS = ['elsewhaero', 'none', 'stars', 'hearts', 'grid', 'dots', 'checker', 'stripes', 'sparkles'];
 export const INTEREST_LABELS = ['General', 'Music', 'Movies', 'Television', 'Books', 'Games', 'Heroes'];
@@ -116,7 +123,23 @@ function normalizeStyle(raw) {
 /** Reads any stored design into a safe one (unknown kinds dropped, numbers clamped, links/images checked). */
 export function normalizeDesign(raw) {
     const d = (raw && typeof raw === 'object' ? raw : {});
-    const list = Array.isArray(d.elements) ? d.elements.slice(0, 120) : [];
+    const elements = normalizeElements(d.elements);
+    const pages = [];
+    const slugs = new Set(['home']);
+    for (const item of (Array.isArray(d.pages) ? d.pages.slice(0, 12) : [])) {
+        const pg = (item && typeof item === 'object' ? item : {});
+        const name = str(pg.name, 40).trim() || 'Page';
+        let slug = slugify(str(pg.slug, 30) || name);
+        while (slugs.has(slug))
+            slug = slug.slice(0, 26) + '-' + (slugs.size + 1);
+        slugs.add(slug);
+        pages.push({ id: str(pg.id, 24) || slug, name, slug, hidden: pg.hidden === true, height: num(pg.height, 200, 12000, 900), elements: normalizeElements(pg.elements).map(e => ({ ...e, global: undefined })) });
+    }
+    return { on: d.on === true, height: num(d.height, 200, 12000, 900), elements, pages, homeName: str(d.homeName, 40).trim() || 'Home',
+        adapt: ADAPT_MODES.includes(d.adapt) ? d.adapt : 'reflow' };
+}
+function normalizeElements(raw) {
+    const list = Array.isArray(raw) ? raw.slice(0, 120) : [];
     const elements = [];
     for (const item of list) {
         const e = (item && typeof item === 'object' ? item : {});
@@ -151,9 +174,20 @@ export function normalizeDesign(raw) {
             if (href)
                 el.href = href;
         }
+        if (e.kind === 'code') {
+            const c = (e.code && typeof e.code === 'object' ? e.code : {});
+            el.code = { html: str(c.html, CODE_LIMIT), css: str(c.css, CODE_LIMIT), js: str(c.js, CODE_LIMIT) };
+        }
+        if (e.global === true)
+            el.global = true;
+        if (e.startHidden === true)
+            el.startHidden = true;
+        const on = (e.on && typeof e.on === 'object' ? e.on : null);
+        if (on && TRIGGERS.includes(on.trigger) && ACTIONS.includes(on.action) && typeof on.target === 'string' && on.target)
+            el.on = { trigger: on.trigger, action: on.action, target: str(on.target, 30) };
         elements.push(el);
     }
-    return { on: d.on === true, height: num(d.height, 200, 12000, 900), elements };
+    return elements;
 }
 function h(tag, attrs = {}, ...children) {
     const el = document.createElement(tag);
@@ -357,20 +391,53 @@ function elementBody(e, doc, data, actions) {
         case 'divider': return h('hr', { class: 'ep-el-divider' });
         case 'shape': return h('div', { class: 'ep-el-shape' });
         case 'module': return moduleBox(e.module, doc, data, actions);
+        case 'code': return codeFrame(e.code || { html: '', css: '', js: '' }, actions.sandboxUrl || CODE_SANDBOX_URL);
+        case 'nav': {
+            const nav = h('nav', { class: 'ep-el-nav', 'aria-label': 'Pages' });
+            const list = [{ slug: 'home', name: doc.design.homeName }, ...doc.design.pages.filter(pg => !pg.hidden)];
+            for (const pg of list) {
+                const current = (actions.page || 'home') === pg.slug;
+                const a = h('a', { href: actions.pageHref ? actions.pageHref(pg.slug) : '#', 'aria-current': current ? 'page' : undefined }, pg.name);
+                if (actions.onOpenPage)
+                    a.addEventListener('click', event => { event.preventDefault(); actions.onOpenPage(pg.slug); });
+                nav.append(a);
+            }
+            return nav;
+        }
     }
+}
+/** Elements shown on a page: that page's own, plus the home page's global ones. */
+export function pageElements(design, slug = 'home') {
+    const page = design.pages.find(pg => pg.slug === slug && !pg.hidden);
+    if (!page)
+        return design.elements;
+    return [...design.elements.filter(e => e.global), ...page.elements];
+}
+/** A creator's code block: an opaque-origin sandboxed frame on a separate site. It can't reach the profile page,
+ *  sign-ins, storage, the app, the network, pop-ups or top-level navigation. */
+export function codeFrame(code, sandboxUrl) {
+    const frame = h('iframe', { class: 'ep-el-code', src: sandboxUrl, sandbox: 'allow-scripts', referrerpolicy: 'no-referrer', loading: 'lazy', title: 'Custom code block', allow: '' });
+    frame.addEventListener('load', () => frame.contentWindow?.postMessage({ type: 'elsewhere-code', html: code.html, css: code.css, js: code.js }, '*'));
+    return frame;
 }
 /** The free-form Visual Designer page. Desktop: exact positions on a 960px canvas. Narrow screens: a
  *  readable single column in top-to-bottom order, so a desktop design never makes mobile unusable. */
-export function designCanvas(doc, data, actions, editing = false) {
+export function designCanvas(doc, data, actions, editing = false, elementsOverride, heightOverride) {
     const design = doc.design;
-    const bottom = design.elements.reduce((max, e) => e.hidden ? max : Math.max(max, e.y + e.h), 0);
-    const canvas = h('div', { class: 'ep-canvas' + (editing ? ' is-editing' : '') });
-    canvas.style.height = Math.max(design.height, bottom + 40) + 'px';
-    const order = [...design.elements].sort((a, b) => a.y - b.y || a.x - b.x);
-    for (const e of design.elements) {
+    const slug = actions.page || 'home';
+    const page = design.pages.find(pg => pg.slug === slug && !pg.hidden);
+    const elements = elementsOverride || pageElements(design, slug);
+    const bottom = elements.reduce((max, e) => e.hidden ? max : Math.max(max, e.y + e.h), 0);
+    const canvas = h('div', { class: `ep-canvas ep-adapt-${design.adapt}` + (editing ? ' is-editing' : '') });
+    const height = Math.max(heightOverride ?? (page ? page.height : design.height), bottom + 40);
+    canvas.style.height = height + 'px';
+    const order = [...elements].sort((a, b) => a.y - b.y || a.x - b.x);
+    const byId = new Map();
+    for (const e of elements) {
         if (e.hidden && !editing)
             continue;
-        const wrap = h('div', { class: `ep-el ep-el-${e.kind}` + (e.hideMobile ? ' ep-hide-mobile' : '') + (e.hidden ? ' is-hidden' : '') + (e.style.anim && e.style.anim !== 'none' ? ` ep-anim-${e.style.anim}` : ''), 'data-el': e.id });
+        const wrap = h('div', { class: `ep-el ep-el-${e.kind}` + (e.hideMobile ? ' ep-hide-mobile' : '') + (e.hidden ? ' is-hidden' : '') + (e.startHidden && !editing ? ' ep-start-hidden' : '') + (e.style.anim && e.style.anim !== 'none' ? ` ep-anim-${e.style.anim}` : ''), 'data-el': e.id });
+        byId.set(e.id, wrap);
         const st = wrap.style;
         st.left = e.x + 'px';
         st.top = e.y + 'px';
@@ -390,6 +457,63 @@ export function designCanvas(doc, data, actions, editing = false) {
         applyStyle(e.kind === 'module' ? wrap : body, e.style);
         wrap.append(body);
         canvas.append(wrap);
+    }
+    // Interaction Builder runtime: only shows/hides elements on this page or opens another page. No custom code.
+    if (!editing)
+        for (const e of elements) {
+            if (!e.on)
+                continue;
+            const source = byId.get(e.id);
+            if (!source)
+                continue;
+            const { trigger, action, target } = e.on;
+            const run = () => {
+                if (action === 'page') {
+                    if (actions.onOpenPage)
+                        actions.onOpenPage(target);
+                    else if (actions.pageHref)
+                        window.location.href = actions.pageHref(target);
+                    return;
+                }
+                const el = byId.get(target);
+                if (!el)
+                    return;
+                const shown = !el.classList.contains('ep-start-hidden') && !el.hidden;
+                const next = action === 'show' ? true : action === 'hide' ? false : !shown;
+                el.classList.remove('ep-start-hidden');
+                el.hidden = !next;
+            };
+            source.classList.add('ep-interactive');
+            if (trigger === 'click') {
+                source.setAttribute('role', 'button');
+                source.tabIndex = 0;
+                source.addEventListener('click', run);
+                source.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    run();
+                } });
+            }
+            else {
+                // Hover, with keyboard focus as the alternative.
+                source.tabIndex = 0;
+                source.addEventListener('pointerenter', run);
+                source.addEventListener('focus', run);
+                if (action === 'show') {
+                    const undo = () => { const el = byId.get(target); if (el)
+                        el.hidden = true; };
+                    source.addEventListener('pointerleave', undo);
+                    source.addEventListener('blur', undo);
+                }
+            }
+        }
+    if (design.adapt === 'scale' && !editing && typeof ResizeObserver !== 'undefined') {
+        // Proportional scaling: the whole composition shrinks to fit narrow screens.
+        const frame = h('div', { class: 'ep-scale-frame' });
+        frame.append(canvas);
+        const fit = () => { const w = frame.clientWidth || DESIGN_WIDTH; const k = Math.min(1, w / DESIGN_WIDTH); canvas.style.transform = `scale(${k})`; frame.style.height = height * k + 'px'; };
+        new ResizeObserver(fit).observe(frame);
+        requestAnimationFrame(fit);
+        return frame;
     }
     return canvas;
 }
