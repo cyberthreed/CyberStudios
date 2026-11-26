@@ -97,3 +97,27 @@ details, .chapter { scroll-margin-top: 1rem; }
   .page-menu .related { display: none; }
 }
 @media (max-width: 500px) { .cards { grid-template-columns: minmax(0, 1fr); } }
+
+/* ── Elsewhaero: the Elsewhere desktop wallpaper behind frosted glass, glossy cobalt bars, lime buttons ── */
+:root { --ink: #0b2a4a; --muted: #2b5677; --accent: #0b5fd0; --line: #ffffffcc; --paper: #ffffffc4; background: #2f8fe0; }
+body { background: #2f8fe0 url("../assets/elsewhere-desktop.webp") center / cover no-repeat fixed; }
+.top { position: sticky; top: 0; z-index: 5; border-bottom: 1px solid #0a4ea8; color: #fff; background: linear-gradient(180deg, #8fd3ff 0%, #2d8ff0 46%, #0b5fd0 54%, #2f86e6 100%); box-shadow: inset 0 1px 0 #ffffffaa, 0 4px 16px #0b2a4a40; }
+.top .identity, .top .identity small { color: #fff; text-shadow: 0 1px 2px #06306e; }
+.top nav a { color: #fff; font-weight: 650; text-shadow: 0 1px 2px #06306e; border: 1px solid transparent; border-radius: 14px; }
+.top nav a[aria-current], .top nav a:hover { background: #ffffff33; border-color: #ffffff88; box-shadow: inset 0 1px 0 #ffffffaa; }
+.hero, .chapter, .page-menu, .contents, .footer { border: 1px solid #ffffffe6; background: var(--paper); box-shadow: 0 14px 40px #0b2a4a33, inset 0 1px 0 #fff; }
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .hero, .chapter, .page-menu, .contents, .footer { -webkit-backdrop-filter: blur(14px) saturate(1.3); backdrop-filter: blur(14px) saturate(1.3); }
+}
+.hero { background: linear-gradient(180deg, #ffffffd9, #ffffffa6); }
+.hero h1 { color: #0b4fb0; text-shadow: 0 2px 0 #fff, 0 6px 18px #3fc4f066; }
+.hero p { color: var(--muted); }
+.contents { border-radius: 14px; }
+.footer { margin-bottom: 24px; padding: 14px 18px; border-radius: 14px; }
+.chapter h2 { display: inline-block; padding: 4px 16px; border-radius: 999px; color: #fff; font-size: clamp(1.1rem, 2.4vw, 1.4rem); letter-spacing: 0; text-shadow: 0 1px 2px #06306e; background: linear-gradient(180deg, #8fd3ff 0%, #2d8ff0 46%, #0b5fd0 54%, #2f86e6 100%); box-shadow: inset 0 1px 0 #ffffffaa; }
+.actions a { border-color: #8cc6ea; border-radius: 18px; background: linear-gradient(#ffffff, #dff3ff); box-shadow: inset 0 1px 0 #fff, 0 2px 6px #0b2a4a22; }
+.actions a.primary { border-color: #3f9a1f; color: #fff; text-shadow: 0 1px 1px #24620c; background: linear-gradient(180deg, #d8ffb8 0%, #8fe060 45%, #4fb028 55%, #7cd650 100%); box-shadow: inset 0 1px 0 #ffffffcc, 0 3px 8px #2a6a1040; }
+.actions a.primary:hover { background: linear-gradient(180deg, #e4ffcc 0%, #9ae86c 45%, #58bb30 55%, #86df5a 100%); color: #fff; }
+.cards a, details { border-color: #b8dcf5; background: linear-gradient(#ffffffee, #eaf6ffdd); box-shadow: inset 0 1px 0 #fff; }
+.cards a:hover { border-color: var(--ea-aqua, #3fc4f0); box-shadow: 0 0 0 3px #3fc4f044; }
+@media (prefers-reduced-motion: reduce) { body { background-attachment: scroll; } }

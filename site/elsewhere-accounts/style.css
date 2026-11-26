@@ -219,3 +219,9 @@ body:not(.signup-page) footer { border-top-color: #bfe0f5; }
 body, .signup-page { background: #2f8fe0 url('../assets/elsewhere-desktop.webp') center / cover no-repeat fixed; }
 @media (prefers-reduced-motion: reduce) { body, .signup-page { background-attachment: scroll; } }
 @media (max-width: 700px) { body, .signup-page { background-attachment: scroll; background-position: 30% center; } }
+
+/* Create account / Sign in tabs */
+.account-tabs { display: flex; gap: 6px; padding: 10px 18px 0; }
+.account-tabs a { flex: 1; padding: 8px 12px; border: 1px solid #8cc6ea; border-bottom: 0; border-radius: 12px 12px 0 0; color: #0b4fb0; font-weight: 700; text-align: center; text-decoration: none; background: linear-gradient(#ffffff, #dff3ff); }
+.account-tabs a[aria-current] { color: #fff; text-shadow: 0 1px 2px #06306e; border-color: #0a4ea8; background: linear-gradient(180deg, #8fd3ff 0%, #2d8ff0 46%, #0b5fd0 54%, #2f86e6 100%); }
+.account-tabs a:hover:not([aria-current]) { border-color: #3fc4f0; }
