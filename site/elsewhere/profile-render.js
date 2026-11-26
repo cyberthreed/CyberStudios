@@ -5,12 +5,14 @@
 // https or small data: images. Data arrives already filtered by the server for this viewer.
 // ---------- Visual Designer model ----------
 export const DESIGN_WIDTH = 960;
-export const MODULES = ['identity', 'about', 'interests', 'music', 'links', 'friends', 'bulletins', 'guestbook'];
-export const ELEMENT_KINDS = ['heading', 'text', 'image', 'button', 'divider', 'shape', 'module', 'code', 'nav'];
+export const MODULES = ['identity', 'about', 'interests', 'music', 'links', 'friends', 'bulletins', 'guestbook', 'counter', 'poll', 'webring'];
+export const ELEMENT_KINDS = ['heading', 'text', 'image', 'button', 'divider', 'shape', 'module', 'code', 'nav', 'widget'];
 /** Custom HTML/CSS/JS runs only here: a page on a separate origin, loaded in an opaque-origin sandbox. */
 export const CODE_SANDBOX_URL = 'https://cyberthreed.github.io/CyberStudios/elsewhere/sandbox.html';
 export const CODE_LIMIT = 60000;
 export const ANIMATIONS = ['none', 'float', 'pulse', 'wiggle', 'spin', 'glow'];
+// ---------- Widgets ----------
+export const PROP_TYPES = ['text', 'number', 'color', 'boolean', 'select'];
 export const TRIGGERS = ['click', 'hover'];
 export const ACTIONS = ['show', 'hide', 'toggle', 'page'];
 export const ADAPT_MODES = ['reflow', 'scale', 'scroll'];
@@ -29,7 +31,7 @@ export function blankDoc(layout = 'original') {
         interests: INTEREST_LABELS.slice(0, 4).map(label => ({ label, value: '' })),
         music: { title: '', artist: '', url: '' }, links: [], topFriends: [], avatar: '', banner: '',
         sections: { about: true, interests: true, music: true, bulletins: true, friends: true, guestbook: true, links: true },
-        privateCard: { message: '' }, design: blankDesign(),
+        privateCard: { message: '' }, design: blankDesign(), assets: [],
     };
 }
 const COLOR = /^#[0-9a-f]{6}$/i;
@@ -79,7 +81,29 @@ export function normalizeDoc(raw) {
         sections: Object.fromEntries(Object.keys(base.sections).map(key => [key, s[key] !== false])),
         privateCard: { message: str(card.message, 300) },
         design: normalizeDesign(d.design),
+        assets: normalizeAssets(d.assets),
     };
+}
+const ASSET_ID = /^[a-z0-9]{4,16}$/;
+export function normalizeAssets(raw) {
+    const out = [];
+    for (const item of (Array.isArray(raw) ? raw.slice(0, 80) : [])) {
+        const a = (item && typeof item === 'object' ? item : {});
+        const id = str(a.id, 16), src = safeImage(a.src);
+        if (!ASSET_ID.test(id) || !src || out.some(x => x.id === id))
+            continue;
+        out.push({ id, name: str(a.name, 60) || 'picture', src, w: num(a.w, 1, 8000, 0), h: num(a.h, 1, 8000, 0), folder: str(a.folder, 30),
+            tags: (Array.isArray(a.tags) ? a.tags : []).filter((t) => typeof t === 'string').slice(0, 8).map(t => t.slice(0, 20)), fav: a.fav === true, origin: str(a.origin, 80) });
+    }
+    return out;
+}
+/** Picture sources may point at a project asset (`asset:<id>`); this turns them into the real image. */
+export function resolveSrc(src, doc) {
+    if (!src)
+        return '';
+    if (src.startsWith('asset:'))
+        return doc.assets.find(a => a.id === src.slice(6))?.src || '';
+    return src;
 }
 const num = (value, min, max, fallback) => typeof value === 'number' && isFinite(value) ? Math.min(max, Math.max(min, Math.round(value * 100) / 100)) : fallback;
 function normalizeStyle(raw) {
@@ -138,6 +162,79 @@ export function normalizeDesign(raw) {
     return { on: d.on === true, height: num(d.height, 200, 12000, 900), elements, pages, homeName: str(d.homeName, 40).trim() || 'Home',
         adapt: ADAPT_MODES.includes(d.adapt) ? d.adapt : 'reflow' };
 }
+const KEY = /^[a-z][a-z0-9_]{0,23}$/i;
+/** Reads a widget package safely (unknown fields dropped, sizes limited). */
+export function normalizeWidgetPackage(raw) {
+    const w = (raw && typeof raw === 'object' ? raw : null);
+    if (!w)
+        return null;
+    const c = (w.code && typeof w.code === 'object' ? w.code : {});
+    const props = [];
+    for (const item of (Array.isArray(w.props) ? w.props.slice(0, 24) : [])) {
+        const pr = (item && typeof item === 'object' ? item : {});
+        const key = str(pr.key, 24);
+        if (!KEY.test(key) || props.some(x => x.key === key) || !PROP_TYPES.includes(pr.type))
+            continue;
+        const type = pr.type;
+        const prop = { key, label: str(pr.label, 40) || key, type, default: '' };
+        if (type === 'number') {
+            prop.min = num(pr.min, -1e6, 1e6, 0);
+            prop.max = num(pr.max, -1e6, 1e6, 100);
+            prop.default = num(pr.default, prop.min, prop.max, prop.min);
+        }
+        else if (type === 'boolean')
+            prop.default = pr.default === true;
+        else if (type === 'color')
+            prop.default = color(pr.default, '#ff5fa2');
+        else if (type === 'select') {
+            prop.options = (Array.isArray(pr.options) ? pr.options : []).filter((o) => typeof o === 'string').slice(0, 20).map(o => o.slice(0, 40));
+            prop.default = prop.options.includes(pr.default) ? pr.default : prop.options[0] || '';
+        }
+        else
+            prop.default = str(pr.default, 400);
+        if (typeof pr.group === 'string')
+            prop.group = str(pr.group, 24);
+        if (typeof pr.help === 'string')
+            prop.help = str(pr.help, 120);
+        props.push(prop);
+    }
+    return {
+        id: str(w.id, 40) || 'widget', name: str(w.name, 40) || 'Widget', version: str(w.version, 12) || '1.0.0', author: str(w.author, 40), description: str(w.description, 200),
+        category: str(w.category, 24) || 'Other', props, code: { html: str(c.html, CODE_LIMIT), css: str(c.css, CODE_LIMIT), js: str(c.js, CODE_LIMIT) },
+        remix: w.remix !== false, minW: num(w.minW, 40, 960, 120), minH: num(w.minH, 30, 2000, 80),
+    };
+}
+/** Each instance's settings, checked against the package's declared properties. */
+export function widgetValues(pkg, raw) {
+    const v = (raw && typeof raw === 'object' ? raw : {});
+    const out = {};
+    for (const pr of pkg.props) {
+        const x = v[pr.key];
+        if (pr.type === 'number')
+            out[pr.key] = num(x, pr.min ?? -1e6, pr.max ?? 1e6, pr.default);
+        else if (pr.type === 'boolean')
+            out[pr.key] = typeof x === 'boolean' ? x : pr.default;
+        else if (pr.type === 'color')
+            out[pr.key] = color(x, pr.default);
+        else if (pr.type === 'select')
+            out[pr.key] = pr.options?.includes(x) ? x : pr.default;
+        else
+            out[pr.key] = typeof x === 'string' ? x.slice(0, 400) : pr.default;
+    }
+    return out;
+}
+const escHtml = (t) => t.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+/** Fills a widget's {{key}} placeholders: escaped in HTML, plain values in CSS, and a `props` object for JS. */
+export function compileWidget(inst) {
+    const values = widgetValues(inst.pkg, inst.values);
+    const fill = (text, encode) => text.replace(/\{\{\s*([a-z][a-z0-9_]*)\s*\}\}/gi, (m, key) => key in values ? encode(String(values[key])) : m);
+    const cssSafe = (v) => v.replace(/[;{}<>\\"']/g, '');
+    return {
+        html: fill(inst.pkg.code.html, escHtml),
+        css: fill(inst.pkg.code.css, cssSafe),
+        js: `const props = Object.freeze(${JSON.stringify(values).replace(/</g, '\\u003c')});\n` + inst.pkg.code.js,
+    };
+}
 function normalizeElements(raw) {
     const list = Array.isArray(raw) ? raw.slice(0, 120) : [];
     const elements = [];
@@ -154,6 +251,10 @@ function normalizeElements(raw) {
         };
         if (e.kind === 'module')
             el.module = e.module;
+        if (e.kind === 'module' && e.module === 'poll' && typeof e.pollId === 'string' && /^[0-9a-f-]{36}$/i.test(e.pollId))
+            el.pollId = e.pollId;
+        if (e.kind === 'module' && e.module === 'webring' && typeof e.ringId === 'string' && /^[0-9a-f-]{36}$/i.test(e.ringId))
+            el.ringId = e.ringId;
         if (e.hidden === true)
             el.hidden = true;
         if (e.locked === true)
@@ -165,9 +266,14 @@ function normalizeElements(raw) {
         if (typeof e.text === 'string')
             el.text = str(e.text, 4000);
         if (e.kind === 'image' || e.kind === 'shape') {
-            const src = safeImage(e.src);
+            const src = typeof e.src === 'string' && /^asset:[a-z0-9]{4,16}$/.test(e.src) ? e.src : safeImage(e.src);
             if (src)
                 el.src = src;
+        }
+        if (e.kind === 'image' && e.sprite && typeof e.sprite === 'object') {
+            const sp = e.sprite;
+            const cols = Math.round(num(sp.cols, 1, 32, 1)), rows = Math.round(num(sp.rows, 1, 32, 1));
+            el.sprite = { cols, rows, frames: Math.round(num(sp.frames, 1, cols * rows, cols * rows)), fps: num(sp.fps, 1, 30, 8) };
         }
         if (e.kind === 'button' || e.kind === 'image' || e.kind === 'text' || e.kind === 'heading') {
             const href = safeUrl(e.href);
@@ -177,6 +283,13 @@ function normalizeElements(raw) {
         if (e.kind === 'code') {
             const c = (e.code && typeof e.code === 'object' ? e.code : {});
             el.code = { html: str(c.html, CODE_LIMIT), css: str(c.css, CODE_LIMIT), js: str(c.js, CODE_LIMIT) };
+        }
+        if (e.kind === 'widget') {
+            const wi = (e.widget && typeof e.widget === 'object' ? e.widget : {});
+            const pkg = normalizeWidgetPackage(wi.pkg);
+            if (!pkg)
+                continue;
+            el.widget = { pkg, values: widgetValues(pkg, wi.values) };
         }
         if (e.global === true)
             el.global = true;
@@ -342,7 +455,77 @@ function moduleBox(module, doc, data, actions) {
         case 'friends': return friendsBox(data, actions);
         case 'bulletins': return bulletinsBox(data, actions);
         case 'guestbook': return data.guestbook_mode === 'off' ? box('Guestbook', 'ep-guestbook-box', h('p', { class: 'ep-empty' }, 'The guestbook is closed.')) : guestbookBox(data, actions);
+        case 'counter': return counterBox(actions);
+        case 'poll': return pollBox(undefined, actions);
+        case 'webring': return webringBox(undefined, actions);
     }
+}
+/** Old-web webring: Previous / Random / Next through the ring's approved, discoverable members. */
+function webringBox(ringId, actions) {
+    const body = h('div', { class: 'ep-webring' }, h('p', { class: 'ep-empty' }, ringId ? 'Loading webring…' : 'Pick one of your webrings in the Visual Designer.'));
+    const el = box('Webring', 'ep-webring-box', body);
+    const link = (label, handle) => {
+        if (!handle)
+            return h('span', { class: 'ep-webring-off' }, label);
+        const a = h('a', { href: actions.profileHref(handle) }, label);
+        if (actions.onOpenProfile)
+            a.addEventListener('click', event => { event.preventDefault(); actions.onOpenProfile(handle); });
+        return a;
+    };
+    const draw = (nav) => {
+        body.replaceChildren();
+        if (nav.status !== 'ok') {
+            body.append(h('p', { class: 'ep-empty' }, 'This webring isn’t available.'));
+            return;
+        }
+        el.querySelector('.ep-box-title').textContent = `✦ ${nav.name} ✦`;
+        body.append(h('nav', { class: 'ep-webring-nav', 'aria-label': 'Webring' }, link('◀ previous', nav.prev), link('✦ random', nav.random), link('next ▶', nav.next)), h('p', { class: 'ep-note' }, `${nav.members || 0} member${nav.members === 1 ? '' : 's'}`));
+    };
+    if (ringId && actions.webringNav)
+        void actions.webringNav(ringId).then(draw, () => draw({ status: 'missing' }));
+    else if (ringId)
+        draw({ status: 'ok', name: 'your webring', members: 3 });
+    return el;
+}
+/** Old-web visitor counter. Counting happens on the server (once a day per signed-in visitor). */
+function counterBox(actions) {
+    const digits = h('span', { class: 'ep-counter-digits', 'aria-live': 'polite' }, '······');
+    const el = box('Visitors', 'ep-counter-box', h('p', { class: 'ep-counter' }, h('span', {}, 'you are visitor no.'), digits));
+    if (actions.countView)
+        void actions.countView().then(n => { digits.textContent = n == null ? '—' : String(n).padStart(6, '0'); }, () => { digits.textContent = '—'; });
+    else
+        digits.textContent = '000123';
+    return el;
+}
+/** A poll with live results. Only signed-in visitors who can see the profile may vote (checked by the server). */
+function pollBox(pollId, actions) {
+    const body = h('div', { class: 'ep-poll' }, h('p', { class: 'ep-empty' }, pollId ? 'Loading poll…' : 'Pick or make a poll in the Visual Designer.'));
+    const el = box('Poll', 'ep-poll-box', body);
+    const draw = (poll) => {
+        body.replaceChildren();
+        if (poll.status !== 'ok' || !poll.options) {
+            body.append(h('p', { class: 'ep-empty' }, 'This poll isn’t available.'));
+            return;
+        }
+        el.querySelector('.ep-box-title').textContent = poll.question || 'Poll';
+        const total = Object.values(poll.counts || {}).reduce((a, b) => a + b, 0);
+        poll.options.forEach((option, i) => {
+            const n = poll.counts?.[String(i)] || 0;
+            const pct = total ? Math.round(n / total * 100) : 0;
+            const row = h('button', { type: 'button', class: 'ep-poll-row' + (poll.mine === i ? ' is-mine' : ''), 'aria-pressed': String(poll.mine === i) }, h('span', { class: 'ep-poll-fill', style: `width:${pct}%` }), h('span', { class: 'ep-poll-label' }, option), h('span', { class: 'ep-poll-pct' }, `${pct}%`));
+            if (poll.can_vote && actions.votePoll)
+                row.addEventListener('click', () => { void actions.votePoll(pollId, i).then(draw, () => { }); });
+            else
+                row.setAttribute('disabled', '');
+            body.append(row);
+        });
+        body.append(h('p', { class: 'ep-note' }, `${total} vote${total === 1 ? '' : 's'}` + (poll.can_vote && actions.votePoll ? '' : ' · sign in to Elsewhere to vote')));
+    };
+    if (pollId && actions.getPoll)
+        void actions.getPoll(pollId).then(draw, () => draw({ status: 'missing' }));
+    else if (pollId)
+        draw({ status: 'ok', question: 'Your poll', options: ['answer one', 'answer two'], counts: { 0: 3, 1: 1 }, mine: null, can_vote: false });
+    return el;
 }
 const SHADOWS = ['none', '0 2px 6px #0b2a4a33', '0 8px 20px #0b2a4a40', '0 16px 40px #0b2a4a59'];
 /** Applies a validated design style to an element (values were already checked by normalizeStyle). */
@@ -387,11 +570,17 @@ function elementBody(e, doc, data, actions) {
         case 'heading': return link(h('h2', { class: 'ep-el-heading' }, e.text || ''));
         case 'text': return link(paragraphs(e.text || ''));
         case 'button': return h('a', { class: 'ep-el-button', href: e.href || undefined, target: e.href ? '_blank' : undefined, rel: 'noopener noreferrer ugc', role: e.href ? undefined : 'presentation' }, e.text || 'Button');
-        case 'image': return link(e.src ? h('img', { class: 'ep-el-img', src: e.src, alt: e.text || '', loading: 'lazy', draggable: 'false', style: `object-fit:${e.style.fit || 'cover'}` }) : h('div', { class: 'ep-el-img ep-el-empty' }, 'Picture'));
+        case 'image': {
+            const src = resolveSrc(e.src, doc);
+            if (src && e.sprite)
+                return link(spriteEl(src, e.sprite, e.text || ''));
+            return link(src ? h('img', { class: 'ep-el-img', src, alt: e.text || '', loading: 'lazy', draggable: 'false', style: `object-fit:${e.style.fit || 'cover'}` }) : h('div', { class: 'ep-el-img ep-el-empty' }, 'Picture'));
+        }
         case 'divider': return h('hr', { class: 'ep-el-divider' });
         case 'shape': return h('div', { class: 'ep-el-shape' });
-        case 'module': return moduleBox(e.module, doc, data, actions);
+        case 'module': return e.module === 'poll' ? pollBox(e.pollId, actions) : e.module === 'webring' ? webringBox(e.ringId, actions) : moduleBox(e.module, doc, data, actions);
         case 'code': return codeFrame(e.code || { html: '', css: '', js: '' }, actions.sandboxUrl || CODE_SANDBOX_URL);
+        case 'widget': return codeFrame(e.widget ? compileWidget(e.widget) : { html: '', css: '', js: '' }, actions.sandboxUrl || CODE_SANDBOX_URL);
         case 'nav': {
             const nav = h('nav', { class: 'ep-el-nav', 'aria-label': 'Pages' });
             const list = [{ slug: 'home', name: doc.design.homeName }, ...doc.design.pages.filter(pg => !pg.hidden)];
@@ -405,6 +594,31 @@ function elementBody(e, doc, data, actions) {
             return nav;
         }
     }
+}
+/** A sprite sheet played frame by frame (paused for reduced motion; stops itself when removed from the page). */
+function spriteEl(src, sp, alt) {
+    const el = h('div', { class: 'ep-el-img ep-sprite', role: 'img', 'aria-label': alt || 'animated picture' });
+    el.style.backgroundImage = `url("${src.replace(/"/g, '%22')}")`;
+    el.style.backgroundSize = `${sp.cols * 100}% ${sp.rows * 100}%`;
+    const show = (i) => {
+        const c = i % sp.cols, r = Math.floor(i / sp.cols);
+        el.style.backgroundPosition = `${sp.cols > 1 ? c / (sp.cols - 1) * 100 : 0}% ${sp.rows > 1 ? r / (sp.rows - 1) * 100 : 0}%`;
+    };
+    show(0);
+    if (typeof window !== 'undefined' && !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches && sp.frames > 1) {
+        let frame = 0, started = false;
+        const timer = window.setInterval(() => {
+            if (!el.isConnected) {
+                if (started)
+                    window.clearInterval(timer);
+                return;
+            }
+            started = true;
+            frame = (frame + 1) % sp.frames;
+            show(frame);
+        }, 1000 / sp.fps);
+    }
+    return el;
 }
 /** Elements shown on a page: that page's own, plus the home page's global ones. */
 export function pageElements(design, slug = 'home') {
@@ -453,7 +667,7 @@ export function designCanvas(doc, data, actions, editing = false, elementsOverri
         const body = elementBody(e, doc, data, actions);
         body.classList.add('ep-el-body');
         if (e.kind === 'shape' && e.src)
-            body.style.backgroundImage = `url("${e.src.replace(/"/g, '%22')}")`;
+            body.style.backgroundImage = `url("${resolveSrc(e.src, doc).replace(/"/g, '%22')}")`;
         applyStyle(e.kind === 'module' ? wrap : body, e.style);
         wrap.append(body);
         canvas.append(wrap);

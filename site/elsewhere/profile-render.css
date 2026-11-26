@@ -186,3 +186,21 @@
 .ep-el-nav a[aria-current="page"] { color: #fff; background: var(--ep-accent); border-color: var(--ep-accent); }
 .ep-el-code { display: block; width: 100%; height: 100%; border: 0; background: transparent; }
 @container (max-width: 760px) { .ep-el-code { min-height: 260px; } }
+
+/* Native widgets */
+.ep-counter { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin: 10px; }
+.ep-counter-digits { padding: 3px 8px; border-radius: 4px; color: #39ff14; font: bold 20px "Lucida Console", "Courier New", monospace; letter-spacing: 3px; background: #0b0b14; box-shadow: inset 0 0 6px #000; }
+.ep-poll { display: grid; gap: 6px; padding: 8px 10px; }
+.ep-poll-row { position: relative; display: flex; align-items: center; gap: 8px; min-height: 34px; padding: 4px 10px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--ep-accent) 50%, transparent); border-radius: 10px; color: var(--ep-ink); font: inherit; text-align: left; background: var(--ep-panel); cursor: pointer; }
+.ep-poll-row:disabled { cursor: default; }
+.ep-poll-row.is-mine { border-color: var(--ep-accent); font-weight: bold; }
+.ep-poll-fill { position: absolute; inset: 0 auto 0 0; background: color-mix(in srgb, var(--ep-accent) 25%, transparent); transition: width .4s; }
+.ep-poll-label { position: relative; flex: 1; }
+.ep-poll-pct { position: relative; font-size: 12px; }
+
+.ep-sprite { background-repeat: no-repeat; image-rendering: pixelated; }
+
+.ep-webring { display: grid; gap: 4px; padding: 8px 10px; text-align: center; }
+.ep-webring-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.ep-webring-nav a { color: var(--ep-accent); font-weight: bold; }
+.ep-webring-off { opacity: .5; }

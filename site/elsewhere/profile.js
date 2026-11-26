@@ -1,6 +1,6 @@
 // Elsewhere profile on the web: ?u=handle. Uses the same renderer as Elsewhere Messenger.
 // Signed-out visitors only ever receive what the profile owner made public: the server decides.
-import { renderProfile } from './profile-render.js?v=4'
+import { renderProfile } from './profile-render.js?v=5'
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from '../elsewhere-accounts/config.js'
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/+esm'
 
@@ -36,6 +36,9 @@ async function show() {
     renderProfile(host, data, {
       profileHref: here,
       page,
+      getPoll: async id => { const { data: poll, error } = await client.rpc('get_elsewhere_poll', { poll_id: id }); if (error) throw error; return poll },
+      webringNav: async id => { const { data: nav, error } = await client.rpc('elsewhere_webring_nav', { ring_id: id, from_handle: handle }); if (error) throw error; return nav },
+      countView: async () => { const { data: n, error } = await client.rpc('count_elsewhere_profile_view', { target_handle: handle }); if (error) throw error; return n },
       pageHref: slug => here(handle) + (slug === 'home' ? '' : '&p=' + encodeURIComponent(slug)),
       railButtons: [
         { label: '✦ Get Elsewhere', primary: true, onClick: () => { location.href = 'messenger.html' } },
