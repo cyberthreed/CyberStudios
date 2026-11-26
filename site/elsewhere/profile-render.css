@@ -134,3 +134,43 @@
 /* The real Elsewhere desktop wallpaper (the host sets --ep-scene-image); the drawn sky above is the fallback. */
 .ep-pattern-elsewhaero { background: var(--ep-scene-image, none) center / cover no-repeat fixed, linear-gradient(180deg, #1f86df 0%, #5bb8ef 38%, #a9e0fb 70%, #e6f8ff 100%); }
 @media (max-width: 700px) { .ep-pattern-elsewhaero { background-attachment: scroll; } }
+
+/* ---------- Visual Designer pages ---------- */
+.ep-host { container-type: inline-size; }
+.ep-layout-designer { padding: 16px 0 40px; overflow-x: auto; }
+.ep-canvas { position: relative; width: 960px; margin: 0 auto; }
+.ep-el { position: absolute; transform: rotate(var(--ep-rot, 0deg)); }
+.ep-el-body { width: 100%; height: 100%; overflow: hidden; }
+.ep-el-module > .ep-el-body { margin: 0; overflow: auto; }
+.ep-el-heading { margin: 0; color: var(--ep-heading); font-size: 32px; line-height: 1.15; overflow-wrap: anywhere; }
+.ep-el-text .ep-text p { margin: 0 0 .6em; overflow-wrap: anywhere; }
+.ep-el-text .ep-el-body, .ep-el-heading { color: inherit; }
+.ep-el-link { display: block; width: 100%; height: 100%; color: inherit; text-decoration: none; }
+.ep-el-img { display: block; width: 100%; height: 100%; }
+.ep-el-empty { display: grid; place-items: center; color: #6a86a8; background: repeating-linear-gradient(45deg, #ffffff99 0 10px, #dbe9f899 10px 20px); }
+.ep-el-button { display: flex; align-items: center; justify-content: center; padding: 0 14px; border-radius: 18px; color: #fff; font-weight: bold; text-decoration: none; background: var(--ep-accent); }
+.ep-el-divider { margin: 0; border: 0; height: 100%; background: var(--ep-line, var(--ep-accent)); border-radius: 99px; }
+.ep-el-shape { background: var(--ep-panel); background-size: cover; background-position: center; }
+.ep-anim-float { animation: ep-float 4s ease-in-out infinite; }
+.ep-anim-pulse { animation: ep-pulse 2.4s ease-in-out infinite; }
+.ep-anim-wiggle { animation: ep-wiggle 1.6s ease-in-out infinite; }
+.ep-anim-spin { animation: ep-spin 8s linear infinite; }
+.ep-anim-glow { animation: ep-glow 2.6s ease-in-out infinite; }
+@keyframes ep-float { 50% { transform: rotate(var(--ep-rot, 0deg)) translateY(-8px); } }
+@keyframes ep-pulse { 50% { transform: rotate(var(--ep-rot, 0deg)) scale(1.04); } }
+@keyframes ep-wiggle { 25% { transform: rotate(calc(var(--ep-rot, 0deg) - 3deg)); } 75% { transform: rotate(calc(var(--ep-rot, 0deg) + 3deg)); } }
+@keyframes ep-spin { to { transform: rotate(calc(var(--ep-rot, 0deg) + 360deg)); } }
+@keyframes ep-glow { 50% { filter: drop-shadow(0 0 10px #ffffffcc) drop-shadow(0 0 18px var(--ep-accent)); } }
+.ep-canvas.is-editing .ep-el.is-hidden { opacity: .25; }
+.ep-canvas.is-editing a { pointer-events: none; }
+/* Narrow screens: one readable column in top-to-bottom order (desktop positions are ignored). */
+@container (max-width: 760px) {
+  .ep-layout-designer { padding: 10px; overflow-x: visible; }
+  .ep-canvas { display: flex; flex-direction: column; gap: 10px; width: 100%; height: auto !important; }
+  .ep-el { position: static; width: auto !important; max-width: 100%; height: auto !important; min-height: 0; transform: none; animation: none; }
+  .ep-el-body { height: auto; }
+  .ep-el-image .ep-el-img, .ep-el-shape { height: auto; min-height: 120px; aspect-ratio: 4 / 3; }
+  .ep-el-divider { height: 4px; }
+  .ep-el-button { min-height: 40px; }
+  .ep-hide-mobile { display: none !important; }
+}

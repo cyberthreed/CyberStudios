@@ -1,7 +1,14 @@
+// Elsewhere Profiles renderer (shared with Elsewhere Messenger). Generated from src/profiles/profileRender.ts.
 // Elsewhere Profiles: the ONE renderer used by the Messenger profile window and the public web page.
-// No imports and no framework: this file is compiled from Elsewhere Messenger (src/profiles/profileRender.ts) for the website.
+// No imports and no framework, so the same file is also compiled for the website (public/profile-render.js).
 // Everything the creator types is shown as text (never HTML), links must be https, and images must be
 // https or small data: images. Data arrives already filtered by the server for this viewer.
+// ---------- Visual Designer model ----------
+export const DESIGN_WIDTH = 960;
+export const MODULES = ['identity', 'about', 'interests', 'music', 'links', 'friends', 'bulletins', 'guestbook'];
+export const ELEMENT_KINDS = ['heading', 'text', 'image', 'button', 'divider', 'shape', 'module'];
+export const ANIMATIONS = ['none', 'float', 'pulse', 'wiggle', 'spin', 'glow'];
+export const blankDesign = () => ({ on: false, height: 900, elements: [] });
 export const FONTS = ['Tahoma', 'Verdana', 'Trebuchet MS', 'Georgia', 'Courier New', 'Comic Sans MS', 'Segoe UI', 'Lucida Console', 'Arial'];
 export const PATTERNS = ['elsewhaero', 'none', 'stars', 'hearts', 'grid', 'dots', 'checker', 'stripes', 'sparkles'];
 export const INTEREST_LABELS = ['General', 'Music', 'Movies', 'Television', 'Books', 'Games', 'Heroes'];
@@ -15,7 +22,7 @@ export function blankDoc(layout = 'original') {
         interests: INTEREST_LABELS.slice(0, 4).map(label => ({ label, value: '' })),
         music: { title: '', artist: '', url: '' }, links: [], topFriends: [], avatar: '', banner: '',
         sections: { about: true, interests: true, music: true, bulletins: true, friends: true, guestbook: true, links: true },
-        privateCard: { message: '' },
+        privateCard: { message: '' }, design: blankDesign(),
     };
 }
 const COLOR = /^#[0-9a-f]{6}$/i;
@@ -64,7 +71,89 @@ export function normalizeDoc(raw) {
         avatar: safeImage(d.avatar), banner: safeImage(d.banner),
         sections: Object.fromEntries(Object.keys(base.sections).map(key => [key, s[key] !== false])),
         privateCard: { message: str(card.message, 300) },
+        design: normalizeDesign(d.design),
     };
+}
+const num = (value, min, max, fallback) => typeof value === 'number' && isFinite(value) ? Math.min(max, Math.max(min, Math.round(value * 100) / 100)) : fallback;
+function normalizeStyle(raw) {
+    const s = (raw && typeof raw === 'object' ? raw : {});
+    const out = {};
+    for (const key of ['color', 'bg', 'bg2', 'borderColor'])
+        if (typeof s[key] === 'string' && COLOR.test(s[key]))
+            out[key] = s[key];
+    if (FONTS.includes(s.font))
+        out.font = s.font;
+    if (s.size !== undefined)
+        out.size = num(s.size, 8, 160, 16);
+    if (s.angle !== undefined)
+        out.angle = num(s.angle, 0, 360, 180);
+    if (s.bold === true)
+        out.bold = true;
+    if (s.italic === true)
+        out.italic = true;
+    if (s.align === 'center' || s.align === 'right' || s.align === 'left')
+        out.align = s.align;
+    if (s.radius !== undefined)
+        out.radius = num(s.radius, 0, 400, 0);
+    if (s.borderW !== undefined)
+        out.borderW = num(s.borderW, 0, 24, 0);
+    if (s.borderStyle === 'dashed' || s.borderStyle === 'dotted' || s.borderStyle === 'solid')
+        out.borderStyle = s.borderStyle;
+    if (s.shadow !== undefined)
+        out.shadow = num(s.shadow, 0, 3, 0);
+    if (s.opacity !== undefined)
+        out.opacity = num(s.opacity, 0.05, 1, 1);
+    if (s.padding !== undefined)
+        out.padding = num(s.padding, 0, 120, 0);
+    if (s.rot !== undefined)
+        out.rot = num(s.rot, -180, 180, 0);
+    if (ANIMATIONS.includes(s.anim))
+        out.anim = s.anim;
+    if (s.fit === 'contain' || s.fit === 'cover')
+        out.fit = s.fit;
+    return out;
+}
+/** Reads any stored design into a safe one (unknown kinds dropped, numbers clamped, links/images checked). */
+export function normalizeDesign(raw) {
+    const d = (raw && typeof raw === 'object' ? raw : {});
+    const list = Array.isArray(d.elements) ? d.elements.slice(0, 120) : [];
+    const elements = [];
+    for (const item of list) {
+        const e = (item && typeof item === 'object' ? item : {});
+        if (!ELEMENT_KINDS.includes(e.kind))
+            continue;
+        if (e.kind === 'module' && !MODULES.includes(e.module))
+            continue;
+        const el = {
+            id: str(e.id, 24) || Math.random().toString(36).slice(2, 10), kind: e.kind,
+            x: num(e.x, -400, DESIGN_WIDTH + 200, 0), y: num(e.y, -200, 12000, 0), w: num(e.w, 4, 2000, 200), h: num(e.h, 2, 6000, 60),
+            z: Math.round(num(e.z, -1000, 1000, 0)), style: normalizeStyle(e.style),
+        };
+        if (e.kind === 'module')
+            el.module = e.module;
+        if (e.hidden === true)
+            el.hidden = true;
+        if (e.locked === true)
+            el.locked = true;
+        if (e.hideMobile === true)
+            el.hideMobile = true;
+        if (typeof e.group === 'string' && e.group)
+            el.group = str(e.group, 24);
+        if (typeof e.text === 'string')
+            el.text = str(e.text, 4000);
+        if (e.kind === 'image' || e.kind === 'shape') {
+            const src = safeImage(e.src);
+            if (src)
+                el.src = src;
+        }
+        if (e.kind === 'button' || e.kind === 'image' || e.kind === 'text' || e.kind === 'heading') {
+            const href = safeUrl(e.href);
+            if (href)
+                el.href = href;
+        }
+        elements.push(el);
+    }
+    return { on: d.on === true, height: num(d.height, 200, 12000, 900), elements };
 }
 function h(tag, attrs = {}, ...children) {
     const el = document.createElement(tag);
@@ -198,6 +287,121 @@ function rail(data, actions) {
     bar.append(tools);
     return bar;
 }
+function pageShell(doc, layout) {
+    const page = h('div', { class: `ep-page ep-layout-${layout} ep-pattern-${doc.theme.pattern}` });
+    const vars = { '--ep-bg': doc.theme.bg, '--ep-panel': doc.theme.panel, '--ep-ink': doc.theme.ink, '--ep-accent': doc.theme.accent, '--ep-heading': doc.theme.heading, '--ep-font': `"${doc.theme.font}", Tahoma, sans-serif` };
+    for (const [key, value] of Object.entries(vars))
+        page.style.setProperty(key, value);
+    return page;
+}
+function identityBox(doc, data, name) {
+    return h('section', { class: 'ep-box ep-identity' }, avatarEl(doc.avatar, name, 'ep-avatar'), h('div', { class: 'ep-identity-text' }, h('h1', { class: 'ep-name' }, name), doc.headline ? h('p', { class: 'ep-headline' }, doc.headline) : null, doc.mood ? h('p', { class: 'ep-mood' }, h('b', {}, 'Mood: '), doc.mood) : null, doc.status ? h('p', { class: 'ep-status' }, h('b', {}, 'Status: '), doc.status) : null, h('p', { class: 'ep-handle' }, '@' + (data.handle || ''))));
+}
+function moduleBox(module, doc, data, actions) {
+    const name = data.display_name || data.handle || '';
+    switch (module) {
+        case 'identity': return identityBox(doc, data, name);
+        case 'about': return aboutBox(doc, name);
+        case 'interests': return interestsBox(doc, name) || box(`${name}'s Interests`, 'ep-interests-box', h('p', { class: 'ep-empty' }, 'No interests yet.'));
+        case 'music': return musicBox(doc) || box('Profile Song', 'ep-music-box', h('p', { class: 'ep-empty' }, 'No song picked yet.'));
+        case 'links': return linksBox(doc) || box('Links', 'ep-links-box', h('p', { class: 'ep-empty' }, 'No links yet.'));
+        case 'friends': return friendsBox(data, actions);
+        case 'bulletins': return bulletinsBox(data, actions);
+        case 'guestbook': return data.guestbook_mode === 'off' ? box('Guestbook', 'ep-guestbook-box', h('p', { class: 'ep-empty' }, 'The guestbook is closed.')) : guestbookBox(data, actions);
+    }
+}
+const SHADOWS = ['none', '0 2px 6px #0b2a4a33', '0 8px 20px #0b2a4a40', '0 16px 40px #0b2a4a59'];
+/** Applies a validated design style to an element (values were already checked by normalizeStyle). */
+function applyStyle(el, s) {
+    const st = el.style;
+    if (s.color)
+        st.color = s.color;
+    if (s.bg && s.bg2)
+        st.background = `linear-gradient(${s.angle ?? 180}deg, ${s.bg}, ${s.bg2})`;
+    else if (s.bg)
+        st.background = s.bg;
+    if (s.font)
+        st.fontFamily = `"${s.font}", Tahoma, sans-serif`;
+    if (s.size)
+        st.fontSize = s.size + 'px';
+    if (s.bold)
+        st.fontWeight = 'bold';
+    if (s.italic)
+        st.fontStyle = 'italic';
+    if (s.align)
+        st.textAlign = s.align;
+    if (s.radius)
+        st.borderRadius = s.radius + 'px';
+    if (s.borderW)
+        st.border = `${s.borderW}px ${s.borderStyle || 'solid'} ${s.borderColor || '#000000'}`;
+    if (s.shadow)
+        st.boxShadow = SHADOWS[s.shadow];
+    if (s.opacity !== undefined && s.opacity < 1)
+        st.opacity = String(s.opacity);
+    if (s.padding)
+        st.padding = s.padding + 'px';
+}
+function elementBody(e, doc, data, actions) {
+    const link = (child) => {
+        if (!e.href)
+            return child;
+        const a = h('a', { href: e.href, target: '_blank', rel: 'noopener noreferrer ugc', class: 'ep-el-link' });
+        a.append(child);
+        return a;
+    };
+    switch (e.kind) {
+        case 'heading': return link(h('h2', { class: 'ep-el-heading' }, e.text || ''));
+        case 'text': return link(paragraphs(e.text || ''));
+        case 'button': return h('a', { class: 'ep-el-button', href: e.href || undefined, target: e.href ? '_blank' : undefined, rel: 'noopener noreferrer ugc', role: e.href ? undefined : 'presentation' }, e.text || 'Button');
+        case 'image': return link(e.src ? h('img', { class: 'ep-el-img', src: e.src, alt: e.text || '', loading: 'lazy', draggable: 'false', style: `object-fit:${e.style.fit || 'cover'}` }) : h('div', { class: 'ep-el-img ep-el-empty' }, 'Picture'));
+        case 'divider': return h('hr', { class: 'ep-el-divider' });
+        case 'shape': return h('div', { class: 'ep-el-shape' });
+        case 'module': return moduleBox(e.module, doc, data, actions);
+    }
+}
+/** The free-form Visual Designer page. Desktop: exact positions on a 960px canvas. Narrow screens: a
+ *  readable single column in top-to-bottom order, so a desktop design never makes mobile unusable. */
+export function designCanvas(doc, data, actions, editing = false) {
+    const design = doc.design;
+    const bottom = design.elements.reduce((max, e) => e.hidden ? max : Math.max(max, e.y + e.h), 0);
+    const canvas = h('div', { class: 'ep-canvas' + (editing ? ' is-editing' : '') });
+    canvas.style.height = Math.max(design.height, bottom + 40) + 'px';
+    const order = [...design.elements].sort((a, b) => a.y - b.y || a.x - b.x);
+    for (const e of design.elements) {
+        if (e.hidden && !editing)
+            continue;
+        const wrap = h('div', { class: `ep-el ep-el-${e.kind}` + (e.hideMobile ? ' ep-hide-mobile' : '') + (e.hidden ? ' is-hidden' : '') + (e.style.anim && e.style.anim !== 'none' ? ` ep-anim-${e.style.anim}` : ''), 'data-el': e.id });
+        const st = wrap.style;
+        st.left = e.x + 'px';
+        st.top = e.y + 'px';
+        st.width = e.w + 'px';
+        st.height = e.h + 'px';
+        st.zIndex = String(500 + e.z);
+        st.order = String(order.indexOf(e));
+        if (e.style.rot)
+            st.setProperty('--ep-rot', e.style.rot + 'deg');
+        if (e.kind === 'divider') {
+            wrap.style.setProperty('--ep-line', e.style.color || doc.theme.accent);
+        }
+        const body = elementBody(e, doc, data, actions);
+        body.classList.add('ep-el-body');
+        if (e.kind === 'shape' && e.src)
+            body.style.backgroundImage = `url("${e.src.replace(/"/g, '%22')}")`;
+        applyStyle(e.kind === 'module' ? wrap : body, e.style);
+        wrap.append(body);
+        canvas.append(wrap);
+    }
+    return canvas;
+}
+/** Renders just the designer page (background + canvas) for the editor's live canvas. */
+export function renderDesignPage(host, data, actions) {
+    host.replaceChildren();
+    host.classList.add('ep-host');
+    const doc = normalizeDoc(data.doc);
+    const page = pageShell(doc, 'designer');
+    page.append(designCanvas(doc, data, actions, true));
+    host.append(page);
+}
 /** Renders a profile into `host` (replacing its contents). */
 export function renderProfile(host, data, actions) {
     host.replaceChildren();
@@ -213,13 +417,15 @@ export function renderProfile(host, data, actions) {
     }
     const doc = normalizeDoc(data.doc);
     const name = data.display_name || data.handle || '';
-    const page = h('div', { class: `ep-page ep-layout-${doc.layout} ep-pattern-${doc.theme.pattern}` });
-    const vars = { '--ep-bg': doc.theme.bg, '--ep-panel': doc.theme.panel, '--ep-ink': doc.theme.ink, '--ep-accent': doc.theme.accent, '--ep-heading': doc.theme.heading, '--ep-font': `"${doc.theme.font}", Tahoma, sans-serif` };
-    for (const [key, value] of Object.entries(vars))
-        page.style.setProperty(key, value);
+    const page = pageShell(doc, doc.design.on && doc.design.elements.length ? 'designer' : doc.layout);
     if (data.access === 'owner' && !data.published)
         page.append(h('p', { class: 'ep-draft-note' }, 'Preview: this profile isn’t published yet, so only you can see it.'));
-    const identity = h('section', { class: 'ep-box ep-identity' }, avatarEl(doc.avatar, name, 'ep-avatar'), h('div', { class: 'ep-identity-text' }, h('h1', { class: 'ep-name' }, name), doc.headline ? h('p', { class: 'ep-headline' }, doc.headline) : null, doc.mood ? h('p', { class: 'ep-mood' }, h('b', {}, 'Mood: '), doc.mood) : null, doc.status ? h('p', { class: 'ep-status' }, h('b', {}, 'Status: '), doc.status) : null, h('p', { class: 'ep-handle' }, '@' + (data.handle || ''))));
+    if (doc.design.on && doc.design.elements.length) {
+        page.append(designCanvas(doc, data, actions));
+        host.append(page);
+        return;
+    }
+    const identity = identityBox(doc, data, name);
     const sections = doc.sections;
     const parts = {
         about: sections.about ? aboutBox(doc, name) : null,
