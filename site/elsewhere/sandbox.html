@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <!-- Same policy as the creator's document below (a policy stays in force after document.open()). -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; img-src https: data: blob:; font-src https: data:; media-src https: data: blob:; connect-src 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; worker-src 'none'">
+  <title>Elsewhere code block</title>
+  <style>html, body { margin: 0; background: transparent; }</style>
+</head>
+<body>
+<script>
+// Elsewhere Profiles code block runner. Profiles load this page in an <iframe sandbox="allow-scripts">, so it runs
+// with an opaque origin: no cookies, no storage, no access to the profile page, Elsewhere sign-ins or the app.
+// The creator's HTML/CSS/JS is written into a fresh document whose policy blocks all network access
+// (no fetch, beacons or websockets), forms, plugins and frames. Pictures, fonts and media may load over https.
+(function () {
+  var POLICY = "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; " +
+    "img-src https: data: blob:; font-src https: data:; media-src https: data: blob:; connect-src 'none'; " +
+    "form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; worker-src 'none'"
+  var done = false
+  function escapeClose(text, tag) { return String(text || '').replace(new RegExp('</' + tag, 'gi'), '<\\/' + tag) }
+  window.addEventListener('message', function (event) {
+    if (done || event.source !== window.parent) return
+    var data = event.data || {}
+    if (data.type !== 'elsewhere-code') return
+    done = true
+    var html = String(data.html || '').slice(0, 120000)
+    var css = escapeClose(String(data.css || '').slice(0, 120000), 'style')
+    var js = escapeClose(String(data.js || '').slice(0, 120000), 'script')
+    var page = '<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="' + POLICY + '">' +
+      '<meta name="viewport" content="width=device-width, initial-scale=1"><style>html,body{margin:0}' + css + '</style></head><body>' + html +
+      (js ? '<script>' + js + '<\/script>' : '') + '</body></html>'
+    document.open(); document.write(page); document.close()
+  })
+})()
+</script>
+</body>
+</html>
