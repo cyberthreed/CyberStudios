@@ -6,7 +6,7 @@
   <meta name="referrer" content="no-referrer">
   <meta name="description" content="Sign in to your Elsewhere account for Elsewhere Messenger and supported Elsewhere OS apps.">
   <title>Sign in to Elsewhere</title>
-  <link rel="stylesheet" href="./style.css?v=elsewhaero-2">
+  <link rel="stylesheet" href="./style.css?v=elsewhaero-3">
   <link rel="icon" href="./butterfly.png" type="image/png">
 </head>
 <body class="signup-page">
@@ -33,7 +33,24 @@
       <label for="pw">Password</label>
       <input type="password" id="pw" autocomplete="current-password" maxlength="72" required>
       <button>Sign in</button>
+      <p class="step-note"><button type="button" class="link-button" id="forgot">Forgot your password?</button></p>
       <p class="step-note">New here? <a href="./index.html">Create an Elsewhere account</a></p>
+    </form>
+    <form id="reset" hidden>
+      <p class="step-note">We’ll email you a 6-digit code. Enter it here with a new password.</p>
+      <label for="reset-email">Email address</label>
+      <input type="email" id="reset-email" maxlength="254" autocomplete="email" required>
+      <button type="button" id="send-code">Email me a code</button>
+      <div id="reset-step2" hidden>
+        <label for="reset-code">Code from the email</label>
+        <input id="reset-code" inputmode="numeric" autocomplete="one-time-code" maxlength="10" pattern="[0-9]{6,10}">
+        <label for="reset-pw">New password (at least 8 characters)</label>
+        <input type="password" id="reset-pw" autocomplete="new-password" minlength="8" maxlength="72">
+        <label for="reset-pw2">Type it again</label>
+        <input type="password" id="reset-pw2" autocomplete="new-password" minlength="8" maxlength="72">
+        <button>Save new password</button>
+      </div>
+      <p class="step-note"><button type="button" class="link-button" id="back-to-signin">Back to sign in</button></p>
     </form>
     <div id="done" hidden>
       <p class="step-done">You’re signed in! ✧</p>
@@ -48,6 +65,6 @@
       <a href="./license.html">License</a>
     </footer>
   </main>
-  <script type="module" src="./signin.js?v=1"></script>
+  <script type="module" src="./signin.js?v=2"></script>
 </body>
 </html>

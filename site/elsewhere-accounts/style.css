@@ -225,3 +225,6 @@ body, .signup-page { background: #2f8fe0 url('../assets/elsewhere-desktop.webp')
 .account-tabs a { flex: 1; padding: 8px 12px; border: 1px solid #8cc6ea; border-bottom: 0; border-radius: 12px 12px 0 0; color: #0b4fb0; font-weight: 700; text-align: center; text-decoration: none; background: linear-gradient(#ffffff, #dff3ff); }
 .account-tabs a[aria-current] { color: #fff; text-shadow: 0 1px 2px #06306e; border-color: #0a4ea8; background: linear-gradient(180deg, #8fd3ff 0%, #2d8ff0 46%, #0b5fd0 54%, #2f86e6 100%); }
 .account-tabs a:hover:not([aria-current]) { border-color: #3fc4f0; }
+.link-button { padding: 0; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; }
+#reset-step2 { display: grid; gap: inherit; }
+#reset-step2[hidden] { display: none; }
