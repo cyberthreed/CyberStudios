@@ -1,6 +1,6 @@
 // Elsewhere profile on the web: ?u=handle. Uses the same renderer as Elsewhere Messenger.
 // Signed-out visitors only ever receive what the profile owner made public: the server decides.
-import { renderProfile } from './profile-render.js?v=5'
+import { renderProfile } from './profile-render.js?v=6'
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from '../elsewhere-accounts/config.js'
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/+esm'
 

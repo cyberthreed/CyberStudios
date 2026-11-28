@@ -28,9 +28,12 @@
     var html = String(data.html || '').slice(0, 120000)
     var css = escapeClose(String(data.css || '').slice(0, 120000), 'style')
     var js = escapeClose(String(data.js || '').slice(0, 120000), 'script')
+    // Links written as href="page:<name>" switch to that page of the profile (the profile checks the name).
+    var pageLinks = '<script>document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest("a[href^=\\"page:\\"]");' +
+      'if(!a)return;e.preventDefault();parent.postMessage({type:"elsewhere-open-page",slug:a.getAttribute("href").slice(5)},"*")},true)<\/script>'
     var page = '<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="' + POLICY + '">' +
       '<meta name="viewport" content="width=device-width, initial-scale=1"><style>html,body{margin:0}' + css + '</style></head><body>' + html +
-      (js ? '<script>' + js + '<\/script>' : '') + '</body></html>'
+      pageLinks + (js ? '<script>' + js + '<\/script>' : '') + '</body></html>'
     document.open(); document.write(page); document.close()
   })
 })()

@@ -579,7 +579,7 @@ function elementBody(e, doc, data, actions) {
         case 'divider': return h('hr', { class: 'ep-el-divider' });
         case 'shape': return h('div', { class: 'ep-el-shape' });
         case 'module': return e.module === 'poll' ? pollBox(e.pollId, actions) : e.module === 'webring' ? webringBox(e.ringId, actions) : moduleBox(e.module, doc, data, actions);
-        case 'code': return codeFrame(e.code || { html: '', css: '', js: '' }, actions.sandboxUrl || CODE_SANDBOX_URL);
+        case 'code': return codeFrame(withAssetLinks(e.code || { html: '', css: '', js: '' }, doc), actions.sandboxUrl || CODE_SANDBOX_URL, actions.onOpenPage || (actions.pageHref ? (slug) => { window.location.href = actions.pageHref(slug); } : undefined));
         case 'widget': return codeFrame(e.widget ? compileWidget(e.widget) : { html: '', css: '', js: '' }, actions.sandboxUrl || CODE_SANDBOX_URL);
         case 'nav': {
             const nav = h('nav', { class: 'ep-el-nav', 'aria-label': 'Pages' });
@@ -629,10 +629,64 @@ export function pageElements(design, slug = 'home') {
 }
 /** A creator's code block: an opaque-origin sandboxed frame on a separate site. It can't reach the profile page,
  *  sign-ins, storage, the app, the network, pop-ups or top-level navigation. */
-export function codeFrame(code, sandboxUrl) {
+export function codeFrame(code, sandboxUrl, onOpenPage) {
     const frame = h('iframe', { class: 'ep-el-code', src: sandboxUrl, sandbox: 'allow-scripts', referrerpolicy: 'no-referrer', loading: 'lazy', title: 'Custom code block', allow: '' });
     frame.addEventListener('load', () => frame.contentWindow?.postMessage({ type: 'elsewhere-code', html: code.html, css: code.css, js: code.js }, '*'));
+    // `page:<slug>` links inside the block ask the profile to switch pages (only from this frame, only real slugs).
+    if (onOpenPage && typeof window !== 'undefined') {
+        const listen = (event) => {
+            if (!frame.isConnected && frame.dataset.seen) {
+                window.removeEventListener('message', listen);
+                return;
+            }
+            if (frame.isConnected)
+                frame.dataset.seen = '1';
+            const slug = pageLinkSlug(event, frame.contentWindow);
+            if (slug)
+                onOpenPage(slug);
+        };
+        window.addEventListener('message', listen);
+    }
     return frame;
+}
+/** The page a code block asked to open, if the message really came from that block and names a valid page. */
+export function pageLinkSlug(event, from) {
+    if (!from || event.source !== from)
+        return null;
+    const d = (event.data && typeof event.data === 'object' ? event.data : {});
+    if (d.type !== 'elsewhere-open-page' || typeof d.slug !== 'string')
+        return null;
+    const slug = d.slug.trim().toLowerCase();
+    return slug === 'home' || /^[a-z0-9][a-z0-9-]{0,29}$/.test(slug) ? slug : null;
+}
+/** Code blocks can point at project pictures as `asset:<id>`; this swaps in each picture's real link. */
+export function withAssetLinks(code, doc) {
+    if (!doc.assets.length)
+        return code;
+    const swap = (text) => text.replace(/asset:([a-z0-9]{4,16})/g, (m, id) => doc.assets.find(a => a.id === id)?.src || m);
+    return { html: swap(code.html), css: swap(code.css), js: swap(code.js) };
+}
+export const PAGE_PICTURE_LIMIT = 40;
+/** Reads a page file safely. Returns null when it isn't one. */
+export function normalizePagePackage(raw) {
+    const p = (raw && typeof raw === 'object' ? raw : null);
+    if (!p || p.format !== 'elsewhere-page')
+        return null;
+    const c = (p.code && typeof p.code === 'object' ? p.code : {});
+    const code = { html: str(c.html, CODE_LIMIT), css: str(c.css, CODE_LIMIT), js: str(c.js, CODE_LIMIT) };
+    if (!code.html && !code.css && !code.js)
+        return null;
+    const pictures = [];
+    for (const item of (Array.isArray(p.pictures) ? p.pictures.slice(0, PAGE_PICTURE_LIMIT) : [])) {
+        const q = (item && typeof item === 'object' ? item : {});
+        const id = str(q.id, 16), data = typeof q.data === 'string' ? q.data : '';
+        if (!ASSET_ID.test(id) || pictures.some(x => x.id === id))
+            continue;
+        if (!/^data:image\/(png|jpeg|gif|webp);base64,[a-z0-9+/=]+$/i.test(data) || data.length > 4300000)
+            continue;
+        pictures.push({ id, name: str(q.name, 60) || 'picture', data, w: num(q.w, 1, 8000, 0), h: num(q.h, 1, 8000, 0) });
+    }
+    return { name: str(p.name, 40).trim() || 'Imported page', height: num(p.height, 200, 12000, 900), code, pictures };
 }
 /** The free-form Visual Designer page. Desktop: exact positions on a 960px canvas. Narrow screens: a
  *  readable single column in top-to-bottom order, so a desktop design never makes mobile unusable. */
